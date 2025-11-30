@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpretable AI for Spatio-Temporal Models</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GPCE COVID ANALYSIS</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Montserrat:wght@300;400;700&display=swap');
+    
+            html {
+                font-size: 10px;
+                font-family: 'Montserrat', sans-serif;
+                scroll-behavior: smooth;
+            }
+    
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9fafc;
+                color: #181818;
+                margin: 0;
+                padding: 0;
+            }
+
+            .introduction {
+                font-size: 2em;
+                text-align: center;
+                line-height: 32px;
+                margin-top: 20px;
+                margin-left: 100px;
+                margin-right: 100px;
+            }
+    
+            .container {
+                padding-top: 60px;
+                max-width: 1500px;
+                margin: 70px auto;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+    
+            .section-container {
+                background-color: #f2f2f2;
+                margin: 20px 0;
+                padding: 20px;
+                overflow-x: auto;  
+                -webkit-overflow-scrolling: touch;  
+
+            }
+
+            .sectioncontainer {
+                margin: 20px 0;
+                padding: 20px;
+            }
+    
+            h1, h2 {
+                text-align: center;
+                margin-top: 0;
+                padding-top: 20px;
+            }
+    
+            .row {
+                display: flex;
+                justify-content: space-between;
+            }
+    
+            .card, .video-card {
+                flex: 1;
+                border: 1px solid #eaeaea;
+                padding: 20px;
+                margin: 10px;
+                transition: box-shadow 0.3s;
+                font-size: medium;
+            }
+    
+            .card:hover, .video-card:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+    
+            .card h2, .video-card h2 {
+                margin-top: 0;
+            }
+    
+            .arrow {
+                font-size: 24px;
+                color: #888;
+            }
+    
+            .video-card {
+                background-color: #f4f4f4;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                color: #aaa;
+            }
+    
+            .video-description {
+                margin-top: 10px;
+            }
+    
+            iframe {
+                max-width: 100%;
+            }
+    
+            .bottom-section {
+                margin-top: 40px;
+            }
+    
+            /* Collaborators section styles */
+            .collaborators-row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                background-color: #f2f2f2; /* Default grey banner */
+                padding: 1% 0; /* Padding top and bottom for each row */
+            }
+
+            .collaborator {
+                width: 14%;  /* Reduced size of the photos */
+                margin: 1% 4%;  /* Adjusted margins to keep them evenly spaced */
+                position: relative;
+                transition: box-shadow 0.3s; 
+                background-color: transparent; 
+                text-align: center; /* Center text under images */
+            }
+
+            .collaborator img {
+                width: 180px; /* Set the desired width */
+                height: 200px; /* Set the desired height */
+                border-radius: 50%; /* Make the image circular */
+                object-fit: cover; /* Ensure the image covers the container */
+                object-position: center; /* Center the image within the container */
+
+            }
+
+            .collaborator-info {
+                margin-top: 10px; /* Space between image and text */
+            }
+
+            .collaborator-name {
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+
+            .collaborator-details {
+                font-size: 1.2em; /* Slightly smaller text for additional info */
+                color: #666; /* Grey color for additional info */
+            }
+
+            .collaborators-row:nth-child(odd) {
+                background-color: #f2f2f2; /* Different shade for alternating rows */
+            }
+    
+            /* Navbar */
+            .navbar {
+                background-color: white;
+                overflow: hidden;
+                position: fixed; 
+                top: 0;
+                width: 100%; 
+                z-index: 1000; 
+                display: flex;
+                justify-content: space-between; 
+                padding: 0 10px; 
+                padding-right: 50px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* shadow for navbar */
+                align-items: center; 
+            }
+
+            .logo {
+                width: 100px;
+                display: inline-flex;
+                padding-right: 15px; 
+            }
+
+            .logo img {
+                margin: auto 5px;
+                float: right;
+                width: 300px;
+                height: 50px;
+            }
+
+            .navbar-title {
+                color: black;
+                font-size: 20px; 
+                padding: 14px 0; 
+            }
+    
+            .navbar-links {
+                display: flex;
+                align-items: center;
+            }
+    
+            .navbar-links a {
+                font-size: 1.3rem;
+                font-weight: 500;
+                letter-spacing: 0.2rem;
+                text-decoration: none;
+                color: black;
+                text-transform: uppercase;
+                padding: 20px;
+                display: block;
+                position: relative;
+            }
+    
+            .navbar-links a::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: black;
+                transform: scaleX(0);
+                transition: transform 0.3s ease;
+            }
+    
+            .navbar-links a:hover::after {
+                transform: scaleX(1);
+            }
+
+            /* Slideshow container */
+            .slideshow-container {
+                position: relative;
+                max-width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 10px;
+            }
+
+            /* Hide all slides by default */
+            .mySlides {
+                display: none;
+            }
+
+            /* Next & previous buttons */
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                padding: 16px;
+                margin-top: -22px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.6s ease;
+                border-radius: 0 3px 3px 0;
+                user-select: none;
+                z-index: 100;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+                right: 200px;
+                color: white;
+                border-radius: 3px 0 0 3px;
+            }
+
+            .prev {
+                left: 200px;
+                color:white;  
+            }
+
+            /* On hover, add a black background color with a little bit of transparency */
+            .prev:hover, .next:hover {
+                background-color: rgba(0, 0, 0, 0.829);
+                color: white;
+            }
+
+            /* Caption text */
+            .text {
+                color: #f2f2f2;
+                font-size: 15px;
+                padding: 8px 12px;
+                position: absolute;
+                bottom: 8px;
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Number text (1/3 etc) */
+            .numbertext {
+                color: #f2f2f2;
+                font-size: 12px;
+                padding: 8px 12px;
+                position: absolute;
+                top: 0;
+            }
+
+            /* Dots */
+            .dot {
+                cursor: pointer;
+                height: 15px;
+                width: 15px;
+                margin: 0 2px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+                transition: background-color 0.6s ease;
+            }
+
+            .active, .dot:hover {
+                background-color: #717171;
+            }
+
+            /* Fading animation */
+            .fade {
+                -webkit-animation-name: fade;
+                -webkit-animation-duration: 1.5s;
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+
+            @-webkit-keyframes fade {
+                from {opacity: .4} 
+                to {opacity: 1}
+            }
+
+            @keyframes fade {
+                from {opacity: .4} 
+                to {opacity: 1}
+            }
+
+            /* Adjust the hero section to better accommodate the slideshow */
+            #hero {
+                background-image: url(./pics/img/covidthing.jpg);
+                background-size: cover;  
+                background-position: center;  
+                background-repeat: no-repeat;  
+                position: relative;
+                z-index: 1;
+                padding-top: 60px;
+            }
+
+            #hero .container {
+                min-height: 70vh;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            #hero::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                background-color: black;
+                opacity: .50;
+                z-index: -1;
+            }
+
+            #hero h1 {
+                display: inline;
+                width: fit-content;
+                font-size: 4rem;
+                position: relative;
+                color: white;
+                font-family: 'Inconsolata', sans-serif;
+            }
+            .publication {
+                font-size: medium;
+            }
+
+            .award {
+                font-size: medium;
+                
+            }
+            /* General box styles for both awards and publications */
+            .award-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid #eaeaea;
+                padding: 20px;
+                margin: 10px;
+                transition: box-shadow 0.3s;
+                background-color: #fff;
+                text-align: center;
+                max-width: 300px;
+            }
+
+            .publication-box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 20px;
+                margin: 10px;
+                transition: box-shadow 0.3s;
+                background-color: #fff;
+                text-align: center;
+                max-width: max-content;
+            }
+
+            /* .additionalmedia-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                margin: 10px;
+                transition: box-shadow 0.3s;
+                background-color: #fff;
+                text-align: center;
+                max-width: 300px;
+            } */
+
+            .package-box {
+                flex: 0 0 300px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                margin: 10px;
+                transition: box-shadow 0.3s;
+                background-color: #fff;
+                text-align: center;
+                max-width: 300px;
+                min-width: 300px;
+            }
+
+            .award-box:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Logo styles */
+            .box-logo {
+                width: auto;
+                height: auto;
+                object-fit: cover;
+                margin-bottom: 15px;
+                max-width: 300px;
+            }
+
+            /* Content styles */
+            .box-content {
+                font-size: medium;
+            }
+
+            .box-content h2 {
+                margin-top: 0;
+                font-size: 1.2em;
+            }
+
+            .publicationparagraph {
+                line-height: 1.6; /* Increase line height for better readability */
+                text-align: justify; /* Justify text to create a block-like appearance */
+                padding: 10px 0; /* Add padding to create space between paragraphs */
+                font-family: Arial, sans-serif; /* Ensure a readable font */
+                padding-left: 30px;
+            }
+
+            .box-content p {
+                color: #666;
+                font-size: 1em;
+            }
+
+            /* Ensure the row class arranges the boxes in a flex container */
+            .row {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 20px;  
+                padding: 10px;  
+                width: max-content;  
+                justify-content: center; 
+            }
+            .row2 {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* Center the boxes horizontally */
+            }
+            .specialcontainer {
+                display: flex;
+                align-items: center; /* Align items vertically */
+                gap: 10px; /* Optional: Add some space between the logo and the heading */
+                place-content: space-between;
+            }
+
+            .nsflogo {
+                margin-right: 10px; /* Add space to the right of the logo */
+                height: 120px;
+                width: auto;
+            }
+
+            #title {
+                margin: 0; /* Remove default margin */
+                display: flex;
+                align-items: center;
+            }
+            .emptybox {
+                width: 100px;
+                height: 50px;
+            }
+            .collaborator-group {
+                text-align: left;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding-left: 100px;
+                font-size: medium;
+                padding-top: 40px;
+            }
+            .award-box .collaborator-row img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin-top: 20px;
+            }
+
+            .award-box .collaborator-info {
+                margin-top: 10px;
+            }
+
+            .award-box .collaborator-info h3 {
+                margin: 0;
+            }
+
+            .award-box .collaborator-info p {
+                margin: 5px 0 0;
+                font-size: 0.9em;
+                color: #666;
+            }
+            .projectdescription {
+                color: #6f6f6f;
+                line-height: 23px;
+            }
+
+            .subheading {
+                text-align-last: center;
+                font-size: 1.5rem;
+                color: #333232;
+
+            }
+
+            .awardlink {
+                transition: color 0.3s;
+                text-decoration: none;
+                color: #000000;
+            }
+
+            .awardlink:hover {
+                color: #245c98;
+            }
+
+            .read-more {
+                color: #499bf1;
+            }
+
+            .mySlides img {
+                width: 1200px;
+                height: 600px;
+                object-fit: cover; /* This maintains the aspect ratio of the images */
+            }
+
+            .footer {
+                text-align: center;
+            }
+
+            .transparent {
+                position: absolute;
+                background-color: rgba(7, 14, 122, 0.3);
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                align-content: center;
+            }
+
+            .transparenttext {
+                opacity: 100%;
+                font-size: 8em; /* Increase font size */
+                font-family: fantasy;
+                color: white;
+                padding: 20px; /* Add padding around the text */
+                width: 100%; /* Ensure text spans across the screen */
+                text-align: center; /* Center the text horizontally */
+                position: absolute; /* Position it to center vertically */
+                top: 50%;
+                left: 50%;
+                transform: translate(-48%, -50%); /* Perfect centering */
+                word-spacing: 20px;
+                letter-spacing: 0.3rem;
+            }
+            .fox-image {
+                transform: scale(0.90); /* Reduce size to 4/5 of the original */
+            }
+
+            .section-container::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .section-container::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            .section-container::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+
+            .section-container::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+            
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- <div class="navbar-title">Interpretable AI for Time-Series Models</div> -->
+        <div class="logo">
+            <img src="./pics/img/UVAdatascience.png" alt="Data Science Logo">
+            <!-- <img src="./pics/img/cslogo.png" alt="CS Logo" > -->
+        </div>
+        <div class="navbar-links">
+            <a href="#projects"><b>Projects</b></a>
+            <a href="#videos"><b>Videos</b></a>
+            <a href="#awards"><b>Awards</b></a>
+            <a href="#publications"><b>Publications</b></a>
+            <a href="#contributors"><b>Contributors</b></a>
+        </div>
+    </div>
+    
+    <section id="hero">
+            <div class="slideshow-container">
+                <div class="transparent">
+                    <div class="transparenttext">
+                        <p>AI For Science</p>
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="./pics/img/slide1.png"  >
+                </div>
+                <div class="mySlides fade">
+                    <img src="./pics/img/slide2.png" >
+                </div>
+                <div class="mySlides fade">
+                    <img src="./pics/img/slide3.png" >
+                </div>
+                <div class="mySlides fade">
+                    <img src="./pics/img/slide4 (2).png">
+                </div>
+                <div class="mySlides fade">
+                    <img src="./pics/img/slide5.jpg" >
+                </div>
+                
+                <!-- Add more slides as needed -->
+
+                <!-- Navigation buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>    
+                <!-- Add more dots as needed -->
+            </div>
+            <br>
+    </section>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+        setInterval(function() {
+            plusSlides(1);
+        }, 5000);
+    </script>
+
+    <div class="container">
+        <div class="specialcontainer">
+            <img class="nsflogo" src="/pics/img/nsf.png" width="5%" height="auto"/>
+            <h1 id="title">Mission Statement</h1>
+            <div class="emptybox"></div>
+        </div>
+        <p class="introduction">
+            "AI for Science" is a new program Prof. Judy Fox co-hosted in the summer of 2023, which was funded by NSF grant CCF-1918626 Expeditions: Collaborative Research: Global Pervasive Computational Epidem and NSF Cyber Training. It continued in fall 2023 and the year of 2024.  Eleven undergraduate students were involved in their "AI for Science" research in the fall 2023 semester. 
+            The overarching goal is to advance “AI for Science” with highlights on public health and responsible AI infrastructure. 
+            The undergraduate students engaged in real-time machine learning efforts for interdisciplinary applications, including NSF-funded work in the Global Pervasive Computational Epidemiology computer expedition. 
+            Another team science area is to use transformational AI advancements for earthquakes and financial aid. We are building a community at the University of Virginia to engage and inspire students into leaders and pioneers who understand the foundations and practical applications of data and science across various domains.
+        </p>
+    </div>
+    
+    <div class="container">
+        <h1 class="title">Interpretable AI for Spatio-Temporal Models</h1>
+        <!-- Projects Row -->
+        <div class="row2" id="projects">
+            <div class="card">
+                <!-- <a href="https://github.com/UVA-MLSys/gpce-covid" style="display: block; text-decoration: none; color: inherit;"> -->
+                    <h2>Large Language Models for Financial Aid
+                        in Financial Time-series Forecasting</h2>
+                    <p class="projectdescription">
+                        This study utilizes Large Language Models (LLMs), such as pre-trained GPT-2, for financial time-series forecasting, addressing limited historical data and complex financial information. By benchmarking LLMs against state-of-the-art time-series models, the research highlights their superior predictive performance with minimal fine-tuning, offering valuable insights for financial decision-making. <a href="https://uva-mlsys.github.io/Financial-Time-Series/" class="read-more">Read more</a>
+                    </p>
+                <!-- </a> -->
+            </div>
+            <div class="card">
+                <!-- <a href="https://github.com/UVA-MLSys/gpce-covid" style="display: block; text-decoration: none; color: inherit;"> -->
+                    <h2>Interpreting Spatio-Temporal patterns with Self-Attention</h2>
+                    <p class="projectdescription">
+                        This study uses the <i>Temporal Fusion Transformer</i> to 
+                        forecast COVID-19 infections at the US county level, 
+                        analyzing detailed temporal and spatial patterns from the self-attention to 
+                        achieve superior prediction performance. 
+                        By interpreting the model's learned patterns and 
+                        using 2.5 years of socioeconomic and health data 
+                        from 3,142 counties, this research provides valuable insights 
+                        to aid effective public health decision-making. <a href="https://uva-mlsys.github.io/gpce-covid/" class="read-more"> Read more </a>
+                    </p>
+                <!-- </a> -->
+            </div>
+
+            <div class="card">
+                <!-- <a href="https://github.com/UVA-MLSys/COVID-19-age-groups" style="display: block; text-decoration: none; color: inherit;"> -->
+                <h2>Interpreting Feature Interactions using Sensitivity Analysis</h2>
+                <p class="projectdescription"> This study uses eight recent local interpretation methods on 
+                    six Transformer-based time series models, 
+                    comparing find the best predictor for COVID-19 
+                    cases using three years of data from 3,142 US counties. When also
+                    predicting the epidemic sensitivity to different age groups and compare the interpreted
+                    sensitivity with ground truth. The framework is also tested on other datasets
+                    for broader applicability. <a href="https://uva-mlsys.github.io/COVID-19-age-groups/" class="read-more">Read more</a>
+                </p>
+                <!-- </a> -->
+            </div>
+
+            <div class="card">
+                <!-- <a href="https://github.com/UVA-MLSys/SA-Timeseries" style="display: block; text-decoration: none; color: inherit;"> -->
+                <h2>Windowed Temporal Saliency Analysis for Multi-Horizon Time Series Forecasting</h2>
+                <p class="projectdescription"> Interpreting time series models is challenging due to the temporal dependencies between 
+                    time steps and the changing significance of input features over time. This addresses these 
+                    challenges by striving to provide clearer explanations of the feature interactions, 
+                    and showcase the practical application of these interpretability techniques using 
+                    real-world datasets and cutting-edge deep learning models. <a href="https://uva-mlsys.github.io/SA-Timeseries/" class="read-more">Read more</a>
+                </p>
+                <!-- </a> -->
+            </div>
+
+            
+        </div>
+
+        <!-- Videos Row -->
+        <div class="row2" id="videos">
+            <div class="video-card">
+                <iframe src="https://drive.google.com/file/d/1nQ8WzU3vBx2vm-f7sDD-ZFUvsch3GFZW/preview" width="560" height="315" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ref11GvSm4w" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/J1LW2DPxuzM" title="Judy Fox, University of Virginia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BPQ-pgtPqRc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+        </div>
+
+        <!-- Contributors, Awards, Publications -->
+        <div class="bottom-section">
+            <div class="container">
+                <h1 id="awards" class="title">Awards</h1>
+                <div class="section-container">
+                    <div class="row">
+                        <div class="award-box">
+                            <img src="/pics/img/ciclogo.jpg" alt="Award Logo 2" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://covidinfocommons.datascience.columbia.edu/content/2024-cic-student-paper-challenge">
+                                    <h2 class="awardlink">1st Place Prize at the 2024 Graduate CIC Student Paper Challenge</h2>
+                                </a> 
+                                <div class="collaborator-row">
+                                    <p>Accepted through the Covid Information Commons Paper Challenge. Recipient: Md Khairul Islam</p>      
+                                </div>               
+                            </div>
+                        </div>
+                        <div class="award-box">
+                            <img src="/pics/img/nsf.png" alt="Award Logo 1" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://conferences.computer.org/icdh/2023/student_awards.html">
+                                    <h2 class="awardlink">Third Place prize in the 2023 IEEE ICDH Conference</h2>
+                                </a>
+                                <div class="collaborator-row">
+                                    <p>Accepted to the IEEE ICDH Conference; Awarded 3rd place. Recipient: Md Khairul Islam</p>
+                                    <img src="/pics/img/single - Md Khairul Islam.JPG" alt="Student Photo">
+                                    <div class="collaborator-info">
+                                        <h3>Md Khairul Islam</h3>
+                                        <p>CS (PhD)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award-box">
+                            <img src="/pics/img/nsfproceedings.png" alt="Award Logo 3" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://ojs.aaai.org/index.php/AAAI/article/view/30396">
+                                    <h2 class="awardlink">Temporal Dependencies and Spatio-Temporal Patterns of Time Series Models</h2>
+                                </a>
+                                <div class="collaborator-row">
+                                    <p>Accepted through the AAAI Doctoral Consortium Track. Recipient: Md Khairul Islam</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award-box">
+                            <img src="/pics/img/nsfproceedings.png" alt="Award Logo 4" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://ojs.aaai.org/index.php/AAAI/article/view/30559">
+                                    <h2 class="awardlink">Validation, Robustness, and Accuracy of Perturbation-Based Sensitivity Analysis Methods for Time-Series Deep Learning Models</h2>
+                                </a> 
+                                <div class="collaborator-row">
+                                    <p>Accepted through the AAAI Undergraduate Consortium. Recipient: Zhengguang Wang</p>        
+                                </div>               
+                            </div>
+                        </div>
+                        <div class="award-box">
+                            <img src="/pics/img/ieee.png" alt="Award Logo 5" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://ieeexplore.ieee.org/abstract/document/10224685">
+                                    <h2 class="awardlink">Interpreting County-Level COVID-19 Infections using Transformer and Deep Learning Time Series Models in IEEE Library</h2>
+                                </a>
+                                <div class="collaborator-row">
+                                    <p>Accepted to the 2023 IEEE ICDH Conference and archived in IEEE Xplore. Recipients: Md Khairul Islam, Yingzheng Liu, Andrej Erkelens, Nick Daniello,  and Judy Fox</p>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                <h1 id="publications" class="title">Publications</h1>
+                <h3 class="subheading">Referred Journal Article Citations/References</h3>
+                <div class="sectioncontainer">
+                     <div class="column">
+                        <div class="publication-box">
+                            <img src="/pics/img/finaid.png" alt="Publication Logo 3" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://arxiv.org/pdf/2410.19025">
+                                    <h2>Large Language Models for Financial Aid
+                                        in Financial Time-series Forecasting</h2>
+                                </a>
+                                <p class="publicationparagraph">Accepted to the IEEE International Workshop on Large Language Models for Finance., The IEEE International Conference on Big Data (IEEE BigData 2024), Washington DC, USA. 2024 December 15-18</p>
+                                <p class="publicationparagraph">
+                                    Considering the difficulty of financial time series forecasting in financial aid, much of the current research focuses on leveraging big data analytics in financial services. One modern approach is to utilize "predictive analysis", analogous to forecasting financial trends. However, many of these time series data in Financial Aid (FA) pose unique challenges due to limited historical datasets and high dimensional financial information, which hinder the development of effective predictive models that balance accuracy with efficient runtime and memory usage. Pre-trained foundation models are employed to address these challenging tasks. We use state-of-the-art time series models including pre-trained LLMs (GPT-2 as the backbone), transformers, and linear models to demonstrate their ability to outperform traditional approaches, even with minimal ("few-shot") or no fine-tuning ("zero-shot"). Our benchmark study, which includes financial aid with seven other time series tasks, shows the potential of using LLMs for scarce financial datasets.
+                                </p>
+                            </div>
+                         </div>
+                         <div class="publication-box">
+                            <img src="/pics/img/temporal.png" alt="Publication Logo 3" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://ojs.aaai.org/index.php/AAAI/article/view/30396">
+                                    <h2>Temporal Dependencies and Spatio-Temporal Patterns of Time Series Models</h2>
+                                </a>
+                                <p class="publicationparagraph">Accepted to the AAAI-24 Doctoral Consortium, The 38th Annual AAAI Conference on Artificial Intelligence (AAAI-24), Vancouver, Canada. 2024 February 27.</p>
+                                <p class="publicationparagraph">
+                                    The widespread use of Artificial Intelligence (AI) has highlighted the importance of understanding AI model behavior. 
+                                    This understanding is crucial for practical decision-making, assessing model reliability, and ensuring trustworthiness. 
+                                    Interpreting time series forecasting models faces unique challenges compared to image and text data. 
+                                    These challenges arise from the temporal dependencies between time steps and the evolving importance of input features over time. 
+                                    My thesis focuses on addressing these challenges by aiming for more precise explanations of feature interactions, uncovering spatiotemporal patterns, and demonstrating the practical applicability of these interpretability techniques using real-world datasets and state-of-the-art deep learning models.
+                                </p>
+                            </div>
+                         </div>
+                         <div class="publication-box">
+                            <img src="/pics/img/Sensitivity_Analysis_workflow.png" alt="Publication Logo 5" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://arxiv.org/abs/2401.15119">
+                                    <h2>Interpreting Time Series Transformer Models and Sensitivity Analysis of Population Age Groups to COVID-19 Infections</h2>
+                                </a>
+                                <p class="publicationparagraph">Accepted to the AI for Time-Series workshop. The 38th Annual AAAI Conference on Artificial Intelligence (AAAI-24), Vancouver, Canada. 2024 February 27.</p>
+                                <p class="publicationparagraph">
+                                    Interpreting deep learning time series models is crucial in understanding the model's behavior and learning patterns from raw data for real-time decision-making. 
+                                    However, the complexity inherent in transformer-based time series models poses challenges in explaining the impact of individual features on predictions. 
+                                    In this study, we leverage recent local interpretation methods to interpret state-of-the-art time series models. 
+                                    To use real-world datasets, we collected three years of daily case data for 3,142 US counties. 
+                                    Firstly, we compare six transformer-based models and choose the best prediction model for COVID-19 infection. 
+                                    Using 13 input features from the last two weeks, we can predict the cases for the next two weeks. 
+                                    Secondly, we present an innovative way to evaluate the prediction sensitivity to 8 population age groups over highly dynamic multivariate infection data. 
+                                    Thirdly, we compare our proposed perturbation-based interpretation method with related work, including a total of eight local interpretation methods. 
+                                    Finally, we apply our framework to traffic and electricity datasets, demonstrating that our approach is generic and can be applied to other time-series domains.
+                                </p>
+                            </div>
+                        </div>
+                         <div class="publication-box">
+                            <img src="/pics/img/interpretingSA.png" alt="Publication Logo 1" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://ieeexplore.ieee.org/abstract/document/10224685">
+                                    <h2>Interpreting County-Level COVID 19 Infections using Transformer and Deep Learning Time Series Models</h2>
+                                </a>
+                                <p class="publicationparagraph">Proceedings of The IEEE International Conference on Digital Health (ICDH). This work won the NSF Student Research Competition Award (3rd Place Prize) July 2023. 2023 July 02; Volume 1 (Issue 1)</p>
+                                <p class="publicationparagraph">
+                                    Deep Learning for Time-series plays a key role in AI for healthcare. To predict the progress of infectious disease outbreaks and demonstrate clear population-level impact, more granular analyses are urgently needed that control for important and potentially confounding county-level socioeconomic and health factors. 
+                                    We forecast US county-level COVID-19 infections using the Temporal Fusion Transformer (TFT). We focus on heterogeneous time-series deep learning model prediction while interpreting the complex spatiotemporal features learned from the data. 
+                                    The significance of the work is grounded in a real-world COVID-19 infection prediction with highly non-stationary, finely granular, and heterogeneous data.     
+                                </p>
+                            </div>
+                        </div>
+                        <div class="publication-box">
+                            <img src="/pics/img/opportunitiespaper.png" alt="Publication Logo 2" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://par.nsf.gov/biblio/10473591">
+                                    <h2>Opportunities for enhancing MLCommons efforts while leveraging insights from educational MLCommons earthquake benchmarks efforts</h2>
+                                </a>
+                                <p class="publicationparagraph">Journal of Frontiers in High-Performance Computing. Located in the NSF Public Access Repository. 2023 October 23</p>
+                                <p class="publicationparagraph">
+                                    MLCommons is an effort to develop and improve the artificial intelligence (AI) ecosystem through benchmarks, public data sets, and research. It consists of members from start-ups, leading companies, academics, and non-profits from around the world. 
+                                    The goal is to make machine learning better for everyone. In order to increase participation by others, educational institutions provide valuable opportunities for engagement. 
+                                    In this article, we identify numerous insights obtained from different viewpoints as part of efforts to utilize high-performance computing (HPC) big data systems in existing education while developing and conducting science benchmarks for earthquake prediction
+                                </p>
+                            </div>
+                        </div>
+                        <div class="publication-box">
+                            <img src="/pics/img/validationpaper.png" alt="Publication Logo 4" class="box-logo">
+                            <div class="box-content">
+                                <a class="awardlink" href="https://arxiv.org/abs/2401.16521">
+                                    <h2>Validation, Robustness, and Accuracy of Perturbation-based Sensitivity Analysis Methods for Time-Series Deep Learning Models</h2>   
+                                </a>
+                                <p class="publicationparagraph">Accepted to the AAAI-24 Undergraduate Consortium. The 38th Annual AAAI Conference on Artificial Intelligence (AAAI-24), Vancouver, Canada. 2024 February 27.</p>
+                                <p class="publicationparagraph">
+                                    This work undertakes studies to evaluate Interpretability Methods for Time-Series Deep Learning. Sensitivity analysis assesses how input changes affect the output, constituting a key component of interpretation. 
+                                    Among the post-hoc interpretation methods such as back-propagation, perturbation, and approximation, my work will investigate perturbation-based sensitivity Analysis methods on modern Transformer models to benchmark their performances. 
+                                    Specifically, my work answers three research questions: 
+                                    1) Do different sensitivity analysis (SA) methods yield comparable outputs and attribute importance rankings? 
+                                    2) Using the same sensitivity analysis method, do different Deep Learning (DL) models impact the output of the sensitivity analysis? 
+                                    3) How well do the results from sensitivity analysis methods align with the ground truth?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <h3 class="subheading">Software Packages developed or updated</h3>
+                <div class="section-container">
+                    <div class="row">
+                        <div class="package-box">
+                            <img src="/pics/img/finaidss.png" alt="Software Package Logo 4" class="box-logo">
+                            <div class="box-content">
+                                <h2>Large Language Models for Financial Aid
+                                    in Financial Time-series Forecasting</h2>
+                                <p>Github: <a href="https://github.com/UVA-MLSys/Financial-Time-Series?tab=readme-ov-file">Link</a></p>
+                            </div>
+                        </div>
+                        <div class="package-box">
+                            <img src="/pics/img/DS5110astroimage1.png" alt="Software Package Logo 4" class="box-logo">
+                            <div class="box-content">
+                                <h2>DS5110 Big Data Systems Fall 2024 AIForAstronomy Final Project</h2>
+                                <p>Github: <a href="https://github.com/UVA-MLSys/DS5110_Fall_2024">Link</a></p>
+                            </div>
+                        </div>
+                        <div class="package-box">
+                            <img src="/pics/img/gpcegit.png" alt="Software Package Logo 1" class="box-logo">
+                            <div class="box-content">
+                                <h2>Interpreting County-Level COVID-19 Infections using Transformer and Deep Learning Time Series Models</h2>
+                                <p>Github: <a href="https://uva-mlsys.github.io/gpce-covid/">Link</a></p>
+                            </div>
+                        </div>
+                        <div class="package-box">
+                            <img src="/pics/img/covidgit.png" alt="Software Package Logo 2" class="box-logo">
+                            <div class="box-content">
+                                <h2>Interpreting Time Series Transformer Models and Sensitivity Analysis of Population Age Groups to COVID-19 Infections</h2>
+                                <p>Github: <a href="https://github.com/UVA-MLSys/COVID-19-age-groups">Link</a></p>
+                            </div>
+                        </div>
+                        <div class="package-box">
+                            <img src="/pics/img/Hysecgit.png" alt="Software Package Logo 3" class="box-logo">
+                            <div class="box-content">
+                                <h2>HySec-Flow: A Scalable and Secure Framework for Data Intensive Heterogeneous Computing</h2>
+                                <p>Github: <a href="https://github.com/UVA-MLSys/HySec-Flow/tree/master/sgx-tasks">Link</a></p>
+                            </div>
+                        </div>
+                        <div class="package-box">
+                            <img src="/pics/img/surrogategit.png" alt="Software Package Logo 4" class="box-logo">
+                            <div class="box-content">
+                                <h2>Surrogate Simulation for Earthquake Prediction</h2>
+                                <p>Github: <a href="https://uva-mlsys.github.io/SurrogateSimulation/intro.html">Link</a></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            
+                <!-- <h3 class="subheading">Additional Research Media Published</h3>
+                <div class="section-container">
+                    <div class="row">
+                        <div class="additionalmedia-box">
+                            <img src="/pics/img/slide4.png" alt="Research Media Logo" class="box-logo">
+                            <div class="box-content">
+                                <h2>Talk at the Virginia booth, "Interpretable AI using Transformer and Deep Learning Time-Series Models Sensitivity Analysis for County Level COVID-19 Infections"</h2>
+                                <p>The International Conference for High Performance Computing, Networking, Storage, and Analysis (SC'23), Denver, Colorado, November 12–17, 2023.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <h1 id="contributors" class="title">Contributors</h2>
+
+                <h2 class="collaborator-group">Professors</h2>
+                <div class="collaborators-row">
+                    <div class="collaborator">
+                        <img class="fox-image" src="./pics/img/JFox2 - Judy Fox.png" alt="Judy Fox">
+                        <div class="collaborator-name">Dr. Judy Fox</div>
+                        <div class="collaborator-details">Data Science, Computer Science </div>
+                    </div>
+                </div>
+    
+    
+                <h2 class="collaborator-group">PhD Students</h2>
+                <div class="collaborators-row">
+                    <div class="collaborator">
+                        <img src="./pics/img/single - Md Khairul Islam.JPG" alt="Khairul Islam">
+                        <div class="collaborator-name">Md Khairul Islam</div>
+                        <div class="collaborator-details">Computer Science</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/headshot.jpg" alt="Kaleigh O'Hara">
+                        <div class="collaborator-name">Kaleigh O'Hara</div>
+                        <div class="collaborator-details">Data Science</div>
+                    </div>    
+                    <div class="collaborator">
+                        <img src="./pics/img/IMG_9715 - Ian Liu.PNG" alt="Yingzheng Liu">
+                        <div class="collaborator-name">Yingzheng Liu</div>
+                        <div class="collaborator-details">Computer Science</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/Mia Yuan.png" alt="Mia Yuan">
+                        <div class="collaborator-name">Mia Yuan</div>
+                        <div class="collaborator-details">Data Science</div>
+                    </div>        
+                </div>
+    
+                <h2 class="collaborator-group">Masters Students</h2>
+                <div class="collaborators-row">
+                    <div class="collaborator">
+                        <img src="./pics/img/headshot - Andrej Erkelens.jpeg" alt="Andrej Erkelens">
+                        <div class="collaborator-name">Andrej Erkelens</div>
+                        <div class="collaborator-details">Data Science</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/IMG-1170 - Luke Benham.jpg" alt="Luke Benham">
+                        <div class="collaborator-name">Luke Benham</div>
+                        <div class="collaborator-details">Computer Science</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/NickProfile - Nicholas Daniello.png" alt="Nicholas Daniello">
+                        <div class="collaborator-name">Nicholas Daniello</div>
+                        <div class="collaborator-details">Data Science</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/Aparna - Aparna Marathe.jpg" alt="Aparna Marathe">
+                        <div class="collaborator-name">Aparna Marathe</div>
+                        <div class="collaborator-details">Data Science</div>
+                    </div>
+                </div>
+    
+                <h2 class="collaborator-group">Undergraduate Students</h2>
+                <div class="collaborators-row">
+                    <div class="collaborator">
+                        <img src="./pics/img/Nicholas Kellogg.png" alt="Nicholas Kellogg">
+                        <div class="collaborator-name">Nicholas Kellogg</div>
+                        <div class="collaborator-details">Data Science, Economics</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/Max Titov.JPG" alt="Maxim Titov">
+                        <div class="collaborator-name">Maxim Titov</div>
+                        <div class="collaborator-details">Computer Engineering, Circuits</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/1594479822284 - George Boulos.jpg" alt="George Boulos">
+                        <div class="collaborator-name">George Boulos</div>
+                        <div class="collaborator-details">Systems Engineering</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/Shamsul Rauf Haque.png" alt="Shamsul Haque">
+                        <div class="collaborator-name">Shamsul Haque</div>
+                        <div class="collaborator-details">Computer Science</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/wzg6 - Zhengguang Wang.png" alt="Zhengguang Wang">
+                        <div class="collaborator-name">Zhengguang Wang</div>
+                        <div class="collaborator-details">Computer Science, Statistics</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/TJS_headshot.jpg" alt="Timothy Sue">
+                        <div class="collaborator-name">Timothy Sue</div>
+                        <div class="collaborator-details">Computer Science, Applied Mathematics</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/IMG_0343 - Kingsley Kim.JPG" alt="Kingsley Kim">
+                        <div class="collaborator-name">Kingsley Kim</div>
+                        <div class="collaborator-details">Computer Science, Physics, Astronomy</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/ID Photo UVA - Ayush Karmacharya.PNG" alt="Ayush Karmacharya">
+                        <div class="collaborator-name">Ayush Karmacharya</div>
+                        <div class="collaborator-details">Computer Science, Economics</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/IMG_8110 - Tracy Hua.jpg" alt="Tracy Hua">
+                        <div class="collaborator-name">Tracy Hua</div>
+                        <div class="collaborator-details">Systems Engineering, Data Science</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/Ryan Goudjil.png" alt="Ryan Goudjil">
+                        <div class="collaborator-name">Ryan Goudjil</div>
+                        <div class="collaborator-details">Computer Science, Statistics</div>
+                    </div>
+                    <div class="collaborator">
+                        <img src="./pics/img/Xin Sun.jpeg" alt="Xin Sun">
+                        <div class="collaborator-name">Xin Sun</div>
+                        <div class="collaborator-details">CS</div>
+                    </div> 
+                    <div class="collaborator">  
+                    </div>
+                    <div class="collaborator">  
+                    </div>
+                </div>
+            </div>
+</body>
+<footer class="footer">
+    <p class="footertext">
+        By UVAMLSys © Copyright 2024.
+    </p>
+</footer>
+</html>
