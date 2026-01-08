@@ -218,10 +218,46 @@ a:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     overflow-x: auto;
     transition: box-shadow 0.3s ease;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .section-container:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Horizontal scrollable row inside section-container */
+.section-container .row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 10px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar styling for section-container */
+.section-container::-webkit-scrollbar,
+.section-container .row::-webkit-scrollbar {
+    height: 8px;
+}
+
+.section-container::-webkit-scrollbar-track,
+.section-container .row::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.section-container::-webkit-scrollbar-thumb,
+.section-container .row::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #2E86AB 0%, #23668A 100%);
+    border-radius: 4px;
+}
+
+.section-container::-webkit-scrollbar-thumb:hover,
+.section-container .row::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #23668A 0%, #1D5573 100%);
 }
 
 .sectioncontainer {
@@ -396,6 +432,11 @@ a:hover {
 .award-box:hover, .publication-box:hover, .package-box:hover {
     box-shadow: 0 8px 24px rgba(46, 134, 171, 0.15);
     transform: translateY(-4px);
+}
+
+.award-box {
+    flex: 0 0 320px;
+    min-width: 320px;
 }
 
 .publication-box {
