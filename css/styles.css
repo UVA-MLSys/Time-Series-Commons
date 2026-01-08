@@ -225,6 +225,12 @@ a:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
+/* Software packages container with reduced width */
+.software-packages-container {
+    max-width: 90%;
+    margin: 30px auto;
+}
+
 /* Horizontal scrollable row inside section-container */
 .section-container .row {
     display: flex;
