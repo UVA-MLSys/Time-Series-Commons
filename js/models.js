@@ -14,6 +14,7 @@ class ModelsCatalog {
             benchmarks: new Set()
         };
         this.currentModalIndex = -1;
+        this.currentView = 'grid'; // 'grid' or 'list'
         
         this.init();
     }
@@ -42,6 +43,15 @@ class ModelsCatalog {
     }
 
     setupEventListeners() {
+        // View toggle buttons
+        const viewToggleBtns = document.querySelectorAll('.view-toggle-btn');
+        viewToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const view = btn.getAttribute('data-view');
+                this.switchView(view);
+            });
+        });
+
         // Search input with debouncing
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
@@ -323,20 +333,47 @@ class ModelsCatalog {
         this.renderModels();
     }
 
+    switchView(view) {
+        this.currentView = view;
+        
+        // Update button states
+        document.querySelectorAll('.view-toggle-btn').forEach(btn => {
+            if (btn.getAttribute('data-view') === view) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Show/hide appropriate containers
+        const grid = document.getElementById('models-grid');
+        const list = document.getElementById('models-list');
+        
+        if (view === 'grid') {
+            if (grid) grid.classList.remove('hidden');
+            if (list) list.classList.add('hidden');
+        } else {
+            if (grid) grid.classList.add('hidden');
+            if (list) list.classList.remove('hidden');
+        }
+
+        this.renderModels();
+    }
+
     renderModels() {
         const grid = document.getElementById('models-grid');
+        const list = document.getElementById('models-list');
         const noResults = document.getElementById('no-results');
         const resultsCount = document.getElementById('results-count');
-
-        if (!grid) return;
 
         // Update results count
         if (resultsCount) {
             resultsCount.textContent = this.filteredModels.length;
         }
 
-        // Clear grid
-        grid.innerHTML = '';
+        // Clear both containers
+        if (grid) grid.innerHTML = '';
+        if (list) list.innerHTML = '';
 
         // Show/hide no results message
         if (this.filteredModels.length === 0) {
@@ -346,10 +383,31 @@ class ModelsCatalog {
             if (noResults) noResults.classList.add('hidden');
         }
 
-        // Render model cards
+        // Render based on current view
+        if (this.currentView === 'grid') {
+            this.renderGridView();
+        } else {
+            this.renderListView();
+        }
+    }
+
+    renderGridView() {
+        const grid = document.getElementById('models-grid');
+        if (!grid) return;
+
         this.filteredModels.forEach((model, index) => {
             const card = this.createModelCard(model, index);
             grid.appendChild(card);
+        });
+    }
+
+    renderListView() {
+        const list = document.getElementById('models-list');
+        if (!list) return;
+
+        this.filteredModels.forEach((model, index) => {
+            const listItem = this.createListItem(model, index);
+            list.appendChild(listItem);
         });
     }
 
@@ -404,6 +462,49 @@ class ModelsCatalog {
         });
 
         return card;
+    }
+
+    createListItem(model, index) {
+        const item = document.createElement('div');
+        item.className = 'model-list-item';
+        
+        // Truncate description for list view
+        const maxDescLength = 200;
+        let description = model.description || 'No description available.';
+        if (description.length > maxDescLength) {
+            description = description.substring(0, maxDescLength) + '...';
+        }
+
+        // Get primary domain
+        const primaryDomain = model.domain.split(',')[0].trim();
+
+        // Format interval for display
+        const interval = model.interval || 'Not specified';
+        const intervalShort = interval.length > 30 ? interval.substring(0, 30) + '...' : interval;
+
+        item.innerHTML = `
+            <div class="model-list-item-content">
+                <h3>
+                    ${this.escapeHtml(model.name)}
+                    <span class="model-domain">${this.escapeHtml(primaryDomain)}</span>
+                </h3>
+                <div class="model-list-item-description">
+                    ${this.escapeHtml(description)}
+                </div>
+                <div class="model-list-item-meta">
+                    <span><strong>Variables:</strong> ${this.escapeHtml(model.variables || 'N/A')}</span>
+                    <span><strong>Time Points:</strong> ${this.escapeHtml(model.timePoints || 'N/A')}</span>
+                    <span><strong>Interval:</strong> ${this.escapeHtml(intervalShort)}</span>
+                </div>
+            </div>
+            <div class="model-list-item-arrow">→</div>
+        `;
+
+        item.addEventListener('click', () => {
+            this.openModal(model, index);
+        });
+
+        return item;
     }
 
     openModal(model, index) {

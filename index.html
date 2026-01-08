@@ -17,9 +17,9 @@
             <img src="./pics/img/UVAdatascience.png" alt="Data Science Logo">
         </div>
         <div class="navbar-links">
-            <a href="#home"><b>Home</b></a>
+            <a href="index.html"><b>Home</b></a>
             <a href="#projects"><b>Projects</b></a>
-            <a href="#models"><b>Models</b></a>
+            <a href="models.html"><b>Models</b></a>
             <a href="#videos"><b>Videos</b></a>
             <a href="#awards"><b>Awards</b></a>
             <a href="#publications"><b>Publications</b></a>
@@ -29,9 +29,6 @@
     
     <!-- Hero Section -->
     <section id="hero">
-        <div class="container">
-            <h1>Time Series Commons</h1>
-            </div>
     </section>
 
     <!-- Mission Statement -->
@@ -111,76 +108,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Models Catalog Section -->
-    <section id="models-section" id="models">
-        <div class="container">
-            <h1>Time Series Models Catalog</h1>
-            <p class="models-intro">
-                Explore our comprehensive collection of time series datasets and models. Use the filters below to find the perfect dataset for your research or application.
-            </p>
-
-            <!-- Filters Container -->
-            <div class="filters-container">
-                <div class="filter-row">
-                    <div class="filter-group">
-                        <label for="search-input">Search Datasets</label>
-                        <input type="text" id="search-input" placeholder="Search by name or description...">
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="domain-filter">Domain</label>
-                        <select id="domain-filter">
-                            <option value="">All Domains</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="interval-filter">Time Interval</label>
-                        <select id="interval-filter">
-                            <option value="">All Intervals</option>
-                            <option value="hourly">Hourly</option>
-                            <option value="daily">Daily</option>
-                            <option value="weekly">Weekly</option>
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly">Yearly</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="filter-row">
-                    <div class="filter-group" style="flex: 1 1 100%;">
-                        <label>Popular Benchmarks</label>
-                        <div class="benchmark-filters" id="benchmark-filters">
-                            <!-- Populated dynamically -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Active Filters Display -->
-                <div class="active-filters" id="active-filters" style="margin-top: 15px;">
-                    <!-- Populated dynamically -->
-                </div>
-            </div>
-
-            <!-- Results Info -->
-            <div class="results-info">
-                Showing <span class="results-count" id="results-count">0</span> datasets
-            </div>
-
-            <!-- Models Grid -->
-            <div class="models-grid" id="models-grid">
-                <!-- Populated dynamically by JavaScript -->
-            </div>
-
-            <!-- No Results Message -->
-            <div class="no-results hidden" id="no-results">
-                <div class="no-results-icon">🔍</div>
-                <h3>No datasets found</h3>
-                <p>Try adjusting your filters or search terms</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Awards Section -->
             <div class="container">
@@ -456,19 +383,6 @@
         </div> 
     </div>
 
-    <!-- Modal for Model Details -->
-    <div class="modal-overlay" id="model-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">Model Details</h2>
-                <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
-                    </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Content populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-
     <!-- Footer -->
 <footer class="footer">
     <p class="footertext">
@@ -476,7 +390,5 @@
     </p>
 </footer>
 
-    <!-- JavaScript -->
-    <script src="./js/models.js"></script>
 </body>
 </html>
