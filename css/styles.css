@@ -570,10 +570,10 @@ a:hover {
 
 .partners-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 30px;
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -581,10 +581,14 @@ a:hover {
     background-color: #ffffff;
     border: 1px solid #e8ecef;
     border-radius: 12px;
-    padding: 25px 30px;
+    padding: 30px 25px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 180px;
 }
 
 .partner-item:hover {
@@ -594,24 +598,51 @@ a:hover {
 }
 
 .partner-name {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: #2c3e50;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    line-height: 1.3;
 }
 
 .partner-affiliation {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #5e6c7a;
-    margin-bottom: 8px;
-    line-height: 1.5;
+    margin-bottom: 6px;
+    line-height: 1.4;
 }
 
 .partner-status {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #2E86AB;
     font-style: italic;
-    margin-top: 8px;
+    margin-top: 6px;
+}
+
+/* Responsive design for partners section */
+@media (max-width: 1200px) {
+    .partners-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px 25px;
+    }
+}
+
+@media (max-width: 900px) {
+    .partners-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .partners-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .partner-name {
+        font-size: 2rem;
+    }
 }
 
 /* ================================================
