@@ -131,9 +131,12 @@ class ModelsCatalog {
         // Populate domain filter
         const domains = new Set();
         this.allModels.forEach(model => {
-            if (model.domain) {
+            if (model.domain && model.domain.trim()) {
                 model.domain.split(',').forEach(d => {
-                    domains.add(d.trim());
+                    const trimmed = d.trim();
+                    if (trimmed && trimmed !== 'Not Available') {
+                        domains.add(trimmed);
+                    }
                 });
             }
         });
@@ -188,24 +191,29 @@ class ModelsCatalog {
             // Search filter
             if (this.filters.search) {
                 const searchLower = this.filters.search;
+                const name = (model.name || '').toLowerCase();
+                const description = (model.description || '').toLowerCase();
+                const domain = (model.domain || '').toLowerCase();
+                
                 const matchesSearch = 
-                    model.name.toLowerCase().includes(searchLower) ||
-                    model.description.toLowerCase().includes(searchLower) ||
-                    model.domain.toLowerCase().includes(searchLower);
+                    name.includes(searchLower) ||
+                    description.includes(searchLower) ||
+                    domain.includes(searchLower);
                 
                 if (!matchesSearch) return false;
             }
 
             // Domain filter
             if (this.filters.domain) {
-                if (!model.domain.includes(this.filters.domain)) {
+                const modelDomain = model.domain || '';
+                if (!modelDomain.includes(this.filters.domain)) {
                     return false;
                 }
             }
 
             // Interval filter
             if (this.filters.interval) {
-                const interval = model.interval.toLowerCase();
+                const interval = (model.interval || '').toLowerCase();
                 const filterValue = this.filters.interval.toLowerCase();
                 if (!interval.includes(filterValue)) {
                     return false;
@@ -417,34 +425,39 @@ class ModelsCatalog {
         
         // Truncate description
         const maxDescLength = 150;
-        let description = model.description || 'No description available.';
-        if (description.length > maxDescLength) {
+        let description = (model.description && model.description.trim()) ? model.description : 'Not Available';
+        if (description !== 'Not Available' && description.length > maxDescLength) {
             description = description.substring(0, maxDescLength) + '...';
         }
 
         // Get primary domain
-        const primaryDomain = model.domain.split(',')[0].trim();
+        const primaryDomain = (model.domain && model.domain.trim()) ? model.domain.split(',')[0].trim() : 'Not Available';
 
         // Count active benchmarks
         const benchmarkCount = Object.keys(model.benchmarks || {}).length;
 
+        // Display values or "Not Available"
+        const variables = (model.variables && model.variables.trim()) ? model.variables : 'Not Available';
+        const timePoints = (model.timePoints && model.timePoints.trim()) ? model.timePoints : 'Not Available';
+        const interval = (model.interval && model.interval.trim()) ? model.interval : 'Not Available';
+
         card.innerHTML = `
             <div class="model-card-header">
-                <h3>${this.escapeHtml(model.name)}</h3>
+                <h3>${this.escapeHtml(model.name || 'Unnamed Dataset')}</h3>
                 <span class="model-domain">${this.escapeHtml(primaryDomain)}</span>
             </div>
             <div class="model-stats">
                 <div class="stat-item">
                     <span class="stat-label">Variables:</span>
-                    <span class="stat-value">${this.escapeHtml(model.variables || 'N/A')}</span>
+                    <span class="stat-value">${this.escapeHtml(variables)}</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Time Points:</span>
-                    <span class="stat-value">${this.escapeHtml(model.timePoints || 'N/A')}</span>
+                    <span class="stat-value">${this.escapeHtml(timePoints)}</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Interval:</span>
-                    <span class="stat-value">${this.escapeHtml(model.interval || 'N/A')}</span>
+                    <span class="stat-value">${this.escapeHtml(interval)}</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Benchmarks:</span>
@@ -470,30 +483,34 @@ class ModelsCatalog {
         
         // Truncate description for list view
         const maxDescLength = 200;
-        let description = model.description || 'No description available.';
-        if (description.length > maxDescLength) {
+        let description = (model.description && model.description.trim()) ? model.description : 'Not Available';
+        if (description !== 'Not Available' && description.length > maxDescLength) {
             description = description.substring(0, maxDescLength) + '...';
         }
 
         // Get primary domain
-        const primaryDomain = model.domain.split(',')[0].trim();
+        const primaryDomain = (model.domain && model.domain.trim()) ? model.domain.split(',')[0].trim() : 'Not Available';
 
         // Format interval for display
-        const interval = model.interval || 'Not specified';
-        const intervalShort = interval.length > 30 ? interval.substring(0, 30) + '...' : interval;
+        const interval = (model.interval && model.interval.trim()) ? model.interval : 'Not Available';
+        const intervalShort = interval !== 'Not Available' && interval.length > 30 ? interval.substring(0, 30) + '...' : interval;
+
+        // Display values or "Not Available"
+        const variables = (model.variables && model.variables.trim()) ? model.variables : 'Not Available';
+        const timePoints = (model.timePoints && model.timePoints.trim()) ? model.timePoints : 'Not Available';
 
         item.innerHTML = `
             <div class="model-list-item-content">
                 <h3>
-                    ${this.escapeHtml(model.name)}
+                    ${this.escapeHtml(model.name || 'Unnamed Dataset')}
                     <span class="model-domain">${this.escapeHtml(primaryDomain)}</span>
                 </h3>
                 <div class="model-list-item-description">
                     ${this.escapeHtml(description)}
                 </div>
                 <div class="model-list-item-meta">
-                    <span><strong>Variables:</strong> ${this.escapeHtml(model.variables || 'N/A')}</span>
-                    <span><strong>Time Points:</strong> ${this.escapeHtml(model.timePoints || 'N/A')}</span>
+                    <span><strong>Variables:</strong> ${this.escapeHtml(variables)}</span>
+                    <span><strong>Time Points:</strong> ${this.escapeHtml(timePoints)}</span>
                     <span><strong>Interval:</strong> ${this.escapeHtml(intervalShort)}</span>
                 </div>
             </div>
@@ -507,6 +524,16 @@ class ModelsCatalog {
         return item;
     }
 
+    isValidUrl(string) {
+        if (!string || !string.trim()) return false;
+        try {
+            const url = new URL(string.trim());
+            return url.protocol === 'http:' || url.protocol === 'https:';
+        } catch (_) {
+            return false;
+        }
+    }
+
     openModal(model, index) {
         this.currentModalIndex = index;
         const modal = document.getElementById('model-modal');
@@ -515,13 +542,26 @@ class ModelsCatalog {
 
         if (!modal || !modalBody || !modalTitle) return;
 
-        modalTitle.textContent = model.name;
+        modalTitle.textContent = model.name || 'Unnamed Dataset';
+
+        // Explicitly check for data availability
+        const domain = (model.domain && model.domain.trim()) ? model.domain : 'Not Available';
+        const variables = (model.variables && model.variables.trim()) ? model.variables : 'Not Available';
+        const timePoints = (model.timePoints && model.timePoints.trim()) ? model.timePoints : 'Not Available';
+        const interval = (model.interval && model.interval.trim()) ? model.interval : 'Not Available';
+        const repository = (model.repository && model.repository.trim()) ? model.repository : 'Not Available';
+        const description = (model.description && model.description.trim()) ? model.description : '';
+        const comments = (model.comments && model.comments.trim()) ? model.comments : '';
+        
+        // Validate links
+        const dataLink = this.isValidUrl(model.dataLink) ? model.dataLink.trim() : null;
+        const repositoryLink = this.isValidUrl(model.repository) ? model.repository.trim() : null;
 
         // Create comprehensive modal content
         modalBody.innerHTML = `
             <div class="modal-section">
                 <div class="modal-domain">
-                    <span class="model-domain">${this.escapeHtml(model.domain)}</span>
+                    <span class="model-domain">${this.escapeHtml(domain)}</span>
                 </div>
             </div>
 
@@ -530,50 +570,55 @@ class ModelsCatalog {
                 <div class="modal-info-grid">
                     <div class="modal-info-item">
                         <span class="modal-info-label">Variables</span>
-                        <span class="modal-info-value">${this.escapeHtml(model.variables || 'Not specified')}</span>
+                        <span class="modal-info-value">${this.escapeHtml(variables)}</span>
                     </div>
                     <div class="modal-info-item">
                         <span class="modal-info-label">Time Points</span>
-                        <span class="modal-info-value">${this.escapeHtml(model.timePoints || 'Not specified')}</span>
+                        <span class="modal-info-value">${this.escapeHtml(timePoints)}</span>
                     </div>
                     <div class="modal-info-item">
                         <span class="modal-info-label">Time Interval</span>
-                        <span class="modal-info-value">${this.escapeHtml(model.interval || 'Not specified')}</span>
+                        <span class="modal-info-value">${this.escapeHtml(interval)}</span>
                     </div>
                     <div class="modal-info-item">
                         <span class="modal-info-label">Repository</span>
-                        <span class="modal-info-value">${this.escapeHtml(model.repository || 'Not specified')}</span>
+                        <span class="modal-info-value">${this.escapeHtml(repository)}</span>
                     </div>
                 </div>
             </div>
 
-            ${model.description ? `
+            ${description ? `
                 <div class="modal-section">
                     <h3>Description</h3>
                     <div class="modal-description">
-                        ${this.escapeHtml(model.description)}
+                        ${this.escapeHtml(description)}
                     </div>
                 </div>
             ` : ''}
 
-            ${model.comments ? `
+            ${comments ? `
                 <div class="modal-section">
                     <h3>Additional Information</h3>
                     <div class="modal-description">
-                        ${this.escapeHtml(model.comments)}
+                        ${this.escapeHtml(comments)}
                     </div>
                 </div>
             ` : ''}
 
-            ${(model.dataLink || model.repository) ? `
+            ${(dataLink || repositoryLink) ? `
                 <div class="modal-section">
                     <h3>Access Data</h3>
                     <div class="modal-links">
-                        ${model.dataLink ? `<a href="${this.escapeHtml(model.dataLink)}" target="_blank" rel="noopener noreferrer" class="modal-link">📊 Dataset Link</a>` : ''}
-                        ${model.repository && model.repository !== model.dataLink ? `<a href="${this.escapeHtml(model.repository)}" target="_blank" rel="noopener noreferrer" class="modal-link">📁 Repository</a>` : ''}
+                        ${dataLink ? `<a href="${this.escapeHtml(dataLink)}" target="_blank" rel="noopener noreferrer" class="modal-link">📊 Dataset Link</a>` : ''}
+                        ${repositoryLink && repositoryLink !== dataLink ? `<a href="${this.escapeHtml(repositoryLink)}" target="_blank" rel="noopener noreferrer" class="modal-link">📁 Repository</a>` : ''}
                     </div>
                 </div>
-            ` : ''}
+            ` : `
+                <div class="modal-section">
+                    <h3>Access Data</h3>
+                    <p style="color: #666; font-style: italic;">No valid links available for this dataset.</p>
+                </div>
+            `}
 
             <div class="modal-section">
                 <h3>Benchmarks & Evaluations</h3>
