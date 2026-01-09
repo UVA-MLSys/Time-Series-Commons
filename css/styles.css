@@ -313,6 +313,7 @@ a:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(46, 134, 171, 0.35);
     background: linear-gradient(135deg, #23668A 0%, #1D5573 100%);
+    color: #ffffff;
 }
 
 .explore-button:hover::before {
@@ -443,6 +444,39 @@ a:hover {
 .award-box {
     flex: 0 0 320px;
     min-width: 320px;
+}
+
+/* Award recipient styling */
+.award-recipient {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e8ecef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recipient-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 15px;
+    border: 3px solid #2E86AB;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recipient-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.recipient-title {
+    font-size: 1.4rem;
+    color: #5e6c7a;
 }
 
 .publication-box {
