@@ -35,33 +35,36 @@
                 Explore our comprehensive collection of 815+ time series datasets. Use the filters to search by domain, interval, or filter by the models that have evaluated each dataset.
             </p>
 
+            <!-- Top Filters Bar -->
+            <div class="top-filters-bar">
+                <div class="filter-group">
+                    <label for="search-input">Search</label>
+                    <input type="text" id="search-input" placeholder="Search datasets...">
+                </div>
+
+                <div class="filter-group">
+                    <label for="domain-filter">Domain</label>
+                    <select id="domain-filter">
+                        <option value="">All Domains</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="interval-filter">Time Interval</label>
+                    <select id="interval-filter">
+                        <option value="">All Intervals</option>
+                        <option value="hourly">Hourly</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="catalog-layout">
-                <!-- Left Sidebar with Filters -->
+                <!-- Left Sidebar with Model Filters -->
                 <aside class="filters-sidebar">
-                    <div class="sidebar-section">
-                        <h3>Search</h3>
-                        <input type="text" id="search-input" placeholder="Search datasets...">
-                    </div>
-
-                    <div class="sidebar-section">
-                        <h3>Domain</h3>
-                        <select id="domain-filter">
-                            <option value="">All Domains</option>
-                        </select>
-                    </div>
-                    
-                    <div class="sidebar-section">
-                        <h3>Time Interval</h3>
-                        <select id="interval-filter">
-                            <option value="">All Intervals</option>
-                            <option value="hourly">Hourly</option>
-                            <option value="daily">Daily</option>
-                            <option value="weekly">Weekly</option>
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly">Yearly</option>
-                        </select>
-                    </div>
-
                     <div class="sidebar-section">
                         <h3>Filter by Evaluated Models</h3>
                         <p class="sidebar-description">Select models to show only datasets evaluated on them</p>
