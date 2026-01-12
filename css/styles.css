@@ -14,7 +14,7 @@
 }
 
 html {
-    font-size: 10px;
+    font-size: 12px;
     font-family: 'Lato', 'Montserrat', sans-serif;
     scroll-behavior: smooth;
 }
@@ -901,19 +901,30 @@ a:hover {
 
 /* Top Filters Bar (Horizontal) */
 .top-filters-bar {
-    display: flex;
-    gap: 20px;
     margin-bottom: 30px;
     background: white;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.filter-row-full {
+    margin-bottom: 20px;
+}
+
+.filter-row-split {
+    display: flex;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
-.top-filters-bar .filter-group {
+.filter-row-split .filter-group {
     flex: 1;
     min-width: 200px;
+}
+
+.top-filters-bar .filter-group {
+    width: 100%;
 }
 
 .top-filters-bar .filter-group label {
@@ -1505,11 +1516,11 @@ iframe {
         padding-left: 50px;
     }
     
-    .top-filters-bar {
+    .filter-row-split {
         flex-direction: column;
     }
     
-    .top-filters-bar .filter-group {
+    .filter-row-split .filter-group {
         width: 100%;
     }
     

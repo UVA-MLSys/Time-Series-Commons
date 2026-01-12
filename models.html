@@ -37,28 +37,32 @@
 
             <!-- Top Filters Bar -->
             <div class="top-filters-bar">
-                <div class="filter-group">
-                    <label for="search-input">Search</label>
-                    <input type="text" id="search-input" placeholder="Search datasets...">
+                <div class="filter-row-full">
+                    <div class="filter-group">
+                        <label for="search-input">Search</label>
+                        <input type="text" id="search-input" placeholder="Search datasets...">
+                    </div>
                 </div>
 
-                <div class="filter-group">
-                    <label for="domain-filter">Domain</label>
-                    <select id="domain-filter">
-                        <option value="">All Domains</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="interval-filter">Time Interval</label>
-                    <select id="interval-filter">
-                        <option value="">All Intervals</option>
-                        <option value="hourly">Hourly</option>
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="yearly">Yearly</option>
-                    </select>
+                <div class="filter-row-split">
+                    <div class="filter-group">
+                        <label for="domain-filter">Domain</label>
+                        <select id="domain-filter">
+                            <option value="">All Domains</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="interval-filter">Time Interval</label>
+                        <select id="interval-filter">
+                            <option value="">All Intervals</option>
+                            <option value="hourly">Hourly</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
