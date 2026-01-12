@@ -102,10 +102,27 @@ class ModelsCatalog {
             modalClose.addEventListener('click', () => this.closeModal());
         }
 
+        // Model info modal close events
+        const modelInfoOverlay = document.getElementById('model-info-modal');
+        const modelInfoClose = document.getElementById('model-info-close');
+        
+        if (modelInfoOverlay) {
+            modelInfoOverlay.addEventListener('click', (e) => {
+                if (e.target === modelInfoOverlay) {
+                    this.closeModelInfoModal();
+                }
+            });
+        }
+
+        if (modelInfoClose) {
+            modelInfoClose.addEventListener('click', () => this.closeModelInfoModal());
+        }
+
         // Keyboard events
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.closeModal();
+                this.closeModelInfoModal();
             }
         });
 
@@ -653,28 +670,8 @@ class ModelsCatalog {
         const clickHandler = (e) => {
             const modelName = e.target.getAttribute('data-model');
             if (modelName) {
-                // Close modal
-                this.closeModal();
-                
-                // Activate the model filter
-                const checkbox = document.getElementById(`model-${modelName}`);
-                if (checkbox && !checkbox.checked) {
-                    checkbox.checked = true;
-                    this.filters.benchmarks.add(modelName);
-                    const filterItem = checkbox.closest('.model-filter-item');
-                    if (filterItem) {
-                        filterItem.classList.add('active');
-                    }
-                    
-                    // Apply filters and update display
-                    this.applyFilters();
-                    this.renderModels();
-                    
-                    // Scroll to the filter in sidebar
-                    if (checkbox) {
-                        checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                }
+                // Open model information modal
+                this.openModelInfoModal(modelName);
             }
         };
         
@@ -714,6 +711,149 @@ class ModelsCatalog {
         if (modal) {
             modal.classList.remove('active');
             document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+
+    getModelInfo(modelName) {
+        // Count datasets that have this model in their benchmarks
+        const datasetsEvaluated = this.allModels.filter(dataset => {
+            return dataset.benchmarks && dataset.benchmarks[modelName];
+        });
+
+        return {
+            name: modelName,
+            datasetCount: datasetsEvaluated.length,
+            datasets: datasetsEvaluated,
+            // Add descriptions for known models
+            description: this.getModelDescription(modelName)
+        };
+    }
+
+    getModelDescription(modelName) {
+        const descriptions = {
+            'Informer': 'A time series forecasting model that uses ProbSparse self-attention mechanism to capture long-range dependencies efficiently.',
+            'Prophet': 'Facebook\'s forecasting tool designed for business time series that have strong seasonal effects and several seasons of historical data.',
+            'TimeGPT': 'A foundation model for time series forecasting that leverages large-scale pre-training on diverse temporal data.',
+            'Chronos-Pre': 'Pre-training benchmark for Chronos, a language model-based approach to probabilistic time series forecasting.',
+            'Chronos-Eval1': 'First evaluation benchmark set for the Chronos time series forecasting model.',
+            'Chronos-Eval2': 'Second evaluation benchmark set for the Chronos time series forecasting model.',
+            'AutoGluon': 'AutoML toolkit for time series forecasting with automatic model selection and ensemble methods.',
+            'Darts': 'A Python library for user-friendly forecasting and anomaly detection on time series.',
+            'NeuralForecast': 'A collection of neural forecasting models optimized for speed and accuracy.',
+            'Tempo': 'A time series foundation model designed for general-purpose forecasting tasks.',
+            'Merlion': 'Salesforce\'s Python library for time series intelligence with forecasting and anomaly detection.',
+            'Aeon': 'A toolkit for learning from time series data with classification, regression, and clustering capabilities.',
+            'UCR': 'UCR Time Series Classification Archive - a standard benchmark for time series classification.',
+            'UEA': 'UEA Time Series Classification Archive - multivariate time series classification benchmarks.',
+            'TSLib': 'A comprehensive library for deep learning-based time series analysis.',
+            'TimesNet': 'A general time series analysis model that can handle forecasting, classification, and anomaly detection.',
+            'TimesFM': 'Google\'s Time Series Foundation Model pre-trained on large-scale time series data.',
+            'Timer-XL': 'An extra-large time series model designed for comprehensive temporal pattern recognition.',
+            'TSMamba-ZS': 'A zero-shot time series model based on the Mamba architecture.',
+            'AutoTimes': 'Automated time series forecasting system with neural architecture search.',
+            'Monash TSER': 'Monash Time Series Extrinsic Regression Archive for benchmark testing.',
+            'UTSD': 'Universal Time Series Dataset for comprehensive model evaluation.',
+            'LPTM-Eval': 'Large Pre-trained Time series Model evaluation benchmark.'
+        };
+
+        return descriptions[modelName] || 'A time series forecasting and analysis model used for evaluating datasets in this collection.';
+    }
+
+    openModelInfoModal(modelName) {
+        const modal = document.getElementById('model-info-modal');
+        const modalBody = document.getElementById('model-info-body');
+        const modalTitle = document.getElementById('model-info-title');
+
+        if (!modal || !modalBody || !modalTitle) return;
+
+        const modelInfo = this.getModelInfo(modelName);
+        
+        modalTitle.textContent = modelInfo.name;
+
+        // Create model info content
+        modalBody.innerHTML = `
+            <div class="modal-section">
+                <h3>About This Model</h3>
+                <p class="model-description-text">${this.escapeHtml(modelInfo.description)}</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Evaluation Coverage</h3>
+                <div class="model-stats-grid">
+                    <div class="model-stat-card">
+                        <div class="stat-number">${modelInfo.datasetCount}</div>
+                        <div class="stat-label">Datasets Evaluated</div>
+                    </div>
+                    <div class="model-stat-card">
+                        <div class="stat-number">${Math.round((modelInfo.datasetCount / this.allModels.length) * 100)}%</div>
+                        <div class="stat-label">Coverage</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Sample Datasets</h3>
+                <div class="sample-datasets-list">
+                    ${modelInfo.datasets.slice(0, 5).map(dataset => `
+                        <div class="sample-dataset-item">
+                            <strong>${this.escapeHtml(dataset.name)}</strong>
+                            <span class="dataset-domain-tag">${this.escapeHtml((dataset.domain || '').split(',')[0].trim())}</span>
+                        </div>
+                    `).join('')}
+                    ${modelInfo.datasetCount > 5 ? `<p class="more-datasets">... and ${modelInfo.datasetCount - 5} more datasets</p>` : ''}
+                </div>
+            </div>
+
+            <div class="modal-section model-actions">
+                <button class="filter-by-model-btn" id="filter-by-model-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                    Show All Datasets Evaluated by ${this.escapeHtml(modelInfo.name)}
+                </button>
+            </div>
+        `;
+
+        // Add click handler to filter button
+        const filterBtn = modalBody.querySelector('#filter-by-model-btn');
+        if (filterBtn) {
+            filterBtn.addEventListener('click', () => {
+                // Close both modals
+                this.closeModal();
+                this.closeModelInfoModal();
+                
+                // Activate the model filter
+                const checkbox = document.getElementById(`model-${modelName}`);
+                if (checkbox && !checkbox.checked) {
+                    checkbox.checked = true;
+                    this.filters.benchmarks.add(modelName);
+                    const filterItem = checkbox.closest('.model-filter-item');
+                    if (filterItem) {
+                        filterItem.classList.add('active');
+                    }
+                    
+                    // Apply filters and update display
+                    this.applyFilters();
+                    this.renderModels();
+                    
+                    // Scroll to the filter in sidebar
+                    setTimeout(() => {
+                        if (checkbox) {
+                            checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 100);
+                }
+            });
+        }
+
+        // Show modal with animation
+        modal.classList.add('active');
+    }
+
+    closeModelInfoModal() {
+        const modal = document.getElementById('model-info-modal');
+        if (modal) {
+            modal.classList.remove('active');
         }
     }
 
