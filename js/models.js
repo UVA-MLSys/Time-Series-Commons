@@ -565,11 +565,24 @@ class ModelsCatalog {
         const dataLink = this.isValidUrl(model.dataLink) ? model.dataLink.trim() : null;
         const repositoryLink = this.isValidUrl(model.repository) ? model.repository.trim() : null;
 
+        // Get active models/benchmarks for this dataset
+        const activeModels = Object.keys(model.benchmarks || {}).filter(m => model.benchmarks[m]);
+        
         // Create comprehensive modal content
         modalBody.innerHTML = `
             <div class="modal-section">
-                <div class="modal-domain">
+                <div class="modal-badges-container">
                     <span class="model-domain">${this.escapeHtml(domain)}</span>
+                    ${activeModels.length > 0 ? `
+                        <div class="modal-evaluated-models">
+                            <span class="evaluated-label">Evaluated by:</span>
+                            ${activeModels.map(modelName => `
+                                <span class="model-badge clickable" data-model="${this.escapeHtml(modelName)}" title="Click to filter by ${this.escapeHtml(modelName)}">
+                                    ${this.escapeHtml(modelName)}
+                                </span>
+                            `).join('')}
+                        </div>
+                    ` : ''}
                 </div>
             </div>
 
@@ -636,6 +649,43 @@ class ModelsCatalog {
             </div>
         `;
 
+        // Add click handlers to model badges (both top badges and grid badges)
+        const clickHandler = (e) => {
+            const modelName = e.target.getAttribute('data-model');
+            if (modelName) {
+                // Close modal
+                this.closeModal();
+                
+                // Activate the model filter
+                const checkbox = document.getElementById(`model-${modelName}`);
+                if (checkbox && !checkbox.checked) {
+                    checkbox.checked = true;
+                    this.filters.benchmarks.add(modelName);
+                    const filterItem = checkbox.closest('.model-filter-item');
+                    if (filterItem) {
+                        filterItem.classList.add('active');
+                    }
+                    
+                    // Apply filters and update display
+                    this.applyFilters();
+                    this.renderModels();
+                    
+                    // Scroll to the filter in sidebar
+                    if (checkbox) {
+                        checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+        };
+        
+        modalBody.querySelectorAll('.model-badge.clickable').forEach(badge => {
+            badge.addEventListener('click', clickHandler);
+        });
+        
+        modalBody.querySelectorAll('.benchmark-badge.clickable-grid-badge').forEach(badge => {
+            badge.addEventListener('click', clickHandler);
+        });
+
         // Show modal with animation
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -652,7 +702,7 @@ class ModelsCatalog {
         return allBenchmarks.map(benchmark => {
             const isActive = benchmarks && benchmarks[benchmark];
             return `
-                <div class="benchmark-badge ${isActive ? '' : 'inactive'}">
+                <div class="benchmark-badge ${isActive ? 'clickable-grid-badge' : 'inactive'}" ${isActive ? `data-model="${this.escapeHtml(benchmark)}" title="Click to filter by ${this.escapeHtml(benchmark)}"` : ''}>
                     ${isActive ? '✓ ' : ''}${benchmark}
                 </div>
             `;
