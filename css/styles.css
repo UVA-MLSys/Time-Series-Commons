@@ -899,6 +899,135 @@ a:hover {
     font-size: 1.8rem;
 }
 
+/* Catalog Layout with Sidebar */
+.catalog-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Left Sidebar Filters */
+.filters-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 100px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sidebar-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.sidebar-description {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.sidebar-section input,
+.sidebar-section select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.sidebar-section input:focus,
+.sidebar-section select:focus {
+    outline: none;
+    border-color: #2c5aa0;
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+}
+
+/* Model Filters List (Vertical Arrangement) */
+.model-filters-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.model-filter-item {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    font-size: 0.9rem;
+}
+
+.model-filter-item:hover {
+    background: #e8f4f8;
+    border-color: #2c5aa0;
+}
+
+.model-filter-item.active {
+    background: #2c5aa0;
+    border-color: #2c5aa0;
+    color: white;
+}
+
+.model-filter-item input[type="checkbox"] {
+    margin: 0;
+    margin-right: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.model-filter-item label {
+    cursor: pointer;
+    margin: 0;
+    font-weight: 500;
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+/* Main Content Area */
+.catalog-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
 /* Models Grid */
 .models-grid {
     display: grid;
@@ -1357,6 +1486,16 @@ iframe {
     
     .collaborator-group {
         padding-left: 50px;
+    }
+    
+    .catalog-layout {
+        flex-direction: column;
+    }
+    
+    .filters-sidebar {
+        width: 100%;
+        position: static;
+        max-height: none;
     }
     
     .models-grid {

@@ -151,37 +151,45 @@ class ModelsCatalog {
             });
         }
 
-        // Populate benchmark filters
-        const benchmarkContainer = document.getElementById('benchmark-filters');
-        if (benchmarkContainer) {
-            const popularBenchmarks = [
-                'Informer', 'Prophet', 'Chronos-Pre', 'Chronos-Eval1', 'Chronos-Eval2',
-                'TimeGPT', 'AutoGluon', 'Darts', 'NeuralForecast', 'Tempo'
-            ];
+        // Populate model filters - get ALL unique model names from benchmarks
+        const modelFiltersContainer = document.getElementById('model-filters');
+        if (modelFiltersContainer) {
+            // Collect all unique model/benchmark names across all datasets
+            const allModels = new Set();
+            this.allModels.forEach(model => {
+                if (model.benchmarks && typeof model.benchmarks === 'object') {
+                    Object.keys(model.benchmarks).forEach(modelName => {
+                        if (modelName && modelName.trim()) {
+                            allModels.add(modelName.trim());
+                        }
+                    });
+                }
+            });
 
-            popularBenchmarks.forEach(benchmark => {
-                const chip = document.createElement('div');
-                chip.className = 'benchmark-chip';
-                chip.innerHTML = `
-                    <input type="checkbox" id="bench-${benchmark}" value="${benchmark}">
-                    <label for="bench-${benchmark}">${benchmark}</label>
+            // Sort alphabetically and create filter items
+            Array.from(allModels).sort().forEach(modelName => {
+                const filterItem = document.createElement('div');
+                filterItem.className = 'model-filter-item';
+                filterItem.innerHTML = `
+                    <input type="checkbox" id="model-${this.escapeHtml(modelName)}" value="${this.escapeHtml(modelName)}">
+                    <label for="model-${this.escapeHtml(modelName)}">${this.escapeHtml(modelName)}</label>
                 `;
                 
-                const checkbox = chip.querySelector('input');
+                const checkbox = filterItem.querySelector('input');
                 checkbox.addEventListener('change', (e) => {
                     if (e.target.checked) {
-                        this.filters.benchmarks.add(benchmark);
-                        chip.classList.add('active');
+                        this.filters.benchmarks.add(modelName);
+                        filterItem.classList.add('active');
                     } else {
-                        this.filters.benchmarks.delete(benchmark);
-                        chip.classList.remove('active');
+                        this.filters.benchmarks.delete(modelName);
+                        filterItem.classList.remove('active');
                     }
                     this.applyFilters();
                     this.renderModels();
                     this.updateActiveFiltersDisplay();
                 });
 
-                benchmarkContainer.appendChild(chip);
+                modelFiltersContainer.appendChild(filterItem);
             });
         }
     }
@@ -277,15 +285,15 @@ class ModelsCatalog {
             }));
         }
 
-        // Benchmark filter tags
-        this.filters.benchmarks.forEach(benchmark => {
+        // Model filter tags
+        this.filters.benchmarks.forEach(modelName => {
             hasFilters = true;
-            container.appendChild(this.createFilterTag('Benchmark', benchmark, () => {
-                this.filters.benchmarks.delete(benchmark);
-                const checkbox = document.getElementById(`bench-${benchmark}`);
+            container.appendChild(this.createFilterTag('Model', modelName, () => {
+                this.filters.benchmarks.delete(modelName);
+                const checkbox = document.getElementById(`model-${modelName}`);
                 if (checkbox) {
                     checkbox.checked = false;
-                    checkbox.closest('.benchmark-chip').classList.remove('active');
+                    checkbox.closest('.model-filter-item').classList.remove('active');
                 }
                 this.applyFilters();
                 this.renderModels();
@@ -329,11 +337,11 @@ class ModelsCatalog {
         if (intervalFilter) intervalFilter.value = '';
         this.filters.interval = '';
 
-        // Clear benchmarks
+        // Clear model filters
         this.filters.benchmarks.clear();
-        document.querySelectorAll('.benchmark-chip').forEach(chip => {
-            chip.classList.remove('active');
-            const checkbox = chip.querySelector('input[type="checkbox"]');
+        document.querySelectorAll('.model-filter-item').forEach(item => {
+            item.classList.remove('active');
+            const checkbox = item.querySelector('input[type="checkbox"]');
             if (checkbox) checkbox.checked = false;
         });
 

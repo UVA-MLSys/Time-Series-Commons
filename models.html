@@ -32,53 +32,26 @@
         <div class="container" style="padding-top: 100px;">
             <h1>Time Series Models Catalog</h1>
             <p class="models-intro">
-                Explore our comprehensive collection of 815+ time series datasets and models. Use the filters below to find the perfect dataset for your research or application.
+                Explore our comprehensive collection of 815+ time series datasets. Use the filters to search by domain, interval, or filter by the models that have evaluated each dataset.
             </p>
 
-            <!-- View Toggle and Filters Container -->
-            <div class="filters-container">
-                <!-- View Toggle -->
-                <div class="view-toggle-container">
-                    <label>Display Mode:</label>
-                    <div class="view-toggle">
-                        <button class="view-toggle-btn active" data-view="grid" title="Card View">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="14" width="7" height="7"></rect>
-                                <rect x="3" y="14" width="7" height="7"></rect>
-                            </svg>
-                            <span>Cards</span>
-                        </button>
-                        <button class="view-toggle-btn" data-view="list" title="List View">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="8" y1="6" x2="21" y2="6"></line>
-                                <line x1="8" y1="12" x2="21" y2="12"></line>
-                                <line x1="8" y1="18" x2="21" y2="18"></line>
-                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                            </svg>
-                            <span>List</span>
-                        </button>
+            <div class="catalog-layout">
+                <!-- Left Sidebar with Filters -->
+                <aside class="filters-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Search</h3>
+                        <input type="text" id="search-input" placeholder="Search datasets...">
                     </div>
-                </div>
 
-                <div class="filter-row">
-                    <div class="filter-group">
-                        <label for="search-input">Search Datasets</label>
-                        <input type="text" id="search-input" placeholder="Search by name or description...">
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="domain-filter">Domain</label>
+                    <div class="sidebar-section">
+                        <h3>Domain</h3>
                         <select id="domain-filter">
                             <option value="">All Domains</option>
                         </select>
                     </div>
                     
-                    <div class="filter-group">
-                        <label for="interval-filter">Time Interval</label>
+                    <div class="sidebar-section">
+                        <h3>Time Interval</h3>
                         <select id="interval-filter">
                             <option value="">All Intervals</option>
                             <option value="hourly">Hourly</option>
@@ -88,43 +61,73 @@
                             <option value="yearly">Yearly</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="filter-row">
-                    <div class="filter-group" style="flex: 1 1 100%;">
-                        <label>Popular Benchmarks</label>
-                        <div class="benchmark-filters" id="benchmark-filters">
-                            <!-- Populated dynamically -->
+                    <div class="sidebar-section">
+                        <h3>Filter by Evaluated Models</h3>
+                        <p class="sidebar-description">Select models to show only datasets evaluated on them</p>
+                        <div class="model-filters-list" id="model-filters">
+                            <!-- Populated dynamically with ALL models -->
                         </div>
                     </div>
+                </aside>
+
+                <!-- Main Content Area -->
+                <div class="catalog-main">
+                    <!-- View Toggle and Results Info -->
+                    <div class="catalog-header">
+                        <div class="results-info">
+                            Showing <span class="results-count" id="results-count">0</span> datasets
+                        </div>
+                        
+                        <div class="view-toggle-container">
+                            <label>View:</label>
+                            <div class="view-toggle">
+                                <button class="view-toggle-btn active" data-view="grid" title="Card View">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                    <span>Cards</span>
+                                </button>
+                                <button class="view-toggle-btn" data-view="list" title="List View">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                    </svg>
+                                    <span>List</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Filters Display -->
+                    <div class="active-filters" id="active-filters">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- Models Grid (Card View) -->
+                    <div class="models-grid" id="models-grid">
+                        <!-- Populated dynamically by JavaScript -->
+                    </div>
+
+                    <!-- Models List (List View) -->
+                    <div class="models-list hidden" id="models-list">
+                        <!-- Populated dynamically by JavaScript -->
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div class="no-results hidden" id="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>No datasets found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                    </div>
                 </div>
-
-                <!-- Active Filters Display -->
-                <div class="active-filters" id="active-filters" style="margin-top: 15px;">
-                    <!-- Populated dynamically -->
-                </div>
-            </div>
-
-            <!-- Results Info -->
-            <div class="results-info">
-                Showing <span class="results-count" id="results-count">0</span> datasets
-            </div>
-
-            <!-- Models Grid (Card View) -->
-            <div class="models-grid" id="models-grid">
-                <!-- Populated dynamically by JavaScript -->
-            </div>
-
-            <!-- Models List (List View) -->
-            <div class="models-list hidden" id="models-list">
-                <!-- Populated dynamically by JavaScript -->
-            </div>
-
-            <!-- No Results Message -->
-            <div class="no-results hidden" id="no-results">
-                <div class="no-results-icon">🔍</div>
-                <h3>No datasets found</h3>
-                <p>Try adjusting your filters or search terms</p>
             </div>
         </div>
     </section>
