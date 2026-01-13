@@ -1596,6 +1596,233 @@ a:hover {
     flex-shrink: 0;
 }
 
+/* Enhanced Model Info Modal Styles */
+.model-overview {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.model-meta-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meta-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.meta-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c5aa0;
+}
+
+.model-features-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.model-features-list li {
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-left: 4px solid #2c5aa0;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+}
+
+.model-features-list li:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.use-cases-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.use-case-tag {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    transition: all 0.2s ease;
+}
+
+.use-case-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Catalog Type Toggle */
+.catalog-type-toggle {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-type-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.catalog-type-btn svg {
+    flex-shrink: 0;
+}
+
+.catalog-type-btn:hover {
+    background: #f8f9fa;
+    color: #2c5aa0;
+}
+
+.catalog-type-btn.active {
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3f7a 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+}
+
+/* Model Info Card Display (for models view) */
+.model-info-card-display {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.model-info-card-display:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.model-badge-large {
+    display: inline-block;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.model-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.meta-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.meta-badge svg {
+    flex-shrink: 0;
+}
+
+/* Model Info List Display */
+.model-info-list-display {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.model-info-list-display:hover {
+    border-left-color: #2c5aa0;
+    background: #f8f9fa;
+}
+
+.model-badge-inline {
+    display: inline-block;
+    padding: 4px 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.model-list-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 1.3rem;
+    color: #666;
+}
+
+.view-details-btn-inline {
+    background: transparent;
+    border: 2px solid #2c5aa0;
+    color: #2c5aa0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.view-details-btn-inline:hover {
+    background: #2c5aa0;
+    color: white;
+}
+
+/* Responsive adjustments for catalog header */
+@media (max-width: 1200px) {
+    .catalog-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .catalog-type-toggle,
+    .results-info,
+    .view-toggle-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 /* ================================================
    12. Video Cards
    ================================================ */
