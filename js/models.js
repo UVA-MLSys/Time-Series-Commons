@@ -26,11 +26,47 @@ class ModelsCatalog {
             await this.loadModels();
             this.setupEventListeners();
             this.populateFilters();
+            this.handleURLParameters();
             this.applyFilters();
             this.renderModels();
         } catch (error) {
             console.error('Error initializing models catalog:', error);
             this.showError('Failed to load models data. Please refresh the page.');
+        }
+    }
+
+    handleURLParameters() {
+        // Check for URL parameters and apply filters
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Handle domain parameter
+        const domainParam = urlParams.get('domain');
+        if (domainParam) {
+            this.filters.domain = domainParam;
+            const domainFilter = document.getElementById('domain-filter');
+            if (domainFilter) {
+                domainFilter.value = domainParam;
+            }
+        }
+        
+        // Handle interval parameter
+        const intervalParam = urlParams.get('interval');
+        if (intervalParam) {
+            this.filters.interval = intervalParam;
+            const intervalFilter = document.getElementById('interval-filter');
+            if (intervalFilter) {
+                intervalFilter.value = intervalParam;
+            }
+        }
+        
+        // Handle search parameter
+        const searchParam = urlParams.get('search');
+        if (searchParam) {
+            this.filters.search = searchParam.toLowerCase();
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.value = searchParam;
+            }
         }
     }
 
