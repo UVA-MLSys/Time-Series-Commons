@@ -329,6 +329,104 @@ a:hover {
     box-shadow: 0 6px 20px rgba(46, 134, 171, 0.3);
 }
 
+/* Explore Models Grid Section */
+.explore-models-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    padding: 60px 0;
+    margin: 40px 0;
+}
+
+.explore-models-section .title {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.explore-models-section .introduction {
+    color: #ecf0f1;
+    font-size: 1.6rem;
+    font-style: italic;
+}
+
+.domains-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.domain-column {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.column-header {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #3498db;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+    text-align: center;
+}
+
+.domain-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.4rem;
+}
+
+.domain-item:hover {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: #3498db;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.domain-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    stroke: #3498db;
+}
+
+.domain-item:hover .domain-icon {
+    stroke: #5dade2;
+}
+
+.domain-item span {
+    flex: 1;
+}
+
+/* Responsive Design for Domains Grid */
+@media (max-width: 1200px) {
+    .domains-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .domains-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .explore-models-section {
+        padding: 40px 0;
+    }
+}
+
 /* ================================================
    6. Cards & Projects
    ================================================ */

@@ -44,15 +44,184 @@
     </div>
     
     <!-- Explore Our Models Section -->
-    <div class="container">
-        <h1 class="title">Explore Our Model Library</h1>
-        <p class="introduction">
-            Discover our comprehensive collection of state-of-the-art time series models. 
-            From traditional statistical methods to cutting-edge deep learning architectures, 
-            find the perfect model for your forecasting needs.
-        </p>
-        <div class="button-container" style="text-align: center; margin-top: 30px;">
-            <a href="models.html" class="explore-button">Explore Models</a>
+    <div class="explore-models-section">
+        <div class="container">
+            <h1 class="title">Explore Our Model Library</h1>
+            <p class="introduction" style="text-align: center; margin-bottom: 40px;">
+                Discover state-of-the-art time series models across diverse domains and applications
+            </p>
+            
+            <div class="domains-grid">
+                <!-- Column 1: Finance & Economics -->
+                <div class="domain-column">
+                    <h3 class="column-header">Finance & Economics</h3>
+                    <a href="models.html?domain=finance" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        <span>Stock Market</span>
+                    </a>
+                    <a href="models.html?domain=cryptocurrency" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span>Cryptocurrency</span>
+                    </a>
+                    <a href="models.html?domain=banking" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span>Banking & Credit</span>
+                    </a>
+                    <a href="models.html?domain=trading" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                        <span>Trading & Forex</span>
+                    </a>
+                    <a href="models.html?domain=economics" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        <span>Economic Indicators</span>
+                    </a>
+                </div>
+
+                <!-- Column 2: Industry & Business -->
+                <div class="domain-column">
+                    <h3 class="column-header">Industry & Business</h3>
+                    <a href="models.html?domain=energy" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <span>Energy & Power</span>
+                    </a>
+                    <a href="models.html?domain=manufacturing" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        <span>Manufacturing</span>
+                    </a>
+                    <a href="models.html?domain=retail" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span>Retail & Sales</span>
+                    </a>
+                    <a href="models.html?domain=supply-chain" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"></path>
+                            <path d="M2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"></path>
+                            <path d="M7 21h10"></path>
+                            <path d="M12 3v18"></path>
+                            <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path>
+                        </svg>
+                        <span>Supply Chain</span>
+                    </a>
+                    <a href="models.html?domain=agriculture" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        <span>Agriculture</span>
+                    </a>
+                </div>
+
+                <!-- Column 3: Health & Environment -->
+                <div class="domain-column">
+                    <h3 class="column-header">Health & Environment</h3>
+                    <a href="models.html?domain=healthcare" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                        <span>Healthcare</span>
+                    </a>
+                    <a href="models.html?domain=epidemiology" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="6"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                        </svg>
+                        <span>Epidemiology</span>
+                    </a>
+                    <a href="models.html?domain=climate" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                        <span>Climate & Weather</span>
+                    </a>
+                    <a href="models.html?domain=environmental" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span>Environmental</span>
+                    </a>
+                    <a href="models.html?domain=air-quality" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+                        </svg>
+                        <span>Air Quality</span>
+                    </a>
+                </div>
+
+                <!-- Column 4: Technology & Infrastructure -->
+                <div class="domain-column">
+                    <h3 class="column-header">Technology & Infrastructure</h3>
+                    <a href="models.html?domain=transportation" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                        <span>Transportation</span>
+                    </a>
+                    <a href="models.html?domain=network" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                            <polyline points="17 2 12 7 7 2"></polyline>
+                        </svg>
+                        <span>Network Traffic</span>
+                    </a>
+                    <a href="models.html?domain=iot" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path>
+                        </svg>
+                        <span>IoT & Sensors</span>
+                    </a>
+                    <a href="models.html?domain=telecommunications" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                        <span>Telecommunications</span>
+                    </a>
+                    <a href="models.html?domain=smart-city" class="domain-item">
+                        <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span>Smart Cities</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="button-container" style="text-align: center; margin-top: 50px;">
+                <a href="models.html" class="explore-button">View All Datasets & Models</a>
+            </div>
         </div>
     </div>
     
