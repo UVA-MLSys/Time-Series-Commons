@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Time Series Commons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="./pics/img/UVAdatascience.png" alt="Data Science Logo">
+        </div>
+        <div class="navbar-links">
+            <a href="index.html"><b>Home</b></a>
+            <a href="models.html"><b>Models</b></a>
+            <a href="#contributors"><b>Contributors</b></a>
+            <a href="projects.html"><b>Projects</b></a>
+            <a href="publications.html"><b>Publications</b></a>
+            <a href="awards.html"><b>Awards</b></a>
+        </div>
+    </div>
+    
+    <!-- Projects Section -->
+    <div class="container" style="margin-top: 100px;">
+        <h1 class="title">Interpretable AI for Spatio-Temporal Models</h1>
+        <div class="row2" id="projects">
+            <div class="card">
+                <h2>Large Language Models for Financial Aid in Financial Time-series Forecasting</h2>
+                <p class="projectdescription">
+                    This study utilizes Large Language Models (LLMs), such as pre-trained GPT-2, for financial time-series forecasting, addressing limited historical data and complex financial information. By benchmarking LLMs against state-of-the-art time-series models, the research highlights their superior predictive performance with minimal fine-tuning, offering valuable insights for financial decision-making. <a href="https://uva-mlsys.github.io/Financial-Time-Series/" class="read-more">Read more</a>
+                </p>
+            </div>
+            <div class="card">
+                <h2>Interpreting Spatio-Temporal patterns with Self-Attention</h2>
+                <p class="projectdescription">
+                    This study uses the <i>Temporal Fusion Transformer</i> to 
+                    forecast COVID-19 infections at the US county level, 
+                    analyzing detailed temporal and spatial patterns from the self-attention to 
+                    achieve superior prediction performance. 
+                    By interpreting the model's learned patterns and 
+                    using 2.5 years of socioeconomic and health data 
+                    from 3,142 counties, this research provides valuable insights 
+                    to aid effective public health decision-making. <a href="https://uva-mlsys.github.io/gpce-covid/" class="read-more"> Read more </a>
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>Interpreting Feature Interactions using Sensitivity Analysis</h2>
+                <p class="projectdescription"> This study uses eight recent local interpretation methods on 
+                    six Transformer-based time series models, 
+                    comparing find the best predictor for COVID-19 
+                    cases using three years of data from 3,142 US counties. When also
+                    predicting the epidemic sensitivity to different age groups and compare the interpreted
+                    sensitivity with ground truth. The framework is also tested on other datasets
+                    for broader applicability. <a href="https://uva-mlsys.github.io/COVID-19-age-groups/" class="read-more">Read more</a>
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>Windowed Temporal Saliency Analysis for Multi-Horizon Time Series Forecasting</h2>
+                <p class="projectdescription"> Interpreting time series models is challenging due to the temporal dependencies between 
+                    time steps and the changing significance of input features over time. This addresses these 
+                    challenges by striving to provide clearer explanations of the feature interactions, 
+                    and showcase the practical application of these interpretability techniques using 
+                    real-world datasets and cutting-edge deep learning models. <a href="https://uva-mlsys.github.io/SA-Timeseries/" class="read-more">Read more</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Videos Section -->
+        <h1 class="title" id="videos" style="margin-top: 60px;">Videos</h1>
+        <div class="row2">
+            <div class="video-card">
+                <iframe src="https://drive.google.com/file/d/1nQ8WzU3vBx2vm-f7sDD-ZFUvsch3GFZW/preview" width="560" height="315" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ref11GvSm4w" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/J1LW2DPxuzM" title="Judy Fox, University of Virginia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BPQ-pgtPqRc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footertext">
+            By UVAMLSys © Copyright 2024.
+        </p>
+    </footer>
+</body>
+</html>
