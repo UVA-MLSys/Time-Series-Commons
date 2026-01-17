@@ -769,6 +769,16 @@ a:hover {
     line-height: 1.4;
 }
 
+.partner-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    border: 3px solid #2E86AB;
+    box-shadow: 0 4px 12px rgba(46, 134, 171, 0.2);
+}
+
 .partner-status {
     font-size: 1.2rem;
     color: #2E86AB;
