@@ -192,22 +192,28 @@ class ModelsCatalog {
     }
 
     populateFilters() {
-        // Populate domain filter
-        const domains = new Set();
+        // Populate domain filter - only include domains with 5+ datasets
+        const domainCounts = new Map();
         this.allModels.forEach(model => {
             if (model.domain && model.domain.trim()) {
                 model.domain.split(',').forEach(d => {
                     const trimmed = d.trim();
                     if (trimmed && trimmed !== 'Not Available') {
-                        domains.add(trimmed);
+                        domainCounts.set(trimmed, (domainCounts.get(trimmed) || 0) + 1);
                     }
                 });
             }
         });
 
+        // Filter domains to only include those with 5+ datasets
+        const majorDomains = Array.from(domainCounts.entries())
+            .filter(([domain, count]) => count >= 5)
+            .map(([domain, count]) => domain)
+            .sort();
+
         const domainFilter = document.getElementById('domain-filter');
         if (domainFilter) {
-            Array.from(domains).sort().forEach(domain => {
+            majorDomains.forEach(domain => {
                 const option = document.createElement('option');
                 option.value = domain;
                 option.textContent = domain;
