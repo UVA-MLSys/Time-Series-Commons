@@ -14,7 +14,7 @@ class ModelsCatalog {
             benchmarks: new Set()
         };
         this.currentModalIndex = -1;
-        this.currentView = 'grid'; // 'grid' or 'list'
+        this.currentView = 'list'; // 'grid' or 'list'
         this.catalogType = 'datasets'; // 'datasets' or 'models'
         this.allModelInfo = []; // Will store unique models with their info
         
@@ -82,20 +82,18 @@ class ModelsCatalog {
 
     setupEventListeners() {
         // Catalog type toggle buttons (Datasets vs Models)
-        const catalogTypeBtns = document.querySelectorAll('.catalog-type-btn');
-        catalogTypeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const catalogType = btn.getAttribute('data-catalog-type');
-                this.switchCatalogType(catalogType);
-            });
-        });
-
-        // View toggle buttons
+        // View toggle buttons - handles both view and catalog type
         const viewToggleBtns = document.querySelectorAll('.view-toggle-btn');
         viewToggleBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const view = btn.getAttribute('data-view');
-                this.switchView(view);
+                const catalogType = btn.getAttribute('data-catalog-type');
+                
+                if (view) {
+                    this.switchView(view);
+                } else if (catalogType) {
+                    this.switchCatalogType(catalogType);
+                }
             });
         });
 
@@ -422,8 +420,8 @@ class ModelsCatalog {
     switchView(view) {
         this.currentView = view;
         
-        // Update button states
-        document.querySelectorAll('.view-toggle-btn').forEach(btn => {
+        // Update button states - only for view toggle buttons
+        document.querySelectorAll('[data-view]').forEach(btn => {
             if (btn.getAttribute('data-view') === view) {
                 btn.classList.add('active');
             } else {
@@ -450,7 +448,7 @@ class ModelsCatalog {
         this.catalogType = catalogType;
         
         // Update button states
-        document.querySelectorAll('.catalog-type-btn').forEach(btn => {
+        document.querySelectorAll('[data-catalog-type]').forEach(btn => {
             if (btn.getAttribute('data-catalog-type') === catalogType) {
                 btn.classList.add('active');
             } else {

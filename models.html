@@ -81,50 +81,56 @@
                 <div class="catalog-main">
                     <!-- View Toggle and Results Info -->
                     <div class="catalog-header">
-                        <div class="catalog-type-toggle">
-                            <button class="catalog-type-btn active" data-catalog-type="datasets" title="Show Datasets">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                <span>Datasets</span>
-                            </button>
-                            <button class="catalog-type-btn" data-catalog-type="models" title="Show Models">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="9" y1="3" x2="9" y2="21"></line>
-                                </svg>
-                                <span>Models</span>
-                            </button>
-                        </div>
-
                         <div class="results-info">
                             Showing <span class="results-count" id="results-count">0</span> <span class="results-type" id="results-type">datasets</span>
                         </div>
                         
-                        <div class="view-toggle-container">
-                            <label>View:</label>
-                            <div class="view-toggle">
-                                <button class="view-toggle-btn active" data-view="grid" title="Card View">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="3" width="7" height="7"></rect>
-                                        <rect x="14" y="3" width="7" height="7"></rect>
-                                        <rect x="14" y="14" width="7" height="7"></rect>
-                                        <rect x="3" y="14" width="7" height="7"></rect>
-                                    </svg>
-                                    <span>Cards</span>
-                                </button>
-                                <button class="view-toggle-btn" data-view="list" title="List View">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="8" y1="6" x2="21" y2="6"></line>
-                                        <line x1="8" y1="12" x2="21" y2="12"></line>
-                                        <line x1="8" y1="18" x2="21" y2="18"></line>
-                                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                                    </svg>
-                                    <span>List</span>
-                                </button>
+                        <div class="toggles-container">
+                            <div class="view-toggle-container">
+                                <label>View:</label>
+                                <div class="view-toggle">
+                                    <button class="view-toggle-btn" data-view="grid" title="Card View">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="3" width="7" height="7"></rect>
+                                            <rect x="14" y="3" width="7" height="7"></rect>
+                                            <rect x="14" y="14" width="7" height="7"></rect>
+                                            <rect x="3" y="14" width="7" height="7"></rect>
+                                        </svg>
+                                        <span>Cards</span>
+                                    </button>
+                                    <button class="view-toggle-btn active" data-view="list" title="List View">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                        </svg>
+                                        <span>List</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="view-toggle-container">
+                                <label>Type:</label>
+                                <div class="view-toggle">
+                                    <button class="view-toggle-btn active" data-catalog-type="datasets" title="Show Datasets">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                            <polyline points="12 12 12 22"></polyline>
+                                            <polyline points="12 2 12 12"></polyline>
+                                        </svg>
+                                        <span>Datasets</span>
+                                    </button>
+                                    <button class="view-toggle-btn" data-catalog-type="models" title="Show Models">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="9" y1="3" x2="9" y2="21"></line>
+                                        </svg>
+                                        <span>Models</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,12 +141,12 @@
                     </div>
 
                     <!-- Models Grid (Card View) -->
-                    <div class="models-grid" id="models-grid">
+                    <div class="models-grid hidden" id="models-grid">
                         <!-- Populated dynamically by JavaScript -->
                     </div>
 
                     <!-- Models List (List View) -->
-                    <div class="models-list hidden" id="models-list">
+                    <div class="models-list" id="models-list">
                         <!-- Populated dynamically by JavaScript -->
                     </div>
 

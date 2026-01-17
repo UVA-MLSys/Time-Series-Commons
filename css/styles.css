@@ -1180,9 +1180,15 @@ a:hover {
 .catalog-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    gap: 15px;
+}
+
+.toggles-container {
+    display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 
@@ -1804,45 +1810,7 @@ a:hover {
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-/* Catalog Type Toggle */
-.catalog-type-toggle {
-    display: flex;
-    gap: 10px;
-    background: white;
-    padding: 5px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.catalog-type-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    background: transparent;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.catalog-type-btn svg {
-    flex-shrink: 0;
-}
-
-.catalog-type-btn:hover {
-    background: #f8f9fa;
-    color: #2c5aa0;
-}
-
-.catalog-type-btn.active {
-    background: linear-gradient(135deg, #2c5aa0 0%, #1e3f7a 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-}
+/* Catalog Type Toggle - Removed, now using .view-toggle-btn styling for consistency */
 
 /* Model Info Card Display (for models view) */
 .model-info-card-display {
@@ -1945,7 +1913,7 @@ a:hover {
         align-items: stretch;
     }
 
-    .catalog-type-toggle,
+    .toggles-container,
     .results-info,
     .view-toggle-container {
         width: 100%;
