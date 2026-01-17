@@ -412,6 +412,7 @@ a:hover {
     border-color: #3498db;
     transform: translateX(5px);
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    color: #ecf0f1;
 }
 
 .domain-icon {
