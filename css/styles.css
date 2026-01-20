@@ -693,11 +693,11 @@ a:hover {
 }
 
 .collaborator img {
-    width: 150px;
-    height: 170px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center;
+    object-position: center top;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
 }
@@ -2073,7 +2073,7 @@ iframe {
     
     .collaborator img {
         width: 140px;
-        height: 160px;
+        height: 140px;
     }
     
     .card, .video-card {
