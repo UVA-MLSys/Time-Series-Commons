@@ -9,7 +9,7 @@ class NotebookCatalog {
         this.datasets = [];
         this.models = [];
         this.currentTab = 'all';
-        this.currentView = 'list';
+        this.currentView = 'grid'; // Default to grid for featured sections
         this.currentSort = 'name';
         this.searchQuery = '';
         
@@ -215,9 +215,12 @@ class NotebookCatalog {
         document.getElementById('datasets-view').classList.toggle('hidden', tabName !== 'datasets');
         document.getElementById('models-view').classList.toggle('hidden', tabName !== 'models');
 
-        // Set default view: list for datasets/models tabs, keep current for 'all' tab (featured sections)
+        // Set default view: list for datasets/models tabs, grid for 'all' tab (featured sections)
         if (tabName === 'datasets' || tabName === 'models') {
             this.switchView('list');
+        } else if (tabName === 'all') {
+            // Featured sections default to grid view
+            this.switchView('grid');
         }
 
         this.renderContent();
@@ -247,11 +250,33 @@ class NotebookCatalog {
     renderFeatured() {
         // Render featured datasets (first 4)
         const featuredDatasets = this.getFilteredAndSorted(this.datasets).slice(0, 4);
-        this.renderCards(featuredDatasets, 'featured-datasets-grid', 'dataset');
+        const featuredDatasetsGrid = document.getElementById('featured-datasets-grid');
+        const featuredDatasetsList = document.getElementById('featured-datasets-list');
+        
+        if (this.currentView === 'grid') {
+            this.renderCards(featuredDatasets, 'featured-datasets-grid', 'dataset');
+            if (featuredDatasetsGrid) featuredDatasetsGrid.classList.remove('hidden');
+            if (featuredDatasetsList) featuredDatasetsList.classList.remove('active');
+        } else {
+            this.renderList(featuredDatasets, 'featured-datasets-list', 'dataset');
+            if (featuredDatasetsGrid) featuredDatasetsGrid.classList.add('hidden');
+            if (featuredDatasetsList) featuredDatasetsList.classList.add('active');
+        }
 
         // Render featured models (first 4)
         const featuredModels = this.getFilteredAndSorted(this.models).slice(0, 4);
-        this.renderCards(featuredModels, 'featured-models-grid', 'model');
+        const featuredModelsGrid = document.getElementById('featured-models-grid');
+        const featuredModelsList = document.getElementById('featured-models-list');
+        
+        if (this.currentView === 'grid') {
+            this.renderCards(featuredModels, 'featured-models-grid', 'model');
+            if (featuredModelsGrid) featuredModelsGrid.classList.remove('hidden');
+            if (featuredModelsList) featuredModelsList.classList.remove('active');
+        } else {
+            this.renderList(featuredModels, 'featured-models-list', 'model');
+            if (featuredModelsGrid) featuredModelsGrid.classList.add('hidden');
+            if (featuredModelsList) featuredModelsList.classList.add('active');
+        }
     }
 
     renderAllDatasets() {

@@ -708,7 +708,15 @@ a:hover {
 
 .eric-he-img {
     object-position: center 25% !important;
-    transform: scale(1.3);
+    transform: none;
+}
+
+.geoffrey-fox-img {
+    object-position: center top;
+}
+
+.mills-img {
+    object-position: center top;
 }
 
 .collaborator-info {
