@@ -264,11 +264,27 @@ class NotebookCatalog {
         const bgClass = isDataset ? 'dataset-bg' : 'model-bg';
         const icon = isDataset ? '📊' : '🤖';
         
-        const description = isDataset 
-            ? this.truncateText(item.description || 'No description available', 80)
-            : item.description || '';
-
-        const domain = item.domain || 'General';
+        let description = '';
+        let domain = item.domain || 'General';
+        
+        if (isDataset) {
+            // For datasets: create a comprehensive description from metadata
+            const descParts = [];
+            if (item.timePoints) descParts.push(`${item.timePoints} time points`);
+            if (item.variables) descParts.push(item.variables);
+            if (item.dimensions) descParts.push(`${item.dimensions} dimensions`);
+            if (item.interval && item.interval !== 'Not specified') descParts.push(`Interval: ${item.interval}`);
+            
+            description = descParts.length > 0 
+                ? descParts.join(' · ') 
+                : this.truncateText(item.description || 'No description available', 80);
+        } else {
+            // For models: show datasets count and domains
+            const domains = this.getModelDomains(item.name);
+            const domainCount = domains.size;
+            description = `Evaluated on ${item.datasetsCount || 0} datasets across ${domainCount} domain${domainCount !== 1 ? 's' : ''}`;
+            domain = 'General';
+        }
 
         return `
             <div class="card" data-id="${item.id}" data-type="${type}">
@@ -311,22 +327,64 @@ class NotebookCatalog {
         const isDataset = type === 'dataset';
         const icon = isDataset ? '📊' : '🤖';
         
-        const meta = isDataset
-            ? `${item.domain || 'General'} · ${item.timePoints || 'N/A'} points`
-            : `${item.datasetsCount || 0} datasets`;
+        if (isDataset) {
+            // For datasets: show all metadata from spreadsheet
+            const metaParts = [];
+            
+            if (item.domain) metaParts.push(item.domain);
+            if (item.timePoints) metaParts.push(`${item.timePoints} points`);
+            if (item.variables) metaParts.push(item.variables);
+            if (item.dimensions) metaParts.push(`${item.dimensions} dimensions`);
+            
+            const meta = metaParts.join(' · ');
+            const domain = item.domain || 'General';
 
-        return `
-            <div class="list-item" data-id="${item.id}" data-type="${type}">
-                <div class="list-icon">
-                    <span style="font-size: 24px;">${icon}</span>
+            return `
+                <div class="list-item" data-id="${item.id}" data-type="${type}">
+                    <div class="list-icon">
+                        <span style="font-size: 24px;">${icon}</span>
+                    </div>
+                    <div class="list-content">
+                        <div class="list-title">${this.escapeHtml(item.name)}</div>
+                        <div class="list-meta">${meta}</div>
+                    </div>
+                    <span class="list-badge">${this.escapeHtml(item.interval || 'Not specified')}</span>
                 </div>
-                <div class="list-content">
-                    <div class="list-title">${this.escapeHtml(item.name)}</div>
-                    <div class="list-meta">${meta}</div>
+            `;
+        } else {
+            // For models: show more comprehensive information
+            const totalDatasets = item.datasetsCount || 0;
+            const domains = this.getModelDomains(item.name);
+            const domainCount = domains.size;
+            
+            const meta = `Evaluated on ${totalDatasets} dataset${totalDatasets !== 1 ? 's' : ''} · ${domainCount} domain${domainCount !== 1 ? 's' : ''}`;
+            const badge = domainCount > 0 ? `${domainCount} domain${domainCount !== 1 ? 's' : ''}` : 'Model';
+
+            return `
+                <div class="list-item" data-id="${item.id}" data-type="${type}">
+                    <div class="list-icon">
+                        <span style="font-size: 24px;">${icon}</span>
+                    </div>
+                    <div class="list-content">
+                        <div class="list-title">${this.escapeHtml(item.name)}</div>
+                        <div class="list-meta">${meta}</div>
+                    </div>
+                    <span class="list-badge">${badge}</span>
                 </div>
-                ${isDataset ? `<span class="list-badge">${item.interval || 'N/A'}</span>` : ''}
-            </div>
-        `;
+            `;
+        }
+    }
+
+    getModelDomains(modelName) {
+        const domains = new Set();
+        this.datasets.forEach(dataset => {
+            if (dataset.benchmarks && dataset.benchmarks[modelName]) {
+                if (dataset.domain) {
+                    domains.add(dataset.domain);
+                }
+            }
+        });
+        return domains;
     }
 
     truncateText(text, maxLength) {
