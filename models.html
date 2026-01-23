@@ -54,11 +54,13 @@
 
         /* Header */
         .nlm-header {
-            background: var(--nlm-brand-white);
-            border-bottom: 1px solid var(--v2-note-border);
-            padding: 16px 24px;
-            position: relative; /* Changed from sticky to relative */
-            z-index: 99;
+            background: var(--nlm-brand-white) !important;
+            border-bottom: 1px solid var(--v2-note-border) !important;
+            padding: 16px 24px !important;
+            position: relative !important; /* Changed from sticky to relative */
+            z-index: 99 !important;
+            display: block !important; /* Force display */
+            visibility: visible !important; /* Force visibility */
         }
 
         /* Adjust body to account for fixed navbar */
