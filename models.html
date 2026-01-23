@@ -445,6 +445,276 @@
             color: var(--v2-on-surface-de-emphasis);
         }
 
+        /* Modal Styles (NotebookLM-inspired) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--nlm-brand-white);
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--v2-note-border);
+            position: sticky;
+            top: 0;
+            background: var(--nlm-brand-white);
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            color: var(--v2-on-surface-emphasis);
+            font-size: 24px;
+            font-weight: 500;
+            font-family: 'Google Sans', sans-serif;
+            margin: 0;
+            padding-right: 40px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--nlm-grey-95);
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            color: var(--v2-on-surface);
+        }
+
+        .modal-close:hover {
+            background: var(--nlm-blue-50);
+            color: var(--nlm-brand-white);
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .modal-section {
+            margin-bottom: 28px;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section h3 {
+            color: var(--v2-on-surface-emphasis);
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Google Sans', sans-serif;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--v2-note-border);
+        }
+
+        .modal-description,
+        .model-description-text {
+            font-size: 14px;
+            font-family: 'Google Sans Text', sans-serif;
+            color: var(--v2-on-surface);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .modal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .modal-info-item {
+            padding: 16px;
+            background-color: var(--nlm-blue-98);
+            border-radius: 12px;
+            border: 1px solid var(--v2-note-border);
+        }
+
+        .modal-info-label {
+            font-weight: 500;
+            color: var(--v2-on-surface-de-emphasis);
+            font-size: 12px;
+            font-family: 'Google Sans Text', sans-serif;
+            display: block;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-info-value {
+            color: var(--v2-on-surface-emphasis);
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .modal-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--nlm-blue-50);
+            color: var(--nlm-brand-white);
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Google Sans', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .modal-link:hover {
+            background-color: var(--nlm-grey-10);
+            transform: translateY(-1px);
+            box-shadow: var(--mat-sys-level2);
+        }
+
+        .benchmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .benchmark-badge {
+            padding: 8px 12px;
+            background-color: var(--nlm-blue-98);
+            color: var(--nlm-blue-50);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Google Sans Text', sans-serif;
+            border: 1px solid var(--v2-note-border);
+        }
+
+        .benchmark-badge.inactive {
+            background-color: var(--nlm-grey-95);
+            color: var(--v2-on-surface-de-emphasis);
+        }
+
+        .model-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .model-stat-card {
+            background: linear-gradient(135deg, var(--nlm-blue-50) 0%, var(--nlm-blue-98) 100%);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            color: var(--nlm-brand-white);
+            box-shadow: var(--mat-sys-level1);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            font-family: 'Google Sans', sans-serif;
+            margin-bottom: 8px;
+            color: var(--v2-on-surface-emphasis);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-family: 'Google Sans Text', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--v2-on-surface);
+        }
+
+        .sample-datasets-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .sample-dataset-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: var(--nlm-blue-98);
+            border-radius: 8px;
+            border-left: 4px solid var(--nlm-blue-50);
+            font-size: 14px;
+            font-family: 'Google Sans Text', sans-serif;
+        }
+
+        .sample-dataset-item strong {
+            flex: 1;
+            color: var(--v2-on-surface-emphasis);
+            font-weight: 500;
+        }
+
+        .dataset-domain-tag {
+            padding: 4px 12px;
+            background-color: var(--nlm-brand-white);
+            color: var(--nlm-blue-50);
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid var(--v2-note-border);
+        }
+
+        .more-datasets {
+            font-style: italic;
+            color: var(--v2-on-surface-de-emphasis);
+            margin-top: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-family: 'Google Sans Text', sans-serif;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
@@ -576,6 +846,17 @@
             <div class="empty-description">Try adjusting your search or filters</div>
         </div>
     </main>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <button id="modal-close" class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="./js/models.js"></script>

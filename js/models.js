@@ -106,6 +106,22 @@ class NotebookCatalog {
                 this.switchTab(section);
             });
         });
+
+        // Modal close button
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalClose = document.getElementById('modal-close');
+        
+        if (modalClose) {
+            modalClose.addEventListener('click', () => this.closeModal());
+        }
+        
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    this.closeModal();
+                }
+            });
+        }
     }
 
     switchTab(tabName) {
@@ -159,12 +175,17 @@ class NotebookCatalog {
         const filtered = this.getFilteredAndSorted(this.datasets);
         document.getElementById('datasets-count').textContent = `${filtered.length} datasets`;
         
+        const gridContainer = document.getElementById('all-datasets-grid');
+        const listContainer = document.getElementById('all-datasets-list');
+        
         if (this.currentView === 'grid') {
             this.renderCards(filtered, 'all-datasets-grid', 'dataset');
-            document.getElementById('all-datasets-list').classList.remove('active');
+            gridContainer.classList.add('active');
+            listContainer.classList.remove('active');
         } else {
             this.renderList(filtered, 'all-datasets-list', 'dataset');
-            document.getElementById('all-datasets-list').classList.add('active');
+            listContainer.classList.add('active');
+            gridContainer.classList.remove('active');
         }
     }
 
@@ -172,12 +193,17 @@ class NotebookCatalog {
         const filtered = this.getFilteredAndSorted(this.models);
         document.getElementById('models-count').textContent = `${filtered.length} models`;
         
+        const gridContainer = document.getElementById('all-models-grid');
+        const listContainer = document.getElementById('all-models-list');
+        
         if (this.currentView === 'grid') {
             this.renderCards(filtered, 'all-models-grid', 'model');
-            document.getElementById('all-models-list').classList.remove('active');
+            gridContainer.classList.add('active');
+            listContainer.classList.remove('active');
         } else {
             this.renderList(filtered, 'all-models-list', 'model');
-            document.getElementById('all-models-list').classList.add('active');
+            listContainer.classList.add('active');
+            gridContainer.classList.remove('active');
         }
     }
 
@@ -222,6 +248,15 @@ class NotebookCatalog {
         }
 
         container.innerHTML = items.map(item => this.createCard(item, type)).join('');
+        
+        // Add click handlers to cards
+        container.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.id;
+                const cardType = card.dataset.type;
+                this.openModal(id, cardType);
+            });
+        });
     }
 
     createCard(item, type) {
@@ -261,6 +296,15 @@ class NotebookCatalog {
         }
 
         container.innerHTML = items.map(item => this.createListItem(item, type)).join('');
+        
+        // Add click handlers to list items
+        container.querySelectorAll('.list-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const id = item.dataset.id;
+                const itemType = item.dataset.type;
+                this.openModal(id, itemType);
+            });
+        });
     }
 
     createListItem(item, type) {
@@ -301,6 +345,143 @@ class NotebookCatalog {
     showError() {
         document.getElementById('loading').classList.add('hidden');
         document.getElementById('empty-state').classList.remove('hidden');
+    }
+
+    openModal(id, type) {
+        let item;
+        if (type === 'dataset') {
+            item = this.datasets.find(d => d.id === id);
+        } else {
+            item = this.models.find(m => m.id === id);
+        }
+
+        if (!item) return;
+
+        const modalBody = document.getElementById('modal-body');
+        const modalTitle = document.getElementById('modal-title');
+        
+        modalTitle.textContent = item.name;
+        modalBody.innerHTML = type === 'dataset' 
+            ? this.createDatasetModalContent(item) 
+            : this.createModelModalContent(item);
+
+        const modalOverlay = document.getElementById('modal-overlay');
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeModal() {
+        const modalOverlay = document.getElementById('modal-overlay');
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    createDatasetModalContent(dataset) {
+        const benchmarksHTML = dataset.benchmarks ? this.createBenchmarksSection(dataset.benchmarks) : '';
+        
+        return `
+            <div class="modal-section">
+                <h3>Description</h3>
+                <p class="modal-description">${this.escapeHtml(dataset.description || 'No description available.')}</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Dataset Information</h3>
+                <div class="modal-info-grid">
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Domain</span>
+                        <span class="modal-info-value">${this.escapeHtml(dataset.domain || 'N/A')}</span>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Time Points</span>
+                        <span class="modal-info-value">${this.escapeHtml(dataset.timePoints || 'N/A')}</span>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Interval</span>
+                        <span class="modal-info-value">${this.escapeHtml(dataset.interval || 'N/A')}</span>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Dimensions</span>
+                        <span class="modal-info-value">${this.escapeHtml(dataset.dimensions || 'N/A')}</span>
+                    </div>
+                </div>
+            </div>
+
+            ${benchmarksHTML}
+
+            ${dataset.paperLink || dataset.dataLink ? `
+                <div class="modal-section">
+                    <h3>Resources</h3>
+                    <div class="modal-links">
+                        ${dataset.paperLink ? `<a href="${this.escapeHtml(dataset.paperLink)}" target="_blank" class="modal-link">📄 View Paper</a>` : ''}
+                        ${dataset.dataLink ? `<a href="${this.escapeHtml(dataset.dataLink)}" target="_blank" class="modal-link">📊 Access Data</a>` : ''}
+                    </div>
+                </div>
+            ` : ''}
+        `;
+    }
+
+    createModelModalContent(model) {
+        // Get datasets that use this model
+        const datasetsUsingModel = this.datasets.filter(d => 
+            d.benchmarks && d.benchmarks[model.name]
+        );
+
+        const sampleDatasets = datasetsUsingModel.slice(0, 5);
+        const hasMore = datasetsUsingModel.length > 5;
+
+        return `
+            <div class="modal-section">
+                <h3>Model Description</h3>
+                <p class="model-description-text">${this.escapeHtml(model.description || 'No description available.')}</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Model Statistics</h3>
+                <div class="model-stats-grid">
+                    <div class="model-stat-card">
+                        <div class="stat-number">${datasetsUsingModel.length}</div>
+                        <div class="stat-label">Datasets Evaluated</div>
+                    </div>
+                    <div class="model-stat-card">
+                        <div class="stat-number">${new Set(datasetsUsingModel.map(d => d.domain)).size}</div>
+                        <div class="stat-label">Domains Covered</div>
+                    </div>
+                </div>
+            </div>
+
+            ${sampleDatasets.length > 0 ? `
+                <div class="modal-section">
+                    <h3>Sample Datasets</h3>
+                    <div class="sample-datasets-list">
+                        ${sampleDatasets.map(d => `
+                            <div class="sample-dataset-item">
+                                <strong>${this.escapeHtml(d.name)}</strong>
+                                <span class="dataset-domain-tag">${this.escapeHtml(d.domain || 'General')}</span>
+                            </div>
+                        `).join('')}
+                        ${hasMore ? `<div class="more-datasets">...and ${datasetsUsingModel.length - 5} more</div>` : ''}
+                    </div>
+                </div>
+            ` : ''}
+        `;
+    }
+
+    createBenchmarksSection(benchmarks) {
+        const modelNames = Object.keys(benchmarks);
+        if (modelNames.length === 0) return '';
+
+        return `
+            <div class="modal-section">
+                <h3>Evaluated Models</h3>
+                <div class="benchmarks-grid">
+                    ${modelNames.map(modelName => {
+                        const isEvaluated = benchmarks[modelName];
+                        return `<div class="benchmark-badge ${isEvaluated ? '' : 'inactive'}">${this.escapeHtml(modelName)}</div>`;
+                    }).join('')}
+                </div>
+            </div>
+        `;
     }
 }
 
