@@ -57,14 +57,13 @@
             background: var(--nlm-brand-white);
             border-bottom: 1px solid var(--v2-note-border);
             padding: 16px 24px;
-            position: sticky;
-            top: 60px; /* Adjusted to sit below the fixed navbar */
+            position: relative; /* Changed from sticky to relative */
             z-index: 99;
         }
 
         /* Adjust body to account for fixed navbar */
         body {
-            margin-top: 60px;
+            padding-top: 70px; /* Use padding instead of margin */
         }
 
         .header-container {
