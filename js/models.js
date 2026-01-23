@@ -485,9 +485,6 @@ class NotebookCatalog {
             d.benchmarks && d.benchmarks[model.name]
         );
 
-        const sampleDatasets = datasetsUsingModel.slice(0, 5);
-        const hasMore = datasetsUsingModel.length > 5;
-
         return `
             <div class="modal-section">
                 <h3>Model Description</h3>
@@ -508,17 +505,16 @@ class NotebookCatalog {
                 </div>
             </div>
 
-            ${sampleDatasets.length > 0 ? `
+            ${datasetsUsingModel.length > 0 ? `
                 <div class="modal-section">
-                    <h3>Sample Datasets</h3>
-                    <div class="sample-datasets-list">
-                        ${sampleDatasets.map(d => `
+                    <h3>Datasets (${datasetsUsingModel.length})</h3>
+                    <div class="sample-datasets-list scrollable">
+                        ${datasetsUsingModel.map(d => `
                             <div class="sample-dataset-item">
                                 <strong>${this.escapeHtml(d.name)}</strong>
                                 <span class="dataset-domain-tag">${this.escapeHtml(d.domain || 'General')}</span>
                             </div>
                         `).join('')}
-                        ${hasMore ? `<div class="more-datasets">...and ${datasetsUsingModel.length - 5} more</div>` : ''}
                     </div>
                 </div>
             ` : ''}

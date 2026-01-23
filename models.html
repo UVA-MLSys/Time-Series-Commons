@@ -701,6 +701,34 @@
             margin-top: 12px;
         }
 
+        .sample-datasets-list.scrollable {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 8px;
+            border: 1px solid var(--v2-note-border);
+            border-radius: 8px;
+            padding: 12px;
+            background-color: var(--nlm-surface-1);
+        }
+
+        .sample-datasets-list.scrollable::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .sample-datasets-list.scrollable::-webkit-scrollbar-track {
+            background: var(--nlm-surface-1);
+            border-radius: 4px;
+        }
+
+        .sample-datasets-list.scrollable::-webkit-scrollbar-thumb {
+            background: var(--v2-outline);
+            border-radius: 4px;
+        }
+
+        .sample-datasets-list.scrollable::-webkit-scrollbar-thumb:hover {
+            background: var(--v2-on-surface-de-emphasis);
+        }
+
         .sample-dataset-item {
             display: flex;
             align-items: center;
