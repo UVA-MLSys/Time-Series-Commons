@@ -10,7 +10,7 @@ class NotebookCatalog {
         this.models = [];
         this.currentTab = 'all';
         this.currentView = 'list';
-        this.currentSort = 'recent';
+        this.currentSort = 'name';
         this.searchQuery = '';
         
         this.init();
@@ -171,6 +171,12 @@ class NotebookCatalog {
             });
         });
 
+        // Sort dropdown
+        document.getElementById('sort-select').addEventListener('change', (e) => {
+            this.currentSort = e.target.value;
+            this.renderContent();
+        });
+
         // See all buttons
         document.querySelectorAll('.see-all-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -302,13 +308,11 @@ class NotebookCatalog {
         // Apply sorting
         filtered = [...filtered].sort((a, b) => {
             switch (this.currentSort) {
-                case 'name':
-                    return a.name.localeCompare(b.name);
                 case 'domain':
                     return (a.domain || '').localeCompare(b.domain || '');
-                case 'recent':
+                case 'name':
                 default:
-                    return 0; // Keep original order
+                    return a.name.localeCompare(b.name);
             }
         });
 
