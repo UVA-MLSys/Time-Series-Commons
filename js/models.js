@@ -230,12 +230,8 @@ class NotebookCatalog {
         const icon = isDataset ? '📊' : '🤖';
         
         const description = isDataset 
-            ? this.truncateText(item.description || 'No description available', 120)
+            ? this.truncateText(item.description || 'No description available', 80)
             : item.description || '';
-
-        const stats = isDataset
-            ? `${item.timePoints || 'N/A'} points`
-            : `${item.datasetsCount || 0} datasets`;
 
         const domain = item.domain || 'General';
 
@@ -250,10 +246,6 @@ class NotebookCatalog {
                 <div class="card-content">
                     <div class="card-title">${this.escapeHtml(item.name)}</div>
                     <div class="card-description">${this.escapeHtml(description)}</div>
-                    <div class="card-footer">
-                        <div class="card-stats">${stats}</div>
-                        <div class="card-date">${item.interval || ''}</div>
-                    </div>
                 </div>
             </div>
         `;
