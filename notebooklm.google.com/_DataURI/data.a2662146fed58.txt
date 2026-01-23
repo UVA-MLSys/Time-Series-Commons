@@ -1,0 +1,1 @@
+chrome-extension://cecngibhkljoiafhjfmcgbmikfogdiko/content.ts.js

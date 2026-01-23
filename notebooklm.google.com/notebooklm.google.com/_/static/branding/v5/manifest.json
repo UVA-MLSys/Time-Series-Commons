@@ -1,0 +1,20 @@
+{
+  "name": "NotebookLM",
+  "short_name": "NotebookLM",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/_/static/branding/v5/light_mode/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/_/static/branding/v5/light_mode/favicon/google-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
