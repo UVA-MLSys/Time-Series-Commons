@@ -349,6 +349,23 @@
         }
 
         /* List View */
+        /* Featured Cards Grid (always visible) */
+        .featured-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .cards-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .cards-grid.active {
+            display: grid;
+        }
+
         .list-view {
             display: none;
             flex-direction: column;
