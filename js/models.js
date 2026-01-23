@@ -53,7 +53,7 @@ class NotebookCatalog {
             }
         });
 
-        // Create model objects with counts
+        // Create model objects with counts and descriptions
         this.models = Array.from(modelsSet).map(modelName => {
             const datasetsCount = this.allData.filter(d => 
                 d.benchmarks && d.benchmarks[modelName]
@@ -64,9 +64,87 @@ class NotebookCatalog {
                 name: modelName,
                 type: 'model',
                 datasetsCount: datasetsCount,
-                description: `Evaluated on ${datasetsCount} dataset${datasetsCount !== 1 ? 's' : ''}`
+                description: this.getModelDescription(modelName)
             };
         });
+    }
+
+    getModelDescription(modelName) {
+        const descriptions = {
+            'Darts': 'Darts (Data Analysis and Real-Time Systems) is a Python library for time series forecasting developed by Unit8. It offers a unified interface for multiple forecasting models including statistical methods (ARIMA, ETS), machine learning approaches (Random Forests, LightGBM), and deep learning models (N-BEATS, Transformer). Darts supports both univariate and multivariate forecasting, handles covariates, and provides probabilistic forecasting capabilities with confidence intervals.',
+            'Merlion': 'Merlion is a Python library for time series intelligence developed by Salesforce Research. It provides a unified interface for time series forecasting, anomaly detection, and change point detection. Merlion includes implementations of state-of-the-art algorithms including ARIMA, Prophet, LSTM, Transformer models, and ensemble methods. It emphasizes production-ready deployment with automatic hyperparameter tuning and model selection.',
+            'Aeon': 'Aeon (formerly sktime) is a scikit-learn compatible Python toolkit for time series analysis. It provides a comprehensive suite of algorithms for time series classification, regression, clustering, and annotation. Aeon includes distance-based methods, shapelet transforms, dictionary-based approaches, and deep learning models. It emphasizes composability and modularity, allowing users to build complex pipelines.',
+            'UCR': 'The UCR Time Series Classification Archive is the largest public repository of time series classification datasets. Maintained by the University of California, Riverside, it serves as the standard benchmark for evaluating time series classification algorithms. The archive includes diverse datasets from various domains and has been instrumental in advancing time series mining research since its inception.',
+            'LPTM-Eval': 'LPTM-Eval (Large Pre-trained Time series Models Evaluation) is a comprehensive evaluation framework for assessing pre-trained time series foundation models. It provides standardized benchmarks across multiple tasks including forecasting, classification, and anomaly detection. LPTM-Eval enables fair comparison of different pre-training strategies and model architectures on diverse time series datasets.',
+            'TS2Vec-Bench': 'TS2Vec-Bench is an evaluation framework specifically designed for time series representation learning methods. It assesses the quality of learned representations through downstream tasks like classification and clustering. TS2Vec (Time Series to Vector) focuses on contrastive learning approaches that learn universal representations without task-specific labels.',
+            'Timer-XL': 'Timer-XL is a large-scale time series foundation model designed for cross-domain time series forecasting. It employs transformer architecture with innovations in tokenization and positional encoding tailored for time series. Timer-XL is pre-trained on extensive datasets and demonstrates strong transfer learning capabilities across different domains and forecast horizons.',
+            'AutoGluon': 'AutoGluon-TimeSeries is an AutoML toolkit that automatically trains and ensembles multiple forecasting models. Developed by Amazon, it simplifies time series forecasting by automating model selection, hyperparameter tuning, and ensemble construction. AutoGluon combines statistical models (ETS, ARIMA), tree-based methods (CatBoost, LightGBM), and deep learning approaches.',
+            'GluonTS': 'GluonTS is a Python toolkit for probabilistic time series modeling built on Apache MXNet and PyTorch. Developed by Amazon, it focuses on deep learning-based forecasting with neural architectures like DeepAR, Transformer, and temporal convolutional networks. GluonTS emphasizes probabilistic forecasts with proper uncertainty quantification.',
+            'Monash': 'The Monash Time Series Forecasting Archive is a comprehensive collection of time series forecasting datasets from diverse domains. Maintained by Monash University, it complements existing archives with a focus on modern forecasting challenges including irregularly sampled data, missing values, and multi-horizon forecasting scenarios.',
+            'NeuralProphet': 'NeuralProphet is a neural network-based time series forecasting library inspired by Facebook Prophet. It combines traditional time series decomposition with modern deep learning, offering interpretable forecasts through additive components (trend, seasonality, holidays). NeuralProphet supports autoregression, lagged regressors, and provides uncertainty estimates.',
+            'PatchTST': 'PatchTST (Patch Time Series Transformer) is a transformer-based model that segments time series into patches for more efficient and effective forecasting. This patching mechanism reduces computational complexity while capturing both local and global patterns. PatchTST has demonstrated state-of-the-art performance on long-term forecasting benchmarks.',
+            'Chronos': 'Chronos is a pre-trained probabilistic time series forecasting model developed by Amazon. It treats forecasting as a language modeling task, tokenizing time series and training transformer models on diverse datasets. Chronos demonstrates strong zero-shot forecasting capabilities across different domains and temporal granularities.',
+            'Lag-Llama': 'Lag-Llama is a foundation model for time series forecasting that leverages large language model architectures. It uses a decoder-only transformer trained on extensive time series data to generate probabilistic forecasts. Lag-Llama excels at few-shot and zero-shot forecasting tasks across diverse domains.',
+            'TimesFM': 'TimesFM (Time Series Foundation Model) is Google\'s pre-trained model for time series forecasting. It employs a patched-decoder architecture trained on a large corpus of real-world and synthetic time series. TimesFM provides zero-shot forecasting capabilities and demonstrates strong performance across various forecasting horizons.',
+            'Moirai': 'Moirai is a universal time series forecasting model developed by Salesforce. It uses a unified architecture capable of handling any-variate (univariate or multivariate) time series with any frequency. Moirai is pre-trained on diverse datasets and supports flexible forecasting horizons.',
+            'Moment': 'Moment (MOdel for Time series) is a family of foundation models for time series analysis. It supports multiple tasks including forecasting, classification, and anomaly detection through a single pre-trained model. Moment uses masked time series modeling as its pre-training objective.',
+            'Nixtla': 'Nixtla provides production-ready time series forecasting solutions including StatsForecast (statistical models), MLForecast (machine learning), and NeuralForecast (deep learning). Their libraries emphasize scalability, accuracy, and ease of deployment for real-world forecasting applications.',
+            'TSLib': 'TSLib (Time Series Library) is a comprehensive toolkit providing implementations of state-of-the-art time series forecasting models. It includes classic methods, modern deep learning approaches, and recent transformer-based architectures. TSLib emphasizes reproducible research with standardized experimental protocols.',
+            'Informer': 'Informer is an efficient transformer model designed for long sequence time series forecasting (LSTF). It introduces ProbSparse self-attention mechanism and self-attention distilling to reduce computational complexity. Informer addresses the quadratic complexity issue of vanilla transformers for long sequences.',
+            'Autoformer': 'Autoformer is a transformer variant that incorporates decomposition architecture and Auto-Correlation mechanism. It explicitly decomposes time series into trend and seasonal components, applying different transformations to each. This design improves long-term forecasting accuracy and interpretability.',
+            'FEDformer': 'FEDformer (Frequency Enhanced Decomposed Transformer) performs forecasting in the frequency domain using Fourier and Wavelet transforms. This frequency-based approach captures long-term dependencies more efficiently than time-domain attention, achieving strong performance on long-term forecasting tasks.',
+            'Pyraformer': 'Pyraformer introduces a pyramidal attention module with inter-scale tree structure to capture temporal dependencies at multiple resolutions. This hierarchical design reduces complexity while modeling both short-term and long-term patterns effectively for time series forecasting.',
+            'MICN': 'MICN (Multi-scale Isometric Convolution Network) is a pure convolutional model for time series forecasting. It uses isometric convolutions at multiple scales to capture local and global temporal patterns. MICN demonstrates that well-designed convolutions can match transformer performance.',
+            'DLinear': 'DLinear (Decomposition Linear) is a simple yet effective baseline that uses linear layers combined with trend-seasonal decomposition. Despite its simplicity, DLinear outperforms many complex deep learning models on long-term forecasting benchmarks, questioning the necessity of complex architectures.',
+            'NLinear': 'NLinear (Normalization Linear) is an extremely simple baseline consisting of a single linear layer with instance normalization. It has shown competitive performance against complex models, highlighting the importance of proper normalization and questioning architectural complexity.',
+            'RLinear': 'RLinear (Revin Linear) incorporates reversible instance normalization (RevIN) with linear layers for forecasting. The normalization-denormalization framework helps the model adapt to distribution shifts, achieving strong performance with minimal parameters.',
+            'TiDE': 'TiDE (Time series Dense Encoder) is an MLP-based model that uses dense encoder-decoder architecture for multivariate forecasting. It explicitly models both past time series and future covariates through separate encoders, achieving competitive accuracy with high computational efficiency.',
+            'FreTS': 'FreTS (Frequency-domain Transformer for Time Series) performs forecasting entirely in the frequency domain using complex-valued networks. This approach captures periodic patterns and long-range dependencies more naturally than time-domain models.',
+            'TimesNet': 'TimesNet transforms 1D time series into 2D tensors to capture intra-period and inter-period variations simultaneously. It uses 2D convolutions (inception blocks) for this multi-periodicity modeling, achieving state-of-the-art results across multiple time series tasks.',
+            'ETSformer': 'ETSformer combines the principles of exponential smoothing with transformer architecture. It decomposes forecasting into level, growth, and seasonal components, learning their interactions through attention mechanisms. This design provides both accuracy and interpretability.',
+            'Crossformer': 'Crossformer introduces Dimension-Segment-Wise (DSW) structure to capture cross-dimension dependencies in multivariate time series. It uses two-stage attention for efficient modeling of both temporal and variate patterns.',
+            'SegRNN': 'SegRNN (Segment RNN) processes time series in segments rather than point-by-point, improving efficiency and long-range modeling. It uses RNN cells (LSTM/GRU) on segmented data, achieving competitive performance with lower complexity.',
+            'Transformer': 'The Vanilla Transformer applies the original attention mechanism from natural language processing to time series. While it demonstrates the potential of attention for sequential modeling, vanilla transformers face efficiency challenges with long time series.',
+            'Non-stationary Transformer': 'Non-stationary Transformer addresses distribution shift in time series by de-stationary attention and series stationarization. It explicitly accounts for non-stationarity in both attention computation and normalization.',
+            'iTransformer': 'iTransformer (Inverted Transformer) applies attention on the variate dimension rather than the temporal dimension for multivariate forecasting. This inversion improves performance by treating each variate as a token, capturing cross-variate dependencies.',
+            'Reformer': 'Reformer uses locality-sensitive hashing to reduce transformer complexity from O(L²) to O(L log L). It makes transformers more practical for long sequences while maintaining modeling capacity.',
+            'Flowformer': 'Flowformer replaces softmax attention with linear attention using flow formulation. This modification reduces computational cost while maintaining competitive accuracy for long sequence forecasting.',
+            'Flashformer': 'Flashformer accelerates transformer training and inference using memory-efficient attention computation. It optimizes GPU memory usage and computation, enabling training on longer sequences.',
+            'SparseTSF': 'SparseTSF (Sparse Time Series Forecasting) uses sparse attention patterns tailored for time series. It identifies and focuses on the most relevant historical time steps, reducing computation while maintaining accuracy.',
+            'TSMixer': 'TSMixer uses MLP-Mixer architecture adapted for time series, mixing information across both time and feature dimensions with simple MLPs. It achieves strong performance with high computational efficiency.',
+            'FITS': 'FITS (Frequency Interpolation Time Series) performs forecasting by interpolation in the frequency domain. It models frequency components directly, providing an efficient alternative to time-domain methods.',
+            'SCINet': 'SCINet (Sample Convolution and Interaction Network) uses downsampling and interactive learning to capture temporal patterns at multiple resolutions. Its recursive structure models both short and long-term dependencies.',
+            'LightTS': 'LightTS is a lightweight model using continuous wavelet transform and simple MLPs. It achieves strong forecasting performance with minimal parameters and computation.',
+            'STEMGNN': 'STEMGNN (Spectro-Temporal Graph Neural Network) combines graph structure for spatial dependencies with spectral analysis for temporal patterns in multivariate time series.',
+            'TCN': 'TCN (Temporal Convolutional Network) uses dilated causal convolutions to capture long-range dependencies. It provides an efficient alternative to RNNs with better parallelization.',
+            'TimeMixer': 'TimeMixer employs multi-scale mixing for both past and future information. It decomposes time series at multiple scales and learns their interactions for improved forecasting.',
+            'TSMixerx': 'TSMixerx extends TSMixer with enhanced mixing mechanisms and additional architectural improvements for better handling of complex temporal patterns.',
+            'RITS': 'RITS (Recurrent Imputation for Time Series) handles missing values in time series through recurrent neural networks. It jointly performs imputation and forecasting.',
+            'SAITS': 'SAITS (Self-Attention Imputation for Time Series) uses bidirectional self-attention for missing value imputation. It outperforms traditional imputation methods by leveraging temporal dependencies.',
+            'GPVAE': 'GPVAE (Gaussian Process VAE) combines Gaussian processes with variational autoencoders for probabilistic time series modeling and imputation.',
+            'BRITS': 'BRITS (Bidirectional Recurrent Imputation for Time Series) uses bidirectional RNNs to impute missing values considering both past and future context.',
+            'ImputeFormer': 'ImputeFormer applies transformer architecture specifically for time series imputation. It uses masked self-attention to reconstruct missing values from observed ones.',
+            'UniTS': 'UniTS (Universal Time Series model) is a unified model capable of handling multiple time series tasks including forecasting, classification, and imputation through a single architecture.',
+            'NBEATS': 'N-BEATS (Neural Basis Expansion Analysis for Time Series) is a deep learning architecture based on backward and forward residual links. It decomposes forecasts into interpretable trend and seasonality components.',
+            'NHITS': 'N-HiTS (Neural Hierarchical Interpolation for Time Series) extends N-BEATS with multi-rate sampling and hierarchical interpolation. It achieves better long-horizon accuracy and efficiency.',
+            'TSLib-Forecasting': 'TSLib-Forecasting is a comprehensive library providing standardized implementations of time series forecasting models for benchmarking and research.',
+            'LSTM': 'LSTM (Long Short-Term Memory) is a recurrent neural network architecture designed to capture long-term dependencies in sequences. It addresses the vanishing gradient problem through gating mechanisms.',
+            'DeepAR': 'DeepAR is Amazon\'s autoregressive recurrent network for probabilistic forecasting. It learns across related time series and provides quantile forecasts for uncertainty estimation.',
+            'Prophet': 'Prophet is Facebook\'s forecasting tool based on additive decomposition of trend, seasonality, and holidays. It\'s designed for business forecasting with strong out-of-the-box performance.',
+            'ARIMA': 'ARIMA (AutoRegressive Integrated Moving Average) is a classical statistical model for time series forecasting. It models linear dependencies using autoregression, differencing for stationarity, and moving averages.',
+            'ETS': 'ETS (Error, Trend, Seasonality) is a state space approach to forecasting that models level, trend, and seasonal components with exponential smoothing.',
+            'Theta': 'Theta method decomposes time series into two theta-lines combining trend and seasonality. Despite its simplicity, it has won forecasting competitions.',
+            'tbats': 'TBATS (Trigonometric seasonality, Box-Cox transformation, ARMA errors, Trend, Seasonal components) handles multiple seasonal patterns and complex seasonality.',
+            'catboost': 'CatBoost is a gradient boosting library that can be adapted for time series forecasting through feature engineering. It handles categorical features natively.',
+            'RandomForest': 'Random Forest uses ensemble of decision trees for regression/classification. For time series, it requires careful feature engineering but can capture non-linear patterns.',
+            'lightgbm': 'LightGBM is an efficient gradient boosting framework often used for time series through lag features and other engineered features.',
+            'RNN': 'RNN (Recurrent Neural Network) processes sequences by maintaining hidden states. While foundational, vanilla RNNs suffer from vanishing gradients for long sequences.',
+            'GRU': 'GRU (Gated Recurrent Unit) simplifies LSTM with fewer gates while maintaining similar performance. It\'s more computationally efficient than LSTM.',
+            'VARMAX': 'VARMAX (Vector AutoRegression Moving Average with eXogenous variables) extends VAR to include moving average and exogenous variables for multivariate forecasting.',
+            'VECM': 'VECM (Vector Error Correction Model) is used for cointegrated time series, capturing long-run equilibrium relationships between variables.'
+        };
+        
+        return descriptions[modelName] || `${modelName} is a time series model used for forecasting and analysis tasks. It has been evaluated across multiple benchmark datasets to assess its performance on various forecasting scenarios.`;
     }
 
     setupEventListeners() {
@@ -91,12 +169,6 @@ class NotebookCatalog {
                 const view = e.currentTarget.dataset.view;
                 this.switchView(view);
             });
-        });
-
-        // Sort dropdown
-        document.getElementById('sort-select').addEventListener('change', (e) => {
-            this.currentSort = e.target.value;
-            this.renderContent();
         });
 
         // See all buttons
@@ -136,6 +208,11 @@ class NotebookCatalog {
         document.getElementById('all-view').classList.toggle('hidden', tabName !== 'all');
         document.getElementById('datasets-view').classList.toggle('hidden', tabName !== 'datasets');
         document.getElementById('models-view').classList.toggle('hidden', tabName !== 'models');
+
+        // Set default view: list for datasets/models tabs, keep current for 'all' tab (featured sections)
+        if (tabName === 'datasets' || tabName === 'models') {
+            this.switchView('list');
+        }
 
         this.renderContent();
     }
@@ -423,6 +500,29 @@ class NotebookCatalog {
             ? this.createDatasetModalContent(item) 
             : this.createModelModalContent(item);
 
+        // Add event listeners to benchmark badges if this is a dataset modal
+        if (type === 'dataset') {
+            const benchmarkBadges = modalBody.querySelectorAll('.benchmark-badge.clickable');
+            benchmarkBadges.forEach(badge => {
+                badge.addEventListener('click', () => {
+                    const modelName = badge.dataset.modelName;
+                    const modelId = badge.dataset.modelId;
+                    const model = this.models.find(m => m.id === modelId);
+                    if (model) {
+                        this.openModal(modelId, 'model');
+                    }
+                });
+                
+                // Also support keyboard navigation
+                badge.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        badge.click();
+                    }
+                });
+            });
+        }
+
         const modalOverlay = document.getElementById('modal-overlay');
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -531,7 +631,11 @@ class NotebookCatalog {
                 <div class="benchmarks-grid">
                     ${modelNames.map(modelName => {
                         const isEvaluated = benchmarks[modelName];
-                        return `<div class="benchmark-badge ${isEvaluated ? '' : 'inactive'}">${this.escapeHtml(modelName)}</div>`;
+                        const modelId = modelName.toLowerCase().replace(/\s+/g, '-');
+                        return `<div class="benchmark-badge ${isEvaluated ? 'clickable' : 'inactive'}" 
+                                     data-model-name="${this.escapeHtml(modelName)}" 
+                                     data-model-id="${modelId}"
+                                     ${isEvaluated ? 'role="button" tabindex="0"' : ''}>${this.escapeHtml(modelName)}</div>`;
                     }).join('')}
                 </div>
             </div>

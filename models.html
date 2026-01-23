@@ -662,6 +662,22 @@
             color: var(--v2-on-surface-de-emphasis);
         }
 
+        .benchmark-badge.clickable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .benchmark-badge.clickable:hover {
+            background-color: var(--nlm-blue-50);
+            color: var(--nlm-brand-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(11, 87, 208, 0.2);
+        }
+
+        .benchmark-badge.clickable:active {
+            transform: translateY(0);
+        }
+
         .model-stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -839,11 +855,6 @@
                         </svg>
                     </button>
                 </div>
-                <select class="sort-dropdown" id="sort-select">
-                    <option value="recent">Most recent</option>
-                    <option value="name">Name</option>
-                    <option value="domain">Domain</option>
-                </select>
             </div>
         </div>
     </header>
