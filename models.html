@@ -58,9 +58,13 @@
             border-bottom: 1px solid var(--v2-note-border);
             padding: 16px 24px;
             position: sticky;
-            top: 70px; /* Adjusted to sit below the fixed navbar */
+            top: 60px; /* Adjusted to sit below the fixed navbar */
             z-index: 99;
-            margin-top: 70px; /* Account for fixed navbar height */
+        }
+
+        /* Adjust body to account for fixed navbar */
+        body {
+            margin-top: 60px;
         }
 
         .header-container {
