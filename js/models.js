@@ -245,12 +245,12 @@ class NotebookCatalog {
     }
 
     renderFeatured() {
-        // Render featured datasets (first 6)
-        const featuredDatasets = this.getFilteredAndSorted(this.datasets).slice(0, 6);
+        // Render featured datasets (first 4)
+        const featuredDatasets = this.getFilteredAndSorted(this.datasets).slice(0, 4);
         this.renderCards(featuredDatasets, 'featured-datasets-grid', 'dataset');
 
-        // Render featured models (first 6)
-        const featuredModels = this.getFilteredAndSorted(this.models).slice(0, 6);
+        // Render featured models (first 4)
+        const featuredModels = this.getFilteredAndSorted(this.models).slice(0, 4);
         this.renderCards(featuredModels, 'featured-models-grid', 'model');
     }
 
