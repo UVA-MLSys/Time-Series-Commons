@@ -437,7 +437,6 @@ class NotebookCatalog {
             // For datasets: show all metadata from spreadsheet
             const metaParts = [];
             
-            if (item.domain) metaParts.push(item.domain);
             if (item.timePoints) metaParts.push(`${item.timePoints} points`);
             if (item.variables) metaParts.push(item.variables);
             if (item.dimensions) metaParts.push(`${item.dimensions} dimensions`);
@@ -454,7 +453,7 @@ class NotebookCatalog {
                         <div class="list-title">${this.escapeHtml(item.name)}</div>
                         <div class="list-meta">${meta}</div>
                     </div>
-                    <span class="list-badge">${this.escapeHtml(item.interval || 'Not specified')}</span>
+                    <span class="list-badge">${this.escapeHtml(domain)}</span>
                 </div>
             `;
         } else {
