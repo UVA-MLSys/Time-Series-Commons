@@ -10,33 +10,35 @@
     <link rel="stylesheet" href="./css/styles.css">
     <style>
         :root {
-            /* Google NotebookLM Colors */
-            --nlm-blue-50: #4259ff;
-            --nlm-blue-98: #edeffa;
-            --nlm-grey-10: #1b1b1c;
-            --nlm-grey-20: #303030;
-            --nlm-grey-40: #5e5e5e;
-            --nlm-grey-50: #777;
-            --nlm-grey-95: #f2f2f2;
-            --nlm-grey-98: #f9f9f9;
-            --nlm-brand-white: #fff;
-            
-            --v2-surface: #f7fbff;
-            --v2-surface-container: #dce1e8;
-            --v2-surface-container-high: #e3e8ee;
-            --v2-on-surface: #47484c;
-            --v2-on-surface-emphasis: #1f1f1f;
-            --v2-on-surface-de-emphasis: #535559;
-            --v2-primary: #abc8fa;
-            --v2-divider: #d6dbe2;
-            --v2-note-border: #dde1eb;
-            
-            --v3-pill-selected-background: #edeffa;
-            --v3-follow-up-button-background: #dce1e8;
-            
-            /* Material Design Shadows */
-            --mat-sys-level1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-            --mat-sys-level2: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+            /* NotebookLM-style palette */
+            --nlm-blue-50: #4d63ff;
+            --nlm-blue-98: #eef1ff;
+            --nlm-grey-10: #202124;
+            --nlm-grey-20: #2f3034;
+            --nlm-grey-40: #5f6368;
+            --nlm-grey-50: #70757a;
+            --nlm-grey-95: #f1f3f4;
+            --nlm-grey-98: #f8f9fa;
+            --nlm-brand-white: #ffffff;
+            --nlm-surface-1: #f7f8fb;
+
+            --v2-surface: #f8f9fb;
+            --v2-surface-container: #e6e9ef;
+            --v2-surface-container-high: #eef1f6;
+            --v2-on-surface: #5f6368;
+            --v2-on-surface-emphasis: #202124;
+            --v2-on-surface-de-emphasis: #5f6368;
+            --v2-primary: #c7d2ff;
+            --v2-divider: #e0e3eb;
+            --v2-note-border: #dfe3ea;
+            --v2-outline: #c7ccd6;
+
+            --v3-pill-selected-background: #e8edff;
+            --v3-follow-up-button-background: #e3e7f3;
+
+            /* Subtle shadows */
+            --mat-sys-level1: 0px 1px 2px rgba(60, 64, 67, 0.15), 0px 1px 3px rgba(60, 64, 67, 0.1);
+            --mat-sys-level2: 0px 4px 6px rgba(60, 64, 67, 0.2), 0px 2px 4px rgba(60, 64, 67, 0.12);
         }
 
         * {
@@ -47,6 +49,7 @@
 
         body {
             font-family: 'Google Sans Text', 'Google Sans', sans-serif;
+            font-size: 14px;
             background-color: var(--v2-surface);
             color: var(--v2-on-surface-emphasis);
             line-height: 1.5;
@@ -230,18 +233,18 @@
         }
 
         .section-title {
-            font-size: 22px;
-            font-weight: 400;
+            font-size: 20px;
+            font-weight: 500;
             font-family: 'Google Sans', sans-serif;
             color: var(--v2-on-surface-emphasis);
         }
 
         .see-all-btn {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: transparent;
             border: none;
             color: var(--nlm-blue-50);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             font-family: 'Google Sans Text', sans-serif;
             cursor: pointer;
@@ -265,13 +268,13 @@
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
+            gap: 18px;
         }
 
         .featured-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
         }
 
         .featured-cards-grid.hidden {
@@ -281,21 +284,22 @@
         /* Card */
         .card {
             background: var(--nlm-brand-white);
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             box-shadow: var(--mat-sys-level1);
-            transition: all 0.2s;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: pointer;
-            border: 1px solid var(--v2-note-border);
+            border: 1px solid var(--v2-divider);
         }
 
         .card:hover {
+            transform: translateY(-2px);
             box-shadow: var(--mat-sys-level2);
         }
 
         .card-image {
             width: 100%;
-            height: 140px;
+            height: 132px;
             background: var(--nlm-blue-98);
             display: flex;
             align-items: center;
@@ -312,8 +316,8 @@
         }
 
         .card-icon {
-            font-size: 40px;
-            opacity: 0.6;
+            font-size: 36px;
+            opacity: 0.5;
         }
 
         .card-meta {
@@ -323,14 +327,15 @@
         }
 
         .meta-badge {
-            padding: 4px 12px;
+            padding: 4px 10px;
             background: var(--nlm-brand-white);
-            border-radius: 16px;
-            font-size: 12px;
+            border-radius: 14px;
+            font-size: 11px;
             font-weight: 500;
             font-family: 'Google Sans Text', sans-serif;
             color: var(--v2-on-surface);
             box-shadow: var(--mat-sys-level1);
+            border: 1px solid var(--v2-divider);
         }
 
         .card-content {
@@ -338,20 +343,20 @@
         }
 
         .card-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
             font-family: 'Google Sans', sans-serif;
             color: var(--v2-on-surface-emphasis);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             line-height: 1.4;
         }
 
         .card-description {
-            font-size: 13px;
+            font-size: 12px;
             font-family: 'Google Sans Text', sans-serif;
             color: var(--v2-on-surface);
             line-height: 1.5;
-            min-height: 40px;
+            min-height: 36px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -362,14 +367,14 @@
         /* Featured Cards Grid (always visible) */
         .featured-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
         }
 
         .cards-grid {
             display: none;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
+            gap: 18px;
         }
 
         .cards-grid.active {
@@ -388,12 +393,12 @@
 
         .list-item {
             background: var(--nlm-brand-white);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 12px 16px;
             display: flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid var(--v2-note-border);
+            border: 1px solid var(--v2-divider);
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -418,7 +423,7 @@
         }
 
         .list-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             font-family: 'Google Sans', sans-serif;
             color: var(--v2-on-surface-emphasis);
@@ -432,10 +437,10 @@
         }
 
         .list-badge {
-            padding: 4px 12px;
+            padding: 4px 10px;
             background: var(--nlm-blue-98);
             border-radius: 12px;
-            font-size: 12px;
+            font-size: 11px;
             font-family: 'Google Sans Text', sans-serif;
             color: var(--nlm-blue-50);
             font-weight: 500;
@@ -594,7 +599,7 @@
             padding: 16px;
             background-color: var(--nlm-blue-98);
             border-radius: 12px;
-            border: 1px solid var(--v2-note-border);
+            border: 1px solid var(--v2-divider);
         }
 
         .modal-info-label {
@@ -655,10 +660,10 @@
             color: var(--nlm-blue-50);
             border-radius: 8px;
             text-align: center;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             font-family: 'Google Sans Text', sans-serif;
-            border: 1px solid var(--v2-note-border);
+            border: 1px solid var(--v2-divider);
         }
 
         .benchmark-badge.inactive {
@@ -725,7 +730,7 @@
             max-height: 400px;
             overflow-y: auto;
             padding-right: 8px;
-            border: 1px solid var(--v2-note-border);
+            border: 1px solid var(--v2-divider);
             border-radius: 8px;
             padding: 12px;
             background-color: var(--nlm-surface-1);
@@ -757,7 +762,7 @@
             background: var(--nlm-blue-98);
             border-radius: 8px;
             border-left: 4px solid var(--nlm-blue-50);
-            font-size: 14px;
+            font-size: 13px;
             font-family: 'Google Sans Text', sans-serif;
         }
 
@@ -768,13 +773,13 @@
         }
 
         .dataset-domain-tag {
-            padding: 4px 12px;
+            padding: 4px 10px;
             background-color: var(--nlm-brand-white);
             color: var(--nlm-blue-50);
             border-radius: 12px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
-            border: 1px solid var(--v2-note-border);
+            border: 1px solid var(--v2-divider);
         }
 
         .more-datasets {
@@ -782,7 +787,7 @@
             color: var(--v2-on-surface-de-emphasis);
             margin-top: 8px;
             text-align: center;
-            font-size: 13px;
+            font-size: 12px;
             font-family: 'Google Sans Text', sans-serif;
         }
 

@@ -719,6 +719,22 @@ a:hover {
     object-position: center top;
 }
 
+.yingzheng-img {
+    object-position: center 40%;
+}
+
+.shamsul-img {
+    object-position: center 20%;
+}
+
+.kingsley-img {
+    object-position: center 25%;
+}
+
+.xin-sun-img {
+    object-position: center 30%;
+}
+
 .collaborator-info {
     margin-top: 15px;
 }
