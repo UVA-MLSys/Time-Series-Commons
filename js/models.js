@@ -429,7 +429,6 @@ class NotebookCatalog {
     createCard(item, type) {
         const isDataset = type === 'dataset';
         const bgClass = isDataset ? 'dataset-bg' : 'model-bg';
-        const icon = isDataset ? '📊' : '🤖';
         
         let description = '';
         let domain = item.domain || 'Sensor';
@@ -463,7 +462,6 @@ class NotebookCatalog {
         return `
             <div class="card" data-id="${item.id}" data-type="${type}">
                 <div class="card-image ${bgClass}" style="${backgroundStyle}">
-                    <div class="card-icon">${icon}</div>
                     <div class="card-meta">
                         <span class="meta-badge">${domainCategory}</span>
                     </div>
@@ -499,7 +497,15 @@ class NotebookCatalog {
 
     createListItem(item, type) {
         const isDataset = type === 'dataset';
-        const icon = isDataset ? '📊' : '🤖';
+        
+        // Get domain configuration for background image
+        let domain = item.domain || 'Sensor';
+        const domainConfig = this.getDomainConfig(domain);
+        const domainImage = domainConfig.image || '';
+        const domainCategory = domainConfig.category || domain;
+        
+        // Build background image style for list icon
+        const iconBackgroundStyle = domainImage ? `background-image: url('${domainImage}'); background-size: cover; background-position: center;` : '';
         
         if (isDataset) {
             // For datasets: show all metadata from spreadsheet
@@ -510,18 +516,16 @@ class NotebookCatalog {
             if (item.dimensions) metaParts.push(`${item.dimensions} dimensions`);
             
             const meta = metaParts.join(' · ');
-            const domain = item.domain || 'General';
 
             return `
                 <div class="list-item" data-id="${item.id}" data-type="${type}">
-                    <div class="list-icon">
-                        <span style="font-size: 24px;">${icon}</span>
+                    <div class="list-icon" style="${iconBackgroundStyle}">
                     </div>
                     <div class="list-content">
                         <div class="list-title">${this.escapeHtml(item.name)}</div>
                         <div class="list-meta">${meta}</div>
                     </div>
-                    <span class="list-badge">${this.escapeHtml(domain)}</span>
+                    <span class="list-badge">${this.escapeHtml(domainCategory)}</span>
                 </div>
             `;
         } else {
@@ -535,8 +539,7 @@ class NotebookCatalog {
 
             return `
                 <div class="list-item" data-id="${item.id}" data-type="${type}">
-                    <div class="list-icon">
-                        <span style="font-size: 24px;">${icon}</span>
+                    <div class="list-icon" style="${iconBackgroundStyle}">
                     </div>
                     <div class="list-content">
                         <div class="list-title">${this.escapeHtml(item.name)}</div>
