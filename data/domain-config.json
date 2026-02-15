@@ -1,0 +1,79 @@
+{
+  "domains": {
+    "Energy": {
+      "image": "pics/domains/energy.jpg",
+      "color": "#f39c12",
+      "keywords": ["energy", "power", "electricity", "solar", "renewable", "consumption", "load", "demand", "production", "transformer", "household", "utility", "grid", "electricity consumption", "electricity demand", "electricity load", "electricity production"]
+    },
+    "Synthetic": {
+      "image": "pics/domains/synthetic.jpg",
+      "color": "#9b59b6",
+      "keywords": ["synthetic", "simulated", "artificial", "generated", "simulation", "comp. benchmark", "augmented", "forecasting", "time series", "chaotic systems", "cross-domain", "multi-domain", "multiple", "mixed", "other", "unknown", "diverse", "imputation"]
+    },
+    "Image": {
+      "image": "pics/domains/image.jpg",
+      "color": "#1abc9c",
+      "keywords": ["image", "vision", "computer vision", "handwriting", "character recognition", "scene", "visual", "anthropology", "botany", "scene decomposition"]
+    },
+    "Sensor": {
+      "image": "pics/domains/sensor.jpg",
+      "color": "#3498db",
+      "keywords": ["sensor", "iot", "internet of things", "spectrum", "spectro", "monitoring (not health/environmental)", "telemetry", "smart building", "smart home", "device monitoring", "sensor data", "sensor network", "device"]
+    },
+    "Motion": {
+      "image": "pics/domains/motion.jpg",
+      "color": "#2ecc71",
+      "keywords": ["motion", "activity", "har", "human activity recognition", "gesture", "trajectory", "gait", "parkinson", "hemodynamic", "movement", "hand gesture", "count"]
+    },
+    "Corporate": {
+      "image": "pics/domains/corporate.jpg",
+      "color": "#34495e",
+      "keywords": ["corporate", "business", "web", "enterprise", "erp", "it operations", "aiops", "server", "system performance", "web analytics", "digital humanities", "web services", "business analytics", "cloud computing", "cloud", "anomaly detection", "data science", "sentiment analysis", "telecommunications", "nlp", "llm behavior", "llm"]
+    },
+    "Transportation": {
+      "image": "pics/domains/transportation.jpg",
+      "color": "#e74c3c",
+      "keywords": ["transportation", "transport", "traffic", "vehicle", "urban mobility", "taxi", "bike", "freeway", "logistics", "bike-sharing", "car lanes"]
+    },
+    "Nature": {
+      "image": "pics/domains/nature.jpg",
+      "color": "#27ae60",
+      "keywords": ["environmental", "climate", "weather", "meteorology", "air quality", "satellite", "geospatial", "polar", "nature", "earth observation", "atmospheric", "co2", "pollution", "environment", "climatology", "agriculture", "earthquake", "seismology", "seismic", "gravitational wave", "astrophysics", "solar physics", "gis", "geology"]
+    },
+    "Industry": {
+      "image": "pics/domains/industry.jpg",
+      "color": "#2c3e50",
+      "keywords": ["indust", "industrial", "manufacturing", "automation", "predictive maintenance", "control system", "ics security", "industrial automation", "industrial iot"]
+    },
+    "Economics": {
+      "image": "pics/domains/economics.jpg",
+      "color": "#f1c40f",
+      "keywords": ["macro", "macro1", "macro2", "macroeconomic", "exchange rate", "foreign exchange", "gdp", "economic indicator", "economic"]
+    },
+    "Demographics": {
+      "image": "pics/domains/demographics.jpg",
+      "color": "#16a085",
+      "keywords": ["demogr", "demographic", "population", "social sciences", "public policy", "social dynamics", "social trends", "online behavior"]
+    },
+    "Retail": {
+      "image": "pics/domains/retail.jpg",
+      "color": "#e91e63",
+      "keywords": ["retail", "e-commerce", "marketing", "consumer", "shopping", "store", "tourism", "retail sales forecasting", "sales"]
+    },
+    "Microeconomics": {
+      "image": "pics/domains/microeconomics.jpg",
+      "color": "#8e44ad",
+      "keywords": ["micro", "micro1", "micro2", "micro3", "finance", "banking", "stock", "financial", "bankruptcy", "transaction", "behavioral finance", "behavioral science"]
+    },
+    "Health": {
+      "image": "pics/domains/health.jpg",
+      "color": "#c0392b",
+      "keywords": ["health", "medical", "healthcare", "ecg", "eeg", "eog", "epg", "biomedical", "epidemiology", "public health", "disease", "surveillance", "illness", "heart", "physiology", "genomics", "hrm", "blood pressure", "influenza", "parkinson's disease", "neuroscience", "bci", "epigenetics"]
+    },
+    "Audio": {
+      "image": "pics/domains/audio.jpg",
+      "color": "#9b59b6",
+      "keywords": ["audio", "speech", "sound", "acoustic", "bioacoustics", "voice", "speech recognition", "nlp"]
+    }
+  }
+}

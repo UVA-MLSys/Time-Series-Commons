@@ -8,6 +8,7 @@ class NotebookCatalog {
         this.allData = [];
         this.datasets = [];
         this.models = [];
+        this.domainConfig = null;
         this.currentTab = 'all';
         this.currentView = 'grid'; // Default to grid for featured sections
         this.currentSort = 'name';
@@ -19,6 +20,7 @@ class NotebookCatalog {
     async init() {
         try {
             await this.loadData();
+            await this.loadDomainConfig();
             this.processData();
             this.setupEventListeners();
             this.renderContent();
@@ -35,6 +37,65 @@ class NotebookCatalog {
         }
         const data = await response.json();
         this.allData = data.models || [];
+    }
+
+    async loadDomainConfig() {
+        try {
+            const response = await fetch('./data/domain-config.json');
+            if (!response.ok) {
+                console.warn('Could not load domain config, using defaults');
+                return;
+            }
+            this.domainConfig = await response.json();
+        } catch (error) {
+            console.warn('Error loading domain config:', error);
+        }
+    }
+
+    getDomainConfig(domainName) {
+        if (!this.domainConfig || !domainName) {
+            return { image: '', color: '#95a5a6', category: 'Sensor' };
+        }
+
+        const domainLower = domainName.toLowerCase();
+        
+        // Try exact match first (case-insensitive)
+        for (const [category, config] of Object.entries(this.domainConfig.domains)) {
+            if (category.toLowerCase() === domainLower) {
+                return { ...config, category };
+            }
+        }
+        
+        // Try keyword matching
+        let bestMatch = null;
+        let maxMatchCount = 0;
+        
+        for (const [category, config] of Object.entries(this.domainConfig.domains)) {
+            let matchCount = 0;
+            for (const keyword of config.keywords) {
+                if (domainLower.includes(keyword.toLowerCase())) {
+                    matchCount++;
+                }
+            }
+            
+            // Keep track of best match
+            if (matchCount > maxMatchCount) {
+                maxMatchCount = matchCount;
+                bestMatch = { ...config, category };
+            }
+        }
+        
+        // Return best match or default to Sensor
+        if (bestMatch) {
+            return bestMatch;
+        }
+        
+        // Fallback to Sensor category
+        return {
+            image: 'pics/domains/sensor.jpg',
+            color: '#3498db',
+            category: 'Sensor'
+        };
     }
 
     processData() {
@@ -371,7 +432,12 @@ class NotebookCatalog {
         const icon = isDataset ? '📊' : '🤖';
         
         let description = '';
-        let domain = item.domain || 'General';
+        let domain = item.domain || 'Sensor';
+        
+        // Get domain configuration for background image
+        const domainConfig = this.getDomainConfig(domain);
+        const domainImage = domainConfig.image || '';
+        const domainCategory = domainConfig.category || domain;
         
         if (isDataset) {
             // For datasets: create a comprehensive description from metadata
@@ -389,15 +455,17 @@ class NotebookCatalog {
             const domains = this.getModelDomains(item.name);
             const domainCount = domains.size;
             description = `Evaluated on ${item.datasetsCount || 0} datasets across ${domainCount} domain${domainCount !== 1 ? 's' : ''}`;
-            domain = 'General';
         }
+
+        // Build background image style
+        const backgroundStyle = domainImage ? `background-image: url('${domainImage}');` : '';
 
         return `
             <div class="card" data-id="${item.id}" data-type="${type}">
-                <div class="card-image ${bgClass}">
+                <div class="card-image ${bgClass}" style="${backgroundStyle}">
                     <div class="card-icon">${icon}</div>
                     <div class="card-meta">
-                        <span class="meta-badge">${domain}</span>
+                        <span class="meta-badge">${domainCategory}</span>
                     </div>
                 </div>
                 <div class="card-content">

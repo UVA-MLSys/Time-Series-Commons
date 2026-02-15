@@ -1,0 +1,4914 @@
+{
+  "summary": {
+    "Energy": 105,
+    "Image": 37,
+    "Nature": 91,
+    "Transportation": 57,
+    "Corporate": 62,
+    "Sensor": 57,
+    "Retail": 31,
+    "Audio": 13,
+    "Motion": 49,
+    "Synthetic": 72,
+    "Health": 69,
+    "Industry": 29,
+    "Economics": 68,
+    "Microeconomics": 52,
+    "Demographics": 23
+  },
+  "total_datasets": 815,
+  "coverage_percent": 100,
+  "unmatched_domains": [],
+  "detailed_mappings": [
+    {
+      "dataset": "ACSF1",
+      "original_domain": "Device (Energy Consumption)",
+      "category": "Energy",
+      "match_type": "keyword: energy, consumption"
+    },
+    {
+      "dataset": "Adiac",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Air Quality UC Irvine Repository (UCI)",
+      "original_domain": "Air Quality",
+      "category": "Nature",
+      "match_type": "keyword: air quality"
+    },
+    {
+      "dataset": "AirPassengersDataset",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "AirQuality",
+      "original_domain": "Environmental Science, Air Quality Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, air quality, environment"
+    },
+    {
+      "dataset": "Alibaba-Cluster-Trace-2018",
+      "original_domain": "Cloud Computing",
+      "category": "Corporate",
+      "match_type": "keyword: cloud computing, cloud"
+    },
+    {
+      "dataset": "alibaba_cluster_trace_2018",
+      "original_domain": "Cloud",
+      "category": "Corporate",
+      "match_type": "keyword: cloud"
+    },
+    {
+      "dataset": "AllGestureWiimoteX",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "AllGestureWiimoteY",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "AllGestureWiimoteZ",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ANIMAL",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Anomalous Gravitational-Wave Transients",
+      "original_domain": "Astrophysics",
+      "category": "Nature",
+      "match_type": "keyword: astrophysics"
+    },
+    {
+      "dataset": "Anomalous Sea Level Rise (iHARP HDR Anomaly Challenge)",
+      "original_domain": "Polar Science / Environmental Science",
+      "category": "Nature",
+      "match_type": "keyword: environmental, polar, environment"
+    },
+    {
+      "dataset": "AppliancesEnergy",
+      "original_domain": "Energy Monitoring",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "Application",
+      "original_domain": "E-commerce / IT Observability",
+      "category": "Retail",
+      "match_type": "keyword: e-commerce"
+    },
+    {
+      "dataset": "ArabicDigits (AD)",
+      "original_domain": "Speech Recognition / Audio",
+      "category": "Audio",
+      "match_type": "keyword: audio, speech, speech recognition"
+    },
+    {
+      "dataset": "ArrowHead",
+      "original_domain": "Image (Anthropology)",
+      "category": "Image",
+      "match_type": "keyword: image, anthropology"
+    },
+    {
+      "dataset": "ArticularyWordRecognition",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Artificial datasets",
+      "original_domain": "Synthetic/Artificial",
+      "category": "Synthetic",
+      "match_type": "keyword: synthetic, artificial"
+    },
+    {
+      "dataset": "AtrialFibrillation",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "AtrialFibrillation",
+      "original_domain": "ECG",
+      "category": "Health",
+      "match_type": "keyword: ecg"
+    },
+    {
+      "dataset": "Audio Data",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "AudioMNIST",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "AudioMNIST-DS",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Aus. Electricity Demand (Operational)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Aus. Electricity Demand (State-Level)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "AusBeerDataset",
+      "original_domain": "Economics / Manufacturing",
+      "category": "Industry",
+      "match_type": "keyword: manufacturing"
+    },
+    {
+      "dataset": "Australian Electricity (Demand)",
+      "original_domain": "Energy/Electricity Demand",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, demand"
+    },
+    {
+      "dataset": "Australian Electricity (Generation & Demand)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Australian Electricity (Generation by Fuel Type)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "australian_electricity_demand",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "australian_electricity_demand_half_hourly",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "australian_weather",
+      "original_domain": "Nature / Meteorology",
+      "category": "Nature",
+      "match_type": "keyword: meteorology, nature"
+    },
+    {
+      "dataset": "AustraliaRainfall",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "AustraliaRainfall",
+      "original_domain": "Environment",
+      "category": "Nature",
+      "match_type": "keyword: environment"
+    },
+    {
+      "dataset": "autogluon/chronos_datasets",
+      "original_domain": "Time Series (Forecasting)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "autogluon/chronos_datasets_extra",
+      "original_domain": "Time Series (Forecasting)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "azure_vm_traces",
+      "original_domain": "Cloud Computing",
+      "category": "Corporate",
+      "match_type": "keyword: cloud computing, cloud"
+    },
+    {
+      "dataset": "Azure-VM-Traces-2017",
+      "original_domain": "Cloud Computing",
+      "category": "Corporate",
+      "match_type": "keyword: cloud computing, cloud"
+    },
+    {
+      "dataset": "azure_vm_traces_2017",
+      "original_domain": "Time Series Forecasting (within Cloud Computing)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "BasicMotions",
+      "original_domain": "Human Activity Recognition (HAR)",
+      "category": "Motion",
+      "match_type": "keyword: activity, har, human activity recognition"
+    },
+    {
+      "dataset": "bdg-2_bear",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "bdg-2_fox",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "bdg-2_panther",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Beam-Level-Traffic",
+      "original_domain": "Telecommunications",
+      "category": "Corporate",
+      "match_type": "keyword: telecommunications"
+    },
+    {
+      "dataset": "Beef",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "BeetleFly",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Beijing Multi-Site Air-Quality",
+      "original_domain": "Air Quality",
+      "category": "Nature",
+      "match_type": "keyword: air quality"
+    },
+    {
+      "dataset": "Beijing PM2.5",
+      "original_domain": "Environmental Science, Air Pollution",
+      "category": "Nature",
+      "match_type": "keyword: environmental, pollution, environment"
+    },
+    {
+      "dataset": "Beijing Multi-Site Air-Quality Data",
+      "original_domain": "Air Quality",
+      "category": "Nature",
+      "match_type": "keyword: air quality"
+    },
+    {
+      "dataset": "Beijing-Subway",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "BeijingPM10Quality",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "BeijingPM25Quality",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "BeijingPM25Quality",
+      "original_domain": "Environment",
+      "category": "Nature",
+      "match_type": "keyword: environment"
+    },
+    {
+      "dataset": "BenzeneConcentration",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "BenzeneConcentration",
+      "original_domain": "Environment",
+      "category": "Nature",
+      "match_type": "keyword: environment"
+    },
+    {
+      "dataset": "BIDMC32HR",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "BIDMC32HR",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "BIDMCHR",
+      "original_domain": "Health Monitoring",
+      "category": "Health",
+      "match_type": "keyword: health"
+    },
+    {
+      "dataset": "BIDMCRR",
+      "original_domain": "Health Monitoring",
+      "category": "Health",
+      "match_type": "keyword: health"
+    },
+    {
+      "dataset": "BIDMCSpO2",
+      "original_domain": "Health Monitoring",
+      "category": "Health",
+      "match_type": "keyword: health"
+    },
+    {
+      "dataset": "BIGCAT",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Bike Sharing Dataset",
+      "original_domain": "Transportation / Environment",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport"
+    },
+    {
+      "dataset": "BirdChicken",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "bitcoin",
+      "original_domain": "Economic",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "bitcoin",
+      "original_domain": "Economic",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "Bitcoin Prices",
+      "original_domain": "Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance"
+    },
+    {
+      "dataset": "bitcoin_with_missing_values",
+      "original_domain": "Economic",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "bitcoin_without_missing_values",
+      "original_domain": "Economic",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "BME",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "Borealis",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "borg_cluster_data",
+      "original_domain": "Cloud Computing",
+      "category": "Corporate",
+      "match_type": "keyword: cloud computing, cloud"
+    },
+    {
+      "dataset": "Borg-Cluster-Data-2011",
+      "original_domain": "Cloud Computing",
+      "category": "Corporate",
+      "match_type": "keyword: cloud computing, cloud"
+    },
+    {
+      "dataset": "borg_cluster_data_2011",
+      "original_domain": "Cloud",
+      "category": "Corporate",
+      "match_type": "keyword: cloud"
+    },
+    {
+      "dataset": "brazilian_cities_temperature",
+      "original_domain": "Weather/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, weather"
+    },
+    {
+      "dataset": "brazilian_cities_temperature",
+      "original_domain": "Nature (Weather/Climate)",
+      "category": "Nature",
+      "match_type": "keyword: climate, weather, nature"
+    },
+    {
+      "dataset": "brazilian_cities_temperature",
+      "original_domain": "Nature (Climate Change)",
+      "category": "Nature",
+      "match_type": "keyword: climate, nature"
+    },
+    {
+      "dataset": "Building Data Genome Project 2 (BDG2)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Buildings-900K",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "buildings_900k",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "BUSINV",
+      "original_domain": "Macroeconomic",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "Car",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "car_parts",
+      "original_domain": "Sales",
+      "category": "Retail",
+      "match_type": "keyword: sales"
+    },
+    {
+      "dataset": "car_parts",
+      "original_domain": "Sales",
+      "category": "Retail",
+      "match_type": "keyword: sales"
+    },
+    {
+      "dataset": "car_parts_with_missing_values",
+      "original_domain": "Sales",
+      "category": "Retail",
+      "match_type": "keyword: sales"
+    },
+    {
+      "dataset": "car_parts_without_missing_values",
+      "original_domain": "Sales",
+      "category": "Retail",
+      "match_type": "keyword: sales"
+    },
+    {
+      "dataset": "CARDERS",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CARINDS",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CBF",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "cdc_fluview_who_nrevss",
+      "original_domain": "Public Health",
+      "category": "Health",
+      "match_type": "keyword: health, public health"
+    },
+    {
+      "dataset": "CharacterTrajectories",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CHBike",
+      "original_domain": "Traffic/Bike-Sharing Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: traffic, bike, bike-sharing"
+    },
+    {
+      "dataset": "CHEETAH",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "china_air_quality / beijing_air_quality",
+      "original_domain": "Environmental",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "Chinatown",
+      "original_domain": "Traffic",
+      "category": "Transportation",
+      "match_type": "keyword: traffic"
+    },
+    {
+      "dataset": "ChlorineConcentration",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Chronos Training Corpus (TSMixup & KernelSynth)",
+      "original_domain": "Time Series (Forecasting - Synthetic/Augmented)",
+      "category": "Synthetic",
+      "match_type": "keyword: synthetic, augmented, forecasting"
+    },
+    {
+      "dataset": "cif_2016",
+      "original_domain": "Banking",
+      "category": "Microeconomics",
+      "match_type": "keyword: banking"
+    },
+    {
+      "dataset": "cif_2016_monthly",
+      "original_domain": "Banking",
+      "category": "Microeconomics",
+      "match_type": "keyword: banking"
+    },
+    {
+      "dataset": "CinCECGTorso",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CMIP6 (Coupled Model Intercomparison Project Phase 6)",
+      "original_domain": "Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate"
+    },
+    {
+      "dataset": "cmip6_1850",
+      "original_domain": "Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate"
+    },
+    {
+      "dataset": "Coffee",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "COMPIND",
+      "original_domain": "Macroeconomic",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "Computer Vision Data (Images)",
+      "original_domain": "Computer Vision",
+      "category": "Image",
+      "match_type": "keyword: vision, computer vision"
+    },
+    {
+      "dataset": "Computer Vision Data (LiDAR)",
+      "original_domain": "Computer Vision",
+      "category": "Image",
+      "match_type": "keyword: vision, computer vision"
+    },
+    {
+      "dataset": "Computer Vision Data (Video)",
+      "original_domain": "Computer Vision",
+      "category": "Image",
+      "match_type": "keyword: vision, computer vision"
+    },
+    {
+      "dataset": "Computers",
+      "original_domain": "Device",
+      "category": "Sensor",
+      "match_type": "keyword: device"
+    },
+    {
+      "dataset": "CornellWhaleChallenge",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "COVID-19 Hospital Data (California, ARCHIVED)",
+      "original_domain": "Public Health/Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: health, epidemiology, public health"
+    },
+    {
+      "dataset": "Covid3Month",
+      "original_domain": "Forecasting",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting"
+    },
+    {
+      "dataset": "covid_deaths",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Covid Deaths",
+      "original_domain": "Public Health/Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: health, epidemiology, public health"
+    },
+    {
+      "dataset": "covid_deaths_daily",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CPAPEUR",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CPAPUSA",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Cricket",
+      "original_domain": "HAR (Human Activity Recognition) - This is more specific than \"Motion\".",
+      "category": "Motion",
+      "match_type": "keyword: motion, activity, har"
+    },
+    {
+      "dataset": "CricketX",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CricketY",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CricketZ",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Crop",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "CrowdSourced",
+      "original_domain": "EEG",
+      "category": "Health",
+      "match_type": "keyword: eeg"
+    },
+    {
+      "dataset": "Daily Foreign Exchange Rates (Yahoo Finance)",
+      "original_domain": "Finance/Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "Daphnet Freezing of Gait",
+      "original_domain": "Medical/Health/Human Activity (Focusing on Parkinson's Disease)",
+      "category": "Health",
+      "match_type": "keyword: health, medical, disease"
+    },
+    {
+      "dataset": "Darts (Collection)",
+      "original_domain": "Multiple",
+      "category": "Synthetic",
+      "match_type": "keyword: multiple"
+    },
+    {
+      "dataset": "Dataloop Platform (General Unstructured Data)",
+      "original_domain": "Cross-Domain",
+      "category": "Synthetic",
+      "match_type": "keyword: cross-domain"
+    },
+    {
+      "dataset": "DiatomSizeReduction",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "DistalPhalanxOutlineAgeGroup",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "DistalPhalanxOutlineCorrect",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "DistalPhalanxTW",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "DodgerLoopDay",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "DodgerLoopGame",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "DodgerLoopWeekend",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Dodgers Loop Sensor",
+      "original_domain": "Traffic/Transportation",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, traffic"
+    },
+    {
+      "dataset": "dominick",
+      "original_domain": "Sales",
+      "category": "Retail",
+      "match_type": "keyword: sales"
+    },
+    {
+      "dataset": "Dominick",
+      "original_domain": "Retail/Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "Dominick",
+      "original_domain": "Retail",
+      "category": "Retail",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "dominick_weekly",
+      "original_domain": "Sales",
+      "category": "Retail",
+      "match_type": "keyword: sales"
+    },
+    {
+      "dataset": "Dow Jones Index",
+      "original_domain": "Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance"
+    },
+    {
+      "dataset": "DreamerA",
+      "original_domain": "EEG",
+      "category": "Health",
+      "match_type": "keyword: eeg"
+    },
+    {
+      "dataset": "DreamerV",
+      "original_domain": "EEG",
+      "category": "Health",
+      "match_type": "keyword: eeg"
+    },
+    {
+      "dataset": "DuckDuckGeese",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "EarthquakeNPP: ANSS ComCat",
+      "original_domain": "Earthquake Forecasting (Seismology)",
+      "category": "Nature",
+      "match_type": "keyword: earthquake, seismology"
+    },
+    {
+      "dataset": "EarthquakeNPP: SCEDC (Mc = 2.0)",
+      "original_domain": "Earthquake Forecasting (Seismology)",
+      "category": "Nature",
+      "match_type": "keyword: earthquake, seismology"
+    },
+    {
+      "dataset": "EarthquakeNPP: SCEDC (Mc = 2.5)",
+      "original_domain": "Earthquake Forecasting (Seismology)",
+      "category": "Nature",
+      "match_type": "keyword: earthquake, seismology"
+    },
+    {
+      "dataset": "EarthquakeNPP: SCEDC (Mc = 3.0)",
+      "original_domain": "Earthquake Forecasting (Seismology)",
+      "category": "Nature",
+      "match_type": "keyword: earthquake, seismology"
+    },
+    {
+      "dataset": "Earthquakes",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ECG",
+      "original_domain": "Biomedical",
+      "category": "Health",
+      "match_type": "keyword: medical, biomedical"
+    },
+    {
+      "dataset": "ECG",
+      "original_domain": "Medical/Healthcare",
+      "category": "Health",
+      "match_type": "keyword: health, medical, healthcare"
+    },
+    {
+      "dataset": "ECG",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ECG (2000)",
+      "original_domain": "Healthcare / Physiology",
+      "category": "Health",
+      "match_type": "keyword: health, healthcare, physiology"
+    },
+    {
+      "dataset": "ECG200",
+      "original_domain": "ECG",
+      "category": "Health",
+      "match_type": "keyword: ecg"
+    },
+    {
+      "dataset": "ECG5000",
+      "original_domain": "ECG",
+      "category": "Health",
+      "match_type": "keyword: ecg"
+    },
+    {
+      "dataset": "ECGFiveDays",
+      "original_domain": "ECG",
+      "category": "Health",
+      "match_type": "keyword: ecg"
+    },
+    {
+      "dataset": "ECL",
+      "original_domain": "Energy/Electricity",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity"
+    },
+    {
+      "dataset": "ECL",
+      "original_domain": "Energy/Utility",
+      "category": "Energy",
+      "match_type": "keyword: energy, utility"
+    },
+    {
+      "dataset": "ECL",
+      "original_domain": "Finance/Bankruptcy Prediction",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance, bankruptcy"
+    },
+    {
+      "dataset": "ECL (Electricity Consuming Load)",
+      "original_domain": "Energy (Electricity Consumption)",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, consumption"
+    },
+    {
+      "dataset": "ECL (Electricity Consuming Load)",
+      "original_domain": "Electricity Consumption",
+      "category": "Energy",
+      "match_type": "keyword: electricity, consumption, electricity consumption"
+    },
+    {
+      "dataset": "ECL (Electricity Load Diagrams 2011-2014)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ECL (Electricity)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "EEG",
+      "original_domain": "Biomedical",
+      "category": "Health",
+      "match_type": "keyword: medical, biomedical"
+    },
+    {
+      "dataset": "EigenWorms",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "EigenWorms",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "elecdemand",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ELECTR",
+      "original_domain": "Electricity Usage Monitoring",
+      "category": "Energy",
+      "match_type": "keyword: electricity"
+    },
+    {
+      "dataset": "Electric Production",
+      "original_domain": "Energy/Electricity Production",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, production"
+    },
+    {
+      "dataset": "ElectricDevices",
+      "original_domain": "Device",
+      "category": "Sensor",
+      "match_type": "keyword: device"
+    },
+    {
+      "dataset": "Electricity (15-minute)",
+      "original_domain": "Energy, Power Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, power, consumption"
+    },
+    {
+      "dataset": "Electricity (Hourly)",
+      "original_domain": "Energy, Electricity Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, consumption"
+    },
+    {
+      "dataset": "Electricity (TTM-Eval)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ElectricityLoadDiagrams20112014 (15-minute)",
+      "original_domain": "Energy/Household Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, consumption, household"
+    },
+    {
+      "dataset": "Individual Household Electric Power Consumption (1-minute, aggregated to 15-minute in some sources)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Electricity Hourly",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Electricity (ECL)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Electricity (Weekly)",
+      "original_domain": "Energy/Household Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, consumption, household"
+    },
+    {
+      "dataset": "Electricity (Weekly)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "electricity_weekly",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Electricity Consuming Load (ECL)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Individual Household Electric Power Consumption",
+      "original_domain": "Energy/Household Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, consumption, household"
+    },
+    {
+      "dataset": "Electricity Hourly Dataset (Aggregated)",
+      "original_domain": "Energy/Electricity Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, consumption"
+    },
+    {
+      "dataset": "Electricity Load Diagrams 2011-2014",
+      "original_domain": "Energy/Electricity Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, consumption"
+    },
+    {
+      "dataset": "Electricity Transformer Dataset (ETT-small-h1/h2)",
+      "original_domain": "Energy/Electricity, Industrial IoT/Sensor Data",
+      "category": "Sensor",
+      "match_type": "keyword: sensor, iot, sensor data"
+    },
+    {
+      "dataset": "Electricity Transformer Dataset (ETT-small-m1/m2)",
+      "original_domain": "Energy/Electricity, Industrial IoT/Sensor Data",
+      "category": "Sensor",
+      "match_type": "keyword: sensor, iot, sensor data"
+    },
+    {
+      "dataset": "Electricity Transformer Temperature (ETT)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Electricity Transformer Temperature (ETTh1)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ElectricityLoadDiagramsDataset",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Electrocardiography (ECG) / MIT-BIH Arrhythmia Database",
+      "original_domain": "Healthcare/Biomedical",
+      "category": "Health",
+      "match_type": "keyword: health, medical, healthcare"
+    },
+    {
+      "dataset": "elf",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "EnergyDataset",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "EnergyPower",
+      "original_domain": "Unknown",
+      "category": "Synthetic",
+      "match_type": "keyword: unknown"
+    },
+    {
+      "dataset": "EOGHorizontalSignal",
+      "original_domain": "EOG",
+      "category": "Health",
+      "match_type": "keyword: eog"
+    },
+    {
+      "dataset": "EOGVerticalSignal",
+      "original_domain": "EOG",
+      "category": "Health",
+      "match_type": "keyword: eog"
+    },
+    {
+      "dataset": "EPF",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Epidemics (Project Tycho)",
+      "original_domain": "Health / Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: health, epidemiology"
+    },
+    {
+      "dataset": "Epigenetic Profiles (BigWig Format)",
+      "original_domain": "Genomics / Epigenetics",
+      "category": "Health",
+      "match_type": "keyword: genomics, epigenetics"
+    },
+    {
+      "dataset": "Epilepsy (EEG Seizure Detection)",
+      "original_domain": "Biomedical",
+      "category": "Health",
+      "match_type": "keyword: medical, biomedical"
+    },
+    {
+      "dataset": "Epilepsy (Simulated Seizure Activity Recognition)",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Epilepsy (Combined EEG and Activity Recognition)",
+      "original_domain": "EEG",
+      "category": "Health",
+      "match_type": "keyword: eeg"
+    },
+    {
+      "dataset": "ERA5",
+      "original_domain": "Climate & Weather",
+      "category": "Nature",
+      "match_type": "keyword: climate, weather"
+    },
+    {
+      "dataset": "ERA5 12h",
+      "original_domain": "Meteorology / Climate Science",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "ERA5 3h",
+      "original_domain": "Meteorology / Climate Science",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "ERA5 Daily",
+      "original_domain": "Meteorology / Climate Science",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "ERA5 Family",
+      "original_domain": "Meteorology",
+      "category": "Nature",
+      "match_type": "keyword: meteorology"
+    },
+    {
+      "dataset": "ERA5 Pressure",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ERA5 Quarterly",
+      "original_domain": "Meteorology / Climate Science",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "ERA5 Surface",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ERA5 Weekly",
+      "original_domain": "Meteorology / Climate Science",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "era5_1990",
+      "original_domain": "Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate"
+    },
+    {
+      "dataset": "ERAS Monthly",
+      "original_domain": "Meteorology / Climate Science",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "ERCOT Load (Historical)",
+      "original_domain": "Energy/Electricity Load",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, load"
+    },
+    {
+      "dataset": "ERCOT Load (with Covariates)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ERCOT_load.csv",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ERing",
+      "original_domain": "Motion (Hand Gesture Recognition)",
+      "category": "Motion",
+      "match_type": "keyword: motion, gesture, hand gesture"
+    },
+    {
+      "dataset": "EthanolConcentration",
+      "original_domain": "Chemical Spectroscopy (used for alcohol concentration classification)",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "EthanolLevel",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "ETT",
+      "original_domain": "Energy/Power Systems",
+      "category": "Energy",
+      "match_type": "keyword: energy, power"
+    },
+    {
+      "dataset": "ETT (15 Min.)",
+      "original_domain": "Energy/IoT/Electrical Transformers",
+      "category": "Energy",
+      "match_type": "keyword: energy, transformer"
+    },
+    {
+      "dataset": "ETT (ETTh1, ETTh2, ETTm1, ETTm2)",
+      "original_domain": "Energy (Electricity Transformer Temperature)",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, transformer"
+    },
+    {
+      "dataset": "ETT (Hourly), Station 1 (ETTh1)",
+      "original_domain": "Energy/IoT/Electrical Transformers",
+      "category": "Energy",
+      "match_type": "keyword: energy, transformer"
+    },
+    {
+      "dataset": "ETT (Hourly), Station 2 (ETTh2)",
+      "original_domain": "Energy/IoT/Electrical Transformers",
+      "category": "Energy",
+      "match_type": "keyword: energy, transformer"
+    },
+    {
+      "dataset": "ETTh1",
+      "original_domain": "Energy (Electricity Transformer Temperature)",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, transformer"
+    },
+    {
+      "dataset": "ETTh1 (Forecasting)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ETTh1",
+      "original_domain": "Energy / Industrial",
+      "category": "Industry",
+      "match_type": "keyword: indust, industrial"
+    },
+    {
+      "dataset": "ETTh2",
+      "original_domain": "Energy / Industrial",
+      "category": "Industry",
+      "match_type": "keyword: indust, industrial"
+    },
+    {
+      "dataset": "ETTh2 (Forecasting)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ETTh2",
+      "original_domain": "Energy (specifically, Electricity Transformer Temperature)",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, transformer"
+    },
+    {
+      "dataset": "ETTm1",
+      "original_domain": "Time Series (Electricity Transformer Temperature)",
+      "category": "Energy",
+      "match_type": "keyword: electricity, transformer"
+    },
+    {
+      "dataset": "ETTm1",
+      "original_domain": "Energy / Industrial",
+      "category": "Industry",
+      "match_type": "keyword: indust, industrial"
+    },
+    {
+      "dataset": "ETTm2",
+      "original_domain": "Energy / Industrial",
+      "category": "Industry",
+      "match_type": "keyword: indust, industrial"
+    },
+    {
+      "dataset": "ETTm2",
+      "original_domain": "Energy (Electricity Transformer Temperature)",
+      "category": "Energy",
+      "match_type": "keyword: energy, electricity, transformer"
+    },
+    {
+      "dataset": "example_air_passengers.csv",
+      "original_domain": "Transportation / Economics",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport"
+    },
+    {
+      "dataset": "example_retail_sales.csv",
+      "original_domain": "Retail / Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "example_wp_log_peyton_manning.csv",
+      "original_domain": "Web Analytics / Sports",
+      "category": "Corporate",
+      "match_type": "keyword: web, web analytics"
+    },
+    {
+      "dataset": "Exchange",
+      "original_domain": "Economics (Foreign Exchange Rates)",
+      "category": "Economics",
+      "match_type": "keyword: exchange rate, foreign exchange, economic"
+    },
+    {
+      "dataset": "Exchange",
+      "original_domain": "Finance/Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "Exchange",
+      "original_domain": "Exchange rate",
+      "category": "Economics",
+      "match_type": "keyword: exchange rate"
+    },
+    {
+      "dataset": "Exchange Rate compilation",
+      "original_domain": "Economic",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "Exchange-Rate (Multivariate)",
+      "original_domain": "Finance / Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "Exchange-Rate (Univariate)",
+      "original_domain": "Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance"
+    },
+    {
+      "dataset": "Exchange-Rate",
+      "original_domain": "Finance / Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "Exchange Rate",
+      "original_domain": "Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance"
+    },
+    {
+      "dataset": "FaceAll",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FaceDetection",
+      "original_domain": "Neuroscience, BCI (While the dataset originates from images, the primary application and context within the repository is related to neuroscience and BCI research, as highlighted by TSLib.  The image-based nature is an important detail, but the neuroscience aspect provides more specific context.)",
+      "category": "Health",
+      "match_type": "keyword: neuroscience, bci"
+    },
+    {
+      "dataset": "FaceFour",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FacesUCR",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Favorita",
+      "original_domain": "Retail",
+      "category": "Retail",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "favorita_sales",
+      "original_domain": "Sales",
+      "category": "Retail",
+      "match_type": "keyword: sales"
+    },
+    {
+      "dataset": "FD",
+      "original_domain": "Industrial",
+      "category": "Industry",
+      "match_type": "keyword: indust, industrial"
+    },
+    {
+      "dataset": "Federal Reserve H.10 Exchange Rates",
+      "original_domain": "Finance/Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "FiftyWords",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Finance (TimeBench)",
+      "original_domain": "Finance / Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "FingerMovements",
+      "original_domain": "EEG",
+      "category": "Health",
+      "match_type": "keyword: eeg"
+    },
+    {
+      "dataset": "FingerMovements",
+      "original_domain": "Motion (General)",
+      "category": "Motion",
+      "match_type": "keyword: motion"
+    },
+    {
+      "dataset": "Fish",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FIXINV",
+      "original_domain": "Macroeconomic",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "FLMARKT",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FloodModeling1",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "FloodModeling2",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "FloodModeling3",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "FordA",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FordB",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FordChallenge",
+      "original_domain": "Other",
+      "category": "Synthetic",
+      "match_type": "keyword: other"
+    },
+    {
+      "dataset": "FRED-MD / FRED-QD",
+      "original_domain": "Economics",
+      "category": "Economics",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FRED-MD",
+      "original_domain": "Macroeconomics",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "fred_md_monthly",
+      "original_domain": "Economic",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "FreezerRegularTrain",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FreezerSmallTrain",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "FruitFlies",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Fungi",
+      "original_domain": "HRM",
+      "category": "Health",
+      "match_type": "keyword: hrm"
+    },
+    {
+      "dataset": "Gas sensor array low-concentration",
+      "original_domain": "Sensor / Environment",
+      "category": "Sensor",
+      "match_type": "keyword: sensor"
+    },
+    {
+      "dataset": "Genesis",
+      "original_domain": "Industrial Automation",
+      "category": "Industry",
+      "match_type": "keyword: indust, industrial, automation"
+    },
+    {
+      "dataset": "genesis",
+      "original_domain": "Computer Vision, Scene Decomposition",
+      "category": "Image",
+      "match_type": "keyword: vision, computer vision, scene"
+    },
+    {
+      "dataset": "Geographic Information System (GIS) Data",
+      "original_domain": "GIS",
+      "category": "Nature",
+      "match_type": "keyword: gis"
+    },
+    {
+      "dataset": "GestureMidAirD1",
+      "original_domain": "Trajectory",
+      "category": "Motion",
+      "match_type": "keyword: trajectory"
+    },
+    {
+      "dataset": "GestureMidAirD2",
+      "original_domain": "Trajectory",
+      "category": "Motion",
+      "match_type": "keyword: trajectory"
+    },
+    {
+      "dataset": "GestureMidAirD3",
+      "original_domain": "Trajectory",
+      "category": "Motion",
+      "match_type": "keyword: trajectory"
+    },
+    {
+      "dataset": "GesturePebbleZ1",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "GesturePebbleZ2",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "gfc14_load",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "gfc17_load",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "GHL (Gasoil Heating Loop Simulation)",
+      "original_domain": "Industrial Control System Security",
+      "category": "Industry",
+      "match_type": "keyword: indust, industrial, control system"
+    },
+    {
+      "dataset": "GHL (Demand Data)",
+      "original_domain": "Economics, Finance",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "GHL (Global Human Settlement Layer)",
+      "original_domain": "Geospatial Analysis, Urban Development, Earth Observation",
+      "category": "Nature",
+      "match_type": "keyword: geospatial, earth observation"
+    },
+    {
+      "dataset": "GIFT-Eval Benchmark Datasets",
+      "original_domain": "Mixed (7 domains)",
+      "category": "Synthetic",
+      "match_type": "keyword: mixed"
+    },
+    {
+      "dataset": "Global Significant Earthquake Database (Kaggle)",
+      "original_domain": "General Seismology Data",
+      "category": "Nature",
+      "match_type": "keyword: seismology"
+    },
+    {
+      "dataset": "godaddy",
+      "original_domain": "Business & Web",
+      "category": "Corporate",
+      "match_type": "keyword: business, web"
+    },
+    {
+      "dataset": "Gravitational Wave Open Science Center (GWOSC) Event Data",
+      "original_domain": "Gravitational Wave Astrophysics",
+      "category": "Nature",
+      "match_type": "keyword: gravitational wave, astrophysics"
+    },
+    {
+      "dataset": "Guangzhou Traffic Speed",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "GunPoint",
+      "original_domain": "Motion (Human Activity)",
+      "category": "Motion",
+      "match_type": "keyword: motion, activity"
+    },
+    {
+      "dataset": "GunPointAgeSpan",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "GunPointMaleVersusFemale",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "GunPointOldVersusYoung",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Ham",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "HandMovementDirection",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "HandOutlines",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Handwriting",
+      "original_domain": "Human Activity Recognition (Motion)",
+      "category": "Motion",
+      "match_type": "keyword: motion, activity, human activity recognition"
+    },
+    {
+      "dataset": "Handwriting (it's important to retain the name as it appears in the source despite being a duplicate name)",
+      "original_domain": "Handwriting/Character Recognition (not explicit in any source but clearly inferred)",
+      "category": "Image",
+      "match_type": "keyword: handwriting, character recognition"
+    },
+    {
+      "dataset": "Haptics",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "HAR",
+      "original_domain": "Sensor Data",
+      "category": "Sensor",
+      "match_type": "keyword: sensor, sensor data"
+    },
+    {
+      "dataset": "Heartbeat",
+      "original_domain": "ECG (Electrocardiogram) / Heart Sounds. This dataset represents heartbeats recorded using both phonocardiogram and electrocardiogram, making a combined domain the most accurate.",
+      "category": "Health",
+      "match_type": "keyword: ecg, heart"
+    },
+    {
+      "dataset": "HeartRateDataset",
+      "original_domain": "Healthcare / Physiology",
+      "category": "Health",
+      "match_type": "keyword: health, healthcare, physiology"
+    },
+    {
+      "dataset": "Herring",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Hierarchical",
+      "original_domain": "Multiple",
+      "category": "Synthetic",
+      "match_type": "keyword: multiple"
+    },
+    {
+      "dataset": "Hierarchical Sales Data",
+      "original_domain": "E-Commerce / Retail",
+      "category": "Retail",
+      "match_type": "keyword: retail, e-commerce"
+    },
+    {
+      "dataset": "High-Granularity Calorimeter (HGCAL) Simulated Datasets",
+      "original_domain": "High-Energy Physics",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "hospital",
+      "original_domain": "Healthcare",
+      "category": "Health",
+      "match_type": "keyword: health, healthcare"
+    },
+    {
+      "dataset": "hospital",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "hospital_monthly",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "HouseholdPowerConsumption1",
+      "original_domain": "Energy Monitoring",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "HouseholdPowerConsumption2",
+      "original_domain": "Energy Monitoring",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "HouseTwenty",
+      "original_domain": "Device",
+      "category": "Sensor",
+      "match_type": "keyword: device"
+    },
+    {
+      "dataset": "Huawei cloud datasets (D1-D4)",
+      "original_domain": "Cloud",
+      "category": "Corporate",
+      "match_type": "keyword: cloud"
+    },
+    {
+      "dataset": "HZMetro",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "IceCreamHeaterDataset",
+      "original_domain": "Education / Synthetic",
+      "category": "Synthetic",
+      "match_type": "keyword: synthetic"
+    },
+    {
+      "dataset": "IDEAL",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "IEEEPPG (IEEE Signal Processing Cup 2015)",
+      "original_domain": "Health Monitoring (Heart Rate Estimation)",
+      "category": "Health",
+      "match_type": "keyword: health, heart"
+    },
+    {
+      "dataset": "IEEEPPG (TSFM-ScalingLaws-Dataset)",
+      "original_domain": "Health (Blood Pressure Estimation)",
+      "category": "Health",
+      "match_type": "keyword: health, blood pressure"
+    },
+    {
+      "dataset": "ILI",
+      "original_domain": "Healthcare / Public Health Surveillance (Influenza-like Illness)",
+      "category": "Health",
+      "match_type": "keyword: health, healthcare, public health"
+    },
+    {
+      "dataset": "ILI (Influenza-Like Illness)",
+      "original_domain": "Public Health (Disease Surveillance)",
+      "category": "Health",
+      "match_type": "keyword: health, public health, disease"
+    },
+    {
+      "dataset": "illness",
+      "original_domain": "Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: epidemiology"
+    },
+    {
+      "dataset": "Illness (ILI)",
+      "original_domain": "Influenza-like Illness Patients",
+      "category": "Health",
+      "match_type": "keyword: illness, influenza"
+    },
+    {
+      "dataset": "Individual household electric power consumption",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "INDSHIPF",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Influenza-like Illness (ILI)",
+      "original_domain": "Healthcare/Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: health, healthcare, epidemiology"
+    },
+    {
+      "dataset": "Informer",
+      "original_domain": "Time Series Forecasting (implied)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "InlineSkate",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "InsectEPGRegularTrain",
+      "original_domain": "EPG",
+      "category": "Health",
+      "match_type": "keyword: epg"
+    },
+    {
+      "dataset": "InsectEPGSmallTrain",
+      "original_domain": "EPG",
+      "category": "Health",
+      "match_type": "keyword: epg"
+    },
+    {
+      "dataset": "InsectSound",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "InsectWingbeat",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "InsectWingbeatSound",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "INTERSAL",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "IOPS",
+      "original_domain": "IT Operations/System Performance",
+      "category": "Corporate",
+      "match_type": "keyword: it operations, system performance"
+    },
+    {
+      "dataset": "IOpsCompetition",
+      "original_domain": "AIOps / IT Operations",
+      "category": "Corporate",
+      "match_type": "keyword: it operations, aiops"
+    },
+    {
+      "dataset": "IoT (TimeBench)",
+      "original_domain": "Internet of Things (IoT) / Sensor Data",
+      "category": "Sensor",
+      "match_type": "keyword: sensor, iot, internet of things"
+    },
+    {
+      "dataset": "IPDGNP",
+      "original_domain": "Macroeconomic",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "IPDIMP",
+      "original_domain": "Macroeconomic",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "ItalyPowerDemand",
+      "original_domain": "Energy (Sensor)",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "Japan Influenza",
+      "original_domain": "Health / Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: health, epidemiology"
+    },
+    {
+      "dataset": "JapaneseVowels",
+      "original_domain": "Speech Recognition",
+      "category": "Audio",
+      "match_type": "keyword: speech, speech recognition"
+    },
+    {
+      "dataset": "kaggle-energy/tutorial01.csv",
+      "original_domain": "Energy / Economics",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "kaggle_web_traffic",
+      "original_domain": "Web",
+      "category": "Corporate",
+      "match_type": "keyword: web"
+    },
+    {
+      "dataset": "kaggle_web_traffic_daily_with_missing_values",
+      "original_domain": "Web",
+      "category": "Corporate",
+      "match_type": "keyword: web"
+    },
+    {
+      "dataset": "kaggle_web_traffic_daily_without_missing_values",
+      "original_domain": "Web",
+      "category": "Corporate",
+      "match_type": "keyword: web"
+    },
+    {
+      "dataset": "kaggle_web_traffic_weekly",
+      "original_domain": "Business & Web",
+      "category": "Corporate",
+      "match_type": "keyword: business, web"
+    },
+    {
+      "dataset": "KDD Cup 2018",
+      "original_domain": "Air Quality/Environmental Science",
+      "category": "Nature",
+      "match_type": "keyword: environmental, air quality, environment"
+    },
+    {
+      "dataset": "kdd2022",
+      "original_domain": "Comp. Benchmark",
+      "category": "Synthetic",
+      "match_type": "keyword: comp. benchmark"
+    },
+    {
+      "dataset": "KDD21",
+      "original_domain": "Data Science Competition",
+      "category": "Corporate",
+      "match_type": "keyword: data science"
+    },
+    {
+      "dataset": "kdd_cup_2018_with_missing_values",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "kdd_cup_2018_without_missing_values",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "KPI",
+      "original_domain": "Anomaly Detection",
+      "category": "Corporate",
+      "match_type": "keyword: anomaly detection"
+    },
+    {
+      "dataset": "L2C",
+      "original_domain": "Enterprise Resource Planning (ERP) / Sales",
+      "category": "Corporate",
+      "match_type": "keyword: enterprise, erp"
+    },
+    {
+      "dataset": "LakeIce",
+      "original_domain": "Satellite",
+      "category": "Nature",
+      "match_type": "keyword: satellite"
+    },
+    {
+      "dataset": "LargeKitchenAppliances",
+      "original_domain": "Device",
+      "category": "Sensor",
+      "match_type": "keyword: device"
+    },
+    {
+      "dataset": "LargeST",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "largest_2017",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "largest_2018",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "largest_2019",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "largest_2020",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "largest_2021",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "LenDB",
+      "original_domain": "Other",
+      "category": "Synthetic",
+      "match_type": "keyword: other"
+    },
+    {
+      "dataset": "Libras",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Lightning2",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Lightning7",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "LION",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "LiveFuelMoistureContent",
+      "original_domain": "Environmental Monitoring",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "load_RTE.csv",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "London Smart Meters",
+      "original_domain": "Energy/Household Consumption",
+      "category": "Energy",
+      "match_type": "keyword: energy, consumption, household"
+    },
+    {
+      "dataset": "london_smart_meters_with_missing",
+      "original_domain": "Energy & Power",
+      "category": "Energy",
+      "match_type": "keyword: energy, power"
+    },
+    {
+      "dataset": "london_smart_meters_with_missing_values",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "london_smart_meters_without_missing_values",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Loop-Seattle",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Los-Loop",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Low Carbon London",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "LSST",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "M1 (Monthly)",
+      "original_domain": "Various (Micro/Macroeconomics, Industry, Demographics)",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "M1 (Quarterly)",
+      "original_domain": "Various (Micro/Macroeconomics, Industry, Demographics)",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "M1 (Yearly)",
+      "original_domain": "Various (Micro/Macroeconomics, Industry, Demographics)",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "M3 (Monthly)",
+      "original_domain": "Various (Micro/Macroeconomics, Industry, Finance, Demographics)",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "M3 (Quarterly)",
+      "original_domain": "Various (Micro/Macroeconomics, Industry, Finance, Demographics)",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "M3 (Yearly)",
+      "original_domain": "Various (Micro/Macroeconomics, Industry, Finance, Demographics)",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "m3_other",
+      "original_domain": "Diverse (Demographic, Finance, Industry, Macro, Micro, Other)",
+      "category": "Synthetic",
+      "match_type": "keyword: other, diverse"
+    },
+    {
+      "dataset": "M4 (Daily)",
+      "original_domain": "Demographic, Finance, Industry, Macro, Micro, Other",
+      "category": "Demographics",
+      "match_type": "keyword: demogr, demographic"
+    },
+    {
+      "dataset": "M4 (Hourly)",
+      "original_domain": "Demographic, Finance, Industry, Macro, Micro, Other",
+      "category": "Demographics",
+      "match_type": "keyword: demogr, demographic"
+    },
+    {
+      "dataset": "M4 (Monthly)",
+      "original_domain": "Demographic, Finance, Industry, Macro, Micro, Other",
+      "category": "Demographics",
+      "match_type": "keyword: demogr, demographic"
+    },
+    {
+      "dataset": "M4 (Quarterly)",
+      "original_domain": "Demographic, Finance, Industry, Macro, Micro, Other",
+      "category": "Demographics",
+      "match_type": "keyword: demogr, demographic"
+    },
+    {
+      "dataset": "M4 (Weekly)",
+      "original_domain": "Demographic, Finance, Industry, Macro, Micro, Other",
+      "category": "Demographics",
+      "match_type": "keyword: demogr, demographic"
+    },
+    {
+      "dataset": "M4 (Yearly)",
+      "original_domain": "Demographic, Finance, Industry, Macro, Micro, Other",
+      "category": "Demographics",
+      "match_type": "keyword: demogr, demographic"
+    },
+    {
+      "dataset": "M4 Competition Dataset",
+      "original_domain": "Diverse (Demographics, Finance, Industry, Macroeconomics, Microeconomics)",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "M4 Dataset (full)",
+      "original_domain": "Time Series (Forecasting)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "M4 Hourly Subset",
+      "original_domain": "Time Series (Forecasting)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "M4-Weakly",
+      "original_domain": "Macro",
+      "category": "Economics",
+      "match_type": "keyword: macro"
+    },
+    {
+      "dataset": "M5 - Category Level Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Department Level Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Full Dataset",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Product (Item) Level Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Product x State Level Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Product x Store (SKU) Level",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - State Level Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - State x Category Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - State x Department Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Store Level Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Store x Category Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Store x Department Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M5 - Total Aggregation",
+      "original_domain": "Retail Sales Forecasting",
+      "category": "Retail",
+      "match_type": "keyword: retail, retail sales forecasting, sales"
+    },
+    {
+      "dataset": "M6 Asset Price History",
+      "original_domain": "Finance, Economics",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "M6 Participant Submissions",
+      "original_domain": "Finance, Behavioral Science, Forecasting",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance, behavioral science"
+    },
+    {
+      "dataset": "MA1",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "MA11",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "MA2",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "MA40",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "MA5",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "MA64",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "Machine Learning Gravitational-Wave Search Mock Data Challenge (MLGWSC-1)",
+      "original_domain": "Gravitational Wave Astrophysics",
+      "category": "Nature",
+      "match_type": "keyword: gravitational wave, astrophysics"
+    },
+    {
+      "dataset": "Mallat",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "Max Planck Weather Dataset (2009-2016)",
+      "original_domain": "Meteorology/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "Max Planck Weather Dataset (2020)",
+      "original_domain": "Meteorology/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "MB1",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "MB11",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "MB5",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "MB60",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "MB92",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "MC1",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "MC10",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "MC5",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "MD1",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "MD30",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "MD5",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "MD50",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "MD75",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "ME1",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "ME11",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "ME120",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "ME183",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "ME5",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "Meat",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "MedicalImages",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "MelbournePedestrian",
+      "original_domain": "Traffic",
+      "category": "Transportation",
+      "match_type": "keyword: traffic"
+    },
+    {
+      "dataset": "Memorization (Experiment Scenario)",
+      "original_domain": "LLM Behavior, Privacy, Generalization",
+      "category": "Corporate",
+      "match_type": "keyword: llm behavior, llm"
+    },
+    {
+      "dataset": "METOGEN",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "METR-LA",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Mexico City Bikes",
+      "original_domain": "Transportation/Urban Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, urban mobility"
+    },
+    {
+      "dataset": "MF1",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "MF5",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "MF50",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "MF89",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "MG1",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "MG104",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "MG11",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "MG5",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "MG70",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "MGAB",
+      "original_domain": "Chaotic Systems",
+      "category": "Synthetic",
+      "match_type": "keyword: chaotic systems"
+    },
+    {
+      "dataset": "MI100",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "MI183",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "MiddlePhalanxOutlineAgeGroup",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "MiddlePhalanxOutlineCorrect",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "MiddlePhalanxTW",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Missing Values (Experiment Scenario)",
+      "original_domain": "Time Series Imputation/Robustness",
+      "category": "Synthetic",
+      "match_type": "keyword: time series, imputation"
+    },
+    {
+      "dataset": "MITDB",
+      "original_domain": "Medical/Healthcare",
+      "category": "Health",
+      "match_type": "keyword: health, medical, healthcare"
+    },
+    {
+      "dataset": "MixedShapesRegularTrain",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "MixedShapesSmallTrain",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "MMACRO1_30",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "MMACRO2_50",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "MMICRO2_40",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "MMICRO3_60",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "Monash",
+      "original_domain": "Multiple",
+      "category": "Synthetic",
+      "match_type": "keyword: multiple"
+    },
+    {
+      "dataset": "Monthly Sunspot Dataset",
+      "original_domain": "Solar Physics, Meteorology, Climatology, Space Weather",
+      "category": "Nature",
+      "match_type": "keyword: weather, meteorology, climatology"
+    },
+    {
+      "dataset": "MonthlyMilkDataset",
+      "original_domain": "Agriculture",
+      "category": "Nature",
+      "match_type": "keyword: agriculture"
+    },
+    {
+      "dataset": "MosquitoSound",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "MoteStrain",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Motion & Behavioral Sensors",
+      "original_domain": "Multi-domain",
+      "category": "Synthetic",
+      "match_type": "keyword: multi-domain"
+    },
+    {
+      "dataset": "MotorImagery",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "MOVER: Medical Informatics Operating Room Vitals and Events Repository",
+      "original_domain": "Biomedical / Healthcare",
+      "category": "Health",
+      "match_type": "keyword: health, medical, healthcare"
+    },
+    {
+      "dataset": "MSL",
+      "original_domain": "Anomaly Detection",
+      "category": "Corporate",
+      "match_type": "keyword: anomaly detection"
+    },
+    {
+      "dataset": "Multi-channel micro-Electrocorticography (\u00b5ECoG) Dataset",
+      "original_domain": "Neuroscience",
+      "category": "Health",
+      "match_type": "keyword: neuroscience"
+    },
+    {
+      "dataset": "Multivariate Gait Data",
+      "original_domain": "Biomedical / Human Activity",
+      "category": "Health",
+      "match_type": "keyword: medical, biomedical"
+    },
+    {
+      "dataset": "NAB",
+      "original_domain": "IT Ops, Social Media, Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance"
+    },
+    {
+      "dataset": "NASA-MSL",
+      "original_domain": "Aerospace/Telemetry",
+      "category": "Sensor",
+      "match_type": "keyword: telemetry"
+    },
+    {
+      "dataset": "NASA-SMAP",
+      "original_domain": "Aerospace/Telemetry",
+      "category": "Sensor",
+      "match_type": "keyword: telemetry"
+    },
+    {
+      "dataset": "Nasdaq (Forecasting)",
+      "original_domain": "Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance"
+    },
+    {
+      "dataset": "NATOPS",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Natural Language Processing (NLP) Data",
+      "original_domain": "NLP",
+      "category": "Corporate",
+      "match_type": "keyword: nlp"
+    },
+    {
+      "dataset": "Neural Latents Benchmark '21 (NLB'21)",
+      "original_domain": "Neuroscience",
+      "category": "Health",
+      "match_type": "keyword: neuroscience"
+    },
+    {
+      "dataset": "NEWRX",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "NewsHeadlineSentiment",
+      "original_domain": "Sentiment Analysis",
+      "category": "Corporate",
+      "match_type": "keyword: sentiment analysis"
+    },
+    {
+      "dataset": "NewsTitleSentiment",
+      "original_domain": "Sentiment Analysis",
+      "category": "Corporate",
+      "match_type": "keyword: sentiment analysis"
+    },
+    {
+      "dataset": "NN5",
+      "original_domain": "Banking",
+      "category": "Microeconomics",
+      "match_type": "keyword: banking"
+    },
+    {
+      "dataset": "NN5 (Daily)",
+      "original_domain": "Banking/Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance, banking"
+    },
+    {
+      "dataset": "NN5 (Weekly)",
+      "original_domain": "Banking/Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance, banking"
+    },
+    {
+      "dataset": "nn5_daily_with_missing_values",
+      "original_domain": "Banking",
+      "category": "Microeconomics",
+      "match_type": "keyword: banking"
+    },
+    {
+      "dataset": "nn5_daily_without_missing_values",
+      "original_domain": "Banking",
+      "category": "Microeconomics",
+      "match_type": "keyword: banking"
+    },
+    {
+      "dataset": "NonInvasiveFetalECGThorax1",
+      "original_domain": "ECG",
+      "category": "Health",
+      "match_type": "keyword: ecg"
+    },
+    {
+      "dataset": "NonInvasiveFetalECGThorax2",
+      "original_domain": "ECG",
+      "category": "Health",
+      "match_type": "keyword: ecg"
+    },
+    {
+      "dataset": "Novel Corona Virus 2019 Dataset",
+      "original_domain": "Public Health/Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: health, epidemiology, public health"
+    },
+    {
+      "dataset": "NP, PJM, BE, FR, DE",
+      "original_domain": "Energy Markets",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "Numenta Anomaly Benchmark (NAB)",
+      "original_domain": "Anomaly Detection, IT Operations, Finance, Transportation, Environmental Monitoring, Machine Learning",
+      "category": "Corporate",
+      "match_type": "keyword: it operations, anomaly detection"
+    },
+    {
+      "dataset": "NY-B (Bike Demand)",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "NY-B (Forecasting)",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "NY-T (Forecasting)",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "NY-T (Taxi Demand)",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "NYC-Taxi (TLC Trip Data)",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "NYCTaxi",
+      "original_domain": "Traffic/Taxi Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: traffic, taxi"
+    },
+    {
+      "dataset": "Occupancy",
+      "original_domain": "Environmental/Smart Building",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "OEMUSAL",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "oikolab_weather",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "OliveOil",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "Online Retail",
+      "original_domain": "E-Commerce",
+      "category": "Retail",
+      "match_type": "keyword: e-commerce"
+    },
+    {
+      "dataset": "Online Retail II",
+      "original_domain": "E-Commerce",
+      "category": "Retail",
+      "match_type": "keyword: e-commerce"
+    },
+    {
+      "dataset": "Online Transaction Load Prediction of Alipay Trading Platform",
+      "original_domain": "Finance/E-commerce (Transaction Load)",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance, transaction"
+    },
+    {
+      "dataset": "Opportunity",
+      "original_domain": "Health / Activity Recognition",
+      "category": "Motion",
+      "match_type": "keyword: activity"
+    },
+    {
+      "dataset": "OPPORTUNITY (OPP)",
+      "original_domain": "Human Activity Recognition",
+      "category": "Motion",
+      "match_type": "keyword: activity, human activity recognition"
+    },
+    {
+      "dataset": "OSULeaf",
+      "original_domain": "Image (Botany)",
+      "category": "Image",
+      "match_type": "keyword: image, botany"
+    },
+    {
+      "dataset": "Ozone Level Detection Dataset",
+      "original_domain": "Environmental Monitoring, Public Health, Atmospheric Science, Air Quality",
+      "category": "Nature",
+      "match_type": "keyword: environmental, air quality, atmospheric"
+    },
+    {
+      "dataset": "PAMAP2",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "PANTER",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Participant-Sourced External Data",
+      "original_domain": "Finance, Economics, NLP, Social Science",
+      "category": "Corporate",
+      "match_type": "keyword: nlp"
+    },
+    {
+      "dataset": "Pedestrian",
+      "original_domain": "Count",
+      "category": "Motion",
+      "match_type": "keyword: count"
+    },
+    {
+      "dataset": "Pedestrian Counts",
+      "original_domain": "Urban Mobility/City Planning",
+      "category": "Transportation",
+      "match_type": "keyword: urban mobility"
+    },
+    {
+      "dataset": "Pedestrian Counts (ped-counts)",
+      "original_domain": "Transport & Tourism",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "pedestrian_counts_hourly",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "PEMS (PEMS-SF)",
+      "original_domain": "Transportation (Freeway Car Lanes)",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, freeway"
+    },
+    {
+      "dataset": "PEMS-Bays (Forecasting)",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PEMS-Bays (PEM-B)",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PEMS-SF",
+      "original_domain": "Traffic Classification",
+      "category": "Transportation",
+      "match_type": "keyword: traffic"
+    },
+    {
+      "dataset": "PEMS03 / PEMS04 / PEMS07 / PEMS08",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PEMS04",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "PEMS07",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PEMS08",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "PEMS_BAY",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PenDigits",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PhalangesOutlinesCorrect",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PHARMA11",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PHARMA22",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PHARMA33",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PHM2008",
+      "original_domain": "Predictive Maintenance",
+      "category": "Industry",
+      "match_type": "keyword: predictive maintenance"
+    },
+    {
+      "dataset": "Phoneme",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Physical Therapy Exercises",
+      "original_domain": "Biomedical / Human Activity",
+      "category": "Health",
+      "match_type": "keyword: medical, biomedical"
+    },
+    {
+      "dataset": "PickupGestureWiimoteZ",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PigAirwayPressure",
+      "original_domain": "Hemodynamics",
+      "category": "Motion",
+      "match_type": "keyword: hemodynamic"
+    },
+    {
+      "dataset": "PigArtPressure",
+      "original_domain": "Hemodynamics",
+      "category": "Motion",
+      "match_type": "keyword: hemodynamic"
+    },
+    {
+      "dataset": "PigCVP",
+      "original_domain": "Hemodynamics",
+      "category": "Motion",
+      "match_type": "keyword: hemodynamic"
+    },
+    {
+      "dataset": "PIRvision_FoG_presence_detection",
+      "original_domain": "Human Activity / Smart Home",
+      "category": "Sensor",
+      "match_type": "keyword: smart home"
+    },
+    {
+      "dataset": "PLAID",
+      "original_domain": "Device (Energy Consumption)",
+      "category": "Energy",
+      "match_type": "keyword: energy, consumption"
+    },
+    {
+      "dataset": "Plane",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PowerCons",
+      "original_domain": "Power",
+      "category": "Energy",
+      "match_type": "keyword: power"
+    },
+    {
+      "dataset": "PPGDalia",
+      "original_domain": "Health Monitoring",
+      "category": "Health",
+      "match_type": "keyword: health"
+    },
+    {
+      "dataset": "ProximalPhalanxOutlineAgeGroup",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ProximalPhalanxOutlineCorrect",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ProximalPhalanxTW",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "PSM",
+      "original_domain": "Anomaly Detection",
+      "category": "Corporate",
+      "match_type": "keyword: anomaly detection"
+    },
+    {
+      "dataset": "Q-Traffic",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "QA1",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "QA11",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "QA2",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "QA20",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "QA30",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "QA45",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "QA5",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "QB1",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "QB11",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "QB30",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "QB45",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "QB5",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "QB59",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "QC1",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "QC3",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "QC5",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "QD1",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "QD15",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "QD20",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "QD39",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "QD5",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "QE1",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "QE10",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "QE11",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "QE12",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "QE18",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "QE5",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "QF1",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "QF10",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "QF15",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "QF21",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "QF5",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "QG1",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "QG16",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "RacketSports",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "REALGNP",
+      "original_domain": "Macroeconomic",
+      "category": "Economics",
+      "match_type": "keyword: macro, macroeconomic, economic"
+    },
+    {
+      "dataset": "REFILLS",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "RefrigerationDevices",
+      "original_domain": "Device",
+      "category": "Sensor",
+      "match_type": "keyword: device"
+    },
+    {
+      "dataset": "RESDVSAL",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "residential_load_power",
+      "original_domain": "Energy & Power",
+      "category": "Energy",
+      "match_type": "keyword: energy, power"
+    },
+    {
+      "dataset": "residential_pv_power",
+      "original_domain": "Energy & Power",
+      "category": "Energy",
+      "match_type": "keyword: energy, power"
+    },
+    {
+      "dataset": "rideshare",
+      "original_domain": "Transportation/Urban Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, urban mobility"
+    },
+    {
+      "dataset": "rideshare_with_missing_values",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "rideshare_without_missing_values",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "Rock",
+      "original_domain": "Spectrum",
+      "category": "Sensor",
+      "match_type": "keyword: spectrum"
+    },
+    {
+      "dataset": "Rodent EEG/LFP for Phase Estimation",
+      "original_domain": "Neuroscience",
+      "category": "Health",
+      "match_type": "keyword: neuroscience"
+    },
+    {
+      "dataset": "Rotterdam",
+      "original_domain": "Other (Health)",
+      "category": "Synthetic",
+      "match_type": "keyword: other"
+    },
+    {
+      "dataset": "RWC",
+      "original_domain": "Bioacoustics",
+      "category": "Audio",
+      "match_type": "keyword: acoustic, bioacoustics"
+    },
+    {
+      "dataset": "S2Agri-10pc-17",
+      "original_domain": "Satellite",
+      "category": "Nature",
+      "match_type": "keyword: satellite"
+    },
+    {
+      "dataset": "S2Agri-10pc-29",
+      "original_domain": "Satellite",
+      "category": "Nature",
+      "match_type": "keyword: satellite"
+    },
+    {
+      "dataset": "S2Agri-17",
+      "original_domain": "Satellite",
+      "category": "Nature",
+      "match_type": "keyword: satellite"
+    },
+    {
+      "dataset": "S2Agri-34",
+      "original_domain": "Satellite",
+      "category": "Nature",
+      "match_type": "keyword: satellite"
+    },
+    {
+      "dataset": "San Francisco Freeway Traffic Data (PEMS-SF)",
+      "original_domain": "Transportation/Traffic Management",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, traffic"
+    },
+    {
+      "dataset": "San Francisco Traffic",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "Saugeen River Flow",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "saugeen_river_flow_daily",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "saugeenday",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Saugen River Flow",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Sceaux (Individual household electric power consumption)",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ScreenType",
+      "original_domain": "Device",
+      "category": "Sensor",
+      "match_type": "keyword: device"
+    },
+    {
+      "dataset": "SeattleTrail",
+      "original_domain": "Unknown",
+      "category": "Synthetic",
+      "match_type": "keyword: unknown"
+    },
+    {
+      "dataset": "SelfRegulationSCP1",
+      "original_domain": "Neuroscience, BCI",
+      "category": "Health",
+      "match_type": "keyword: neuroscience, bci"
+    },
+    {
+      "dataset": "SelfRegulationSCP2",
+      "original_domain": "Neuroscience, BCI",
+      "category": "Health",
+      "match_type": "keyword: neuroscience, bci"
+    },
+    {
+      "dataset": "SemgHandGenderCh2",
+      "original_domain": "Spectrum",
+      "category": "Sensor",
+      "match_type": "keyword: spectrum"
+    },
+    {
+      "dataset": "SemgHandMovementCh2",
+      "original_domain": "Spectrum",
+      "category": "Sensor",
+      "match_type": "keyword: spectrum"
+    },
+    {
+      "dataset": "SemgHandSubjectCh2",
+      "original_domain": "Spectrum",
+      "category": "Sensor",
+      "match_type": "keyword: spectrum"
+    },
+    {
+      "dataset": "SensorData",
+      "original_domain": "IoT",
+      "category": "Sensor",
+      "match_type": "keyword: iot"
+    },
+    {
+      "dataset": "SensorScope",
+      "original_domain": "Environmental/Smart Building",
+      "category": "Nature",
+      "match_type": "keyword: environmental, environment"
+    },
+    {
+      "dataset": "Service",
+      "original_domain": "E-commerce / IT Observability",
+      "category": "Retail",
+      "match_type": "keyword: e-commerce"
+    },
+    {
+      "dataset": "SF_hospital_load.csv",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "SF_PV.csv",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ShakeGestureWiimoteZ",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ShapeletSim",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "ShapesAll",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "SHMetro",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Skoda",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "SmallKitchenAppliances",
+      "original_domain": "Device",
+      "category": "Sensor",
+      "match_type": "keyword: device"
+    },
+    {
+      "dataset": "SMAP",
+      "original_domain": "Anomaly Detection",
+      "category": "Corporate",
+      "match_type": "keyword: anomaly detection"
+    },
+    {
+      "dataset": "SMART*",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "SMD",
+      "original_domain": "AIOps / IT Operations",
+      "category": "Corporate",
+      "match_type": "keyword: it operations, aiops"
+    },
+    {
+      "dataset": "SMD (Server Machine Dataset)",
+      "original_domain": "IT Operations/Server Monitoring",
+      "category": "Corporate",
+      "match_type": "keyword: it operations, server"
+    },
+    {
+      "dataset": "SML2010",
+      "original_domain": "Energy / Smart Home",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "SmoothSubspace",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "SO",
+      "original_domain": "Enterprise Resource Planning (ERP) / Logistics",
+      "category": "Corporate",
+      "match_type": "keyword: enterprise, erp"
+    },
+    {
+      "dataset": "Solar (5 Min.)",
+      "original_domain": "Energy/Renewable Energy",
+      "category": "Energy",
+      "match_type": "keyword: energy, renewable"
+    },
+    {
+      "dataset": "Solar (Hourly)",
+      "original_domain": "Energy/Renewable Energy",
+      "category": "Energy",
+      "match_type": "keyword: energy, renewable"
+    },
+    {
+      "dataset": "Solar dataset",
+      "original_domain": "Energy (Solar Irradiance)",
+      "category": "Energy",
+      "match_type": "keyword: energy, solar"
+    },
+    {
+      "dataset": "Solar-Energy",
+      "original_domain": "Energy / Renewable",
+      "category": "Energy",
+      "match_type": "keyword: energy, renewable"
+    },
+    {
+      "dataset": "solar_10_minutes",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "solar_4_seconds",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "solar_power",
+      "original_domain": "Energy & Power",
+      "category": "Energy",
+      "match_type": "keyword: energy, power"
+    },
+    {
+      "dataset": "solar_power_4_seconds",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "solar_weekly",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "SolarPlant",
+      "original_domain": "Unknown",
+      "category": "Synthetic",
+      "match_type": "keyword: unknown"
+    },
+    {
+      "dataset": "SonyAIBORobotSurface1",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "SonyAIBORobotSurface2",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Southern California Nowcasting Dataset (as binned time series)",
+      "original_domain": "Earthquake Forecasting (Seismology)",
+      "category": "Nature",
+      "match_type": "keyword: earthquake, seismology"
+    },
+    {
+      "dataset": "spanish_energy_and_weather",
+      "original_domain": "Time Series (Energy/Weather)",
+      "category": "Energy",
+      "match_type": "keyword: energy"
+    },
+    {
+      "dataset": "SpokenArabicDigits",
+      "original_domain": "Speech Recognition",
+      "category": "Audio",
+      "match_type": "keyword: speech, speech recognition"
+    },
+    {
+      "dataset": "StandWalkJump",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "StarLightCurves",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "STEW",
+      "original_domain": "EEG",
+      "category": "Health",
+      "match_type": "keyword: eeg"
+    },
+    {
+      "dataset": "Stock Forecasting",
+      "original_domain": "Finance",
+      "category": "Microeconomics",
+      "match_type": "keyword: finance"
+    },
+    {
+      "dataset": "Strawberry",
+      "original_domain": "Spectro",
+      "category": "Sensor",
+      "match_type": "keyword: spectro"
+    },
+    {
+      "dataset": "subseasonal",
+      "original_domain": "Climate & Weather",
+      "category": "Nature",
+      "match_type": "keyword: climate, weather"
+    },
+    {
+      "dataset": "Sunspot dataset",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "sunspot_daily_with_missing_values",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "sunspot_daily_without_missing_values",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "SunspotsDataset",
+      "original_domain": "Astrophysics / Climatology",
+      "category": "Nature",
+      "match_type": "keyword: climatology, astrophysics"
+    },
+    {
+      "dataset": "SVDB",
+      "original_domain": "Medical/Healthcare",
+      "category": "Health",
+      "match_type": "keyword: health, medical, healthcare"
+    },
+    {
+      "dataset": "SWaT",
+      "original_domain": "Anomaly Detection, ICS Security",
+      "category": "Corporate",
+      "match_type": "keyword: anomaly detection"
+    },
+    {
+      "dataset": "SwedishLeaf",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Symbols",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic",
+      "original_domain": "LLM behavior, Data Generation",
+      "category": "Corporate",
+      "match_type": "keyword: llm behavior, llm"
+    },
+    {
+      "dataset": "Synthetic (TimeBench)",
+      "original_domain": "Synthetic Data",
+      "category": "Synthetic",
+      "match_type": "keyword: synthetic"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + ARP (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + ARP (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + Bells (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + Bells (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + Spikes (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + Spikes (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + Steps (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Diverse Sinusoids + Steps (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + ARP (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + ARP (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + Bells (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + Bells (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + Spikes (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + Spikes (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + Steps (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Noisy Sinusoids + Steps (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + ARP (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + ARP (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + Bells (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + Bells (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + Spikes (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + Spikes (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + Steps (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Simple Sinusoids + Steps (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + ARP (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + ARP (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + Bells (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + Bells (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + Spikes (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + Spikes (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + Steps (Addition)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic - Single Sinusoids + Steps (Multiplication)",
+      "original_domain": "Synthetic",
+      "category": "Synthetic",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Synthetic datasets",
+      "original_domain": "Synthetic/Artificial",
+      "category": "Synthetic",
+      "match_type": "keyword: synthetic, artificial"
+    },
+    {
+      "dataset": "Synthetic Weather Data (Multi-Location)",
+      "original_domain": "Meteorology/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "SyntheticControl",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "SZ-Taxi",
+      "original_domain": "Transportation",
+      "category": "Transportation",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Taxi (30 Min.)",
+      "original_domain": "Transportation/Urban Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, urban mobility"
+    },
+    {
+      "dataset": "Taxi (Hourly)",
+      "original_domain": "Transportation/Urban Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, urban mobility"
+    },
+    {
+      "dataset": "TaylorDataset",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "TDBrain",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Temperature Rain",
+      "original_domain": "Meteorology/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "temperature_rain_with_missing_values",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "temperature_rain_without_missing_values",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "TETS",
+      "original_domain": "Financial",
+      "category": "Microeconomics",
+      "match_type": "keyword: financial"
+    },
+    {
+      "dataset": "The Beijing Multi-Site Air-Quality Dataset",
+      "original_domain": "Environmental Monitoring, Public Health, Urban Planning, Climate Science",
+      "category": "Nature",
+      "match_type": "keyword: environmental, climate, environment"
+    },
+    {
+      "dataset": "The Global Land and Ocean-Temperature Anomaly Time Series",
+      "original_domain": "Climatology, Meteorology, Environmental Science, Climate Change",
+      "category": "Nature",
+      "match_type": "keyword: environmental, climate, meteorology"
+    },
+    {
+      "dataset": "The Google Trends Dataset",
+      "original_domain": "Marketing, Consumer Behavior, Public Interest, Social Trends, Online Behavior, Economic Indicators",
+      "category": "Economics",
+      "match_type": "keyword: economic indicator, economic"
+    },
+    {
+      "dataset": "The New York City Taxi Dataset",
+      "original_domain": "Urban Planning, Transportation, Logistics, Economics",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, logistics"
+    },
+    {
+      "dataset": "The U.S. Census Bureau's International Data Base (IDB)",
+      "original_domain": "Demographics, Population Dynamics, Economics, Public Policy, Social Sciences",
+      "category": "Demographics",
+      "match_type": "keyword: demogr, demographic, population"
+    },
+    {
+      "dataset": "The Wikipedia Web Traffic Time Series Dataset",
+      "original_domain": "Web Analytics, Digital Humanities, Social Dynamics, Information Science, Online Behavior",
+      "category": "Corporate",
+      "match_type": "keyword: web, web analytics, digital humanities"
+    },
+    {
+      "dataset": "Time Series Data (MOMENT 1 Large Model)",
+      "original_domain": "Time Series Analysis (Forecasting, Classification, Anomaly Detection, Imputation)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series, imputation"
+    },
+    {
+      "dataset": "Time Series Data (TEMPO Model)",
+      "original_domain": "Time Series Forecasting",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "Tiselac",
+      "original_domain": "Satellite",
+      "category": "Nature",
+      "match_type": "keyword: satellite"
+    },
+    {
+      "dataset": "ToeSegmentation1",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "ToeSegmentation2",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "toiletpaper_daily_sales.csv",
+      "original_domain": "Retail",
+      "category": "Retail",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Tourism",
+      "original_domain": "Tourism",
+      "category": "Retail",
+      "match_type": "keyword: tourism"
+    },
+    {
+      "dataset": "Tourism (Quarterly)",
+      "original_domain": "Tourism Activities",
+      "category": "Retail",
+      "match_type": "keyword: tourism"
+    },
+    {
+      "dataset": "Tourism (Yearly)",
+      "original_domain": "Tourism Activities",
+      "category": "Retail",
+      "match_type": "keyword: tourism"
+    },
+    {
+      "dataset": "tourism-monthly dataset",
+      "original_domain": "Time Series (Forecasting)",
+      "category": "Synthetic",
+      "match_type": "keyword: forecasting, time series"
+    },
+    {
+      "dataset": "Trace",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "TRADUSAL",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Traffic dataset",
+      "original_domain": "Transportation (Freeway Car Lanes)",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, freeway"
+    },
+    {
+      "dataset": "Traffic Time Series Dataset (Synthetic)",
+      "original_domain": "Transportation/Traffic Management",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, traffic"
+    },
+    {
+      "dataset": "traffic_hourly",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "traffic_weekly",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "Twitter Geospatial Data",
+      "original_domain": "Social Media / Spatiotemporal",
+      "category": "Sensor",
+      "match_type": "keyword: iot"
+    },
+    {
+      "dataset": "TwoLeadECG",
+      "original_domain": "ECG",
+      "category": "Health",
+      "match_type": "keyword: ecg"
+    },
+    {
+      "dataset": "TwoPatterns",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "Uber TLC (Daily)",
+      "original_domain": "Transportation/Urban Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, urban mobility"
+    },
+    {
+      "dataset": "Uber TLC (Hourly)",
+      "original_domain": "Transportation/Urban Mobility",
+      "category": "Transportation",
+      "match_type": "keyword: transportation, transport, urban mobility"
+    },
+    {
+      "dataset": "UCIActivity",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "UMD",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "UNCPAPEUR",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "UNCPAPUSA",
+      "original_domain": "Corporate",
+      "category": "Corporate",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "UnitTest",
+      "original_domain": "Simulated",
+      "category": "Synthetic",
+      "match_type": "keyword: simulated"
+    },
+    {
+      "dataset": "US Births",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "US Influenza",
+      "original_domain": "Health / Epidemiology",
+      "category": "Health",
+      "match_type": "keyword: health, epidemiology"
+    },
+    {
+      "dataset": "us_births_daily",
+      "original_domain": "Health",
+      "category": "Health",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "USCActivity",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "USHCN",
+      "original_domain": "Climate/Meteorology",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "UWaveGestureLibrary",
+      "original_domain": "Human Activity Recognition",
+      "category": "Motion",
+      "match_type": "keyword: activity, human activity recognition"
+    },
+    {
+      "dataset": "UWaveGestureLibraryAll",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "UWaveGestureLibraryX",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "UWaveGestureLibraryY",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "UWaveGestureLibraryZ",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "vehicle_trips",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "vehicle_trips_with_missing_values",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "vehicle_trips_without_missing_values",
+      "original_domain": "Transport",
+      "category": "Transportation",
+      "match_type": "keyword: transport"
+    },
+    {
+      "dataset": "Venice Lagoon Tides",
+      "original_domain": "Nature / Meteorology",
+      "category": "Nature",
+      "match_type": "keyword: meteorology, nature"
+    },
+    {
+      "dataset": "Wafer",
+      "original_domain": "Sensor",
+      "category": "Sensor",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Weather dataset",
+      "original_domain": "Meteorology/Environmental Science",
+      "category": "Nature",
+      "match_type": "keyword: environmental, meteorology, environment"
+    },
+    {
+      "dataset": "weather_daily",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Weatherbench (Daily)",
+      "original_domain": "Meteorology/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "Weatherbench (Hourly)",
+      "original_domain": "Meteorology/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "Weatherbench (Weekly)",
+      "original_domain": "Meteorology/Climate",
+      "category": "Nature",
+      "match_type": "keyword: climate, meteorology"
+    },
+    {
+      "dataset": "Web Traffic",
+      "original_domain": "Web",
+      "category": "Corporate",
+      "match_type": "keyword: web"
+    },
+    {
+      "dataset": "WhaleSounds",
+      "original_domain": "Audio",
+      "category": "Audio",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Wiki Daily (100k)",
+      "original_domain": "Web Traffic/Information Access",
+      "category": "Corporate",
+      "match_type": "keyword: web"
+    },
+    {
+      "dataset": "Wiki-Rolling",
+      "original_domain": "Other (Synthetic)",
+      "category": "Synthetic",
+      "match_type": "keyword: synthetic, other"
+    },
+    {
+      "dataset": "Wind Farms (Daily)",
+      "original_domain": "Energy/Renewable Energy",
+      "category": "Energy",
+      "match_type": "keyword: energy, renewable"
+    },
+    {
+      "dataset": "Wind Farms (Hourly)",
+      "original_domain": "Energy/Renewable Energy",
+      "category": "Energy",
+      "match_type": "keyword: energy, renewable"
+    },
+    {
+      "dataset": "Wind Farms dataset",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Wind Power",
+      "original_domain": "Energy & Power",
+      "category": "Energy",
+      "match_type": "keyword: energy, power"
+    },
+    {
+      "dataset": "wind_4_seconds",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "wind_farms_minutely",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "wind_farms_with_missing_values",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "wind_farms_without_missing_values",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "wind_power_4_seconds",
+      "original_domain": "Energy",
+      "category": "Energy",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "WineDataset",
+      "original_domain": "Economics / Sales",
+      "category": "Economics",
+      "match_type": "keyword: economic"
+    },
+    {
+      "dataset": "WISDM",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "WISDM2",
+      "original_domain": "HAR",
+      "category": "Motion",
+      "match_type": "keyword: har"
+    },
+    {
+      "dataset": "WoolyDataset",
+      "original_domain": "Economics / Manufacturing",
+      "category": "Industry",
+      "match_type": "keyword: manufacturing"
+    },
+    {
+      "dataset": "WordSynonyms",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "Worms",
+      "original_domain": "Nature",
+      "category": "Nature",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "WormsTwoClass",
+      "original_domain": "Motion",
+      "category": "Motion",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "YAF1",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "YAF11",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "YAF16",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "YAF2",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "YAF3",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "YAHOO",
+      "original_domain": "Web Services/Business Analytics",
+      "category": "Corporate",
+      "match_type": "keyword: business, web, web services"
+    },
+    {
+      "dataset": "Yahoo S5",
+      "original_domain": "Anomaly Detection",
+      "category": "Corporate",
+      "match_type": "keyword: anomaly detection"
+    },
+    {
+      "dataset": "YD1",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "YD11",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "YD2",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "YD25",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "YD30",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "YD5",
+      "original_domain": "DEMOGR",
+      "category": "Demographics",
+      "match_type": "keyword: demogr"
+    },
+    {
+      "dataset": "YI1",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "YI11",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "YI2",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "YI30",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "YI35",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "YI5",
+      "original_domain": "INDUST",
+      "category": "Industry",
+      "match_type": "keyword: indust"
+    },
+    {
+      "dataset": "YM1",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "YM11",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "YM2",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "YM25",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "YM29",
+      "original_domain": "MACRO2",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro2"
+    },
+    {
+      "dataset": "YM5",
+      "original_domain": "MACRO1",
+      "category": "Economics",
+      "match_type": "keyword: macro, macro1"
+    },
+    {
+      "dataset": "YMIC1",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "YMIC1_16",
+      "original_domain": "MICRO1",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro1"
+    },
+    {
+      "dataset": "YMIC2",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "YMIC2_20",
+      "original_domain": "MICRO2",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro2"
+    },
+    {
+      "dataset": "YMIC3_5",
+      "original_domain": "MICRO3",
+      "category": "Microeconomics",
+      "match_type": "keyword: micro, micro3"
+    },
+    {
+      "dataset": "Yoga",
+      "original_domain": "Image",
+      "category": "Image",
+      "match_type": "exact"
+    },
+    {
+      "dataset": "yosemite_temps.csv",
+      "original_domain": "Environment / Meteorology",
+      "category": "Nature",
+      "match_type": "keyword: meteorology, environment"
+    }
+  ]
+}
