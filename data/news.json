@@ -1,0 +1,31 @@
+{
+  "news": [
+    {
+      "id": "cosmo3dflow-kdd2026",
+      "date": "2026-01-23",
+      "type": "paper",
+      "title": "Cosmo3DFlow Submitted to KDD 2026",
+      "description": "Our paper on Wavelet Flow Matching for Spatial-to-Spectral Compression in Reconstructing the Early Universe has been submitted to KDD 2026 in Jeju, Korea.",
+      "image": "pics/img/cosmo3dflow.png",
+      "link": "publications.html"
+    },
+    {
+      "id": "finaid-bigdata2024",
+      "date": "2024-12-15",
+      "type": "paper",
+      "title": "Financial Aid Paper Accepted to IEEE BigData 2024",
+      "description": "Our work on Large Language Models for Financial Aid in Financial Time-series Forecasting was accepted to the IEEE International Workshop on Large Language Models for Finance.",
+      "image": "pics/img/finaid.png",
+      "link": "publications.html"
+    },
+    {
+      "id": "aaai24-temporal",
+      "date": "2024-02-27",
+      "type": "paper",
+      "title": "Temporal Dependencies Research at AAAI-24",
+      "description": "Research on Temporal Dependencies and Spatio-Temporal Patterns of Time Series Models presented at AAAI-24 Doctoral Consortium in Vancouver, Canada.",
+      "image": "pics/img/temporal.png",
+      "link": "publications.html"
+    }
+  ]
+}
