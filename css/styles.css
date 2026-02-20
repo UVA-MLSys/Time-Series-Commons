@@ -613,6 +613,37 @@ a:hover {
     gap: 20px;
 }
 
+/* Horizontally scrollable project cards */
+.row2#projects {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #2E86AB #e8ecef;
+}
+
+.row2#projects::-webkit-scrollbar {
+    height: 6px;
+}
+
+.row2#projects::-webkit-scrollbar-track {
+    background: #e8ecef;
+    border-radius: 3px;
+}
+
+.row2#projects::-webkit-scrollbar-thumb {
+    background: #2E86AB;
+    border-radius: 3px;
+}
+
+.row2#projects .card {
+    flex: 0 0 380px;
+    min-width: 380px;
+    max-width: 380px;
+}
+
 .card, .video-card {
     flex: 1;
     min-width: 300px;
