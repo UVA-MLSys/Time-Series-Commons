@@ -122,7 +122,7 @@
     {
       "id": "allgesturewiimotex",
       "name": "AllGestureWiimoteX",
-      "domain": "Sensor",
+      "domain": "Motion (Gesture Recognition)",
       "timePoints": "Unequal",
       "interval": "Not specified",
       "variables": "1",
@@ -142,7 +142,7 @@
     {
       "id": "allgesturewiimotey",
       "name": "AllGestureWiimoteY",
-      "domain": "Sensor",
+      "domain": "Motion (Gesture Recognition)",
       "timePoints": "Unequal",
       "interval": "Not specified",
       "variables": "1",
@@ -162,7 +162,7 @@
     {
       "id": "allgesturewiimotez",
       "name": "AllGestureWiimoteZ",
-      "domain": "Sensor",
+      "domain": "Motion (Gesture Recognition)",
       "timePoints": "Unequal",
       "interval": "Not specified",
       "variables": "1",
@@ -1332,7 +1332,7 @@
     {
       "id": "car",
       "name": "Car",
-      "domain": "Sensor",
+      "domain": "Transportation (Vehicle Sensor)",
       "timePoints": "577",
       "interval": "Not specified",
       "variables": "1",
@@ -1575,7 +1575,7 @@
     {
       "id": "chlorineconcentration",
       "name": "ChlorineConcentration",
-      "domain": "Sensor",
+      "domain": "Health (Water Quality Monitoring)",
       "timePoints": "166",
       "interval": "Not specified",
       "variables": "1",
@@ -1651,7 +1651,7 @@
     {
       "id": "cincecgtorso",
       "name": "CinCECGTorso",
-      "domain": "Sensor",
+      "domain": "Health (ECG)",
       "timePoints": "1639",
       "interval": "Not specified",
       "variables": "1",
@@ -2182,7 +2182,7 @@
     {
       "id": "dodgerloopday",
       "name": "DodgerLoopDay",
-      "domain": "Sensor",
+      "domain": "Transportation (Traffic Monitoring)",
       "timePoints": "288",
       "interval": "Not specified",
       "variables": "1",
@@ -2202,7 +2202,7 @@
     {
       "id": "dodgerloopgame",
       "name": "DodgerLoopGame",
-      "domain": "Sensor",
+      "domain": "Transportation (Traffic Monitoring)",
       "timePoints": "288",
       "interval": "Not specified",
       "variables": "1",
@@ -2222,7 +2222,7 @@
     {
       "id": "dodgerloopweekend",
       "name": "DodgerLoopWeekend",
-      "domain": "Sensor",
+      "domain": "Transportation (Traffic Monitoring)",
       "timePoints": "288",
       "interval": "Not specified",
       "variables": "1",
@@ -2449,7 +2449,7 @@
     {
       "id": "earthquakes",
       "name": "Earthquakes",
-      "domain": "Sensor",
+      "domain": "Nature (Seismology)",
       "timePoints": "512",
       "interval": "Not specified",
       "variables": "1",
@@ -3032,7 +3032,7 @@
     {
       "id": "electricity-transformer-dataset-ett-small-h1/h2",
       "name": "Electricity Transformer Dataset (ETT-small-h1/h2)",
-      "domain": "Energy/Electricity, Industrial IoT/Sensor Data",
+      "domain": "Energy (Electricity Transformer)",
       "timePoints": "~17,520 data points per dataset",
       "interval": "Hourly",
       "variables": "8 features (date, OT, HUFL, HULL, MUFL, MULL, LUFL, LULL)",
@@ -3047,7 +3047,7 @@
     {
       "id": "electricity-transformer-dataset-ett-small-m1/m2",
       "name": "Electricity Transformer Dataset (ETT-small-m1/m2)",
-      "domain": "Energy/Electricity, Industrial IoT/Sensor Data",
+      "domain": "Energy (Electricity Transformer)",
       "timePoints": "1051200",
       "interval": "Minute-level (every minute)",
       "variables": "8 features (date, OT, HUFL, HULL, MUFL, MULL, LUFL, LULL)",
@@ -4355,7 +4355,7 @@
     {
       "id": "forda",
       "name": "FordA",
-      "domain": "Sensor",
+      "domain": "Industry (Vehicle Diagnostics)",
       "timePoints": "500",
       "interval": "Not specified",
       "variables": "1",
@@ -4375,7 +4375,7 @@
     {
       "id": "fordb",
       "name": "FordB",
-      "domain": "Sensor",
+      "domain": "Industry (Vehicle Diagnostics)",
       "timePoints": "500",
       "interval": "Not specified",
       "variables": "1",
@@ -4465,7 +4465,7 @@
     {
       "id": "freezerregulartrain",
       "name": "FreezerRegularTrain",
-      "domain": "Sensor",
+      "domain": "Industry (Appliance Monitoring)",
       "timePoints": "301",
       "interval": "Not specified",
       "variables": "1",
@@ -4485,7 +4485,7 @@
     {
       "id": "freezersmalltrain",
       "name": "FreezerSmallTrain",
-      "domain": "Sensor",
+      "domain": "Industry (Appliance Monitoring)",
       "timePoints": "301",
       "interval": "Not specified",
       "variables": "1",
@@ -4540,7 +4540,7 @@
     {
       "id": "gas-sensor-array-low-concentration",
       "name": "Gas sensor array low-concentration",
-      "domain": "Sensor / Environment",
+      "domain": "Nature (Air Quality Monitoring)",
       "timePoints": "90",
       "interval": "Variable",
       "variables": "9",
@@ -4660,7 +4660,7 @@
     {
       "id": "gesturepebblez1",
       "name": "GesturePebbleZ1",
-      "domain": "Sensor",
+      "domain": "Motion (Gesture Recognition)",
       "timePoints": "Unequal",
       "interval": "Not specified",
       "variables": "1",
@@ -4680,7 +4680,7 @@
     {
       "id": "gesturepebblez2",
       "name": "GesturePebbleZ2",
-      "domain": "Sensor",
+      "domain": "Motion (Gesture Recognition)",
       "timePoints": "Unequal",
       "interval": "Not specified",
       "variables": "1",
@@ -5045,7 +5045,7 @@
     {
       "id": "har",
       "name": "HAR",
-      "domain": "Sensor Data",
+      "domain": "Human Activity Recognition",
       "timePoints": "1945 raw samples, 20750 subsamples (3 seconds each); 128 readings/window for UCI HAR",
       "interval": "100 Hz for KU-HAR; 2.56 sec windows with 50% overlap (128 readings/window) for UCI HAR",
       "variables": "6 (Accelerometer X, Y, Z and Gyroscope X, Y, Z); 9 channels for UCI HAR (X, Y, Z for body acceleration, gyroscope, and total acceleration)",
@@ -5587,7 +5587,7 @@
     {
       "id": "insectwingbeatsound",
       "name": "InsectWingbeatSound",
-      "domain": "Sensor",
+      "domain": "Audio (Bioacoustics)",
       "timePoints": "256",
       "interval": "Not specified",
       "variables": "1",
@@ -5654,7 +5654,7 @@
     {
       "id": "iot-timebench",
       "name": "IoT (TimeBench)",
-      "domain": "Internet of Things (IoT) / Sensor Data",
+      "domain": "Industry (Industrial IoT)",
       "timePoints": "5.8B",
       "interval": "Not specified (likely high-frequency)",
       "variables": "Not specified (processed as univariate)",
@@ -5701,7 +5701,7 @@
     {
       "id": "italypowerdemand",
       "name": "ItalyPowerDemand",
-      "domain": "Energy (Sensor)",
+      "domain": "Energy (Electricity Demand)",
       "timePoints": "24",
       "interval": "Hourly (inferred from 24 points per day).",
       "variables": "1 (Univariate)",
@@ -6134,7 +6134,7 @@
     {
       "id": "lightning2",
       "name": "Lightning2",
-      "domain": "Sensor",
+      "domain": "Nature (Meteorology)",
       "timePoints": "637",
       "interval": "Not specified",
       "variables": "1",
@@ -6154,7 +6154,7 @@
     {
       "id": "lightning7",
       "name": "Lightning7",
-      "domain": "Sensor",
+      "domain": "Nature (Meteorology)",
       "timePoints": "319",
       "interval": "Not specified",
       "variables": "1",
@@ -8203,7 +8203,7 @@
     {
       "id": "motestrain",
       "name": "MoteStrain",
-      "domain": "Sensor",
+      "domain": "Environmental Monitoring (Temperature)",
       "timePoints": "84",
       "interval": "Not specified",
       "variables": "1",
@@ -9347,7 +9347,7 @@
     {
       "id": "pickupgesturewiimotez",
       "name": "PickupGestureWiimoteZ",
-      "domain": "Sensor",
+      "domain": "Motion (Gesture Recognition)",
       "timePoints": "Unequal",
       "interval": "Not specified",
       "variables": "1",
@@ -9467,7 +9467,7 @@
     {
       "id": "plane",
       "name": "Plane",
-      "domain": "Sensor",
+      "domain": "Transportation (Aviation)",
       "timePoints": "144",
       "interval": "Not specified",
       "variables": "1",
@@ -10860,7 +10860,7 @@
     {
       "id": "shakegesturewiimotez",
       "name": "ShakeGestureWiimoteZ",
-      "domain": "Sensor",
+      "domain": "Motion (Gesture Recognition)",
       "timePoints": "Unequal",
       "interval": "Not specified",
       "variables": "1",
@@ -11271,7 +11271,7 @@
     {
       "id": "sonyaiborobotsurface1",
       "name": "SonyAIBORobotSurface1",
-      "domain": "Sensor",
+      "domain": "Industry (Robotics)",
       "timePoints": "70",
       "interval": "Not specified",
       "variables": "1",
@@ -11291,7 +11291,7 @@
     {
       "id": "sonyaiborobotsurface2",
       "name": "SonyAIBORobotSurface2",
-      "domain": "Sensor",
+      "domain": "Industry (Robotics)",
       "timePoints": "65",
       "interval": "Not specified",
       "variables": "1",
@@ -12625,7 +12625,7 @@
     {
       "id": "trace",
       "name": "Trace",
-      "domain": "Sensor",
+      "domain": "Industry (Industrial Monitoring)",
       "timePoints": "275",
       "interval": "Not specified",
       "variables": "1",
@@ -13185,7 +13185,7 @@
     {
       "id": "wafer",
       "name": "Wafer",
-      "domain": "Sensor",
+      "domain": "Industry (Semiconductor Manufacturing)",
       "timePoints": "152",
       "interval": "Not specified",
       "variables": "1",

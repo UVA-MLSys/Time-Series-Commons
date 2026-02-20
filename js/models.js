@@ -101,30 +101,130 @@ class NotebookCatalog {
     processData() {
         // Separate datasets and extract unique models
         this.datasets = this.allData;
-        
-        // Extract unique models from benchmarks
-        const modelsSet = new Set();
-        this.allData.forEach(dataset => {
-            if (dataset.benchmarks) {
-                Object.keys(dataset.benchmarks).forEach(modelName => {
-                    if (dataset.benchmarks[modelName]) {
-                        modelsSet.add(modelName);
-                    }
-                });
-            }
-        });
 
-        // Create model objects with counts and descriptions
-        this.models = Array.from(modelsSet).map(modelName => {
-            const datasetsCount = this.allData.filter(d => 
+        // Complete list of all 79 models from the CSV benchmark columns
+        const ALL_MODELS = [
+            'Informer', 'Monash TSER', 'UTSD', 'AutoGluon', 'Darts', 'TSLib',
+            'TSFM-Granite', 'TSFM-Core', 'TSFM-Bench', 'LOTSA', 'Prophet',
+            'NeuralForecast', 'Merlion', 'Aeon', 'DataLoop', 'NonUCR-UCI',
+            'UCR', 'UEA', 'MONSTER', 'Monash', 'Monash-Common', 'Monash-small',
+            'M1', 'M2', 'M3', 'M4', 'M5', 'M6',
+            'TSB-UAD MOMENT', 'TSB-UAD Full', 'Hackernoon', 'Monash Moment',
+            'Kaggle TS', 'FastML', 'Time-LLM', 'AutoTimes', 'ST-LLM',
+            'LLM-Time', 'LLM-Mixer', 'LLM-prompt', 'LLM-PS', 'One Fits All',
+            'Lag-Llama', 'Chronos-Pre', 'Chronos-Eval1', 'Chronos-Eval2',
+            'ChronosBolt-Pre', 'ChronosBolt-Eval1', 'ChronosBolt-Eval2',
+            'ChronosX-Eval2', 'ChronosX-Synth', 'ChronosX-Pre', 'ChronosX-Eval1',
+            'TS-RAGZSEval', 'TS-RAGPreT', 'Tempo', 'TimeBench', 'InstructTime',
+            'LPTM-Pre', 'LPTM-Eval', 'TS2Vec-Bench', 'TS2Vec-PreT', 'Automixer',
+            'TTM-PreT', 'TTM-Eval', 'TTM-Bench', 'TSMamba-ZS', 'TSMamba-FullShot',
+            'TimeGPT', 'GHPT', 'TimesNet', 'TimesFM', 'Time-MOE', 'Timer-XL',
+            'LightGTS', 'CiK', 'NSF HDR', 'MLCommons-EQ'
+        ];
+
+        // Domain map: each model assigned to its most relevant domain category
+        const modelDomainMap = {
+            // Energy-focused models (ETT, electricity benchmarks)
+            'Informer': 'Energy',
+            'Autoformer': 'Energy',
+            'FEDformer': 'Energy',
+            'TimesNet': 'Energy',
+            'TSLib': 'Energy',
+            'TSFM-Core': 'Energy',
+            'TSFM-Bench': 'Energy',
+            'TSFM-Granite': 'Energy',
+            // Foundation/pre-trained models (multi-domain synthetic pre-training)
+            'Chronos-Pre': 'Synthetic',
+            'Chronos-Eval1': 'Synthetic',
+            'Chronos-Eval2': 'Synthetic',
+            'ChronosBolt-Pre': 'Synthetic',
+            'ChronosBolt-Eval1': 'Synthetic',
+            'ChronosBolt-Eval2': 'Synthetic',
+            'ChronosX-Pre': 'Synthetic',
+            'ChronosX-Eval1': 'Synthetic',
+            'ChronosX-Eval2': 'Synthetic',
+            'ChronosX-Synth': 'Synthetic',
+            'TimesFM': 'Synthetic',
+            'Time-MOE': 'Synthetic',
+            'Timer-XL': 'Synthetic',
+            'LPTM-Pre': 'Synthetic',
+            'LPTM-Eval': 'Synthetic',
+            'TS2Vec-Bench': 'Synthetic',
+            'TS2Vec-PreT': 'Synthetic',
+            'Automixer': 'Synthetic',
+            'TTM-PreT': 'Synthetic',
+            'TTM-Eval': 'Synthetic',
+            'TTM-Bench': 'Synthetic',
+            'TSMamba-ZS': 'Synthetic',
+            'TSMamba-FullShot': 'Synthetic',
+            'UTSD': 'Synthetic',
+            'DataLoop': 'Synthetic',
+            'LOTSA': 'Synthetic',
+            'InstructTime': 'Synthetic',
+            'Tempo': 'Synthetic',
+            'TimeBench': 'Synthetic',
+            'MONSTER': 'Synthetic',
+            // Business/economics forecasting
+            'Prophet': 'Economics',
+            'TimeGPT': 'Economics',
+            'AutoGluon': 'Economics',
+            'NeuralForecast': 'Economics',
+            'M1': 'Economics',
+            'M2': 'Economics',
+            'M3': 'Economics',
+            'M4': 'Economics',
+            'M5': 'Retail',
+            'M6': 'Economics',
+            'Monash': 'Economics',
+            'Monash-Common': 'Economics',
+            'Monash-small': 'Economics',
+            'Monash TSER': 'Economics',
+            'Monash Moment': 'Economics',
+            'Kaggle TS': 'Economics',
+            'FastML': 'Economics',
+            'Hackernoon': 'Corporate',
+            // Time series classification archives
+            'UCR': 'Motion',
+            'UEA': 'Motion',
+            'NonUCR-UCI': 'Motion',
+            'Aeon': 'Motion',
+            // Anomaly detection
+            'TSB-UAD MOMENT': 'Industry',
+            'TSB-UAD Full': 'Industry',
+            'Merlion': 'Industry',
+            // LLM-based models
+            'Time-LLM': 'Corporate',
+            'AutoTimes': 'Corporate',
+            'ST-LLM': 'Corporate',
+            'LLM-Time': 'Corporate',
+            'LLM-Mixer': 'Corporate',
+            'LLM-prompt': 'Corporate',
+            'LLM-PS': 'Corporate',
+            'One Fits All': 'Corporate',
+            'Lag-Llama': 'Corporate',
+            'GHPT': 'Corporate',
+            // RAG / retrieval-based
+            'TS-RAGZSEval': 'Synthetic',
+            'TS-RAGPreT': 'Synthetic',
+            // Specialized
+            'LightGTS': 'Transportation',
+            'CiK': 'Industry',
+            'NSF HDR': 'Nature',
+            'MLCommons-EQ': 'Nature',
+        };
+
+        // Build model list from all known CSV columns
+        this.models = ALL_MODELS.map(modelName => {
+            const datasetsCount = this.allData.filter(d =>
                 d.benchmarks && d.benchmarks[modelName]
             ).length;
-            
+
             return {
-                id: modelName.toLowerCase().replace(/\s+/g, '-'),
+                id: modelName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
                 name: modelName,
                 type: 'model',
                 datasetsCount: datasetsCount,
+                domain: modelDomainMap[modelName] || 'Synthetic',
                 description: this.getModelDescription(modelName)
             };
         });
@@ -132,80 +232,102 @@ class NotebookCatalog {
 
     getModelDescription(modelName) {
         const descriptions = {
+            // --- Core Libraries ---
             'Darts': 'Darts (Data Analysis and Real-Time Systems) is a Python library for time series forecasting developed by Unit8. It offers a unified interface for multiple forecasting models including statistical methods (ARIMA, ETS), machine learning approaches (Random Forests, LightGBM), and deep learning models (N-BEATS, Transformer). Darts supports both univariate and multivariate forecasting, handles covariates, and provides probabilistic forecasting capabilities with confidence intervals.',
             'Merlion': 'Merlion is a Python library for time series intelligence developed by Salesforce Research. It provides a unified interface for time series forecasting, anomaly detection, and change point detection. Merlion includes implementations of state-of-the-art algorithms including ARIMA, Prophet, LSTM, Transformer models, and ensemble methods. It emphasizes production-ready deployment with automatic hyperparameter tuning and model selection.',
             'Aeon': 'Aeon (formerly sktime) is a scikit-learn compatible Python toolkit for time series analysis. It provides a comprehensive suite of algorithms for time series classification, regression, clustering, and annotation. Aeon includes distance-based methods, shapelet transforms, dictionary-based approaches, and deep learning models. It emphasizes composability and modularity, allowing users to build complex pipelines.',
-            'UCR': 'The UCR Time Series Classification Archive is the largest public repository of time series classification datasets. Maintained by the University of California, Riverside, it serves as the standard benchmark for evaluating time series classification algorithms. The archive includes diverse datasets from various domains and has been instrumental in advancing time series mining research since its inception.',
-            'LPTM-Eval': 'LPTM-Eval (Large Pre-trained Time series Models Evaluation) is a comprehensive evaluation framework for assessing pre-trained time series foundation models. It provides standardized benchmarks across multiple tasks including forecasting, classification, and anomaly detection. LPTM-Eval enables fair comparison of different pre-training strategies and model architectures on diverse time series datasets.',
-            'TS2Vec-Bench': 'TS2Vec-Bench is an evaluation framework specifically designed for time series representation learning methods. It assesses the quality of learned representations through downstream tasks like classification and clustering. TS2Vec (Time Series to Vector) focuses on contrastive learning approaches that learn universal representations without task-specific labels.',
-            'Timer-XL': 'Timer-XL is a large-scale time series foundation model designed for cross-domain time series forecasting. It employs transformer architecture with innovations in tokenization and positional encoding tailored for time series. Timer-XL is pre-trained on extensive datasets and demonstrates strong transfer learning capabilities across different domains and forecast horizons.',
-            'AutoGluon': 'AutoGluon-TimeSeries is an AutoML toolkit that automatically trains and ensembles multiple forecasting models. Developed by Amazon, it simplifies time series forecasting by automating model selection, hyperparameter tuning, and ensemble construction. AutoGluon combines statistical models (ETS, ARIMA), tree-based methods (CatBoost, LightGBM), and deep learning approaches.',
-            'GluonTS': 'GluonTS is a Python toolkit for probabilistic time series modeling built on Apache MXNet and PyTorch. Developed by Amazon, it focuses on deep learning-based forecasting with neural architectures like DeepAR, Transformer, and temporal convolutional networks. GluonTS emphasizes probabilistic forecasts with proper uncertainty quantification.',
-            'Monash': 'The Monash Time Series Forecasting Archive is a comprehensive collection of time series forecasting datasets from diverse domains. Maintained by Monash University, it complements existing archives with a focus on modern forecasting challenges including irregularly sampled data, missing values, and multi-horizon forecasting scenarios.',
-            'NeuralProphet': 'NeuralProphet is a neural network-based time series forecasting library inspired by Facebook Prophet. It combines traditional time series decomposition with modern deep learning, offering interpretable forecasts through additive components (trend, seasonality, holidays). NeuralProphet supports autoregression, lagged regressors, and provides uncertainty estimates.',
-            'PatchTST': 'PatchTST (Patch Time Series Transformer) is a transformer-based model that segments time series into patches for more efficient and effective forecasting. This patching mechanism reduces computational complexity while capturing both local and global patterns. PatchTST has demonstrated state-of-the-art performance on long-term forecasting benchmarks.',
-            'Chronos': 'Chronos is a pre-trained probabilistic time series forecasting model developed by Amazon. It treats forecasting as a language modeling task, tokenizing time series and training transformer models on diverse datasets. Chronos demonstrates strong zero-shot forecasting capabilities across different domains and temporal granularities.',
-            'Lag-Llama': 'Lag-Llama is a foundation model for time series forecasting that leverages large language model architectures. It uses a decoder-only transformer trained on extensive time series data to generate probabilistic forecasts. Lag-Llama excels at few-shot and zero-shot forecasting tasks across diverse domains.',
-            'TimesFM': 'TimesFM (Time Series Foundation Model) is Google\'s pre-trained model for time series forecasting. It employs a patched-decoder architecture trained on a large corpus of real-world and synthetic time series. TimesFM provides zero-shot forecasting capabilities and demonstrates strong performance across various forecasting horizons.',
-            'Moirai': 'Moirai is a universal time series forecasting model developed by Salesforce. It uses a unified architecture capable of handling any-variate (univariate or multivariate) time series with any frequency. Moirai is pre-trained on diverse datasets and supports flexible forecasting horizons.',
-            'Moment': 'Moment (MOdel for Time series) is a family of foundation models for time series analysis. It supports multiple tasks including forecasting, classification, and anomaly detection through a single pre-trained model. Moment uses masked time series modeling as its pre-training objective.',
-            'Nixtla': 'Nixtla provides production-ready time series forecasting solutions including StatsForecast (statistical models), MLForecast (machine learning), and NeuralForecast (deep learning). Their libraries emphasize scalability, accuracy, and ease of deployment for real-world forecasting applications.',
-            'TSLib': 'TSLib (Time Series Library) is a comprehensive toolkit providing implementations of state-of-the-art time series forecasting models. It includes classic methods, modern deep learning approaches, and recent transformer-based architectures. TSLib emphasizes reproducible research with standardized experimental protocols.',
-            'Informer': 'Informer is an efficient transformer model designed for long sequence time series forecasting (LSTF). It introduces ProbSparse self-attention mechanism and self-attention distilling to reduce computational complexity. Informer addresses the quadratic complexity issue of vanilla transformers for long sequences.',
-            'Autoformer': 'Autoformer is a transformer variant that incorporates decomposition architecture and Auto-Correlation mechanism. It explicitly decomposes time series into trend and seasonal components, applying different transformations to each. This design improves long-term forecasting accuracy and interpretability.',
-            'FEDformer': 'FEDformer (Frequency Enhanced Decomposed Transformer) performs forecasting in the frequency domain using Fourier and Wavelet transforms. This frequency-based approach captures long-term dependencies more efficiently than time-domain attention, achieving strong performance on long-term forecasting tasks.',
-            'Pyraformer': 'Pyraformer introduces a pyramidal attention module with inter-scale tree structure to capture temporal dependencies at multiple resolutions. This hierarchical design reduces complexity while modeling both short-term and long-term patterns effectively for time series forecasting.',
-            'MICN': 'MICN (Multi-scale Isometric Convolution Network) is a pure convolutional model for time series forecasting. It uses isometric convolutions at multiple scales to capture local and global temporal patterns. MICN demonstrates that well-designed convolutions can match transformer performance.',
-            'DLinear': 'DLinear (Decomposition Linear) is a simple yet effective baseline that uses linear layers combined with trend-seasonal decomposition. Despite its simplicity, DLinear outperforms many complex deep learning models on long-term forecasting benchmarks, questioning the necessity of complex architectures.',
-            'NLinear': 'NLinear (Normalization Linear) is an extremely simple baseline consisting of a single linear layer with instance normalization. It has shown competitive performance against complex models, highlighting the importance of proper normalization and questioning architectural complexity.',
-            'RLinear': 'RLinear (Revin Linear) incorporates reversible instance normalization (RevIN) with linear layers for forecasting. The normalization-denormalization framework helps the model adapt to distribution shifts, achieving strong performance with minimal parameters.',
-            'TiDE': 'TiDE (Time series Dense Encoder) is an MLP-based model that uses dense encoder-decoder architecture for multivariate forecasting. It explicitly models both past time series and future covariates through separate encoders, achieving competitive accuracy with high computational efficiency.',
-            'FreTS': 'FreTS (Frequency-domain Transformer for Time Series) performs forecasting entirely in the frequency domain using complex-valued networks. This approach captures periodic patterns and long-range dependencies more naturally than time-domain models.',
-            'TimesNet': 'TimesNet transforms 1D time series into 2D tensors to capture intra-period and inter-period variations simultaneously. It uses 2D convolutions (inception blocks) for this multi-periodicity modeling, achieving state-of-the-art results across multiple time series tasks.',
-            'ETSformer': 'ETSformer combines the principles of exponential smoothing with transformer architecture. It decomposes forecasting into level, growth, and seasonal components, learning their interactions through attention mechanisms. This design provides both accuracy and interpretability.',
-            'Crossformer': 'Crossformer introduces Dimension-Segment-Wise (DSW) structure to capture cross-dimension dependencies in multivariate time series. It uses two-stage attention for efficient modeling of both temporal and variate patterns.',
-            'SegRNN': 'SegRNN (Segment RNN) processes time series in segments rather than point-by-point, improving efficiency and long-range modeling. It uses RNN cells (LSTM/GRU) on segmented data, achieving competitive performance with lower complexity.',
-            'Transformer': 'The Vanilla Transformer applies the original attention mechanism from natural language processing to time series. While it demonstrates the potential of attention for sequential modeling, vanilla transformers face efficiency challenges with long time series.',
-            'Non-stationary Transformer': 'Non-stationary Transformer addresses distribution shift in time series by de-stationary attention and series stationarization. It explicitly accounts for non-stationarity in both attention computation and normalization.',
-            'iTransformer': 'iTransformer (Inverted Transformer) applies attention on the variate dimension rather than the temporal dimension for multivariate forecasting. This inversion improves performance by treating each variate as a token, capturing cross-variate dependencies.',
-            'Reformer': 'Reformer uses locality-sensitive hashing to reduce transformer complexity from O(L²) to O(L log L). It makes transformers more practical for long sequences while maintaining modeling capacity.',
-            'Flowformer': 'Flowformer replaces softmax attention with linear attention using flow formulation. This modification reduces computational cost while maintaining competitive accuracy for long sequence forecasting.',
-            'Flashformer': 'Flashformer accelerates transformer training and inference using memory-efficient attention computation. It optimizes GPU memory usage and computation, enabling training on longer sequences.',
-            'SparseTSF': 'SparseTSF (Sparse Time Series Forecasting) uses sparse attention patterns tailored for time series. It identifies and focuses on the most relevant historical time steps, reducing computation while maintaining accuracy.',
-            'TSMixer': 'TSMixer uses MLP-Mixer architecture adapted for time series, mixing information across both time and feature dimensions with simple MLPs. It achieves strong performance with high computational efficiency.',
-            'FITS': 'FITS (Frequency Interpolation Time Series) performs forecasting by interpolation in the frequency domain. It models frequency components directly, providing an efficient alternative to time-domain methods.',
-            'SCINet': 'SCINet (Sample Convolution and Interaction Network) uses downsampling and interactive learning to capture temporal patterns at multiple resolutions. Its recursive structure models both short and long-term dependencies.',
-            'LightTS': 'LightTS is a lightweight model using continuous wavelet transform and simple MLPs. It achieves strong forecasting performance with minimal parameters and computation.',
-            'STEMGNN': 'STEMGNN (Spectro-Temporal Graph Neural Network) combines graph structure for spatial dependencies with spectral analysis for temporal patterns in multivariate time series.',
-            'TCN': 'TCN (Temporal Convolutional Network) uses dilated causal convolutions to capture long-range dependencies. It provides an efficient alternative to RNNs with better parallelization.',
-            'TimeMixer': 'TimeMixer employs multi-scale mixing for both past and future information. It decomposes time series at multiple scales and learns their interactions for improved forecasting.',
-            'TSMixerx': 'TSMixerx extends TSMixer with enhanced mixing mechanisms and additional architectural improvements for better handling of complex temporal patterns.',
-            'RITS': 'RITS (Recurrent Imputation for Time Series) handles missing values in time series through recurrent neural networks. It jointly performs imputation and forecasting.',
-            'SAITS': 'SAITS (Self-Attention Imputation for Time Series) uses bidirectional self-attention for missing value imputation. It outperforms traditional imputation methods by leveraging temporal dependencies.',
-            'GPVAE': 'GPVAE (Gaussian Process VAE) combines Gaussian processes with variational autoencoders for probabilistic time series modeling and imputation.',
-            'BRITS': 'BRITS (Bidirectional Recurrent Imputation for Time Series) uses bidirectional RNNs to impute missing values considering both past and future context.',
-            'ImputeFormer': 'ImputeFormer applies transformer architecture specifically for time series imputation. It uses masked self-attention to reconstruct missing values from observed ones.',
-            'UniTS': 'UniTS (Universal Time Series model) is a unified model capable of handling multiple time series tasks including forecasting, classification, and imputation through a single architecture.',
-            'NBEATS': 'N-BEATS (Neural Basis Expansion Analysis for Time Series) is a deep learning architecture based on backward and forward residual links. It decomposes forecasts into interpretable trend and seasonality components.',
-            'NHITS': 'N-HiTS (Neural Hierarchical Interpolation for Time Series) extends N-BEATS with multi-rate sampling and hierarchical interpolation. It achieves better long-horizon accuracy and efficiency.',
-            'TSLib-Forecasting': 'TSLib-Forecasting is a comprehensive library providing standardized implementations of time series forecasting models for benchmarking and research.',
-            'LSTM': 'LSTM (Long Short-Term Memory) is a recurrent neural network architecture designed to capture long-term dependencies in sequences. It addresses the vanishing gradient problem through gating mechanisms.',
-            'DeepAR': 'DeepAR is Amazon\'s autoregressive recurrent network for probabilistic forecasting. It learns across related time series and provides quantile forecasts for uncertainty estimation.',
-            'Prophet': 'Prophet is Facebook\'s forecasting tool based on additive decomposition of trend, seasonality, and holidays. It\'s designed for business forecasting with strong out-of-the-box performance.',
-            'ARIMA': 'ARIMA (AutoRegressive Integrated Moving Average) is a classical statistical model for time series forecasting. It models linear dependencies using autoregression, differencing for stationarity, and moving averages.',
-            'ETS': 'ETS (Error, Trend, Seasonality) is a state space approach to forecasting that models level, trend, and seasonal components with exponential smoothing.',
-            'Theta': 'Theta method decomposes time series into two theta-lines combining trend and seasonality. Despite its simplicity, it has won forecasting competitions.',
-            'tbats': 'TBATS (Trigonometric seasonality, Box-Cox transformation, ARMA errors, Trend, Seasonal components) handles multiple seasonal patterns and complex seasonality.',
-            'catboost': 'CatBoost is a gradient boosting library that can be adapted for time series forecasting through feature engineering. It handles categorical features natively.',
-            'RandomForest': 'Random Forest uses ensemble of decision trees for regression/classification. For time series, it requires careful feature engineering but can capture non-linear patterns.',
-            'lightgbm': 'LightGBM is an efficient gradient boosting framework often used for time series through lag features and other engineered features.',
-            'RNN': 'RNN (Recurrent Neural Network) processes sequences by maintaining hidden states. While foundational, vanilla RNNs suffer from vanishing gradients for long sequences.',
-            'GRU': 'GRU (Gated Recurrent Unit) simplifies LSTM with fewer gates while maintaining similar performance. It\'s more computationally efficient than LSTM.',
-            'VARMAX': 'VARMAX (Vector AutoRegression Moving Average with eXogenous variables) extends VAR to include moving average and exogenous variables for multivariate forecasting.',
-            'VECM': 'VECM (Vector Error Correction Model) is used for cointegrated time series, capturing long-run equilibrium relationships between variables.'
+            'TSLib': 'TSLib (Time Series Library) is a comprehensive toolkit providing implementations of state-of-the-art time series forecasting models. It includes classic methods, modern deep learning approaches, and recent transformer-based architectures. TSLib emphasizes reproducible research with standardized experimental protocols and is widely used for benchmarking new forecasting methods.',
+            'AutoGluon': 'AutoGluon-TimeSeries is an AutoML toolkit that automatically trains and ensembles multiple forecasting models. Developed by Amazon, it simplifies time series forecasting by automating model selection, hyperparameter tuning, and ensemble construction. AutoGluon combines statistical models (ETS, ARIMA), tree-based methods (CatBoost, LightGBM), and deep learning approaches for best-in-class performance.',
+            'NeuralForecast': 'NeuralForecast is Nixtla\'s deep learning library for time series forecasting. It provides scalable neural architectures (NHITS, NBEATS, TFT, DeepAR, Transformer) with a simple scikit-learn-style API. NeuralForecast supports probabilistic forecasting, automatic hyperparameter optimization, and efficient training on large datasets.',
+            'Prophet': 'Prophet is Meta\'s open-source forecasting tool based on additive decomposition of trend, seasonality, and holiday effects. Designed for business time series with strong seasonal patterns, it handles missing data and outliers robustly and requires minimal manual tuning, making it widely adopted in industry.',
+            // --- Archive Benchmarks ---
+            'UCR': 'The UCR Time Series Classification Archive is the largest public repository of time series classification datasets. Maintained by the University of California, Riverside, it has been the standard benchmark for evaluating time series classification algorithms since 2002, covering diverse domains from medical to industrial applications.',
+            'UEA': 'The UEA Time Series Classification Archive extends UCR to multivariate time series. Maintained by the University of East Anglia, it provides multi-channel benchmark datasets for evaluating methods that exploit cross-dimensional relationships in classification tasks.',
+            'NonUCR-UCI': 'NonUCR-UCI refers to time series datasets from the UCI Machine Learning Repository that are not part of the standard UCR archive. These datasets provide additional benchmark coverage across classification and regression tasks not captured by the UCR collection.',
+            'Monash': 'The Monash Time Series Forecasting Archive is a comprehensive collection of real-world forecasting datasets from diverse domains. Maintained by Monash University, it standardizes evaluation protocols for both short- and long-term forecasting with datasets spanning energy, economic, demographic, and environmental domains.',
+            'Monash TSER': 'Monash TSER (Time Series Extrinsic Regression) is an archive focused on regression tasks over time series. Unlike classification archives, TSER targets continuous target prediction from time series inputs across domains such as healthcare, energy, and materials science.',
+            'Monash-Common': 'Monash-Common is a curated subset of the Monash Forecasting Archive containing the most widely cited and representative datasets for standardized model comparison. It provides a common ground for fair evaluation across different forecasting libraries.',
+            'Monash-small': 'Monash-small is a compact subset of the Monash archive designed for rapid prototyping and lightweight benchmarking. It retains domain diversity while reducing computational overhead for model development and evaluation cycles.',
+            'Monash Moment': 'Monash Moment refers to datasets from the Monash archive specifically used in the MOMENT foundation model evaluation suite. It provides a shared benchmark for comparing pre-trained time series models on real-world forecasting tasks.',
+            'MONSTER': 'MONSTER (Multivariate tONe, Scalability, and TimE seRies) is a large-scale benchmark suite for time series classification evaluating models on datasets that stress scalability, multivariate structure, and diverse temporal patterns simultaneously.',
+            'UTSD': 'UTSD (Unified Time Series Dataset) is a large-scale collection aggregating diverse public time series datasets into a unified format for pre-training and benchmarking foundation models. It covers multiple domains and temporal granularities to assess generalization capability.',
+            // --- Competition Benchmarks ---
+            'M1': 'M1 Competition (1982) was the first Makridakis forecasting competition, evaluating statistical and judgmental methods on 1,001 economic and business time series. Its findings challenged the dominance of complex models and established benchmarking standards for the field.',
+            'M2': 'M2 Competition (1993) extended the M1 study with a focus on real-time updating and tracking signals. It evaluated 29 methods on monthly, quarterly, and yearly economic data, reinforcing insights about the value of simple statistical methods.',
+            'M3': 'M3 Competition (2000) is the most widely cited forecasting competition, covering 3,003 time series across economic, industry, finance, and demographic domains. Its results strongly influenced practice and highlighted the robustness of simple benchmarks like Theta and exponential smoothing.',
+            'M4': 'M4 Competition (2018) evaluated 60 methods on 100,000 time series from six frequencies. It was won by a hybrid Exponential Smoothing-LSTM approach, demonstrating the value of combining statistical and machine learning methods for large-scale forecasting.',
+            'M5': 'M5 Competition (2020) focused on retail demand forecasting using Walmart sales data across 42,840 hierarchical time series. The winning solutions used gradient boosting (LightGBM) with extensive feature engineering, providing practical insights for supply chain forecasting.',
+            'M6': 'M6 Competition (2022) combined time series forecasting with investment decision-making, requiring participants to both predict and act on financial instrument data. It bridged forecasting accuracy and decision quality in real financial settings.',
+            'Kaggle TS': 'Kaggle TS refers to time series datasets and benchmarks drawn from Kaggle competitions. These datasets reflect diverse real-world forecasting challenges across retail, finance, energy, and transportation, with solutions representing state-of-the-art practical approaches.',
+            // --- Foundation Models (Amazon Chronos Family) ---
+            'Chronos-Pre': 'Chronos-Pre represents the pre-training configuration of Amazon\'s Chronos family of probabilistic foundation models. Chronos treats time series forecasting as language modeling, tokenizing values into discrete bins and training T5-based transformers on vast collections of real and synthetic data.',
+            'Chronos-Eval1': 'Chronos-Eval1 is the first evaluation configuration of Chronos, testing zero-shot forecasting performance on held-out datasets not seen during pre-training. It assesses in-distribution generalization across diverse temporal patterns and frequencies.',
+            'Chronos-Eval2': 'Chronos-Eval2 is the second evaluation phase of Chronos, focusing on out-of-distribution generalization. It tests how well Chronos transfers to domain-specific datasets with characteristics underrepresented in its pre-training corpus.',
+            'ChronosBolt-Pre': 'ChronosBolt-Pre is the pre-training setup for ChronosBolt, an improved and faster variant of Chronos using a more efficient patched architecture. ChronosBolt delivers competitive forecasting accuracy with significantly reduced inference latency.',
+            'ChronosBolt-Eval1': 'ChronosBolt-Eval1 evaluates ChronosBolt\'s zero-shot forecasting on standard benchmark datasets. It measures the improved efficiency-accuracy trade-off of the patched architecture compared to the original Chronos design.',
+            'ChronosBolt-Eval2': 'ChronosBolt-Eval2 tests ChronosBolt on out-of-distribution datasets, evaluating cross-domain transfer. Its lighter architecture enables faster evaluation cycles while maintaining strong generalization performance.',
+            'ChronosX-Pre': 'ChronosX-Pre is the pre-training phase of ChronosX, the extended Chronos architecture incorporating additional context length and improved tokenization strategies. ChronosX targets longer-horizon forecasting and richer seasonal patterns.',
+            'ChronosX-Eval1': 'ChronosX-Eval1 tests ChronosX zero-shot performance on benchmark forecasting datasets, evaluating the benefits of extended context and improved architecture over standard Chronos.',
+            'ChronosX-Eval2': 'ChronosX-Eval2 assesses ChronosX on out-of-distribution forecasting scenarios, examining how architectural improvements affect robustness to domain shift and unseen temporal dynamics.',
+            'ChronosX-Synth': 'ChronosX-Synth evaluates ChronosX specifically on synthetic time series benchmarks, testing the model\'s ability to generalize to controlled, programmatically-generated patterns that test specific forecasting capabilities such as trend, noise, and seasonality.',
+            // --- Foundation Models (IBM/HuggingFace) ---
+            'TSFM-Granite': 'TSFM-Granite is IBM\'s Granite time series foundation model, part of the IBM TSFM (Time Series Foundation Model) family. Pre-trained on diverse time series corpora, Granite focuses on enterprise forecasting with strong out-of-the-box performance and fine-tuning efficiency for domain-specific applications.',
+            'TSFM-Core': 'TSFM-Core is the core architecture of IBM\'s time series foundation model framework. It provides the base pre-trained backbone upon which specialized variants like Granite are built, offering general-purpose time series representations.',
+            'TSFM-Bench': 'TSFM-Bench is the benchmarking suite for IBM\'s TSFM family, providing standardized evaluation protocols and datasets for comparing different foundation model variants and fine-tuning strategies.',
+            // --- Foundation Models (Others) ---
+            'LOTSA': 'LOTSA (Large-scale Open Time Series Archive) is a large-scale dataset collection and evaluation framework for pre-training time series foundation models. It aggregates over a billion time series observations from public sources to enable data-driven pre-training at scale.',
+            'TimesFM': 'TimesFM (Time Series Foundation Model) is Google\'s pre-trained model for time series forecasting. It employs a patched-decoder architecture trained on a large corpus of Google-internal and public time series data. TimesFM provides strong zero-shot forecasting with competitive performance across multiple granularities.',
+            'Timer-XL': 'Timer-XL is a large-scale time series foundation model from Tsinghua University designed for cross-domain forecasting. It uses generative pre-training with an auto-regressive transformer, supporting variable-length input and output horizons for flexible deployment.',
+            'Time-MOE': 'Time-MOE (Time Series Mixture of Experts) uses a sparse mixture-of-experts transformer architecture for efficient time series forecasting at scale. It activates only a subset of parameters per input, achieving high accuracy with lower inference cost than dense models.',
+            'TTM-PreT': 'TTM-PreT (Tiny Time Mixer Pre-Training) represents the pre-training phase of IBM Research\'s TTM model. Tiny Time Mixer uses a lightweight MLP-mixer architecture pre-trained on diverse time series, enabling strong zero-shot and few-shot performance with minimal computational requirements.',
+            'TTM-Eval': 'TTM-Eval assesses Tiny Time Mixer\'s zero-shot forecasting quality on downstream benchmark datasets. It validates the transfer learning capability of the compact pre-trained model across different domains and time series characteristics.',
+            'TTM-Bench': 'TTM-Bench is the full benchmarking evaluation of Tiny Time Mixer, comparing its pre-trained and fine-tuned variants against other foundation models and task-specific baselines.',
+            'LPTM-Pre': 'LPTM-Pre (Large Pre-trained Time series Model Pre-Training) documents the pre-training strategy for LPTM, a foundation model trained on multi-domain time series corpora. It studies the effect of pre-training data composition, tokenization, and scale on downstream task performance.',
+            'LPTM-Eval': 'LPTM-Eval is the evaluation benchmark for the LPTM foundation model, testing its performance across forecasting, classification, and anomaly detection tasks. It enables fair comparison between different pre-training strategies and model architectures.',
+            'Tempo': 'Tempo (Temporal Pre-training using Masked Observation) is a self-supervised pre-training framework for time series using masked reconstruction. It learns robust temporal representations by reconstructing randomly masked portions of the input sequence, similar to BERT-style pre-training in NLP.',
+            'InstructTime': 'InstructTime is an instruction-tuning framework for time series foundation models. Drawing from instruction-following paradigms in NLP, it fine-tunes pre-trained models using natural language task descriptions, enabling multi-task time series analysis through a single model.',
+            'TimeBench': 'TimeBench is a comprehensive benchmarking framework for evaluating time series foundation models across a broad suite of tasks and datasets. It standardizes evaluation protocols for comparing zero-shot, few-shot, and fine-tuned model variants.',
+            // --- Representation Learning ---
+            'TS2Vec-Bench': 'TS2Vec-Bench is an evaluation benchmark for time series contrastive representation learning methods. TS2Vec (Time Series to Vector) learns hierarchical contextual representations through temporal and instance contrastive objectives, and this benchmark evaluates those representations on downstream classification and anomaly detection tasks.',
+            'TS2Vec-PreT': 'TS2Vec-PreT represents the pre-training phase of TS2Vec, where universal time series representations are learned without task-specific labels through multi-scale contrastive learning on unlabeled time series data.',
+            // --- Anomaly Detection ---
+            'TSB-UAD MOMENT': 'TSB-UAD MOMENT is an anomaly detection benchmark using the MOMENT foundation model evaluated on the TSB-UAD (Time Series Benchmark for Unsupervised Anomaly Detection) suite. It tests zero-shot anomaly detection capability across diverse datasets including server metrics, ECG signals, and industrial sensor data.',
+            'TSB-UAD Full': 'TSB-UAD Full is the complete Time Series Benchmark for Unsupervised Anomaly Detection suite, covering over 1,000 time series with ground-truth anomaly labels across multiple domains. It provides the most comprehensive evaluation of unsupervised anomaly detection methods available.',
+            // --- LLM-Based Models ---
+            'Time-LLM': 'Time-LLM reprograms pre-trained large language models (LLMs) for time series forecasting. It converts time series into text-compatible representations and aligns temporal patterns with LLM token embeddings, enabling zero-shot and few-shot forecasting using models like LLaMA and GPT-2.',
+            'AutoTimes': 'AutoTimes is an LLM-based time series forecasting framework that autoregressively generates future values using a pre-trained language model backbone. It augments time series tokens with temporal metadata and chain-of-thought prompting to improve multi-step forecasting quality.',
+            'ST-LLM': 'ST-LLM (Spatio-Temporal LLM) adapts large language models for spatio-temporal forecasting tasks. It handles the joint modeling of spatial relationships and temporal dynamics, making it applicable to traffic forecasting, weather prediction, and other geographically structured time series.',
+            'LLM-Time': 'LLM-Time evaluates general-purpose LLMs (GPT-3, GPT-4, LLaMA) on time series forecasting without any fine-tuning. It studies the emergent zero-shot forecasting capability of language models and reveals their strengths and limitations on numerical prediction tasks.',
+            'LLM-Mixer': 'LLM-Mixer integrates LLM-based encoders with MLP-Mixer architectures for time series forecasting. It uses language model representations as rich feature encoders and combines them with efficient mixing layers for final prediction.',
+            'LLM-prompt': 'LLM-prompt evaluates prompt engineering strategies for eliciting better time series forecasts from LLMs. It studies how different prompting formats — raw numbers, textual descriptions, chain-of-thought — affect forecasting accuracy on standard benchmarks.',
+            'LLM-PS': 'LLM-PS (LLM for Pattern and Semantics) combines LLMs\' semantic understanding with pattern recognition for time series forecasting. It bridges textual context (domain knowledge, variable descriptions) with numerical temporal patterns for improved predictions.',
+            'One Fits All': 'One Fits All (GPT4TS) demonstrates that a single pre-trained GPT-2 model can be fine-tuned with minimal adaptation to achieve state-of-the-art performance across diverse time series tasks including forecasting, classification, imputation, and anomaly detection.',
+            'Lag-Llama': 'Lag-Llama is a probabilistic foundation model for time series forecasting built on the LLaMA transformer architecture. Pre-trained on a large corpus of diverse time series, it generates probabilistic forecasts and excels at zero-shot and few-shot generalization to unseen datasets.',
+            'GHPT': 'GHPT (Generative Hybrid Pre-trained Transformer) is a hybrid time series model combining generative pre-training with task-specific fine-tuning. It learns general temporal patterns from large corpora and adapts efficiently to downstream forecasting and classification tasks.',
+            // --- MLP/Linear Models ---
+            'Automixer': 'Automixer is an automated mixing architecture for multivariate time series forecasting. It combines cross-variate and temporal mixing in a configurable MLP-based design and uses neural architecture search principles to find optimal mixing strategies for different datasets.',
+            // --- TSMamba (State Space Models) ---
+            'TSMamba-ZS': 'TSMamba-ZS (Zero-Shot) evaluates TSMamba — a state space model (SSM) based on Mamba architecture — in a zero-shot setting. Mamba\'s selective state space mechanism efficiently handles long-range dependencies in time series without the quadratic cost of transformers.',
+            'TSMamba-FullShot': 'TSMamba-FullShot evaluates TSMamba with full fine-tuning on each target dataset. It assesses the upper bound performance of Mamba-based state space models when given complete access to downstream training data.',
+            // --- Other Frameworks ---
+            'DataLoop': 'DataLoop is a data management and MLOps platform that provides time series dataset curation, versioning, and annotation tools. In the context of this catalog, it represents datasets and benchmarks managed through the DataLoop ecosystem for structured model evaluation.',
+            'FastML': 'FastML is a rapid prototyping framework for machine learning on time series data. It provides efficient implementations of common algorithms optimized for fast experimentation cycles, enabling quick baseline comparisons before committing to more computationally intensive approaches.',
+            'Hackernoon': 'Hackernoon refers to time series benchmarks and datasets referenced in Hackernoon technical articles documenting applied machine learning experiments. These datasets are drawn from real-world use cases discussed in the developer community.',
+            'TimeGPT': 'TimeGPT is Nixtla\'s proprietary time series foundation model available via API. Pre-trained on over 100 billion data points, it delivers zero-shot forecasting across diverse domains with no fine-tuning required, making it one of the first commercially deployed time series foundation models.',
+            'LightGTS': 'LightGTS (Lightweight Graph Time Series) is an efficient graph-based model for multivariate time series forecasting. It constructs dynamic inter-variable dependency graphs and applies lightweight graph convolutions to exploit spatial structure without the overhead of full graph neural networks.',
+            'CiK': 'CiK (Covariates in Kindred) is a framework that systematically evaluates the effect of covariates and auxiliary variables on time series forecasting performance. It assesses how different models leverage additional context information to improve predictions.',
+            'NSF HDR': 'NSF HDR refers to datasets and benchmarks associated with the NSF Harnessing the Data Revolution (HDR) program. These scientific time series come from NSF-funded research spanning astrophysics, geoscience, and other data-intensive disciplines.',
+            'MLCommons-EQ': 'MLCommons-EQ (Earthquake) is a seismology benchmark from the MLCommons initiative focused on earthquake prediction and classification. It provides standardized training and evaluation protocols for machine learning models applied to seismic time series data.',
+            // --- RAG / Retrieval ---
+            'TS-RAGZSEval': 'TS-RAGZSEval evaluates Retrieval-Augmented Generation (RAG) approaches for time series forecasting in a zero-shot setting. RAG for time series retrieves similar historical patterns from a database to condition forecasts, reducing the need for domain-specific pre-training.',
+            'TS-RAGPreT': 'TS-RAGPreT is the pre-training evaluation framework for RAG-enhanced time series models. It assesses how retrieval-augmented pre-training — combining pattern libraries with neural forecasters — improves generalization compared to standard pre-training approaches.',
+            // --- Classic Transformer-based ---
+            'Informer': 'Informer is an efficient transformer model designed for long sequence time series forecasting (LSTF). It introduces ProbSparse self-attention and self-attention distilling to reduce complexity from O(L²) to O(L log L). Originally benchmarked on electricity transformer temperature (ETT) datasets, it was a landmark paper demonstrating transformers for time series.',
+            'TimesNet': 'TimesNet transforms 1D time series into 2D tensors to simultaneously capture intra-period and inter-period variations. It applies 2D convolutions (inception blocks) to this multi-period representation, achieving state-of-the-art results across forecasting, imputation, classification, and anomaly detection tasks.',
+            'TimesFM': 'TimesFM (Time Series Foundation Model) is Google\'s pre-trained model for time series forecasting. It employs a patched-decoder architecture trained on a large corpus of real-world and synthetic time series. TimesFM provides zero-shot forecasting capabilities and demonstrates strong performance across various forecasting horizons.'
         };
-        
-        return descriptions[modelName] || `${modelName} is a time series model used for forecasting and analysis tasks. It has been evaluated across multiple benchmark datasets to assess its performance on various forecasting scenarios.`;
+
+        return descriptions[modelName] || `${modelName} is a time series model or benchmark evaluated across multiple datasets in the Time Series Commons catalog. It contributes to the systematic comparison of forecasting and analysis methods across diverse domains and temporal patterns.`;
     }
 
     setupEventListeners() {

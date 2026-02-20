@@ -33,22 +33,22 @@
     "Transportation": {
       "image": "pics/domains/transportation.jpg",
       "color": "#e74c3c",
-      "keywords": ["transportation", "transport", "traffic", "vehicle", "urban mobility", "taxi", "bike", "freeway", "logistics", "bike-sharing", "car lanes"]
+      "keywords": ["transportation", "transport", "traffic", "vehicle", "urban mobility", "taxi", "bike", "freeway", "logistics", "bike-sharing", "car lanes", "aviation"]
     },
     "Nature": {
       "image": "pics/domains/nature.jpg",
       "color": "#27ae60",
-      "keywords": ["environmental", "climate", "weather", "meteorology", "air quality", "satellite", "geospatial", "polar", "nature", "earth observation", "atmospheric", "co2", "pollution", "environment", "climatology", "agriculture", "earthquake", "seismology", "seismic", "gravitational wave", "astrophysics", "solar physics", "gis", "geology"]
+      "keywords": ["environmental", "climate", "weather", "meteorology", "air quality", "satellite", "geospatial", "polar", "nature", "earth observation", "atmospheric", "co2", "pollution", "environment", "climatology", "agriculture", "earthquake", "seismology", "seismic", "gravitational wave", "astrophysics", "solar physics", "gis", "geology", "bioacoustics"]
     },
     "Industry": {
       "image": "pics/domains/industry.jpg",
       "color": "#2c3e50",
-      "keywords": ["indust", "industrial", "manufacturing", "automation", "predictive maintenance", "control system", "ics security", "industrial automation", "industrial iot"]
+      "keywords": ["indust", "industrial", "manufacturing", "automation", "predictive maintenance", "control system", "ics security", "industrial automation", "industrial iot", "robotics", "semiconductor", "appliance", "diagnostics", "wafer"]
     },
     "Economics": {
       "image": "pics/domains/economics.jpg",
       "color": "#f1c40f",
-      "keywords": ["macro", "macro1", "macro2", "macroeconomic", "exchange rate", "foreign exchange", "gdp", "economic indicator", "economic"]
+      "keywords": ["macro", "macro1", "macro2", "macroeconomic", "exchange rate", "foreign exchange", "gdp", "economic indicator", "economic", "micro", "micro1", "micro2", "micro3", "finance", "banking", "stock", "financial", "bankruptcy", "transaction", "behavioral finance", "behavioral science"]
     },
     "Demographics": {
       "image": "pics/domains/demographics.jpg",
@@ -60,20 +60,15 @@
       "color": "#e91e63",
       "keywords": ["retail", "e-commerce", "marketing", "consumer", "shopping", "store", "tourism", "retail sales forecasting", "sales"]
     },
-    "Microeconomics": {
-      "image": "pics/domains/microeconomics.jpg",
-      "color": "#8e44ad",
-      "keywords": ["micro", "micro1", "micro2", "micro3", "finance", "banking", "stock", "financial", "bankruptcy", "transaction", "behavioral finance", "behavioral science"]
-    },
     "Health": {
       "image": "pics/domains/health.jpg",
       "color": "#c0392b",
-      "keywords": ["health", "medical", "healthcare", "ecg", "eeg", "eog", "epg", "biomedical", "epidemiology", "public health", "disease", "surveillance", "illness", "heart", "physiology", "genomics", "hrm", "blood pressure", "influenza", "parkinson's disease", "neuroscience", "bci", "epigenetics"]
+      "keywords": ["health", "medical", "healthcare", "ecg", "eeg", "eog", "epg", "biomedical", "epidemiology", "public health", "disease", "surveillance", "illness", "heart", "physiology", "genomics", "hrm", "blood pressure", "influenza", "parkinson's disease", "neuroscience", "bci", "epigenetics", "water quality"]
     },
     "Audio": {
       "image": "pics/domains/audio.jpg",
       "color": "#9b59b6",
-      "keywords": ["audio", "speech", "sound", "acoustic", "bioacoustics", "voice", "speech recognition", "nlp"]
+      "keywords": ["audio", "speech", "sound", "acoustic", "voice", "speech recognition", "insect", "wingbeat"]
     }
   }
 }
