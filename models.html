@@ -835,7 +835,7 @@
         .domain-explorer-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            grid-template-rows: 130px 130px;
+            grid-auto-rows: 130px;
             gap: 10px;
             margin-top: 14px;
         }
@@ -962,7 +962,6 @@
         @media (max-width: 1100px) {
             .domain-explorer-grid {
                 grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: auto;
                 grid-auto-rows: 120px;
             }
             /* Reset all span overrides */

@@ -492,31 +492,33 @@ class NotebookCatalog {
             domainCounts[cat] = (domainCounts[cat] || 0) + 1;
         });
 
-        // Bento layout: assign grid spans to create visual rhythm across 7 cols / 2 rows
-        // Wider tiles for high-count domains
+        // Bento layout: spans designed for 7-col grid, 3 rows, total 14 domains
+        // Row 1 (7 cols): Energy(2) + Synthetic(1) + Image(2) + Sensor(1) + Motion(1)
+        // Row 2 (7 cols): Corporate(2) + Transportation(1) + Nature(2) + Industry(1) + Economics(1)
+        // Row 3 (7 cols): Demographics(2) + Retail(1) + Health(3) + Audio(1)
         const BENTO_SPANS = {
-            'Energy':         { col: 2, row: 1 },
-            'Health':         { col: 2, row: 1 },
-            'Nature':         { col: 1, row: 1 },
-            'Economics':      { col: 2, row: 1 },
-            'Transportation': { col: 1, row: 1 },  // row 1 done (7 cols)
-            'Industry':       { col: 2, row: 1 },
-            'Motion':         { col: 1, row: 1 },
-            'Corporate':      { col: 2, row: 1 },
-            'Retail':         { col: 1, row: 1 },  // row 2 done (7 cols)
-            'Sensor':         { col: 1, row: 1 },
-            'Demographics':   { col: 1, row: 1 },
-            'Audio':          { col: 1, row: 1 },
-            'Image':          { col: 1, row: 1 },
-            'Synthetic':      { col: 1, row: 1 },
+            'Energy':         2,
+            'Synthetic':      1,
+            'Image':          2,
+            'Sensor':         1,
+            'Motion':         1,
+            'Corporate':      2,
+            'Transportation': 1,
+            'Nature':         2,
+            'Industry':       1,
+            'Economics':      1,
+            'Demographics':   2,
+            'Retail':         1,
+            'Health':         3,
+            'Audio':          1,
         };
 
         const entries = Object.entries(this.domainConfig.domains);
         grid.innerHTML = entries.map(([name, config]) => {
             const count = domainCounts[name] || 0;
             const icon = DOMAIN_ICONS[name] || '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>';
-            const span = BENTO_SPANS[name] || { col: 1, row: 1 };
-            const spanStyle = span.col > 1 ? `grid-column: span ${span.col};` : '';
+            const span = BENTO_SPANS[name] || 1;
+            const spanStyle = span > 1 ? `grid-column: span ${span};` : '';
             const isActive = this.activeDomain === name;
             const activeClass = isActive ? ' domain-tile--active' : '';
             return `
