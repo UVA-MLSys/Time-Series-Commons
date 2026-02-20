@@ -3,6 +3,23 @@
  * Models and Datasets Catalog
  */
 
+const DOMAIN_ICONS = {
+    'Energy': `<svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    'Health': `<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+    'Nature': `<svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-8 2"/><path d="M3.82 21.34A15 15 0 0 1 8 16.5c4-1 6-4 6-4"/></svg>`,
+    'Economics': `<svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    'Transportation': `<svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+    'Industry': `<svg viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7-6H4a2 2 0 0 0-2 2v16z"/><path d="M9 22V12h6v10"/><path d="M14 2v6h6"/><circle cx="12" cy="7" r="1"/></svg>`,
+    'Motion': `<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><path d="M20 9a2 2 0 0 0-2-2h-2.5l-1.45-1.45A2 2 0 0 0 12.6 5H11.4a2 2 0 0 0-1.45.55L8.5 7H6a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h.93l1.03 4H9l.5-2h5l.5 2h1.04l1.03-4H18a2 2 0 0 0 2-2V9z"/></svg>`,
+    'Corporate': `<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+    'Retail': `<svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+    'Sensor': `<svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>`,
+    'Demographics': `<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    'Audio': `<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`,
+    'Image': `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
+    'Synthetic': `<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+};
+
 class NotebookCatalog {
     constructor() {
         this.allData = [];
@@ -13,6 +30,7 @@ class NotebookCatalog {
         this.currentView = 'grid'; // Default to grid for featured sections
         this.currentSort = 'name';
         this.searchQuery = '';
+        this.activeDomain = null; // Domain filter set by explorer tiles
         
         this.init();
     }
@@ -423,6 +441,7 @@ class NotebookCatalog {
     renderContent() {
         if (this.currentTab === 'all') {
             this.renderFeatured();
+            this.renderDomainExplorer();
         } else if (this.currentTab === 'datasets') {
             this.renderAllDatasets();
         } else if (this.currentTab === 'models') {
@@ -462,10 +481,88 @@ class NotebookCatalog {
         }
     }
 
+    renderDomainExplorer() {
+        const grid = document.getElementById('domain-explorer-grid');
+        if (!grid || !this.domainConfig) return;
+
+        // Count datasets per domain category
+        const domainCounts = {};
+        this.datasets.forEach(d => {
+            const cat = this.getDomainConfig(d.domain).category;
+            domainCounts[cat] = (domainCounts[cat] || 0) + 1;
+        });
+
+        // Bento layout: assign grid spans to create visual rhythm across 7 cols / 2 rows
+        // Wider tiles for high-count domains
+        const BENTO_SPANS = {
+            'Energy':         { col: 2, row: 1 },
+            'Health':         { col: 2, row: 1 },
+            'Nature':         { col: 1, row: 1 },
+            'Economics':      { col: 2, row: 1 },
+            'Transportation': { col: 1, row: 1 },  // row 1 done (7 cols)
+            'Industry':       { col: 2, row: 1 },
+            'Motion':         { col: 1, row: 1 },
+            'Corporate':      { col: 2, row: 1 },
+            'Retail':         { col: 1, row: 1 },  // row 2 done (7 cols)
+            'Sensor':         { col: 1, row: 1 },
+            'Demographics':   { col: 1, row: 1 },
+            'Audio':          { col: 1, row: 1 },
+            'Image':          { col: 1, row: 1 },
+            'Synthetic':      { col: 1, row: 1 },
+        };
+
+        const entries = Object.entries(this.domainConfig.domains);
+        grid.innerHTML = entries.map(([name, config]) => {
+            const count = domainCounts[name] || 0;
+            const icon = DOMAIN_ICONS[name] || '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>';
+            const span = BENTO_SPANS[name] || { col: 1, row: 1 };
+            const spanStyle = span.col > 1 ? `grid-column: span ${span.col};` : '';
+            const isActive = this.activeDomain === name;
+            const activeClass = isActive ? ' domain-tile--active' : '';
+            return `
+                <div class="domain-tile${activeClass}" data-domain="${name}"
+                     style="${spanStyle} background-image: url('${config.image}'); --tile-color: ${config.color};">
+                    <div class="domain-tile-overlay"></div>
+                    <div class="domain-tile-content">
+                        <div class="domain-tile-icon">${icon}</div>
+                        <div class="domain-tile-name">${name}</div>
+                        <div class="domain-tile-count">${count} dataset${count !== 1 ? 's' : ''}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        grid.querySelectorAll('.domain-tile').forEach(tile => {
+            tile.addEventListener('click', () => {
+                this.activeDomain = tile.dataset.domain;
+                this.switchTab('datasets');
+            });
+        });
+    }
+
+    clearDomainFilter() {
+        this.activeDomain = null;
+        this.renderContent();
+    }
+
     renderAllDatasets() {
         const filtered = this.getFilteredAndSorted(this.datasets);
         document.getElementById('datasets-count').textContent = `${filtered.length} datasets`;
         
+        // Show/hide active domain chip
+        const chipContainer = document.getElementById('active-domain-chip-container');
+        if (chipContainer) {
+            if (this.activeDomain) {
+                chipContainer.innerHTML = `
+                    <div class="active-domain-chip">
+                        Filtered: <strong>${this.activeDomain}</strong>
+                        <button onclick="catalog.clearDomainFilter()" title="Clear filter">×</button>
+                    </div>`;
+            } else {
+                chipContainer.innerHTML = '';
+            }
+        }
+
         const gridContainer = document.getElementById('all-datasets-grid');
         const listContainer = document.getElementById('all-datasets-list');
         
@@ -510,6 +607,13 @@ class NotebookCatalog {
                     item.description
                 ].filter(Boolean).join(' ').toLowerCase();
                 return searchableText.includes(this.searchQuery);
+            });
+        }
+
+        // Apply active domain filter (set by domain explorer tiles)
+        if (this.activeDomain && this.domainConfig) {
+            filtered = filtered.filter(item => {
+                return this.getDomainConfig(item.domain).category === this.activeDomain;
             });
         }
 

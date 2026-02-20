@@ -824,6 +824,151 @@
             font-family: 'Google Sans Text', sans-serif;
         }
 
+        /* ============================================
+           Domain Explorer Bento Grid
+           ============================================ */
+
+        .domain-explorer-section {
+            margin-bottom: 8px;
+        }
+
+        .domain-explorer-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: 130px 130px;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        /* Bento layout — 14 tiles across 2 rows */
+        /* Row 1: Energy(2), Health(2), Nature(1), Transportation(1), Economics(2) = 8 but we want 7 cols */
+        /* We'll assign specific grid positions in JS via data attributes */
+        .domain-tile {
+            border-radius: 14px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            user-select: none;
+        }
+
+        .domain-tile:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        }
+
+        .domain-tile:hover .domain-tile-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.70) 100%);
+        }
+
+        .domain-tile-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.55) 100%);
+            transition: background 0.2s ease;
+            z-index: 1;
+        }
+
+        .domain-tile-content {
+            position: absolute;
+            bottom: 12px;
+            left: 14px;
+            right: 14px;
+            color: white;
+            z-index: 2;
+        }
+
+        .domain-tile-icon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+            opacity: 0.95;
+        }
+
+        .domain-tile-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+        }
+
+        .domain-tile-name {
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Google Sans', sans-serif;
+            line-height: 1.2;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .domain-tile-count {
+            font-size: 11px;
+            opacity: 0.82;
+            font-family: 'Google Sans Text', sans-serif;
+            margin-top: 1px;
+        }
+
+        .domain-tile--active {
+            outline: 3px solid white;
+            outline-offset: -3px;
+            box-shadow: 0 0 0 3px var(--nlm-blue-50, #4259ff);
+        }
+
+        .domain-tile--active .domain-tile-overlay {
+            background: linear-gradient(180deg, rgba(66,89,255,0.25) 0%, rgba(66,89,255,0.55) 100%);
+        }
+
+        /* Active domain filter chip */
+        .active-domain-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--v3-pill-selected-background);
+            border: 1px solid var(--nlm-blue-50);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-family: 'Google Sans Text', sans-serif;
+            color: var(--nlm-blue-50);
+            margin-bottom: 14px;
+        }
+
+        .active-domain-chip button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--nlm-blue-50);
+            font-size: 16px;
+            line-height: 1;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            opacity: 0.8;
+        }
+
+        .active-domain-chip button:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .domain-explorer-grid {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: auto;
+                grid-auto-rows: 120px;
+            }
+            /* Reset all span overrides */
+            .domain-tile { grid-column: span 1 !important; }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
@@ -844,6 +989,11 @@
             .cards-grid,
             .featured-cards-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .domain-explorer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 110px;
             }
         }
     </style>
@@ -909,6 +1059,16 @@
     <main class="main-content">
         <!-- All View -->
         <div id="all-view">
+            <!-- Domain Explorer -->
+            <section class="section domain-explorer-section">
+                <div class="section-header">
+                    <h2 class="section-title">Explore by Domain</h2>
+                </div>
+                <div class="domain-explorer-grid" id="domain-explorer-grid">
+                    <!-- Rendered by JavaScript -->
+                </div>
+            </section>
+
             <!-- Featured Datasets -->
             <section class="section">
                 <div class="section-header">
@@ -944,9 +1104,10 @@
         <div id="datasets-view" class="hidden">
             <section class="section">
                 <div class="section-header">
-                    <h2 class="section-title">All Datasets</h2>
+                    <h2 class="section-title" id="datasets-view-title">All Datasets</h2>
                     <span id="datasets-count" style="color: var(--v2-on-surface-de-emphasis); font-size: 14px; font-family: 'Google Sans Text', sans-serif;"></span>
                 </div>
+                <div id="active-domain-chip-container"></div>
                 <div class="cards-grid" id="all-datasets-grid"></div>
                 <div class="list-view" id="all-datasets-list"></div>
             </section>
