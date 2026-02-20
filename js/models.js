@@ -580,7 +580,21 @@ class NotebookCatalog {
     renderAllModels() {
         const filtered = this.getFilteredAndSorted(this.models);
         document.getElementById('models-count').textContent = `${filtered.length} models`;
-        
+
+        // Show/hide active domain chip
+        const chipContainer = document.getElementById('active-domain-chip-container-models');
+        if (chipContainer) {
+            if (this.activeDomain) {
+                chipContainer.innerHTML = `
+                    <div class="active-domain-chip">
+                        Filtered: <strong>${this.activeDomain}</strong>
+                        <button onclick="catalog.clearDomainFilter()" title="Clear filter">×</button>
+                    </div>`;
+            } else {
+                chipContainer.innerHTML = '';
+            }
+        }
+
         const gridContainer = document.getElementById('all-models-grid');
         const listContainer = document.getElementById('all-models-list');
         
@@ -968,7 +982,7 @@ class NotebookCatalog {
     }
 }
 
-// Initialize the catalog when DOM is ready
+// Initialize the catalog when DOM is ready — assign to window so onclick handlers work
 document.addEventListener('DOMContentLoaded', () => {
-    new NotebookCatalog();
+    window.catalog = new NotebookCatalog();
 });
