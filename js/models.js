@@ -140,109 +140,34 @@ class NotebookCatalog {
             'LightGTS', 'CiK', 'NSF HDR', 'MLCommons-EQ'
         ];
 
-        // Domain map: each model assigned to its most relevant domain category
-        const modelDomainMap = {
-            // Energy-focused models (ETT, electricity benchmarks)
-            'Informer': 'Energy',
-            'Autoformer': 'Energy',
-            'FEDformer': 'Energy',
-            'TimesNet': 'Energy',
-            'TSLib': 'Energy',
-            'TSFM-Core': 'Energy',
-            'TSFM-Bench': 'Energy',
-            'TSFM-Granite': 'Energy',
-            // Foundation/pre-trained models (multi-domain synthetic pre-training)
-            'Chronos-Pre': 'Synthetic',
-            'Chronos-Eval1': 'Synthetic',
-            'Chronos-Eval2': 'Synthetic',
-            'ChronosBolt-Pre': 'Synthetic',
-            'ChronosBolt-Eval1': 'Synthetic',
-            'ChronosBolt-Eval2': 'Synthetic',
-            'ChronosX-Pre': 'Synthetic',
-            'ChronosX-Eval1': 'Synthetic',
-            'ChronosX-Eval2': 'Synthetic',
-            'ChronosX-Synth': 'Synthetic',
-            'TimesFM': 'Synthetic',
-            'Time-MOE': 'Synthetic',
-            'Timer-XL': 'Synthetic',
-            'LPTM-Pre': 'Synthetic',
-            'LPTM-Eval': 'Synthetic',
-            'TS2Vec-Bench': 'Synthetic',
-            'TS2Vec-PreT': 'Synthetic',
-            'Automixer': 'Synthetic',
-            'TTM-PreT': 'Synthetic',
-            'TTM-Eval': 'Synthetic',
-            'TTM-Bench': 'Synthetic',
-            'TSMamba-ZS': 'Synthetic',
-            'TSMamba-FullShot': 'Synthetic',
-            'UTSD': 'Synthetic',
-            'DataLoop': 'Synthetic',
-            'LOTSA': 'Synthetic',
-            'InstructTime': 'Synthetic',
-            'Tempo': 'Synthetic',
-            'TimeBench': 'Synthetic',
-            'MONSTER': 'Synthetic',
-            // Business/economics forecasting
-            'Prophet': 'Economics',
-            'TimeGPT': 'Economics',
-            'AutoGluon': 'Economics',
-            'NeuralForecast': 'Economics',
-            'M1': 'Economics',
-            'M2': 'Economics',
-            'M3': 'Economics',
-            'M4': 'Economics',
-            'M5': 'Retail',
-            'M6': 'Economics',
-            'Monash': 'Economics',
-            'Monash-Common': 'Economics',
-            'Monash-small': 'Economics',
-            'Monash TSER': 'Economics',
-            'Monash Moment': 'Economics',
-            'Kaggle TS': 'Economics',
-            'FastML': 'Economics',
-            'Hackernoon': 'Corporate',
-            // Time series classification archives
-            'UCR': 'Motion',
-            'UEA': 'Motion',
-            'NonUCR-UCI': 'Motion',
-            'Aeon': 'Motion',
-            // Anomaly detection
-            'TSB-UAD MOMENT': 'Industry',
-            'TSB-UAD Full': 'Industry',
-            'Merlion': 'Industry',
-            // LLM-based models
-            'Time-LLM': 'Corporate',
-            'AutoTimes': 'Corporate',
-            'ST-LLM': 'Corporate',
-            'LLM-Time': 'Corporate',
-            'LLM-Mixer': 'Corporate',
-            'LLM-prompt': 'Corporate',
-            'LLM-PS': 'Corporate',
-            'One Fits All': 'Corporate',
-            'Lag-Llama': 'Corporate',
-            'GHPT': 'Corporate',
-            // RAG / retrieval-based
-            'TS-RAGZSEval': 'Synthetic',
-            'TS-RAGPreT': 'Synthetic',
-            // Specialized
-            'LightGTS': 'Transportation',
-            'CiK': 'Industry',
-            'NSF HDR': 'Nature',
-            'MLCommons-EQ': 'Nature',
-        };
-
         // Build model list from all known CSV columns
+        // Domain is assigned data-driven: whichever domain category has the most
+        // evaluated datasets for this model wins. Falls back to 'Synthetic' if unevaluated.
         this.models = ALL_MODELS.map(modelName => {
-            const datasetsCount = this.allData.filter(d =>
+            const evaluatedDatasets = this.allData.filter(d =>
                 d.benchmarks && d.benchmarks[modelName]
-            ).length;
+            );
+            const datasetsCount = evaluatedDatasets.length;
+
+            // Count domain category occurrences across all evaluated datasets
+            let dominantDomain = 'Synthetic';
+            if (datasetsCount > 0 && this.domainConfig) {
+                const categoryCounts = {};
+                evaluatedDatasets.forEach(d => {
+                    const cat = this.getDomainConfig(d.domain).category;
+                    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+                });
+                // Pick the category with the highest count
+                dominantDomain = Object.entries(categoryCounts)
+                    .sort((a, b) => b[1] - a[1])[0][0];
+            }
 
             return {
                 id: modelName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
                 name: modelName,
                 type: 'model',
                 datasetsCount: datasetsCount,
-                domain: modelDomainMap[modelName] || 'Synthetic',
+                domain: dominantDomain,
                 description: this.getModelDescription(modelName)
             };
         });
