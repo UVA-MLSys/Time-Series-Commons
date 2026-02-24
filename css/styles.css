@@ -857,6 +857,18 @@ a:hover {
     padding: 3% 2%;
 }
 
+.core-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 20px 0;
+}
+
+.core-team-grid .collaborator {
+    width: auto;
+    margin: 1.5% 0;
+}
+
 .collaborator {
     width: 12%;
     margin: 1.5% 2%;
@@ -2276,6 +2288,15 @@ iframe {
     .collaborator {
         width: 40%;
         margin: 3% 5%;
+    }
+
+    .core-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .core-team-grid .collaborator {
+        width: auto;
+        margin: 3% 0;
     }
     
     .collaborator img {
