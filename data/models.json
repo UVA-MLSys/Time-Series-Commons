@@ -13808,6 +13808,19 @@
       "benchmarks": {
         "Prophet": false
       }
+    },
+    {
+      "id": "testdatasetml",
+      "name": "TESTDATASETML",
+      "domain": "General",
+      "timePoints": "100",
+      "interval": "1Hz",
+      "variables": "1 (Univariate)",
+      "dimensions": "1",
+      "description": "A test dataset to verify the end-to-end pipeline.",
+      "dataLink": "https://example.com/testdatasetml",
+      "paperLink": "",
+      "benchmarks": {}
     }
   ]
 }
