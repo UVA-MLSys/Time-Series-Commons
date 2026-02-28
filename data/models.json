@@ -303,13 +303,13 @@
       "dataLink": "https://www.timeseriesclassification.com/description.php?Dataset=ArticularyWordRecognition",
       "paperLink": "",
       "benchmarks": {
-        "Darts": true,
-        "Merlion": true,
         "UCR": false,
         "UEA": false,
+        "Darts": true,
+        "Merlion": true,
+        "Timer-XL": true,
         "LPTM-Eval": true,
-        "TS2Vec-Bench": true,
-        "Timer-XL": true
+        "TS2Vec-Bench": true
       }
     },
     {
