@@ -6,13 +6,18 @@ Populates:
   - datasets table  (815+ rows, one per time series dataset)
   - models   table  (79 rows, one per benchmark / foundation model)
 
-Usage (from repo root, with .env or environment variable set):
-    cd /path/to/Time-Series-Commons
-    DB_CONN_STR="postgresql://ts_user:PASSWORD@127.0.0.1:5432/timeseries_db" \
-        python server/seed_data.py
+Usage (from repo root):
 
-    # or with a .env file in server/listener/:
-    source server/listener/.env && python server/seed_data.py
+    From the e2-micro VM (via Cloud SQL Auth Proxy on localhost:5432):
+        DB_CONN_STR="postgresql://ts_user:PASSWORD@127.0.0.1:5432/timeseries_db" \
+            python server/seed_data.py
+
+    From DeepCollector / local machine (Cloud SQL public IP, requires SSL):
+        DB_CONN_STR="postgresql://ts_user:PASSWORD@34.11.116.241:5432/timeseries_db?sslmode=require" \
+            python server/seed_data.py
+
+    Or source the listener .env first:
+        source server/listener/.env && python server/seed_data.py
 
 Safe to re-run — uses ON CONFLICT (name) DO UPDATE everywhere.
 """

@@ -5,9 +5,11 @@
 # exposes the instance on localhost:5432 — no public IP needed.
 #
 # Before enabling:
-#   1. Replace INSTANCE_NAME with your Cloud SQL instance name.
-#      Find it in Cloud Console → SQL → your instance → Overview (the name at the top).
-#      Region is already filled in as us-east4 (matches your VM zone us-east4-b).
+#   All placeholders are filled in. Instance details:
+#     Project ID : project-4896a6b8-11ce-4f5a-ac4
+#     Region     : us-east4  (VM zone: us-east4-b, SQL zone: us-east4-a)
+#     Instance   : free-trial-first-project
+#     Public IP  : 34.11.116.241  (used by DeepCollector, sslmode=require)
 #
 #   2. Ensure the binary is installed:
 #        curl -o cloud-sql-proxy \
@@ -32,7 +34,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/local/bin/cloud-sql-proxy \
-    project-4896a6b8-11ce-4f5a-ac4:us-east4:INSTANCE_NAME \
+    project-4896a6b8-11ce-4f5a-ac4:us-east4:free-trial-first-project \
     --port=5432
 Restart=always
 RestartSec=5
