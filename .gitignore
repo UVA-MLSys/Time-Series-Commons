@@ -1,0 +1,13 @@
+# Environment files — never commit real credentials
+.env
+server/listener/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+
+# macOS
+.DS_Store
