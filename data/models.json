@@ -12,6 +12,19 @@
       "dataLink": "https://example.com",
       "paperLink": "",
       "benchmarks": {}
+    },
+    {
+      "id": "pipeline-test-v2",
+      "name": "Pipeline Test v2",
+      "domain": "energy",
+      "timePoints": "100",
+      "interval": "hourly",
+      "variables": "1",
+      "dimensions": "1",
+      "description": "Test.",
+      "dataLink": "https://example.com",
+      "paperLink": "",
+      "benchmarks": {}
     }
   ]
 }
