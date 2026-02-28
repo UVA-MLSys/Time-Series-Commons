@@ -100,8 +100,8 @@
       "paperLink": "",
       "benchmarks": {
         "LOTSA": false,
-        "TimeBench": true,
-        "Timer-XL": true
+        "Timer-XL": true,
+        "TimeBench": true
       }
     },
     {
