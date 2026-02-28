@@ -151,12 +151,12 @@
       "dataLink": "AllGestureWiimoteY Description",
       "paperLink": "",
       "benchmarks": {
+        "UCR": false,
         "Darts": true,
         "Merlion": true,
-        "UCR": false,
+        "Timer-XL": true,
         "LPTM-Eval": true,
-        "TS2Vec-Bench": true,
-        "Timer-XL": true
+        "TS2Vec-Bench": true
       }
     },
     {
