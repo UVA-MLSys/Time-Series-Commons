@@ -282,13 +282,13 @@
       "dataLink": "https://www.timeseriesclassification.com/description.php?Dataset=ArrowHead",
       "paperLink": "",
       "benchmarks": {
+        "UCR": false,
+        "Aeon": false,
         "Darts": true,
         "Merlion": true,
-        "Aeon": false,
-        "UCR": false,
+        "Timer-XL": true,
         "LPTM-Eval": true,
-        "TS2Vec-Bench": true,
-        "Timer-XL": true
+        "TS2Vec-Bench": true
       }
     },
     {
