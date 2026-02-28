@@ -1,0 +1,52 @@
+# /etc/systemd/system/timeseries-listener.service
+#
+# Runs the Time Series Commons catalog listener as a persistent system service.
+# The listener subscribes to PostgreSQL NOTIFY events and POSTs targeted
+# updates to the website updater endpoint whenever catalog rows change.
+#
+# Depends on cloud-sql-proxy.service — systemd ensures the proxy tunnel is
+# established before this service starts.
+#
+# Before enabling:
+#   1. Replace YOUR_LINUX_USERNAME with the output of `whoami` on the VM.
+#
+#   2. Create the virtualenv and install dependencies:
+#        cd ~
+#        mkdir -p timeseries-listener && cd timeseries-listener
+#        python3 -m venv venv
+#        source venv/bin/activate
+#        pip install psycopg2-binary flask requests python-dotenv
+#
+#   3. Copy server/listener/main.py here:
+#        cp /path/to/repo/server/listener/main.py ~/timeseries-listener/main.py
+#
+#   4. Create ~/timeseries-listener/.env from .env.example and fill in values.
+#      The .env file must NOT be world-readable:
+#        chmod 600 ~/timeseries-listener/.env
+#
+# Enable and start:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable timeseries-listener
+#   sudo systemctl start timeseries-listener
+#   sudo systemctl status timeseries-listener
+#
+# Watch live logs:
+#   sudo journalctl -u timeseries-listener -f
+
+[Unit]
+Description=Time Series Commons Catalog Listener
+After=network.target cloud-sql-proxy.service
+Requires=cloud-sql-proxy.service
+
+[Service]
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=/home/YOUR_LINUX_USERNAME/timeseries-listener
+EnvironmentFile=/home/YOUR_LINUX_USERNAME/timeseries-listener/.env
+ExecStart=/home/YOUR_LINUX_USERNAME/timeseries-listener/venv/bin/python main.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

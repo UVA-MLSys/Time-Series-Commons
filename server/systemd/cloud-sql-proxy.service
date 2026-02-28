@@ -1,0 +1,43 @@
+# /etc/systemd/system/cloud-sql-proxy.service
+#
+# Runs the Cloud SQL Auth Proxy as a persistent system service.
+# The proxy creates an encrypted tunnel from this VM to Cloud SQL and
+# exposes the instance on localhost:5432 — no public IP needed.
+#
+# Before enabling:
+#   1. Replace REGION and INSTANCE_NAME with your Cloud SQL instance values.
+#      Find them in Cloud Console → SQL → your instance → Overview.
+#      Format: free-trial-first-project:us-central1:timeseries-instance
+#
+#   2. Ensure the binary is installed:
+#        curl -o cloud-sql-proxy \
+#          https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.14.1/cloud-sql-proxy.linux.amd64
+#        chmod +x cloud-sql-proxy
+#        sudo mv cloud-sql-proxy /usr/local/bin/
+#
+#   3. Grant the VM service account the Cloud SQL Client role:
+#        gcloud projects add-iam-policy-binding free-trial-first-project \
+#          --member="serviceAccount:YOUR_VM_SERVICE_ACCOUNT_EMAIL" \
+#          --role="roles/cloudsql.client"
+#
+# Enable and start:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable cloud-sql-proxy
+#   sudo systemctl start cloud-sql-proxy
+#   sudo systemctl status cloud-sql-proxy
+
+[Unit]
+Description=Google Cloud SQL Auth Proxy
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/cloud-sql-proxy \
+    free-trial-first-project:REGION:INSTANCE_NAME \
+    --port=5432
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
