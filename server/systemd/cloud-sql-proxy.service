@@ -5,9 +5,9 @@
 # exposes the instance on localhost:5432 — no public IP needed.
 #
 # Before enabling:
-#   1. Replace REGION and INSTANCE_NAME with your Cloud SQL instance values.
-#      Find them in Cloud Console → SQL → your instance → Overview.
-#      Format: free-trial-first-project:us-central1:timeseries-instance
+#   1. Replace INSTANCE_NAME with your Cloud SQL instance name.
+#      Find it in Cloud Console → SQL → your instance → Overview (the name at the top).
+#      Region is already filled in as us-east4 (matches your VM zone us-east4-b).
 #
 #   2. Ensure the binary is installed:
 #        curl -o cloud-sql-proxy \
@@ -17,7 +17,7 @@
 #
 #   3. Grant the VM service account the Cloud SQL Client role:
 #        gcloud projects add-iam-policy-binding free-trial-first-project \
-#          --member="serviceAccount:YOUR_VM_SERVICE_ACCOUNT_EMAIL" \
+#          --member="serviceAccount:430435578100-compute@developer.gserviceaccount.com" \
 #          --role="roles/cloudsql.client"
 #
 # Enable and start:
@@ -32,7 +32,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/local/bin/cloud-sql-proxy \
-    free-trial-first-project:REGION:INSTANCE_NAME \
+    project-4896a6b8-11ce-4f5a-ac4:us-east4:INSTANCE_NAME \
     --port=5432
 Restart=always
 RestartSec=5
