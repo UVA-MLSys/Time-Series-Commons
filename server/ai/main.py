@@ -1,31 +1,29 @@
 """
 Time Series Commons — AI Assistant Service
 
-Provides a chat API backed by Google Gemini (gemini-3-flash-preview) with
-explicit context caching for the full dataset catalog.  Users can also upload
-their own documents (PDFs, text, CSV) which are added to a per-session cache
-so the model has full context while answering.
+Provides a chat API backed by Google Gemini (gemini-3-flash-preview).
+The full dataset catalog is embedded in the system instruction on every
+request, which makes implicit caching effective (Gemini automatically
+caches repeated prefixes at no extra cost on the free tier).
 
-Intended use-case: help researchers discover the right time series datasets
-and benchmark models for their project.
+Users can upload their own documents (PDFs, text, CSV) which are stored
+via the Gemini Files API and included as file parts in the conversation.
 
-Caching strategy
-----------------
-• Global catalog cache  — created at startup from data/models.json + system
-                          prompt.  Shared by every user.  TTL 1 hour, silently
-                          refreshed by a background thread when < 5 min remain.
-• Per-session cache     — created by POST /session/new.  Contains the catalog
-                          cache contents PLUS any user-uploaded files.
-                          Stored in an in-memory sessions dict keyed by UUID.
-                          TTL 1 hour, refreshed on each /chat call.
+Note on caching
+---------------
+Explicit context caching requires a paid Gemini plan (free tier quota = 0).
+We instead rely on Gemini's implicit caching: identical system instruction
+prefixes sent in quick succession are automatically cached server-side with
+no developer action required.  The catalog JSON (~125K tokens) qualifies
+(min threshold for gemini-3-flash-preview is 1024 tokens).
 
 Endpoints
 ---------
-GET  /                  Health check + cache status
+GET  /                  Health check
 POST /session/new       Start a new user session → {session_id}
 POST /upload            Upload a file to a session → {filename, session_id}
 POST /chat              Send a message → {response, sources, usage}
-DELETE /session         Clean up a session and its Gemini cache
+DELETE /session         Clean up a session's uploaded files
 
 Start:
     python main.py      (reads .env in cwd)
@@ -72,9 +70,7 @@ DATA_PATH      = os.environ.get(
     "DATA_PATH",
     str(pathlib.Path(__file__).resolve().parents[2] / "data" / "models.json"),
 )
-MODEL          = "models/gemini-3-flash-preview"
-CACHE_TTL      = "3600s"   # 1 hour
-CACHE_REFRESH_THRESHOLD = 300   # refresh when < 5 min remain (seconds)
+MODEL = "models/gemini-3-flash-preview"
 
 # ---------------------------------------------------------------------------
 # Gemini client
@@ -87,16 +83,11 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 # ---------------------------------------------------------------------------
 
 def load_catalog() -> tuple[list[dict], str]:
-    """
-    Reads data/models.json and returns (entries_list, summary_string).
-    The summary is injected into the cached system instruction.
-    """
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         raw = json.load(f)
 
     entries: list[dict] = raw.get("models", [])
 
-    # Compute stats for the summary header
     domains = sorted({e.get("domain", "General") for e in entries})
     benchmarks: set[str] = set()
     for e in entries:
@@ -117,7 +108,7 @@ def load_catalog() -> tuple[list[dict], str]:
 catalog_entries, catalog_summary = load_catalog()
 
 # ---------------------------------------------------------------------------
-# System prompt
+# System instruction (sent on every request; implicit caching applies)
 # ---------------------------------------------------------------------------
 
 SYSTEM_INSTRUCTION = f"""You are an expert research assistant for the Time Series Commons \
@@ -147,128 +138,33 @@ tailor recommendations accordingly.
 """
 
 # ---------------------------------------------------------------------------
-# Global catalog cache
-# ---------------------------------------------------------------------------
-
-_catalog_cache_name: str | None = None
-_catalog_cache_expire: datetime | None = None
-_catalog_cache_lock = threading.Lock()
-
-
-def _create_catalog_cache() -> str:
-    """Create (or recreate) the shared global catalog cache on Gemini."""
-    log.info("Creating global catalog cache on Gemini ...")
-    cache = client.caches.create(
-        model=MODEL,
-        config=types.CreateCachedContentConfig(
-            display_name="timeseries-commons-catalog",
-            system_instruction=SYSTEM_INSTRUCTION,
-            contents=[
-                types.Content(
-                    role="user",
-                    parts=[types.Part(text="[Catalog context loaded. Ready to assist.]")],
-                )
-            ],
-            ttl=CACHE_TTL,
-        ),
-    )
-    expire = datetime.now(timezone.utc) + timedelta(seconds=3600)
-    log.info(f"Global catalog cache created: {cache.name} (expires ~{expire.isoformat()})")
-    return cache.name, expire
-
-
-def ensure_catalog_cache() -> str:
-    """Return the current catalog cache name, refreshing if close to expiry."""
-    global _catalog_cache_name, _catalog_cache_expire
-    with _catalog_cache_lock:
-        now = datetime.now(timezone.utc)
-        needs_refresh = (
-            _catalog_cache_name is None
-            or _catalog_cache_expire is None
-            or (_catalog_cache_expire - now).total_seconds() < CACHE_REFRESH_THRESHOLD
-        )
-        if needs_refresh:
-            _catalog_cache_name, _catalog_cache_expire = _create_catalog_cache()
-        return _catalog_cache_name
-
-
-def _cache_refresh_loop() -> None:
-    """Background thread: checks every minute and refreshes the catalog cache."""
-    while True:
-        time.sleep(60)
-        try:
-            ensure_catalog_cache()
-        except Exception as e:
-            log.error(f"Cache refresh error: {e}")
-
-
-# ---------------------------------------------------------------------------
 # Per-session state
 # ---------------------------------------------------------------------------
-# sessions: { session_id: { cache_name, file_uris: [...], created_at, last_active } }
+# sessions: { session_id: { file_uris: [...], created_at, last_active } }
 
 sessions: dict[str, dict] = {}
 _sessions_lock = threading.Lock()
 
 
-def _build_session_cache(session_id: str, file_uris: list[str]) -> str:
-    """
-    Create a Gemini cache for a user session that includes the catalog
-    system instruction AND any files the user has uploaded.
-    """
-    contents = [
-        types.Content(
-            role="user",
-            parts=[types.Part(text="[Catalog context loaded. Ready to assist.]")],
-        )
-    ]
-
-    # Add uploaded user files
-    for uri in file_uris:
-        contents.append(
-            types.Content(
-                role="user",
-                parts=[types.Part(file_data=types.FileData(file_uri=uri))],
-            )
-        )
-
-    cache = client.caches.create(
-        model=MODEL,
-        config=types.CreateCachedContentConfig(
-            display_name=f"ts-session-{session_id[:8]}",
-            system_instruction=SYSTEM_INSTRUCTION,
-            contents=contents,
-            ttl=CACHE_TTL,
-        ),
-    )
-    log.info(
-        f"Session cache created: {cache.name} "
-        f"(session={session_id[:8]}, files={len(file_uris)})"
-    )
-    return cache.name
-
-
-def _delete_cache_safe(cache_name: str) -> None:
-    """Delete a Gemini cache, ignoring errors (cache may have already expired)."""
-    try:
-        client.caches.delete(cache_name)
-        log.info(f"Deleted cache: {cache_name}")
-    except Exception as e:
-        log.warning(f"Could not delete cache {cache_name}: {e}")
-
-
 def _session_cleanup_loop() -> None:
-    """Background thread: removes sessions idle for more than 90 minutes."""
+    """Background thread: removes sessions idle for more than 2 hours."""
     while True:
         time.sleep(300)
-        cutoff = datetime.now(timezone.utc) - timedelta(minutes=90)
+        cutoff = datetime.now(timezone.utc) - timedelta(hours=2)
         with _sessions_lock:
             stale = [
                 sid for sid, s in sessions.items()
                 if s["last_active"] < cutoff
             ]
             for sid in stale:
-                _delete_cache_safe(sessions[sid]["cache_name"])
+                # Delete uploaded files from Gemini Files API
+                for uri in sessions[sid].get("file_uris", []):
+                    try:
+                        # Extract file name from URI for deletion
+                        file_name = uri.split("/")[-1] if "/" in uri else uri
+                        client.files.delete(name=f"files/{file_name}")
+                    except Exception:
+                        pass
                 del sessions[sid]
                 log.info(f"Evicted stale session {sid[:8]}")
 
@@ -283,40 +179,26 @@ CORS(app)
 
 @app.route("/")
 def health():
-    cache_ok = _catalog_cache_name is not None
     return jsonify({
         "status":          "running",
         "model":           MODEL,
-        "catalog_cache":   _catalog_cache_name,
         "catalog_entries": len(catalog_entries),
         "active_sessions": len(sessions),
-        "cache_expires":   _catalog_cache_expire.isoformat() if _catalog_cache_expire else None,
     }), 200
 
 
 @app.route("/session/new", methods=["POST"])
 def session_new():
-    """
-    Create a new user session with a fresh per-session Gemini cache
-    (initially identical to the global catalog cache but session-scoped
-    so user uploads can be added later without affecting other users).
-    """
+    """Create a new user session."""
     session_id = str(uuid.uuid4())
-    try:
-        cache_name = _build_session_cache(session_id, [])
-    except Exception as e:
-        log.error(f"Failed to create session cache: {e}")
-        return jsonify({"error": str(e)}), 500
-
     now = datetime.now(timezone.utc)
     with _sessions_lock:
         sessions[session_id] = {
-            "cache_name":  cache_name,
             "file_uris":   [],
+            "file_names":  [],  # Gemini file resource names for deletion
             "created_at":  now,
             "last_active": now,
         }
-
     log.info(f"New session: {session_id[:8]}")
     return jsonify({"session_id": session_id}), 200
 
@@ -324,11 +206,11 @@ def session_new():
 @app.route("/upload", methods=["POST"])
 def upload():
     """
-    Upload a file to a session.  The file is sent to the Gemini Files API,
-    then the session cache is recreated to include it.
+    Upload a file to a session via the Gemini Files API.
+    The file URI is stored in the session and included in subsequent chat calls.
 
     Form fields: session_id (string), file (multipart)
-    Returns:     {session_id, filename, mime_type}
+    Returns:     {session_id, filename, mime_type, file_count}
     """
     session_id = request.form.get("session_id")
     if not session_id:
@@ -345,7 +227,6 @@ def upload():
     uploaded = request.files["file"]
     filename  = uploaded.filename or "upload"
 
-    # Detect MIME type from extension
     ext = pathlib.Path(filename).suffix.lower()
     mime_map = {
         ".pdf":  "application/pdf",
@@ -356,7 +237,6 @@ def upload():
     }
     mime_type = mime_map.get(ext, "application/octet-stream")
 
-    # Save to temp file and upload to Gemini Files API
     with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
         uploaded.save(tmp.name)
         tmp_path = tmp.name
@@ -371,7 +251,7 @@ def upload():
             ),
         )
 
-        # Wait for processing to complete
+        # Wait for processing
         for _ in range(30):
             status = client.files.get(name=gemini_file.name)
             if status.state.name != "PROCESSING":
@@ -381,7 +261,8 @@ def upload():
         if status.state.name != "ACTIVE":
             return jsonify({"error": f"File processing failed: {status.state.name}"}), 500
 
-        file_uri = gemini_file.uri
+        file_uri  = gemini_file.uri
+        file_name = gemini_file.name
         log.info(f"File ready: {file_uri}")
 
     except Exception as e:
@@ -390,29 +271,17 @@ def upload():
     finally:
         os.unlink(tmp_path)
 
-    # Rebuild session cache to include the new file
     with _sessions_lock:
-        old_cache = sessions[session_id]["cache_name"]
-        new_file_uris = sessions[session_id]["file_uris"] + [file_uri]
-
-    try:
-        new_cache_name = _build_session_cache(session_id, new_file_uris)
-    except Exception as e:
-        log.error(f"Failed to rebuild session cache: {e}")
-        return jsonify({"error": str(e)}), 500
-
-    # Swap cache atomically
-    with _sessions_lock:
-        sessions[session_id]["cache_name"]  = new_cache_name
-        sessions[session_id]["file_uris"]   = new_file_uris
+        sessions[session_id]["file_uris"].append(file_uri)
+        sessions[session_id]["file_names"].append(file_name)
         sessions[session_id]["last_active"] = datetime.now(timezone.utc)
-    _delete_cache_safe(old_cache)
+        file_count = len(sessions[session_id]["file_uris"])
 
     return jsonify({
         "session_id": session_id,
         "filename":   filename,
         "mime_type":  mime_type,
-        "file_count": len(new_file_uris),
+        "file_count": file_count,
     }), 200
 
 
@@ -445,28 +314,35 @@ def chat():
     if not session:
         return jsonify({"error": "session not found — start a new session first"}), 404
 
-    cache_name = session["cache_name"]
+    file_uris: list[str] = session.get("file_uris", [])
 
-    # Build conversation history for Gemini
+    # Build conversation contents
     history_raw: list[dict] = body.get("history", [])
     contents: list[types.Content] = []
+
     for turn in history_raw:
         role    = turn.get("role", "user")
         content = turn.get("content", "")
         contents.append(
             types.Content(role=role, parts=[types.Part(text=content)])
         )
-    # Append current user message
-    contents.append(
-        types.Content(role="user", parts=[types.Part(text=message)])
-    )
+
+    # Build current user message — include uploaded file parts on first turn
+    user_parts: list[types.Part] = []
+    if file_uris and not history_raw:
+        # First message: inject uploaded files so the model has access to them
+        for uri in file_uris:
+            user_parts.append(types.Part(file_data=types.FileData(file_uri=uri)))
+    user_parts.append(types.Part(text=message))
+
+    contents.append(types.Content(role="user", parts=user_parts))
 
     try:
         resp = client.models.generate_content(
             model=MODEL,
             contents=contents,
             config=types.GenerateContentConfig(
-                cached_content=cache_name,
+                system_instruction=SYSTEM_INSTRUCTION,
             ),
         )
     except Exception as e:
@@ -480,7 +356,7 @@ def chat():
 
     response_text = resp.text or ""
 
-    # Extract dataset names mentioned in the response by matching against catalog
+    # Extract dataset names mentioned in the response
     catalog_names = {e["name"] for e in catalog_entries}
     sources = sorted({
         name for name in catalog_names
@@ -504,10 +380,7 @@ def chat():
 
 @app.route("/session", methods=["DELETE"])
 def session_delete():
-    """
-    Clean up a session: delete the Gemini cache and remove from memory.
-    Request JSON: {session_id: str}
-    """
+    """Clean up a session and its uploaded files."""
     body = request.get_json(silent=True) or {}
     session_id = body.get("session_id")
     if not session_id:
@@ -519,7 +392,12 @@ def session_delete():
     if not session:
         return jsonify({"status": "not_found"}), 404
 
-    _delete_cache_safe(session["cache_name"])
+    for name in session.get("file_names", []):
+        try:
+            client.files.delete(name=name)
+        except Exception:
+            pass
+
     return jsonify({"status": "deleted"}), 200
 
 
@@ -528,12 +406,7 @@ def session_delete():
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    # Create the global catalog cache before accepting requests
-    ensure_catalog_cache()
-
-    # Background threads
-    threading.Thread(target=_cache_refresh_loop,   daemon=True).start()
     threading.Thread(target=_session_cleanup_loop, daemon=True).start()
-
     log.info(f"AI assistant service starting on port {PORT}")
+    log.info(f"Catalog: {len(catalog_entries)} datasets loaded from {DATA_PATH}")
     app.run(host="0.0.0.0", port=PORT)
