@@ -1,0 +1,49 @@
+# /etc/systemd/system/timeseries-ai.service
+#
+# Runs the Time Series Commons AI Assistant as a persistent system service.
+# Provides a Gemini-backed chat API at port 8082 with explicit context caching
+# for the full dataset/model catalog.
+#
+# Setup (one-time):
+#
+#   1. Create the virtualenv and install dependencies:
+#        cd ~
+#        mkdir -p timeseries-ai && cd timeseries-ai
+#        python3 -m venv venv
+#        source venv/bin/activate
+#        pip install flask flask-cors python-dotenv google-genai
+#
+#   2. Copy server/ai/main.py here:
+#        cp /path/to/repo/server/ai/main.py ~/timeseries-ai/main.py
+#
+#   3. Create ~/timeseries-ai/.env from server/ai/.env.example and fill in values:
+#        cp /path/to/repo/server/ai/.env.example ~/timeseries-ai/.env
+#        chmod 600 ~/timeseries-ai/.env
+#        # Edit the file and set GEMINI_API_KEY and DATA_PATH
+#
+# Enable and start:
+#   sudo cp /path/to/repo/server/systemd/timeseries-ai.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable timeseries-ai
+#   sudo systemctl start timeseries-ai
+#   sudo systemctl status timeseries-ai
+#
+# Watch live logs:
+#   sudo journalctl -u timeseries-ai -f
+
+[Unit]
+Description=Time Series Commons AI Assistant Service
+After=network.target
+
+[Service]
+User=ryangoudjil
+WorkingDirectory=/home/ryangoudjil/timeseries-ai
+EnvironmentFile=/home/ryangoudjil/timeseries-ai/.env
+ExecStart=/home/ryangoudjil/timeseries-ai/venv/bin/python main.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
