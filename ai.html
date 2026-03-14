@@ -797,13 +797,17 @@
        Init
     ================================================================ */
     async function init() {
-        // Load catalog JSON for sidebar stats (already served as a static asset)
+        // Load catalog JSON and domain config in parallel
         try {
-            const resp = await fetch('./data/models.json');
-            catalogData = await resp.json();
-            renderCatalogStats();
+            const [catalogResp, domainResp] = await Promise.all([
+                fetch('./data/models.json'),
+                fetch('./data/domain-config.json'),
+            ]);
+            catalogData = await catalogResp.json();
+            const domainConfig = await domainResp.json();
+            renderCatalogStats(domainConfig);
         } catch (e) {
-            console.warn('Could not load models.json:', e);
+            console.warn('Could not load catalog data:', e);
         }
 
         // Start a new AI session
@@ -823,32 +827,55 @@
     /* ================================================================
        Catalog sidebar
     ================================================================ */
-    function renderCatalogStats() {
+    function renderCatalogStats(domainConfig) {
         const entries = catalogData?.models || [];
-        const domains = {};
-        const benchmarks = new Set();
+        const topDomains = Object.keys(domainConfig?.domains || {});
+
+        // Count datasets per top-level domain using keyword matching
+        const domainCounts = {};
+        topDomains.forEach(d => { domainCounts[d] = 0; });
+
         entries.forEach(e => {
-            const d = e.domain || 'General';
-            domains[d] = (domains[d] || 0) + 1;
-            Object.keys(e.benchmarks || {}).forEach(k => benchmarks.add(k));
+            const raw = (e.domain || '').toLowerCase();
+            let matched = false;
+            for (const [topDomain, cfg] of Object.entries(domainConfig?.domains || {})) {
+                if (cfg.keywords.some(kw => raw.includes(kw.toLowerCase()))) {
+                    domainCounts[topDomain] = (domainCounts[topDomain] || 0) + 1;
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched) {
+                domainCounts['Synthetic'] = (domainCounts['Synthetic'] || 0) + 1;
+            }
         });
+
+        const benchmarks = new Set();
+        entries.forEach(e => Object.keys(e.benchmarks || {}).forEach(k => benchmarks.add(k)));
 
         const statsEl = document.getElementById('catalog-stats');
         statsEl.innerHTML = `
             <span class="stat-chip"><span>${entries.length}</span> datasets</span>
-            <span class="stat-chip"><span>${Object.keys(domains).length}</span> domains</span>
+            <span class="stat-chip"><span>${topDomains.length}</span> domains</span>
             <span class="stat-chip"><span>${benchmarks.size}</span> benchmarks</span>
         `;
 
-        // Build domain list
+        // Build domain list using top-level domain order from domain-config.json
         const listEl = document.getElementById('domain-list');
-        const sorted = Object.entries(domains).sort((a, b) => b[1] - a[1]);
-        listEl.innerHTML = sorted.map(([name, count]) => `
-            <div class="domain-item" onclick="askAboutDomain('${name.replace(/'/g, "\\'")}')">
-                <span>${name}</span>
-                <span class="domain-count">${count}</span>
-            </div>
-        `).join('');
+        listEl.innerHTML = topDomains.map(name => {
+            const cfg = domainConfig.domains[name];
+            const count = domainCounts[name] || 0;
+            const color = cfg.color || '#2E86AB';
+            return `
+                <div class="domain-item" onclick="askAboutDomain('${name.replace(/'/g, "\\'")}')">
+                    <span style="display:flex;align-items:center;gap:7px;">
+                        <span style="width:10px;height:10px;border-radius:50%;background:${color};flex-shrink:0;"></span>
+                        ${name}
+                    </span>
+                    <span class="domain-count">${count}</span>
+                </div>
+            `;
+        }).join('');
     }
 
     function toggleDomains() {
