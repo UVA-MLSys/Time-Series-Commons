@@ -91,7 +91,7 @@ def load_catalog() -> tuple[list[dict], str]:
     domains = sorted({e.get("domain", "General") for e in entries})
     benchmarks: set[str] = set()
     for e in entries:
-        benchmarks.update(k for k, v in e.get("benchmarks", {}).items() if v)
+        benchmarks.update(e.get("benchmarks", {}).keys())
 
     summary = (
         f"Total datasets: {len(entries)}\n"
@@ -327,12 +327,12 @@ def chat():
             types.Content(role=role, parts=[types.Part(text=content)])
         )
 
-    # Build current user message — include uploaded file parts on first turn
+    # Build current user message — always include uploaded file URIs so the
+    # model can reference them regardless of when they were uploaded.
+    # The Gemini Files API stores files server-side; we only pass URI references.
     user_parts: list[types.Part] = []
-    if file_uris and not history_raw:
-        # First message: inject uploaded files so the model has access to them
-        for uri in file_uris:
-            user_parts.append(types.Part(file_data=types.FileData(file_uri=uri)))
+    for uri in file_uris:
+        user_parts.append(types.Part(file_data=types.FileData(file_uri=uri)))
     user_parts.append(types.Part(text=message))
 
     contents.append(types.Content(role="user", parts=user_parts))

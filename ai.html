@@ -830,7 +830,7 @@
         entries.forEach(e => {
             const d = e.domain || 'General';
             domains[d] = (domains[d] || 0) + 1;
-            Object.entries(e.benchmarks || {}).forEach(([k, v]) => { if (v) benchmarks.add(k); });
+            Object.keys(e.benchmarks || {}).forEach(k => benchmarks.add(k));
         });
 
         const statsEl = document.getElementById('catalog-stats');
