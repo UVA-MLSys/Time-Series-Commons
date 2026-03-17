@@ -13795,6 +13795,21 @@
       }
     },
     {
+      "id": "yosemite_temps2.csv",
+      "name": "yosemite_temps2.csv",
+      "domain": "Environment / Meteorology",
+      "timePoints": "17568",
+      "interval": "5-minute",
+      "variables": "2",
+      "dimensions": "2",
+      "description": "Five-minute interval temperature readings from Yosemite National Park over a two-month period.11",
+      "dataLink": "Link",
+      "paperLink": "",
+      "benchmarks": {
+        "Prophet": false
+      }
+    },
+    {
       "id": "yosemite_temps.csv",
       "name": "yosemite_temps.csv",
       "domain": "Environment / Meteorology",
