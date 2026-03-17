@@ -13795,8 +13795,8 @@
       }
     },
     {
-      "id": "yosemite_temps2.csv",
-      "name": "yosemite_temps2.csv",
+      "id": "yose.csv",
+      "name": "yose.csv",
       "domain": "Environment / Meteorology",
       "timePoints": "17568",
       "interval": "5-minute",
