@@ -8,30 +8,40 @@ GitHub Pages redeploys with only the changed data (~1-3 min lag).
 
 Endpoints
 ---------
-POST /update   Called by the listener for every real row change.
-               Payload: {"table":"datasets","action":"INSERT","id":42,
-                         "name":"...","updated_at":"..."}
-               - datasets rows: fetch full row from SQL, patch models.json
-               - models rows:   log and skip (models derived in JS from benchmarks)
+POST /update               Called by the listener for every real row change.
+                           Payload: {"table":"datasets","action":"INSERT","id":42,
+                                     "name":"...","updated_at":"..."}
+                           - datasets rows: fetch full row from SQL, patch models.json
+                           - models rows:   log and skip (models derived in JS from benchmarks)
 
-POST /rebuild  Full regeneration — queries all datasets from SQL, rewrites
-               data/models.json completely, commits and pushes.
-               Use once after seeding, or after any bulk import.
+POST /rebuild              Full regeneration — queries all datasets from SQL, rewrites
+                           data/models.json completely, commits and pushes.
+                           Use once after seeding, or after any bulk import.
 
-GET  /         Health check.
+POST /ingest-from-sheets   Full mirror from a Google Sheets CSV export.
+                           Auth: Authorization: Bearer <WEBHOOK_SECRET>
+                           Body: text/csv (same column layout as the source spreadsheet)
+                           Upserts all rows, deletes orphaned rows, rebuilds and pushes.
+                           Called automatically by a Google Apps Script onChange trigger.
+
+GET  /                     Health check.
 
 Managed by: /etc/systemd/system/timeseries-updater.service
 """
 
+import csv
+import io
 import os
 import json
 import logging
+import re
 import subprocess
 import threading
 import time
 
 import psycopg2
 import psycopg2.extras
+from psycopg2.extras import Json, execute_batch
 import requests
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
@@ -46,11 +56,12 @@ log = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-DB_CONN_STR    = os.environ["DB_CONN_STR"]
-REPO_LOCAL_PATH = os.environ["REPO_LOCAL_PATH"]   # e.g. /home/ryangoudjil/Time-Series-Commons
+DB_CONN_STR      = os.environ["DB_CONN_STR"]
+REPO_LOCAL_PATH  = os.environ["REPO_LOCAL_PATH"]   # e.g. /home/ryangoudjil/Time-Series-Commons
 GIT_AUTHOR_NAME  = os.environ.get("GIT_AUTHOR_NAME",  "TimeSeries Updater")
 GIT_AUTHOR_EMAIL = os.environ.get("GIT_AUTHOR_EMAIL", "updater@timeseries-commons")
-PORT = int(os.environ.get("UPDATER_PORT", 8081))
+WEBHOOK_SECRET   = os.environ.get("WEBHOOK_SECRET", "")
+PORT             = int(os.environ.get("UPDATER_PORT", 8081))
 
 MODELS_JSON_PATH = os.path.join(REPO_LOCAL_PATH, "data", "models.json")
 
@@ -198,6 +209,114 @@ def git_push(commit_message: str) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Google Sheets ingest helpers
+# ---------------------------------------------------------------------------
+
+# Columns that carry dataset metadata; every other column is a benchmark model.
+_SHEET_METADATA_COLS = {
+    'Dataset Name', 'Domain', 'Number of Variables at each time point',
+    'Number of Time Points', 'Time interval between points',
+    'Primary Source Repository', 'Link to Data', 'Detailed Description',
+    'Comments', 'Original Row #', 'Number of Versions', 'Reconciler Version',
+    'Reconciler Status', 'Reconciliation Notes',
+}
+
+
+def _clean(v: str | None) -> str | None:
+    return v.strip() if v and v.strip() else None
+
+
+def parse_csv_from_string(csv_text: str) -> list:
+    """
+    Parse a Google Sheets CSV export into the same list-of-dicts format
+    used by scripts/csv_to_json.py and seed_data.py.
+    """
+    reader = csv.DictReader(io.StringIO(csv_text))
+    fieldnames = reader.fieldnames or []
+    model_columns = [c for c in fieldnames if c not in _SHEET_METADATA_COLS]
+
+    datasets = []
+    for row in reader:
+        name = _clean(row.get('Dataset Name'))
+        if not name:
+            continue
+
+        variables = _clean(row.get('Number of Variables at each time point', ''))
+        dimensions = None
+        if variables:
+            if 'univariate' in variables.lower() or variables == '1' or variables.lower().startswith('1 '):
+                dimensions = '1'
+            else:
+                nums = re.findall(r'\d+', variables)
+                if nums:
+                    dimensions = nums[0]
+
+        benchmarks = {}
+        for col in model_columns:
+            val = _clean(row.get(col, ''))
+            if val == 'Y':
+                benchmarks[col.strip()] = True
+            elif val == 'X':
+                benchmarks[col.strip()] = False
+
+        datasets.append({
+            'id':          name.lower().replace(' ', '-').replace('(', '').replace(')', '').replace(',', ''),
+            'name':        name,
+            'domain':      _clean(row.get('Domain', '')) or 'General',
+            'timePoints':  _clean(row.get('Number of Time Points', '')) or 'Not specified',
+            'interval':    _clean(row.get('Time interval between points', '')) or 'Not specified',
+            'variables':   variables or 'Not specified',
+            'dimensions':  dimensions or 'Not specified',
+            'description': _clean(row.get('Detailed Description', '')) or 'No description available.',
+            'dataLink':    _clean(row.get('Link to Data', '')) or '',
+            'paperLink':   '',
+            'benchmarks':  benchmarks,
+        })
+
+    return datasets
+
+
+def upsert_datasets_from_list(cur, datasets: list) -> int:
+    """Bulk-upsert a list of parsed dataset dicts. Returns row count."""
+    upsert_sql = """
+        INSERT INTO datasets (name, domain, source_url, metadata, updated_at)
+        VALUES (%(name)s, %(domain)s, %(source_url)s, %(metadata)s, NOW())
+        ON CONFLICT (name) DO UPDATE
+            SET domain     = EXCLUDED.domain,
+                source_url = EXCLUDED.source_url,
+                metadata   = EXCLUDED.metadata,
+                updated_at = NOW()
+    """
+    rows = []
+    for item in datasets:
+        metadata = {
+            "slug":        item['id'],
+            "timePoints":  item['timePoints'],
+            "interval":    item['interval'],
+            "variables":   item['variables'],
+            "dimensions":  item['dimensions'],
+            "description": item['description'],
+            "paperLink":   item['paperLink'],
+            "benchmarks":  item['benchmarks'],
+        }
+        rows.append({
+            "name":       item['name'],
+            "domain":     item['domain'],
+            "source_url": item['dataLink'] or None,
+            "metadata":   Json(metadata),
+        })
+    execute_batch(cur, upsert_sql, rows, page_size=200)
+    return len(rows)
+
+
+def delete_orphaned_datasets(cur, datasets: list) -> int:
+    """Delete any datasets row whose name is NOT in the incoming list. Returns count."""
+    names = [item['name'] for item in datasets]
+    cur.execute("DELETE FROM datasets WHERE NOT (name = ANY(%s))", (names,))
+    return cur.rowcount
+
+
+# ---------------------------------------------------------------------------
 # Flask endpoints
 # ---------------------------------------------------------------------------
 
@@ -287,6 +406,78 @@ def rebuild():
 
     log.info(f"[REBUILD] Done — {len(rows)} datasets pushed to GitHub")
     return jsonify({"status": "ok", "datasets_written": len(rows)}), 200
+
+
+@app.route("/ingest-from-sheets", methods=["POST"])
+def ingest_from_sheets():
+    """
+    Receives a full CSV export from Google Sheets (via Apps Script onChange trigger).
+    Performs a full mirror against the datasets table:
+      1. Upsert every row found in the CSV.
+      2. Delete any datasets row whose name is not present in the CSV.
+      3. Rebuild data/models.json and push to GitHub directly (the schema DELETE
+         trigger does not fire pg_notify, so we bypass the listener here).
+
+    Auth:    Authorization: Bearer <WEBHOOK_SECRET>
+    Body:    text/csv  (same column layout as the source spreadsheet)
+    Returns: {"status":"ok","upserted":N,"deleted":M}
+    """
+    auth = request.headers.get("Authorization", "")
+    if not WEBHOOK_SECRET or auth != f"Bearer {WEBHOOK_SECRET}":
+        log.warning("[INGEST] Rejected — bad or missing Authorization header")
+        return jsonify({"error": "unauthorized"}), 401
+
+    csv_text = request.get_data(as_text=True)
+    if not csv_text.strip():
+        return jsonify({"error": "empty body"}), 400
+
+    log.info("[INGEST] Received CSV payload, parsing ...")
+    try:
+        datasets = parse_csv_from_string(csv_text)
+    except Exception as e:
+        log.error(f"[INGEST] CSV parse failed: {e}")
+        return jsonify({"error": f"CSV parse error: {e}"}), 400
+
+    if not datasets:
+        return jsonify({"error": "no datasets found in CSV"}), 400
+
+    log.info(f"[INGEST] Parsed {len(datasets)} datasets from sheet")
+
+    try:
+        conn = get_connection()
+        try:
+            with conn:
+                with conn.cursor() as cur:
+                    n_upserted = upsert_datasets_from_list(cur, datasets)
+                    n_deleted  = delete_orphaned_datasets(cur, datasets)
+        finally:
+            conn.close()
+    except Exception as e:
+        log.error(f"[INGEST] DB operation failed: {e}")
+        return jsonify({"error": str(e)}), 500
+
+    log.info(f"[INGEST] DB synced — upserted={n_upserted} deleted={n_deleted}")
+
+    # Rebuild and push directly: pg_notify only fires for INSERT/UPDATE, not DELETE,
+    # so we cannot rely on the listener chain when rows have been removed.
+    with _git_lock:
+        try:
+            conn = get_connection()
+            try:
+                rows = fetch_all_dataset_rows(conn)
+            finally:
+                conn.close()
+            rebuild_full_json(rows)
+            git_push(
+                f"auto: sheets sync ({n_upserted} upserted, {n_deleted} deleted, "
+                f"{len(rows)} total)"
+            )
+        except Exception as e:
+            log.error(f"[INGEST] Rebuild/push failed: {e}")
+            return jsonify({"error": str(e)}), 500
+
+    log.info("[INGEST] Done — pushed to GitHub")
+    return jsonify({"status": "ok", "upserted": n_upserted, "deleted": n_deleted}), 200
 
 
 # ---------------------------------------------------------------------------
