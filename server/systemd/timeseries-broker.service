@@ -1,0 +1,57 @@
+# /etc/systemd/system/timeseries-broker.service
+#
+# Runs the Time Series Commons Catalog Broker as a persistent system service.
+# The broker accepts authenticated POST requests from DeepCollector (or any
+# producer), enriches records with canonical domain + image, writes directly
+# to PostgreSQL, and lets pg_notify trigger the downstream listener chain.
+#
+# Depends on cloud-sql-proxy.service — systemd ensures the proxy tunnel is
+# established before this service starts.
+#
+# Setup (run as the ryangoudjil user on the GCP VM):
+#
+#   1. Create the working directory and virtual environment:
+#        mkdir -p ~/timeseries-broker && cd ~/timeseries-broker
+#        python3 -m venv venv
+#        source venv/bin/activate
+#        pip install -r /path/to/repo/server/broker/requirements.txt
+#
+#   2. Copy service files:
+#        cp /path/to/repo/server/broker/main.py          ~/timeseries-broker/main.py
+#        cp /path/to/repo/server/broker/domain_resolver.py ~/timeseries-broker/domain_resolver.py
+#
+#   3. Create ~/timeseries-broker/.env from server/broker/.env.example:
+#        cp /path/to/repo/server/broker/.env.example ~/timeseries-broker/.env
+#        # Fill in DB_CONN_STR, BROKER_SECRET, DOMAIN_CONFIG_PATH
+#        chmod 600 ~/timeseries-broker/.env
+#
+#   4. Open firewall port 8083 (GCP VPC firewall rule):
+#        gcloud compute firewall-rules create allow-broker \
+#          --allow tcp:8083 --source-ranges=<DEEPCOLLECTOR_IP>/32
+#
+# Enable and start:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable timeseries-broker
+#   sudo systemctl start timeseries-broker
+#   sudo systemctl status timeseries-broker
+#
+# Watch live logs:
+#   sudo journalctl -u timeseries-broker -f
+
+[Unit]
+Description=Time Series Commons Catalog Broker
+After=network.target cloud-sql-proxy.service
+Requires=cloud-sql-proxy.service
+
+[Service]
+User=ryangoud
+WorkingDirectory=/home/ryangoud/timeseries-broker
+EnvironmentFile=/home/ryangoud/timeseries-broker/.env
+ExecStart=/home/ryangoud/timeseries-broker/venv/bin/python main.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -81,7 +81,9 @@ def fetch_dataset_row(conn, row_id: int) -> dict | None:
     """Return the full datasets row for the given id, or None."""
     with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
         cur.execute(
-            "SELECT id, name, domain, source_url, metadata FROM datasets WHERE id = %s",
+            """SELECT id, name, domain, domain_canonical, domain_image,
+                      source_url, metadata
+               FROM datasets WHERE id = %s""",
             (row_id,)
         )
         return cur.fetchone()
@@ -91,7 +93,9 @@ def fetch_all_dataset_rows(conn) -> list:
     """Return all rows from the datasets table ordered by name."""
     with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
         cur.execute(
-            "SELECT id, name, domain, source_url, metadata FROM datasets ORDER BY name"
+            """SELECT id, name, domain, domain_canonical, domain_image,
+                      source_url, metadata
+               FROM datasets ORDER BY name"""
         )
         return cur.fetchall()
 
@@ -105,25 +109,30 @@ def row_to_json_entry(row) -> dict:
     Invert the seed_data.py mapping.
 
     SQL row columns:
-      name, domain, source_url, metadata (JSONB)
+      name, domain, domain_canonical, domain_image, source_url, metadata (JSONB)
 
-    metadata fields stored during seeding:
+    metadata fields stored during seeding / broker ingest:
       slug, timePoints, interval, variables, dimensions,
       description, paperLink, benchmarks
+
+    domain_canonical and domain_image are broker-assigned fields that the
+    front-end uses to display the correct domain image card background.
     """
     meta = row["metadata"] or {}
     return {
-        "id":          meta.get("slug", ""),
-        "name":        row["name"],
-        "domain":      row["domain"] or "General",
-        "timePoints":  meta.get("timePoints", "Not specified"),
-        "interval":    meta.get("interval",    "Not specified"),
-        "variables":   meta.get("variables",   "Not specified"),
-        "dimensions":  meta.get("dimensions",  "Not specified"),
-        "description": meta.get("description", ""),
-        "dataLink":    row["source_url"] or "",
-        "paperLink":   meta.get("paperLink",   ""),
-        "benchmarks":  meta.get("benchmarks",  {}),
+        "id":               meta.get("slug", ""),
+        "name":             row["name"],
+        "domain":           row["domain"] or "General",
+        "domainCanonical":  row.get("domain_canonical") or "",
+        "domainImage":      row.get("domain_image") or "",
+        "timePoints":       meta.get("timePoints", "Not specified"),
+        "interval":         meta.get("interval",    "Not specified"),
+        "variables":        meta.get("variables",   "Not specified"),
+        "dimensions":       meta.get("dimensions",  "Not specified"),
+        "description":      meta.get("description", ""),
+        "dataLink":         row["source_url"] or "",
+        "paperLink":        meta.get("paperLink",   ""),
+        "benchmarks":       meta.get("benchmarks",  {}),
     }
 
 
@@ -346,6 +355,32 @@ def update():
         log.info(f"[SKIP] table={table} — only datasets affect models.json")
         return jsonify({"status": "skipped", "reason": "table not datasets"}), 200
 
+    # Handle DELETE: remove the entry from models.json by name
+    if action == "DELETE":
+        if not name:
+            log.warning("[UPDATE] DELETE received with no name — skipping")
+            return jsonify({"status": "skipped", "reason": "missing name for DELETE"}), 200
+
+        with _git_lock:
+            try:
+                data  = load_models_json()
+                items = data.get("models", [])
+                before = len(items)
+                items  = [m for m in items if m.get("name") != name]
+                if len(items) == before:
+                    log.info(f"[UPDATE] DELETE — '{name}' not found in JSON, nothing to remove")
+                    return jsonify({"status": "skipped", "reason": "not in JSON"}), 200
+                data["models"] = items
+                write_models_json(data)
+                git_push(f"auto: removed '{name}' [DELETE]")
+            except Exception as e:
+                log.error(f"[UPDATE] DELETE patch/push failed: {e}")
+                return jsonify({"error": str(e)}), 500
+
+        log.info(f"[OK] Removed '{name}' from models.json — pushed to GitHub")
+        return jsonify({"status": "ok", "change": f"removed '{name}'"}), 200
+
+    # INSERT / UPDATE: fetch the full row and patch models.json
     try:
         conn = get_connection()
         try:

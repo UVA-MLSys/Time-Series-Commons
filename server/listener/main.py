@@ -1,16 +1,26 @@
 """
 Time Series Commons — Catalog Listener Service
 
-Connects to PostgreSQL and subscribes to the 'catalog_updates' NOTIFY channel.
-When a row changes (INSERT or UPDATE on datasets or models), it compares a
-hash of the payload against the last-known state. If a real change is detected
-it POSTs a minimal update payload to the website updater endpoint.
+Connects to PostgreSQL and subscribes to NOTIFY channels published by both
+the schema triggers and the Catalog Broker service.
+
+Channels subscribed:
+  catalog_updates       — legacy generic channel (backwards compat)
+  catalog_datasets      — per-type channel for dataset INSERT / UPDATE / DELETE
+  catalog_models        — per-type channel for model INSERT / UPDATE / DELETE
+
+When a row changes the listener compares a hash of the payload against the
+last-known in-memory state. If a real change is detected it POSTs a minimal
+update payload to the website updater endpoint.
 
 Design mirrors the IndyCar anomaly detection architecture from Indiana University:
   - Persistent TCP-like connection (LISTEN/NOTIFY)   ≈ MQTT broker subscription
   - select() non-blocking I/O wait                   ≈ Storm spout polling
   - Hash diff gate                                   ≈ HTM anomaly filter
   - POST to site updater                             ≈ WebSocket broadcast
+
+DELETE events forwarded to the updater carry action="DELETE" so the updater
+can remove the entry from data/models.json and push the change.
 
 Start:
     python main.py          (reads .env in cwd or parent)
@@ -46,6 +56,18 @@ SITE_UPDATE_URL = os.environ["SITE_UPDATE_URL"]
 PORT            = int(os.environ.get("LISTENER_PORT", 8080))
 
 # ---------------------------------------------------------------------------
+# Channels to subscribe to.
+# catalog_updates      — backwards-compatible generic channel (schema v1)
+# catalog_datasets     — per-type channel added in schema v2 (broker integration)
+# catalog_models       — per-type channel added in schema v2 (broker integration)
+#
+# Duplicate notifications (same payload arriving on both catalog_updates and
+# catalog_datasets) are absorbed by the hash-diff gate so no double updates
+# are sent to the site updater.
+# ---------------------------------------------------------------------------
+LISTEN_CHANNELS = ["catalog_updates", "catalog_datasets", "catalog_models"]
+
+# ---------------------------------------------------------------------------
 # In-memory hash store
 # Key:   "tablename:id"   e.g. "datasets:42"
 # Value: md5 hex digest of the last-seen notification payload
@@ -60,29 +82,41 @@ def compute_hash(payload: dict) -> str:
     ).hexdigest()
 
 
-def handle_update(payload_str: str) -> None:
+def handle_update(payload_str: str, channel: str) -> None:
     """
-    Called once per pg_notify message on 'catalog_updates'.
+    Called once per pg_notify message on any subscribed channel.
 
-    Checks whether the incoming payload represents a genuine change from the
-    last recorded state. If not, the notification is silently dropped (no
-    site update, no wasted HTTP call). This is the hash-diff gate.
+    Deduplicates notifications using a hash-diff gate so that a single row
+    change arriving on both 'catalog_updates' and 'catalog_datasets' only
+    triggers one site update POST.
+
+    Supports DELETE actions: the payload carries action="DELETE" and an id so
+    the updater can remove the entry from data/models.json.
     """
     try:
         payload = json.loads(payload_str)
     except json.JSONDecodeError:
-        log.error(f"Could not parse notify payload: {payload_str!r}")
+        log.error(f"Could not parse notify payload on {channel!r}: {payload_str!r}")
         return
 
     key      = f"{payload['table']}:{payload['id']}"
     new_hash = compute_hash(payload)
 
     if site_state.get(key) == new_hash:
-        log.info(f"[SKIP] {key} — payload hash unchanged, no site update needed")
+        log.info(f"[SKIP] {key} (channel={channel}) — payload hash unchanged")
         return
 
-    site_state[key] = new_hash
-    log.info(f"[CHANGE] {key} — action={payload['action']}, pushing update to site")
+    # For DELETE events remove the key from the state so a future re-insert
+    # of the same row is not incorrectly skipped.
+    if payload.get("action") == "DELETE":
+        site_state.pop(key, None)
+    else:
+        site_state[key] = new_hash
+
+    log.info(
+        f"[CHANGE] {key} (channel={channel}) — action={payload['action']}, "
+        f"pushing update to site"
+    )
 
     try:
         resp = requests.post(
@@ -101,6 +135,11 @@ def listener_loop() -> None:
     Long-running background thread: maintains a single LISTEN connection to
     PostgreSQL and dispatches incoming notifications to handle_update().
 
+    Subscribes to all channels in LISTEN_CHANNELS:
+      - catalog_updates   (legacy, backwards-compatible)
+      - catalog_datasets  (per-type, broker integration)
+      - catalog_models    (per-type, broker integration)
+
     Uses select() for efficient I/O multiplexing — never busy-polls.
     Automatically reconnects with backoff on connection loss or unexpected error.
     """
@@ -112,9 +151,10 @@ def listener_loop() -> None:
             conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
 
             with conn.cursor() as cur:
-                cur.execute("LISTEN catalog_updates;")
+                for channel in LISTEN_CHANNELS:
+                    cur.execute(f"LISTEN {channel};")
 
-            log.info("Listening on channel: catalog_updates")
+            log.info("Listening on channels: %s", ", ".join(LISTEN_CHANNELS))
 
             while True:
                 # Block for up to 30 s; wake immediately if the socket is readable
@@ -123,8 +163,10 @@ def listener_loop() -> None:
                     conn.poll()
                     while conn.notifies:
                         notify = conn.notifies.pop(0)
-                        log.debug(f"Raw notify: {notify.payload!r}")
-                        handle_update(notify.payload)
+                        log.debug(
+                            f"Raw notify on {notify.channel!r}: {notify.payload!r}"
+                        )
+                        handle_update(notify.payload, notify.channel)
 
         except psycopg2.OperationalError as e:
             log.error(f"DB connection lost: {e}. Reconnecting in 10 s ...")

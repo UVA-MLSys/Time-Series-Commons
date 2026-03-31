@@ -36,10 +36,10 @@ Description=Time Series Commons AI Assistant Service
 After=network.target
 
 [Service]
-User=ryangoudjil
-WorkingDirectory=/home/ryangoudjil/timeseries-ai
-EnvironmentFile=/home/ryangoudjil/timeseries-ai/.env
-ExecStart=/home/ryangoudjil/timeseries-ai/venv/bin/python main.py
+User=ryangoud
+WorkingDirectory=/home/ryangoud/timeseries-ai
+EnvironmentFile=/home/ryangoud/timeseries-ai/.env
+ExecStart=/home/ryangoud/timeseries-ai/venv/bin/python main.py
 Restart=always
 RestartSec=5
 StandardOutput=journal

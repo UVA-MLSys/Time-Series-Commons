@@ -8,7 +8,7 @@
 # established before this service starts.
 #
 # Before enabling:
-#   Linux username is ryangoudjil (confirmed via gcloud compute ssh whoami).
+#   Linux username is ryangoud (confirmed via gcloud compute ssh whoami).
 #
 #   2. Create the virtualenv and install dependencies:
 #        cd ~
@@ -39,10 +39,10 @@ After=network.target cloud-sql-proxy.service
 Requires=cloud-sql-proxy.service
 
 [Service]
-User=ryangoudjil
-WorkingDirectory=/home/ryangoudjil/timeseries-listener
-EnvironmentFile=/home/ryangoudjil/timeseries-listener/.env
-ExecStart=/home/ryangoudjil/timeseries-listener/venv/bin/python main.py
+User=ryangoud
+WorkingDirectory=/home/ryangoud/timeseries-listener
+EnvironmentFile=/home/ryangoud/timeseries-listener/.env
+ExecStart=/home/ryangoud/timeseries-listener/venv/bin/python main.py
 Restart=always
 RestartSec=5
 StandardOutput=journal
