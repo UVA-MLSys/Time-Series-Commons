@@ -13834,6 +13834,19 @@
       "dataLink": "https://example.com/testdatasetml",
       "paperLink": "",
       "benchmarks": {}
+    },
+    {
+      "id": "",
+      "name": "New Dataset",
+      "domain": "Energy",
+      "timePoints": "Not specified",
+      "interval": "Not specified",
+      "variables": "Not specified",
+      "dimensions": "Not specified",
+      "description": "",
+      "dataLink": "",
+      "paperLink": "",
+      "benchmarks": {}
     }
   ]
 }
