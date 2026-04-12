@@ -8,11 +8,12 @@ Reads the "Link to Data" column from the combined CSV and updates:
 
 Only source_url / dataLink are touched; all other fields are left untouched.
 
-Link classification:
+Link normalisation (all non-empty values are preserved):
   - http:// or https:// prefix  → used as-is
   - DOI: <id> prefix             → normalised to https://doi.org/<id>
-  - anything else (placeholder,  → stored as None / NULL
-    "No link available", empty)
+  - any other non-empty text     → stored as-is (e.g. "Zenodo Record",
+                                   "ETDataset GitHub", display-text hyperlinks)
+  - empty / whitespace-only      → stored as empty string / NULL in DB
 
 Usage (from repo root):
     DB_CONN_STR="postgresql://ts_user:PASSWORD@127.0.0.1:5432/timeseries_db" \\
@@ -55,12 +56,14 @@ _DOI_RE = re.compile(r"^DOI:\s*(.+)$", re.IGNORECASE)
 
 def classify_link(raw: Optional[str]) -> Optional[str]:
     """
-    Return a canonical URL string, or None if the value is not a usable link.
+    Return a normalised link string, preserving all non-empty values.
 
     Rules:
       - http:// / https:// → returned as-is (stripped)
       - DOI: <id>          → https://doi.org/<id>
-      - everything else    → None
+      - any other text     → returned as-is (display-text hyperlinks such as
+                             "Zenodo Record", "ETDataset GitHub", etc. are kept)
+      - empty / None       → None
     """
     if not raw:
         return None
@@ -76,7 +79,8 @@ def classify_link(raw: Optional[str]) -> Optional[str]:
         doi_id = m.group(1).strip()
         return f"https://doi.org/{doi_id}"
 
-    return None
+    # Non-URL text (e.g. "Zenodo Record", "Mcomp R Package"): preserve as-is.
+    return value
 
 
 # ---------------------------------------------------------------------------
@@ -207,11 +211,12 @@ def main() -> None:
     links = parse_csv_links(CSV_PATH)
     log.info("  %d dataset rows found in CSV", len(links))
 
-    real_urls    = sum(1 for v in links.values() if v and not v.startswith("https://doi.org/"))
+    real_urls    = sum(1 for v in links.values() if v and v.startswith("http"))
     doi_urls     = sum(1 for v in links.values() if v and v.startswith("https://doi.org/"))
+    text_links   = sum(1 for v in links.values() if v and not v.startswith("http"))
     no_link      = sum(1 for v in links.values() if not v)
-    log.info("  %d real URLs  |  %d DOI-normalised  |  %d no usable link",
-             real_urls, doi_urls, no_link)
+    log.info("  %d real URLs  |  %d DOI-normalised  |  %d text values  |  %d empty",
+             real_urls, doi_urls, text_links, no_link)
 
     # ── Update models.json ─────────────────────────────────────────────────
     log.info("Updating data/models.json …")
@@ -246,7 +251,8 @@ def main() -> None:
     log.info("  CSV rows parsed           : %d", len(links))
     log.info("  URLs (real)               : %d", real_urls)
     log.info("  URLs (DOI-normalised)     : %d", doi_urls)
-    log.info("  No usable link (→ NULL)   : %d", no_link)
+    log.info("  Text values (kept as-is)  : %d", text_links)
+    log.info("  Empty (→ NULL)            : %d", no_link)
     log.info("  models.json updated       : %d", json_stats["updated"])
     log.info("  DB rows updated           : %d", db_stats["updated"])
     log.info("  DB rows not found         : %d", db_stats["not_found"])
