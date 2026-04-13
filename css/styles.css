@@ -1807,6 +1807,40 @@ a:hover {
     color: white;
 }
 
+.modal-link--unavailable {
+    background-color: #8fa0ae;
+    border: none;
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+.modal-link--unavailable:hover {
+    background-color: #7a8f9c;
+    color: white;
+}
+
+.ts-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(44, 62, 80, 0.92);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 9999;
+    white-space: nowrap;
+}
+
+.ts-toast--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 .benchmarks-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));

@@ -1,0 +1,22 @@
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+
+body {
+  max-width: 100vw;
+  padding: 0;
+  margin: 0;
+  //background-color: #293742;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f1f1f1;
+
+  .ic-section {
+    margin-top: 10px;
+
+    .ic-section-title {
+      font-family: "Teko", sans-serif;
+      font-size: 40px;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "storm-ui",
+    "labels": {
+      "name": "storm-ui"
+    }
+  },
+  "spec": {
+    "volumes": [
+      {
+        "name": "topologies",
+        "hostPath": {
+          "path": "/nfs/indycar/data"
+        }
+      },
+      {
+        "name": "config",
+        "hostPath": {
+          "path": "/nfs/indycar/config"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "storm-ui",
+        "image": "storm:1.2.3",
+        "args": [
+          "storm",
+          "ui"
+        ],
+        "ports": [
+          {
+            "name": "storm-ui-http",
+            "containerPort": 8080
+          }
+        ],
+        "resources": {
+          "limits": {
+            "cpu": "100m"
+          }
+        },
+        "volumeMounts": [
+          {
+            "name": "config",
+            "mountPath": "/conf"
+          }
+        ]
+      }
+    ]
+  }
+}

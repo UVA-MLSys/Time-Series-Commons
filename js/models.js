@@ -833,15 +833,16 @@ class NotebookCatalog {
 
             ${benchmarksHTML}
 
-            ${dataset.paperLink || dataset.dataLink ? `
-                <div class="modal-section">
-                    <h3>Resources</h3>
-                    <div class="modal-links">
-                        ${dataset.paperLink ? `<a href="${this.escapeHtml(dataset.paperLink)}" target="_blank" class="modal-link">📄 View Paper</a>` : ''}
-                        ${dataset.dataLink ? `<a href="${this.escapeHtml(dataset.dataLink)}" target="_blank" class="modal-link">📊 Access Data</a>` : ''}
-                    </div>
+            <div class="modal-section">
+                <h3>Resources</h3>
+                <div class="modal-links">
+                    ${dataset.paperLink ? `<a href="${this.escapeHtml(dataset.paperLink)}" target="_blank" class="modal-link">📄 View Paper</a>` : ''}
+                    ${dataset.dataLink
+                        ? `<a href="${this.escapeHtml(dataset.dataLink)}" target="_blank" class="modal-link">📊 Access Data</a>`
+                        : `<button class="modal-link modal-link--unavailable" onclick="catalog.showToast('Dataset link not available')">📊 Access Data</button>`
+                    }
                 </div>
-            ` : ''}
+            </div>
         `;
     }
 
@@ -906,6 +907,23 @@ class NotebookCatalog {
                 </div>
             </div>
         `;
+    }
+    showToast(message) {
+        const existing = document.getElementById('ts-toast');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.id = 'ts-toast';
+        toast.className = 'ts-toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.add('ts-toast--visible'));
+
+        setTimeout(() => {
+            toast.classList.remove('ts-toast--visible');
+            toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+        }, 3000);
     }
 }
 

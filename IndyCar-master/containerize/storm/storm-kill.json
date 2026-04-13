@@ -1,0 +1,54 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "storm-job-kill",
+    "labels": {
+      "name": "storm-job-killer"
+    }
+  },
+  "spec": {
+    "volumes": [
+      {
+        "name": "topologies",
+        "hostPath": {
+          "path": "/nfs/indycar/data"
+        }
+      },
+      {
+        "name": "config",
+        "hostPath": {
+          "path": "/nfs/indycar/config"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "storm-job",
+        "image": "storm",
+        "args": [
+          "storm",
+          "kill",
+          "INTEL_TOPOLOGY_INDYCAR"
+        ],
+        "resources": {
+          "limits": {
+            "cpu": "100m"
+          }
+        },
+        "volumeMounts": [
+          {
+            "name": "topologies",
+            "mountPath": "/data/topologies"
+          },
+          {
+            "name": "config",
+            "mountPath": "/config"
+          }
+        ]
+      }
+    ],
+    "restartPolicy": "Never",
+    "terminationGracePeriodSeconds": 30
+  }
+}

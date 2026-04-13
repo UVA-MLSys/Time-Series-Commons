@@ -1,29 +1,32 @@
 #!/usr/bin/env python3
 """
-update_links_from_csv.py — Targeted link update from CSV → models.json + PostgreSQL
+update_links_from_csv.py — Targeted link update from CSV → PostgreSQL
 
-Reads the "Link to Data" column from the combined CSV and updates:
-  1. data/models.json  — the `dataLink` field for each matching dataset entry
-  2. datasets.source_url in PostgreSQL — via UPDATE … WHERE name = …
+Reads the "Link to Data" column from CSVwithcorrectedlinks.csv and updates:
+  1. datasets.source_url in PostgreSQL — via UPDATE … WHERE name = …
 
-Only source_url / dataLink are touched; all other fields are left untouched.
+Only real, clickable URLs are stored (http/https or DOI-normalised).
+Plain-text values (e.g. "Adiac Description", "Link") are treated as no link
+and written as NULL, preventing broken relative-URL navigation on the site.
 
-Link normalisation (all non-empty values are preserved):
-  - http:// or https:// prefix  → used as-is
-  - DOI: <id> prefix             → normalised to https://doi.org/<id>
-  - any other non-empty text     → stored as-is (e.g. "Zenodo Record",
-                                   "ETDataset GitHub", display-text hyperlinks)
-  - empty / whitespace-only      → stored as empty string / NULL in DB
+The DB UPDATE fires pg_notify on every row, which drives the pipeline:
+  listener → updater → models.json patch → git push → GitHub Pages redeploy
+
+Optionally, set UPDATER_URL to force an immediate full rebuild after all
+DB updates complete (e.g. UPDATER_URL=http://localhost:8081).
 
 Usage (from repo root):
     DB_CONN_STR="postgresql://ts_user:PASSWORD@127.0.0.1:5432/timeseries_db" \\
+        python scripts/update_links_from_csv.py
+
+    # With forced rebuild:
+    DB_CONN_STR="..." UPDATER_URL="http://localhost:8081" \\
         python scripts/update_links_from_csv.py
 
 Safe to re-run — idempotent UPDATE with ON CONFLICT-free targeting.
 """
 
 import csv
-import json
 import logging
 import os
 import re
@@ -44,8 +47,7 @@ log = logging.getLogger(__name__)
 # Paths
 # ---------------------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH  = REPO_ROOT / "Time-Series Common_Data_1-5-2026_COMBINED2 - Combinedv10.csv"
-JSON_PATH = REPO_ROOT / "data" / "models.json"
+CSV_PATH  = REPO_ROOT / "CSVwithcorrectedlinks.csv"
 
 
 # ---------------------------------------------------------------------------
@@ -56,13 +58,13 @@ _DOI_RE = re.compile(r"^DOI:\s*(.+)$", re.IGNORECASE)
 
 def classify_link(raw: Optional[str]) -> Optional[str]:
     """
-    Return a normalised link string, preserving all non-empty values.
+    Return a normalised, clickable URL or None.
 
     Rules:
       - http:// / https:// → returned as-is (stripped)
       - DOI: <id>          → https://doi.org/<id>
-      - any other text     → returned as-is (display-text hyperlinks such as
-                             "Zenodo Record", "ETDataset GitHub", etc. are kept)
+      - any other text     → None  (plain-text values like "Adiac Description"
+                             or "Link" are not valid hrefs and must not be stored)
       - empty / None       → None
     """
     if not raw:
@@ -79,8 +81,8 @@ def classify_link(raw: Optional[str]) -> Optional[str]:
         doi_id = m.group(1).strip()
         return f"https://doi.org/{doi_id}"
 
-    # Non-URL text (e.g. "Zenodo Record", "Mcomp R Package"): preserve as-is.
-    return value
+    # Plain text (e.g. "Adiac Description", "Link", "Zenodo Record") → no link.
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -103,45 +105,6 @@ def parse_csv_links(csv_path: Path) -> Dict[str, Optional[str]]:
             links[name] = classify_link(raw_link)
 
     return links
-
-
-# ---------------------------------------------------------------------------
-# models.json update
-# ---------------------------------------------------------------------------
-def update_models_json(json_path: Path, links: Dict[str, Optional[str]]) -> dict:
-    """
-    Patch the `dataLink` field for each entry in models.json.
-
-    Returns a stats dict: {updated, unchanged, not_in_json}.
-    """
-    with open(json_path, encoding="utf-8") as fh:
-        data = json.load(fh)
-
-    entries = data.get("models", [])
-    name_to_entry = {e.get("name", ""): e for e in entries}
-
-    stats = {"updated": 0, "unchanged": 0, "not_in_json": 0}
-
-    for name, link in links.items():
-        entry = name_to_entry.get(name)
-        if entry is None:
-            stats["not_in_json"] += 1
-            continue
-
-        current = entry.get("dataLink") or None
-        new_val  = link or ""
-
-        if current == new_val or (not current and not new_val):
-            stats["unchanged"] += 1
-        else:
-            entry["dataLink"] = new_val
-            stats["updated"] += 1
-
-    with open(json_path, "w", encoding="utf-8") as fh:
-        json.dump(data, fh, indent=2, ensure_ascii=False)
-        fh.write("\n")
-
-    return stats
 
 
 # ---------------------------------------------------------------------------
@@ -192,6 +155,22 @@ def update_database(conn_str: str, links: Dict[str, Optional[str]]) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Updater integration
+# ---------------------------------------------------------------------------
+def trigger_rebuild(updater_url: str) -> None:
+    """POST to the updater /rebuild endpoint to force a full models.json regeneration."""
+    try:
+        import urllib.request
+        url = updater_url.rstrip("/") + "/rebuild"
+        req = urllib.request.Request(url, method="POST", data=b"")
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            body = resp.read().decode()
+        log.info("  /rebuild → HTTP %d  %s", resp.status, body[:120])
+    except Exception as exc:
+        log.warning("  /rebuild failed (non-fatal): %s", exc)
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main() -> None:
@@ -200,44 +179,29 @@ def main() -> None:
         log.error("CSV not found: %s", CSV_PATH)
         sys.exit(1)
 
-    if not JSON_PATH.exists():
-        log.error("models.json not found: %s", JSON_PATH)
-        sys.exit(1)
+    db_conn_str  = os.environ.get("DB_CONN_STR")
+    updater_url  = os.environ.get("UPDATER_URL")
 
-    db_conn_str = os.environ.get("DB_CONN_STR")
+    if not db_conn_str:
+        log.error(
+            "DB_CONN_STR not set. Run with:\n"
+            '  DB_CONN_STR="postgresql://ts_user:PASSWORD@127.0.0.1:5432/timeseries_db" '
+            "python scripts/update_links_from_csv.py"
+        )
+        sys.exit(1)
 
     # ── Parse CSV ──────────────────────────────────────────────────────────
     log.info("Parsing CSV: %s", CSV_PATH)
     links = parse_csv_links(CSV_PATH)
     log.info("  %d dataset rows found in CSV", len(links))
 
-    real_urls    = sum(1 for v in links.values() if v and v.startswith("http"))
-    doi_urls     = sum(1 for v in links.values() if v and v.startswith("https://doi.org/"))
-    text_links   = sum(1 for v in links.values() if v and not v.startswith("http"))
-    no_link      = sum(1 for v in links.values() if not v)
-    log.info("  %d real URLs  |  %d DOI-normalised  |  %d text values  |  %d empty",
-             real_urls, doi_urls, text_links, no_link)
-
-    # ── Update models.json ─────────────────────────────────────────────────
-    log.info("Updating data/models.json …")
-    json_stats = update_models_json(JSON_PATH, links)
-    log.info(
-        "  models.json — updated: %d  |  unchanged: %d  |  not in JSON: %d",
-        json_stats["updated"], json_stats["unchanged"], json_stats["not_in_json"],
-    )
+    real_urls  = sum(1 for v in links.values() if v and v.startswith("http"))
+    doi_urls   = sum(1 for v in links.values() if v and v.startswith("https://doi.org/"))
+    no_link    = sum(1 for v in links.values() if not v)
+    log.info("  %d real URLs  |  %d DOI-normalised  |  %d empty/text → NULL",
+             real_urls, doi_urls, no_link)
 
     # ── Update PostgreSQL ──────────────────────────────────────────────────
-    if not db_conn_str:
-        log.warning(
-            "DB_CONN_STR not set — skipping database update. "
-            "models.json has already been written."
-        )
-        log.warning(
-            "To update the DB, re-run with: "
-            'DB_CONN_STR="postgresql://..." python scripts/update_links_from_csv.py'
-        )
-        return
-
     log.info("Connecting to PostgreSQL …")
     db_stats = update_database(db_conn_str, links)
     log.info(
@@ -245,15 +209,22 @@ def main() -> None:
         db_stats["updated"], db_stats["not_found"], db_stats["doi_normalised"],
     )
 
+    # ── Optional: force immediate rebuild via updater service ──────────────
+    if updater_url:
+        log.info("Triggering full rebuild via updater at %s …", updater_url)
+        trigger_rebuild(updater_url)
+    else:
+        log.info(
+            "Tip: set UPDATER_URL=http://localhost:8081 to trigger an immediate "
+            "rebuild instead of relying on per-row pg_notify events."
+        )
+
     # ── Summary ────────────────────────────────────────────────────────────
     log.info("Done.")
     log.info("─" * 60)
     log.info("  CSV rows parsed           : %d", len(links))
-    log.info("  URLs (real)               : %d", real_urls)
-    log.info("  URLs (DOI-normalised)     : %d", doi_urls)
-    log.info("  Text values (kept as-is)  : %d", text_links)
-    log.info("  Empty (→ NULL)            : %d", no_link)
-    log.info("  models.json updated       : %d", json_stats["updated"])
+    log.info("  URLs (real + DOI)         : %d", real_urls)
+    log.info("  Empty / text → NULL       : %d", no_link)
     log.info("  DB rows updated           : %d", db_stats["updated"])
     log.info("  DB rows not found         : %d", db_stats["not_found"])
 

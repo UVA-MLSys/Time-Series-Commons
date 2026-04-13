@@ -1,0 +1,4 @@
+cloudmesh-common
+cloudmesh-kubeman
+docopt
+termcolor
