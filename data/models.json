@@ -13951,6 +13951,21 @@
       "dataLink": "",
       "paperLink": "",
       "benchmarks": {}
+    },
+    {
+      "id": "test-dataset",
+      "name": "__TEST_DATASET__",
+      "domain": "Climate",
+      "domainCanonical": "Nature",
+      "domainImage": "pics/domains/nature.jpg",
+      "timePoints": "1000",
+      "interval": "Daily",
+      "variables": "3",
+      "dimensions": "1",
+      "description": "Temporary test entry — safe to delete.",
+      "dataLink": "https://example.com/test",
+      "paperLink": "",
+      "benchmarks": {}
     }
   ]
 }
