@@ -303,6 +303,12 @@ class NotebookCatalog {
             this.renderContent();
         });
 
+        // Domain filter dropdown
+        document.getElementById('domain-filter-select').addEventListener('change', (e) => {
+            this.activeDomain = e.target.value || null;
+            this.renderContent();
+        });
+
         // See all buttons
         document.querySelectorAll('.see-all-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -462,13 +468,37 @@ class NotebookCatalog {
         grid.querySelectorAll('.domain-tile').forEach(tile => {
             tile.addEventListener('click', () => {
                 this.activeDomain = tile.dataset.domain;
+                this.syncDomainFilterDropdown();
                 this.switchTab('datasets');
             });
         });
+
+        this.initDomainFilterDropdown();
+    }
+
+    initDomainFilterDropdown() {
+        const select = document.getElementById('domain-filter-select');
+        if (!select || !this.domainConfig) return;
+        const domains = Object.keys(this.domainConfig.domains);
+        const existing = new Set(Array.from(select.options).map(o => o.value));
+        domains.forEach(name => {
+            if (!existing.has(name)) {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = name;
+                select.appendChild(opt);
+            }
+        });
+    }
+
+    syncDomainFilterDropdown() {
+        const select = document.getElementById('domain-filter-select');
+        if (select) select.value = this.activeDomain || '';
     }
 
     clearDomainFilter() {
         this.activeDomain = null;
+        this.syncDomainFilterDropdown();
         this.renderContent();
     }
 
