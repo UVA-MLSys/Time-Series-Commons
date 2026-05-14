@@ -13951,6 +13951,21 @@
       "dataLink": "",
       "paperLink": "",
       "benchmarks": {}
+    },
+    {
+      "id": "test-dataset",
+      "name": "A__TEST_DATASET__",
+      "domain": "Climate",
+      "domainCanonical": "Nature",
+      "domainImage": "pics/domains/nature.jpg",
+      "timePoints": "Not specified",
+      "interval": "Not specified",
+      "variables": "Not specified",
+      "dimensions": "Not specified",
+      "description": "Pipeline health check",
+      "dataLink": "https://example.com/test",
+      "paperLink": "",
+      "benchmarks": {}
     }
   ]
 }
