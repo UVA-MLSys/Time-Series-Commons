@@ -1,3 +1,806 @@
 {
-  "models": []
+  "schema_version": "0.1.0",
+  "models": [
+    {
+      "model_id": "Informer",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/zhouhaoyi/Informer2020"
+    },
+    {
+      "model_id": "Monash TSER",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://github.com/mlgig/ts_er"
+    },
+    {
+      "model_id": "UTSD",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": ""
+    },
+    {
+      "model_id": "AutoGluon",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/autogluon/autogluon"
+    },
+    {
+      "model_id": "Darts",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/unit8co/darts"
+    },
+    {
+      "model_id": "TSLib",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/thuml/Time-Series-Library"
+    },
+    {
+      "model_id": "TSFM-Granite",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/ibm-granite/granite-tsfm"
+    },
+    {
+      "model_id": "TSFM-Core",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/ibm-granite/granite-tsfm"
+    },
+    {
+      "model_id": "TSFM-Bench",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://github.com/ibm-granite/granite-tsfm"
+    },
+    {
+      "model_id": "LOTSA",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": ""
+    },
+    {
+      "model_id": "Prophet",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": "https://github.com/facebook/prophet"
+    },
+    {
+      "model_id": "NeuralForecast",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/Nixtla/neuralforecast"
+    },
+    {
+      "model_id": "Merlion",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/salesforce/Merlion"
+    },
+    {
+      "model_id": "Aeon",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/aeon-toolkit/aeon"
+    },
+    {
+      "model_id": "DataLoop",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://dataloop.ai/"
+    },
+    {
+      "model_id": "NonUCR-UCI",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://archive.ics.uci.edu/"
+    },
+    {
+      "model_id": "UCR",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://www.cs.ucr.edu/~eamonn/time_series_data_2018/"
+    },
+    {
+      "model_id": "UEA",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://www.timeseriesclassification.com/"
+    },
+    {
+      "model_id": "MONSTER",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": ""
+    },
+    {
+      "model_id": "Monash",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://forecastingdata.org/"
+    },
+    {
+      "model_id": "Monash-Common",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://forecastingdata.org/"
+    },
+    {
+      "model_id": "Monash-small",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://forecastingdata.org/"
+    },
+    {
+      "model_id": "M1",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://forecasters.org/resources/time-series-data/"
+    },
+    {
+      "model_id": "M2",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://forecasters.org/resources/time-series-data/"
+    },
+    {
+      "model_id": "M3",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://forecasters.org/resources/time-series-data/"
+    },
+    {
+      "model_id": "M4",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://github.com/Mcompetitions/M4-methods"
+    },
+    {
+      "model_id": "M5",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://www.kaggle.com/c/m5-forecasting-accuracy"
+    },
+    {
+      "model_id": "M6",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://mofc.unic.ac.cy/m6-competition/"
+    },
+    {
+      "model_id": "TSB-UAD MOMENT",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/moment-timeseries-foundation-model/moment"
+    },
+    {
+      "model_id": "TSB-UAD Full",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://github.com/TheDatumOrg/TSB-UAD"
+    },
+    {
+      "model_id": "Hackernoon",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": ""
+    },
+    {
+      "model_id": "Monash Moment",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/moment-timeseries-foundation-model/moment"
+    },
+    {
+      "model_id": "Kaggle TS",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://www.kaggle.com/"
+    },
+    {
+      "model_id": "FastML",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": ""
+    },
+    {
+      "model_id": "Time-LLM",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": "https://github.com/KimMeen/Time-LLM"
+    },
+    {
+      "model_id": "AutoTimes",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": "https://github.com/thuml/AutoTimes"
+    },
+    {
+      "model_id": "ST-LLM",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "LLM-Time",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/ngruver/llmtime"
+    },
+    {
+      "model_id": "LLM-Mixer",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "LLM-prompt",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "LLM-PS",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "One Fits All",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All"
+    },
+    {
+      "model_id": "Lag-Llama",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://huggingface.co/time-series-foundation-models/Lag-Llama"
+    },
+    {
+      "model_id": "Chronos-Pre",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/amazon-science/chronos-forecasting"
+    },
+    {
+      "model_id": "Chronos-Eval1",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/amazon-science/chronos-forecasting"
+    },
+    {
+      "model_id": "Chronos-Eval2",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/amazon-science/chronos-forecasting"
+    },
+    {
+      "model_id": "ChronosBolt-Pre",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/amazon-science/chronos-forecasting"
+    },
+    {
+      "model_id": "ChronosBolt-Eval1",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/amazon-science/chronos-forecasting"
+    },
+    {
+      "model_id": "ChronosBolt-Eval2",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/amazon-science/chronos-forecasting"
+    },
+    {
+      "model_id": "ChronosX-Eval2",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "ChronosX-Synth",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "ChronosX-Pre",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "ChronosX-Eval1",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TS-RAGZSEval",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TS-RAGPreT",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "Tempo",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TimeBench",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": ""
+    },
+    {
+      "model_id": "InstructTime",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "LPTM-Pre",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "LPTM-Eval",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TS2Vec-Bench",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/yuezhihan/ts2vec"
+    },
+    {
+      "model_id": "TS2Vec-PreT",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/yuezhihan/ts2vec"
+    },
+    {
+      "model_id": "Automixer",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TTM-PreT",
+      "model_type": "foundation",
+      "evaluation_modes": [],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/ibm-granite/granite-tsfm"
+    },
+    {
+      "model_id": "TTM-Eval",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/ibm-granite/granite-tsfm"
+    },
+    {
+      "model_id": "TTM-Bench",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/ibm-granite/granite-tsfm"
+    },
+    {
+      "model_id": "TSMamba-ZS",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TSMamba-FullShot",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TimeGPT",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": "https://www.nixtla.io/docs"
+    },
+    {
+      "model_id": "GHPT",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "TimesNet",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/thuml/Time-Series-Library"
+    },
+    {
+      "model_id": "TimesFM",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/google-research/timesfm"
+    },
+    {
+      "model_id": "Time-MOE",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/Time-MoE/Time-MoE"
+    },
+    {
+      "model_id": "Timer-XL",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "io_modes": [
+        "UV-UV"
+      ],
+      "source_link": "https://github.com/thuml/Timer"
+    },
+    {
+      "model_id": "LightGTS",
+      "model_type": "traditional",
+      "evaluation_modes": [
+        "traditional_training"
+      ],
+      "io_modes": [
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": ""
+    },
+    {
+      "model_id": "CiK",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": ""
+    },
+    {
+      "model_id": "NSF HDR",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://new.nsf.gov/funding/initiatives/harnessing-data-revolution"
+    },
+    {
+      "model_id": "MLCommons-EQ",
+      "model_type": "traditional",
+      "evaluation_modes": [],
+      "io_modes": [],
+      "source_link": "https://mlcommons.org/benchmarks/"
+    }
+  ]
 }
