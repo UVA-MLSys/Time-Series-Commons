@@ -24,18 +24,6 @@ def test_supported_foundation_models_are_registered_zero_shot_only():
         assert models[model_id]["source_link"].startswith("http")
 
 
-def test_optional_models_are_labeled_by_supported_io_modes():
-    models = {m["model_id"]: m for m in load_registry()}
-
-    assert models["Toto-2"]["evaluation_modes"] == ["zero_shot"]
-    assert set(models["Toto-2"]["io_modes"]) == {"UV-UV", "MV-MV"}
-    assert "MV-UV" not in models["Toto-2"]["io_modes"]
-
-    assert models["TimesFM-2.5"]["evaluation_modes"] == ["zero_shot"]
-    assert set(models["TimesFM-2.5"]["io_modes"]) == {"UV-UV", "MV-UV"}
-    assert "MV-MV" not in models["TimesFM-2.5"]["io_modes"]
-
-
 def test_huggingface_datasets_have_one_executable_registry_record_each():
     datasets = load_datasets()
     selected_ids = {

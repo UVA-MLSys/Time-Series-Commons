@@ -846,34 +846,6 @@
       "source_link": "https://github.com/SalesforceAIResearch/uni2ts",
       "runtime_package": "uni2ts",
       "notes": "Salesforce Moirai 2.0 representative for zero-shot univariate and multivariate forecasting."
-    },
-    {
-      "model_id": "Toto-2",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/DataDog/toto",
-      "runtime_package": "toto",
-      "notes": "Optional GIFT-Eval-ranked Datadog model. Use for UV-UV and MV-MV only unless exogenous support changes."
-    },
-    {
-      "model_id": "TimesFM-2.5",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "https://github.com/google-research/timesfm",
-      "runtime_package": "timesfm",
-      "notes": "Optional Google model. Use for UV-UV and MV-UV with XReg covariates, not native MV-MV."
     }
   ]
 }

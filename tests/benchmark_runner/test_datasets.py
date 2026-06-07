@@ -90,14 +90,14 @@ def test_load_dataset_for_task_signals_missing_local_path(tmp_path):
     suite = {
         "datasets": [
             {
-                "suite_dataset_id": "paper1_missing",
+                "suite_dataset_id": "missing_suite_dataset",
                 "tsc_dataset_id": "missing-dataset",
                 "path": "benchmark/missing.csv",
                 "target_streams": ["OT"],
             }
         ]
     }
-    task = SimpleNamespace(suite_dataset_id="paper1_missing", tsc_dataset_id="missing-dataset")
+    task = SimpleNamespace(suite_dataset_id="missing_suite_dataset", tsc_dataset_id="missing-dataset")
 
     with pytest.raises(DatasetUnavailableError) as exc_info:
         load_dataset_for_task(task, suite, data_root=tmp_path)
@@ -133,7 +133,7 @@ def test_registered_huggingface_dataset_takes_precedence_over_local_path(tmp_pat
     suite = {
         "datasets": [
             {
-                "suite_dataset_id": "paper1_etth1",
+                "suite_dataset_id": "forecast_dataset",
                 "tsc_dataset_id": "ett-hourly-station-1-etth1",
                 "benchmark_id": "etth1_thuml",
                 "path": "missing-local-file.csv",
@@ -141,7 +141,7 @@ def test_registered_huggingface_dataset_takes_precedence_over_local_path(tmp_pat
         ]
     }
     task = SimpleNamespace(
-        suite_dataset_id="paper1_etth1",
+        suite_dataset_id="forecast_dataset",
         tsc_dataset_id="ett-hourly-station-1-etth1",
     )
     expected = pd.DataFrame(
