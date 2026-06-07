@@ -801,6 +801,79 @@
       "evaluation_modes": [],
       "io_modes": [],
       "source_link": "https://mlcommons.org/benchmarks/"
+    },
+    {
+      "model_id": "Chronos-2",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/amazon-science/chronos-forecasting",
+      "runtime_package": "chronos-forecasting",
+      "notes": "Amazon Chronos-2; all-purpose zero-shot model for univariate, multivariate, and covariate-informed forecasting."
+    },
+    {
+      "model_id": "TTM-R3-FT",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
+      "runtime_package": "granite-tsfm",
+      "notes": "IBM Granite / TinyTimeMixer model for zero-shot forecasting across supported IO modes."
+    },
+    {
+      "model_id": "Moirai2",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/SalesforceAIResearch/uni2ts",
+      "runtime_package": "uni2ts",
+      "notes": "Salesforce Moirai 2.0 representative for zero-shot univariate and multivariate forecasting."
+    },
+    {
+      "model_id": "Toto-2",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-MV"
+      ],
+      "source_link": "https://github.com/DataDog/toto",
+      "runtime_package": "toto",
+      "notes": "Optional GIFT-Eval-ranked Datadog model. Use for UV-UV and MV-MV only unless exogenous support changes."
+    },
+    {
+      "model_id": "TimesFM-2.5",
+      "model_type": "foundation",
+      "evaluation_modes": [
+        "zero_shot"
+      ],
+      "io_modes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "source_link": "https://github.com/google-research/timesfm",
+      "runtime_package": "timesfm",
+      "notes": "Optional Google model. Use for UV-UV and MV-UV with XReg covariates, not native MV-MV."
     }
   ]
 }

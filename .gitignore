@@ -1,0 +1,14 @@
+# Python and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Local benchmark inputs and generated outputs
+data/benchmark/raw/
+data/benchmark/runs/*
+!data/benchmark/runs/examples/
+!data/benchmark/runs/examples/**

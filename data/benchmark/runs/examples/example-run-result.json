@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1.0",
+  "benchmark_suite_id": "poc-v0",
+  "run_id": "poc-v0__ETTh1__TimesNet__MV-MV__h336__traditional_training__standard",
+
+  "dataset_id": "ETTh1",
+  "model_id": "TimesNet",
+  "io_mode": "MV-MV",
+  "evaluation_mode": "traditional_training",
+
+  "lookback_window": 720,
+  "forecast_horizon": 336,
+  "split_id": "standard",
+  "metric": "MAE",
+
+  "features": {
+    "observed_streams": ["HUFL", "HULL", "MUFL", "MULL", "LUFL", "LULL", "OT"],
+    "target_streams": ["HUFL", "HULL", "MUFL", "MULL", "LUFL", "LULL", "OT"],
+    "exogenous_streams": [],
+    "exogenous_static_variables": []
+  },
+
+  "status": "completed",
+  "score": 0.391,
+
+  "secondary_metrics": {
+    "MSE": 0.284,
+    "RMSE": 0.533
+  },
+
+  "relative_score": 0.82,
+  "baseline_model_id": "Naive",
+  "baseline_score": 0.477
+}

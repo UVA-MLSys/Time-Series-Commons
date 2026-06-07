@@ -2995,11 +2995,26 @@
     },
     {
       "dataset_id": "cdc_fluview_who_nrevss",
+      "benchmark_id": "ili_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.ili",
+        "class": "ILIDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "data": "illness/national_illness.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/illness"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
         "Pure temporal",
         "Non-stationary",
+        "Seasonal",
         "Pure numerical"
       ],
       "capabilities": {
@@ -5750,6 +5765,20 @@
     },
     {
       "dataset_id": "electricity-ecl",
+      "benchmark_id": "electricity_ecl_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.electricity",
+        "class": "ElectricityDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "data": "electricity/electricity.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/electricity"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
@@ -7338,11 +7367,28 @@
     },
     {
       "dataset_id": "ett-hourly-station-1-etth1",
+      "benchmark_id": "etth1_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.etth1",
+        "class": "ETTh1Dataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "data": "ETT-small/ETTh1.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/ETT-small"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
+        "Pure temporal",
         "Spatio temporal",
+        "Non-stationary",
         "Seasonal",
+        "Non-linear/stochastic",
         "Pure numerical",
         "Physical-law constrained"
       ],
@@ -7898,6 +7944,20 @@
     },
     {
       "dataset_id": "exchange",
+      "benchmark_id": "exchange_rate_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.exchange",
+        "class": "ExchangeDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "data": "exchange_rate/exchange_rate.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/exchange_rate"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
@@ -7929,80 +7989,6 @@
         "metrics": [
           "RMSE",
           "MAE",
-          "MAPE",
-          "Directional Accuracy"
-        ]
-      }
-    },
-    {
-      "dataset_id": "exchange",
-      "benchmark_ready": false,
-      "taxonomy": [
-        "Regularly sampled",
-        "Pure temporal",
-        "Non-stationary",
-        "Pure numerical"
-      ],
-      "capabilities": {
-        "io_modes": [
-          "UV-UV",
-          "MV-UV",
-          "MV-MV"
-        ],
-        "evaluation_modes": []
-      },
-      "frequency": {
-        "recorded_frequency": "Daily"
-      },
-      "shape": {
-        "timePoints": "~10,950 (over a 30-year period with daily frequency)",
-        "variables": "8 (USD against 7 other major currencies)",
-        "dimensions": "8"
-      },
-      "evaluation": {
-        "metrics": [
-          "RMSE",
-          "MAE",
-          "MAPE",
-          "Directional Accuracy"
-        ]
-      }
-    },
-    {
-      "dataset_id": "exchange",
-      "benchmark_ready": true,
-      "taxonomy": [
-        "Regularly sampled",
-        "Pure temporal",
-        "Non-stationary",
-        "Pure numerical"
-      ],
-      "capabilities": {
-        "io_modes": [
-          "UV-UV",
-          "MV-UV",
-          "MV-MV"
-        ],
-        "evaluation_modes": [
-          "zero_shot",
-          "fine_tuned",
-          "traditional_training"
-        ]
-      },
-      "frequency": {
-        "recorded_frequency": "Daily"
-      },
-      "shape": {
-        "timePoints": "Unknown (Daily data, potentially with varying lengths based on forecast horizons)",
-        "variables": "8 (against USD)",
-        "dimensions": "8"
-      },
-      "evaluation": {
-        "metrics": [
-          "RMSE",
-          "MAE",
-          "MASE",
-          "sMAPE",
           "MAPE",
           "Directional Accuracy"
         ]
@@ -12654,10 +12640,28 @@
     },
     {
       "dataset_id": "m4-daily",
+      "benchmark_id": "m4_daily_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.m4",
+        "class": "M4DailyDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "train": "m4/Daily-train.csv",
+          "test": "m4/Daily-test.csv",
+          "metadata": "m4/M4-info.csv",
+          "naive2": "m4/submission-Naive2.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/m4"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
         "Pure temporal",
+        "Seasonal",
         "Pure numerical"
       ],
       "capabilities": {
@@ -12691,10 +12695,28 @@
     },
     {
       "dataset_id": "m4-hourly",
+      "benchmark_id": "m4_hourly_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.m4",
+        "class": "M4HourlyDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "train": "m4/Hourly-train.csv",
+          "test": "m4/Hourly-test.csv",
+          "metadata": "m4/M4-info.csv",
+          "naive2": "m4/submission-Naive2.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/m4"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
         "Pure temporal",
+        "Seasonal",
         "Pure numerical"
       ],
       "capabilities": {
@@ -12728,6 +12750,23 @@
     },
     {
       "dataset_id": "m4-monthly",
+      "benchmark_id": "m4_monthly_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.m4",
+        "class": "M4MonthlyDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "train": "m4/Monthly-train.csv",
+          "test": "m4/Monthly-test.csv",
+          "metadata": "m4/M4-info.csv",
+          "naive2": "m4/submission-Naive2.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/m4"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Pure temporal",
@@ -23677,7 +23716,21 @@
     },
     {
       "dataset_id": "traffic-dataset",
-      "benchmark_ready": false,
+      "benchmark_id": "traffic_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.traffic",
+        "class": "TrafficDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "data": "traffic/traffic.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/traffic"
+      },
+      "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
         "Spatio temporal",
@@ -23691,7 +23744,11 @@
           "MV-UV",
           "MV-MV"
         ],
-        "evaluation_modes": []
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
       },
       "frequency": {
         "recorded_frequency": "Hourly [6, 7], 10 minutes (PEMS-SF) [8]"
@@ -24596,6 +24653,20 @@
     },
     {
       "dataset_id": "weather-dataset",
+      "benchmark_id": "weather_jena_thuml",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.weather_jena",
+        "class": "WeatherJenaDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "thuml/Time-Series-Library",
+        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "files": {
+          "data": "weather/weather.csv"
+        },
+        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/weather"
+      },
       "benchmark_ready": true,
       "taxonomy": [
         "Regularly sampled",
