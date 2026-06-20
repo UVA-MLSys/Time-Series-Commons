@@ -216,7 +216,9 @@ def test_m4_subsets_preserve_official_train_test_splits(dataset_class, prefix, f
     dataset = dataset_class(record, csv_reader=reader).load()
 
     assert dataset.frequency == frequency
-    assert dataset.values.loc[dataset.values["item_id"].eq(f"{prefix[0]}1"), "timestamp"].tolist() == [1, 2, 3, 4, 5]
+    assert pd.api.types.is_datetime64_any_dtype(dataset.values["timestamp"])
+    expected_timestamps = list(pd.date_range("2000-01-01", periods=5, freq=frequency))
+    assert dataset.values.loc[dataset.values["item_id"].eq(f"{prefix[0]}1"), "timestamp"].tolist() == expected_timestamps
     assert dataset.values.loc[dataset.values["item_id"].eq(f"{prefix[0]}1"), "value"].tolist() == [1.0, 2.0, 3.0, 10.0, 11.0]
     assert dataset.splits is not None
     assert dataset.splits.loc[dataset.splits["item_id"].eq(f"{prefix[0]}1"), "split"].tolist() == [

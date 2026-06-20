@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "zero-shot-exchange-mv-mv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Zero-shot MV-MV benchmark for exchange_rate_thuml.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "Chronos-2": "default",
+    "TTM-R3-FT": "default",
+    "Moirai2": "default"
+  },
+  "window_profiles": {
+    "daily": {
+      "short": {
+        "lookback_window": 30,
+        "forecast_horizon": 7
+      },
+      "medium": {
+        "lookback_window": 90,
+        "forecast_horizon": 30
+      },
+      "long": {
+        "lookback_window": 365,
+        "forecast_horizon": 90
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_group_id": "exchange-mv-mv",
+      "dataset_id": "exchange_rate_thuml",
+      "models": [
+        "Chronos-2",
+        "TTM-R3-FT",
+        "Moirai2"
+      ],
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": {
+          "numeric_ranges": [
+            {
+              "start": 0,
+              "end": 6
+            }
+          ],
+          "names": [
+            "OT"
+          ]
+        },
+        "observed": {
+          "numeric_ranges": [
+            {
+              "start": 0,
+              "end": 6
+            }
+          ],
+          "names": [
+            "OT"
+          ]
+        },
+        "known_future": []
+      },
+      "window_profile": "daily",
+      "horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "num_windows": 1,
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ]
+    }
+  ],
+  "results": {}
+}

@@ -22,8 +22,8 @@ from tools.benchmark_runner.results import (
 
 def sample_task():
     return BenchmarkTask(
-        benchmark_suite_id="forecasting-v0",
-        suite_dataset_id="forecast_etth1",
+        benchmark_suite_id="paper1-v0",
+        suite_dataset_id="paper1_etth1",
         tsc_dataset_id="ett-hourly-station-1-etth1",
         model_id="Chronos-2",
         io_mode="MV-UV",
@@ -78,7 +78,7 @@ def test_metric_validation_raises_clear_errors(call):
         call()
 
 
-def test_summarize_metrics_returns_all_forecasting_metrics():
+def test_summarize_metrics_returns_all_paper1_metrics():
     metrics = summarize_metrics(
         [1.0, 2.0, 4.0],
         [1.5, 1.0, 5.0],
@@ -143,7 +143,7 @@ def test_result_writer_uses_default_suite_run_directory(tmp_path, monkeypatch):
 
     output_path = write_result(result)
 
-    expected = tmp_path / "data/benchmark/runs/forecasting-v0" / f"{sample_task().run_id}.json"
+    expected = tmp_path / "data/benchmark/runs/paper1-v0" / f"{sample_task().run_id}.json"
     assert output_path == expected
     assert json.loads(output_path.read_text())["run_id"] == sample_task().run_id
 
@@ -157,6 +157,6 @@ def test_result_writer_accepts_configurable_output_dir(tmp_path):
 
     output_path = write_result(result, output_dir=tmp_path / "custom-runs")
 
-    expected = tmp_path / "custom-runs/forecasting-v0" / f"{sample_task().run_id}.json"
+    expected = tmp_path / "custom-runs/paper1-v0" / f"{sample_task().run_id}.json"
     assert output_path == expected
     assert json.loads(output_path.read_text())["status"] == "skipped"

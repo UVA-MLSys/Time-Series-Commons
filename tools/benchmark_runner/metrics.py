@@ -1,4 +1,4 @@
-"""Forecast error metrics for benchmark runs."""
+"""Forecast error metrics for Paper 1 benchmark runs."""
 
 from __future__ import annotations
 

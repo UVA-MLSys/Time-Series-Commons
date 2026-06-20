@@ -6,9 +6,28 @@ __pycache__/
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+.DS_Store
+.colab_venvs/
+.ipynb_checkpoints/
+
+# Local agent notes and planning artifacts
+BENCHMARK_AGENT_CONTEXT.md
+docs/superpowers/
+
+# Local Colab/runtime experiments
+colab/
+
+# Local generation helpers; keep public benchmark configs curated
+tools/benchmark_runner/generate_zero_shot_configs.py
 
 # Local benchmark inputs and generated outputs
 data/benchmark/raw/
+data/benchmark/forecast-artifacts/
 data/benchmark/runs/*
 !data/benchmark/runs/examples/
 !data/benchmark/runs/examples/**
+
+# Local website/browser export snapshots
+*.google.com/
+*_ai.org/
+*timeseriessite/

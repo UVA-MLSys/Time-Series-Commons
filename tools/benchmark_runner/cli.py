@@ -59,9 +59,9 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run zero-shot forecasting benchmark tasks.")
+    parser = argparse.ArgumentParser(description="Run Paper 1 zero-shot benchmark tasks.")
     parser.add_argument("--suite", required=True, help="Path to the benchmark suite JSON file.")
-    parser.add_argument("--output-dir", default="data/benchmark/runs/forecasting-v0", help="Directory for result JSON files.")
+    parser.add_argument("--output-dir", default="data/benchmark/runs/paper1-v0", help="Directory for result JSON files.")
     parser.add_argument("--data-root", default="data", help="Root directory for local dataset files.")
     parser.add_argument("--model", action="append", help="Model id filter. Repeat to include multiple models.")
     parser.add_argument("--dataset", action="append", help="Suite dataset id filter. Repeat to include multiple datasets.")
@@ -95,7 +95,7 @@ def _run_task(task: Any, suite: dict[str, Any], args: argparse.Namespace) -> dic
     except MissingDependencyError as exc:
         return build_skipped_result(task, "missing_dependency", str(exc), model_runtime=_adapter_runtime(exc))
     except UnsupportedTaskError as exc:
-        return build_skipped_result(task, "unsupported_model_frequency_window", str(exc), model_runtime=_adapter_runtime(exc))
+        return build_skipped_result(task, _unsupported_reason(exc), str(exc), model_runtime=_adapter_runtime(exc))
 
     actual_values: list[float] = []
     predicted_values: list[float] = []
@@ -117,7 +117,7 @@ def _run_task(task: Any, suite: dict[str, Any], args: argparse.Namespace) -> dic
     except MissingDependencyError as exc:
         return build_skipped_result(task, "missing_dependency", str(exc), model_runtime=_adapter_runtime(exc))
     except UnsupportedTaskError as exc:
-        return build_skipped_result(task, "unsupported_model_frequency_window", str(exc), model_runtime=_adapter_runtime(exc))
+        return build_skipped_result(task, _unsupported_reason(exc), str(exc), model_runtime=_adapter_runtime(exc))
     except Exception as exc:
         return build_failed_result(task, exc.__class__.__name__, str(exc), model_runtime={"device_map": args.device_map})
 
@@ -158,9 +158,22 @@ def _skip_reason(reason: str) -> str:
     return reason if reason in allowed else "data_unavailable"
 
 
+def _unsupported_reason(exc: UnsupportedTaskError) -> str:
+    allowed = {
+        "unsupported_model_frequency_window",
+        "unsupported_api_version",
+        "unsupported_frequency",
+        "unsupported_multitarget",
+        "unsupported_runtime_api",
+        "unsupported_window",
+        "resource_budget_exceeded",
+    }
+    return exc.reason if exc.reason in allowed else "unsupported_model_frequency_window"
+
+
 def _adapter_runtime(exc: Exception) -> dict[str, Any]:
     runtime: dict[str, Any] = {}
-    for attr in ("model_id", "packages", "source_url", "reason"):
+    for attr in ("model_id", "packages", "source_url", "reason", "details"):
         if hasattr(exc, attr):
             value = getattr(exc, attr)
             runtime[attr] = list(value) if isinstance(value, tuple) else value

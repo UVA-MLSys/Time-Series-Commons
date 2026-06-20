@@ -13,6 +13,12 @@ DEFAULT_OUTPUT_DIR = Path("data/benchmark/runs")
 SKIP_REASONS = {
     "missing_dependency",
     "unsupported_model_frequency_window",
+    "unsupported_api_version",
+    "unsupported_frequency",
+    "unsupported_multitarget",
+    "unsupported_runtime_api",
+    "unsupported_window",
+    "resource_budget_exceeded",
     "curation_required",
     "data_unavailable",
 }
@@ -25,7 +31,7 @@ def build_completed_result(
     source_versions: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     if task.evaluation_mode != "zero_shot":
-        raise ValueError("Zero-shot benchmark results require evaluation_mode='zero_shot'")
+        raise ValueError("Paper 1 results must use evaluation_mode='zero_shot'")
     if "MAE" not in metrics:
         raise ValueError("completed results require an MAE score")
 
@@ -101,7 +107,7 @@ def _base_result(
     model_runtime: dict[str, Any],
 ) -> dict[str, Any]:
     if task.evaluation_mode != "zero_shot":
-        raise ValueError("Zero-shot benchmark results require evaluation_mode='zero_shot'")
+        raise ValueError("Paper 1 results must use evaluation_mode='zero_shot'")
 
     return {
         "schema_version": "0.1.0",

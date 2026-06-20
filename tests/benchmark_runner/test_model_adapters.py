@@ -39,6 +39,18 @@ def make_context():
     )
 
 
+def make_multivariate_context():
+    timestamps = pd.date_range("2024-01-01", periods=4, freq="h")
+    return pd.DataFrame(
+        {
+            "item_id": ["series-1"] * 8,
+            "timestamp": list(timestamps) * 2,
+            "variable": ["load"] * 4 + ["temp"] * 4,
+            "value": [1.0, 2.0, 3.0, 4.0, 10.0, 11.0, 12.0, 13.0],
+        }
+    )
+
+
 def test_get_adapter_returns_documented_adapter_contracts():
     expected = {
         "Chronos-2": (
@@ -171,6 +183,41 @@ def test_ttm_adapter_uses_get_model_and_forecasting_pipeline(monkeypatch):
     assert result["prediction"].round(6).tolist() == [2.5, 3.618034]
 
 
+def test_ttm_rejects_selected_checkpoint_with_mismatched_context_length(monkeypatch):
+    fake_torch = types.SimpleNamespace(cuda=types.SimpleNamespace(is_available=lambda: False))
+    fake_model = types.SimpleNamespace(config=types.SimpleNamespace(context_length=512, prediction_length=720))
+
+    def fake_get_model(**kwargs):
+        return fake_model
+
+    tsfm_public = types.ModuleType("tsfm_public")
+    tsfm_public.TimeSeriesForecastingPipeline = object
+    toolkit = types.ModuleType("tsfm_public.toolkit")
+    get_model_module = types.ModuleType("tsfm_public.toolkit.get_model")
+    get_model_module.get_model = fake_get_model
+
+    monkeypatch.setitem(sys.modules, "torch", fake_torch)
+    monkeypatch.setitem(sys.modules, "tsfm_public", tsfm_public)
+    monkeypatch.setitem(sys.modules, "tsfm_public.toolkit", toolkit)
+    monkeypatch.setitem(sys.modules, "tsfm_public.toolkit.get_model", get_model_module)
+
+    adapter = get_adapter("TTM-R3-FT")
+
+    with pytest.raises(UnsupportedTaskError) as exc:
+        adapter.predict(
+            make_context(),
+            None,
+            make_task(
+                model_id="TTM-R3-FT",
+                lookback_window=720,
+                forecast_horizon=720,
+                frequency="hourly",
+            ),
+        )
+
+    assert exc.value.reason == "unsupported_window"
+
+
 def test_chronos_adapter_uses_documented_predict_df_contract(monkeypatch):
     calls = {}
 
@@ -230,3 +277,166 @@ def test_chronos_adapter_uses_documented_predict_df_contract(monkeypatch):
             "prediction": 11.0,
         },
     ]
+
+
+def test_chronos_mv_mv_normalizes_wide_predictions_for_each_target_variable(monkeypatch):
+    calls = {}
+
+    class FakePipeline:
+        @classmethod
+        def from_pretrained(cls, model_name, device_map="auto"):
+            return cls()
+
+        def predict_df(self, context_df, **kwargs):
+            calls["target"] = kwargs["target"]
+            return pd.DataFrame(
+                {
+                    "id": ["series-1", "series-1"],
+                    "timestamp": pd.date_range("2024-01-01 04:00", periods=2, freq="h"),
+                    "load": [5.0, 6.0],
+                    "temp": [14.0, 15.0],
+                }
+            )
+
+    monkeypatch.setitem(
+        sys.modules,
+        "chronos",
+        types.SimpleNamespace(Chronos2Pipeline=FakePipeline),
+    )
+
+    adapter = get_adapter("Chronos-2", device_map="cpu")
+    result = adapter.predict(
+        make_multivariate_context(),
+        None,
+        make_task(
+            io_mode="MV-MV",
+            target_variables=["load", "temp"],
+            input_variables=["load", "temp"],
+        ),
+    )
+
+    assert calls["target"] == ["load", "temp"]
+    assert result[["timestamp", "variable", "prediction"]].to_dict("records") == [
+        {"timestamp": pd.Timestamp("2024-01-01 04:00"), "variable": "load", "prediction": 5.0},
+        {"timestamp": pd.Timestamp("2024-01-01 05:00"), "variable": "load", "prediction": 6.0},
+        {"timestamp": pd.Timestamp("2024-01-01 04:00"), "variable": "temp", "prediction": 14.0},
+        {"timestamp": pd.Timestamp("2024-01-01 05:00"), "variable": "temp", "prediction": 15.0},
+    ]
+
+
+def test_chronos_mv_mv_rejects_incomplete_generic_prediction_output(monkeypatch):
+    class FakePipeline:
+        @classmethod
+        def from_pretrained(cls, model_name, device_map="auto"):
+            return cls()
+
+        def predict_df(self, context_df, **kwargs):
+            return pd.DataFrame(
+                {
+                    "id": ["series-1", "series-1"],
+                    "timestamp": pd.date_range("2024-01-01 04:00", periods=2, freq="h"),
+                    "prediction": [5.0, 6.0],
+                }
+            )
+
+    monkeypatch.setitem(
+        sys.modules,
+        "chronos",
+        types.SimpleNamespace(Chronos2Pipeline=FakePipeline),
+    )
+
+    adapter = get_adapter("Chronos-2", device_map="cpu")
+
+    with pytest.raises(UnsupportedTaskError) as exc:
+        adapter.predict(
+            make_multivariate_context(),
+            None,
+            make_task(
+                io_mode="MV-MV",
+                target_variables=["load", "temp"],
+                input_variables=["load", "temp"],
+            ),
+        )
+
+    assert exc.value.reason == "unsupported_multitarget"
+    assert exc.value.details["missing_variables"] == ["load", "temp"]
+
+
+def test_moirai2_rejects_mv_mv_until_multitarget_forecasts_are_implemented():
+    adapter = get_adapter("Moirai2")
+
+    with pytest.raises(UnsupportedTaskError) as exc:
+        adapter.predict(
+            make_multivariate_context(),
+            None,
+            make_task(
+                model_id="Moirai2",
+                io_mode="MV-MV",
+                target_variables=["load", "temp"],
+                input_variables=["load", "temp"],
+            ),
+        )
+
+    assert exc.value.model_id == "Moirai2"
+    assert exc.value.reason == "unsupported_multitarget"
+
+
+def test_moirai2_rejects_large_multivariate_panels_on_colab_t4_budget():
+    timestamps = pd.date_range("2024-01-01", periods=336, freq="h")
+    variables = [f"sensor_{index}" for index in range(900)]
+    frame = pd.DataFrame(
+        {
+            "item_id": "traffic",
+            "timestamp": timestamps.repeat(len(variables)),
+            "variable": variables * len(timestamps),
+            "value": 1.0,
+        }
+    )
+    adapter = get_adapter("Moirai2")
+
+    with pytest.raises(UnsupportedTaskError) as exc:
+        adapter.predict(
+            frame,
+            None,
+            make_task(
+                model_id="Moirai2",
+                io_mode="MV-UV",
+                lookback_window=336,
+                forecast_horizon=168,
+                target_variables=["sensor_0"],
+                input_variables=variables,
+            ),
+        )
+
+    assert exc.value.reason == "resource_budget_exceeded"
+
+
+def test_moirai2_rejects_ecl_sized_medium_panels_on_colab_t4_budget():
+    timestamps = pd.date_range("2024-01-01", periods=336, freq="h")
+    variables = [f"meter_{index}" for index in range(321)]
+    frame = pd.DataFrame(
+        {
+            "item_id": "ecl",
+            "timestamp": timestamps.repeat(len(variables)),
+            "variable": variables * len(timestamps),
+            "value": 1.0,
+        }
+    )
+    adapter = get_adapter("Moirai2")
+
+    with pytest.raises(UnsupportedTaskError) as exc:
+        adapter.predict(
+            frame,
+            None,
+            make_task(
+                model_id="Moirai2",
+                io_mode="MV-UV",
+                lookback_window=336,
+                forecast_horizon=168,
+                target_variables=["meter_0"],
+                input_variables=variables,
+            ),
+        )
+
+    assert exc.value.reason == "resource_budget_exceeded"
+    assert exc.value.details["panel_width"] == 321

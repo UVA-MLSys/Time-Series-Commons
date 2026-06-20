@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "zero-shot-m4-monthly-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Zero-shot UV-UV benchmark for m4_monthly_thuml.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "Chronos-2": "default",
+    "TTM-R3-FT": "default",
+    "Moirai2": "default"
+  },
+  "window_profiles": {
+    "monthly": {
+      "short": {
+        "lookback_window": 24,
+        "forecast_horizon": 6
+      },
+      "medium": {
+        "lookback_window": 60,
+        "forecast_horizon": 18
+      },
+      "long": {
+        "lookback_window": 120,
+        "forecast_horizon": 24
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_group_id": "m4-monthly-uv-uv",
+      "dataset_id": "m4_monthly_thuml",
+      "models": [
+        "Chronos-2",
+        "TTM-R3-FT",
+        "Moirai2"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "y"
+        ],
+        "observed": [
+          "y"
+        ],
+        "known_future": []
+      },
+      "window_profile": "monthly",
+      "horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "num_windows": 1,
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ]
+    }
+  ],
+  "results": {}
+}

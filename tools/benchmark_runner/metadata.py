@@ -24,9 +24,16 @@ class BenchmarkTask:
     known_covariates: list[str]
     curation_required: bool
     benchmark_id: str | None = None
+    run_group_id: str | None = None
+    model_profile: str | None = None
+    metrics: list[str] | None = None
+    num_windows: int | None = None
+    frequency: str | None = None
 
     @property
     def run_id(self) -> str:
+        if self.run_group_id:
+            return f"{self.run_group_id}__{self.model_id}__{self.horizon_id}"
         return (
             f"{self.benchmark_suite_id}__{self.suite_dataset_id}__"
             f"{self.model_id}__{self.io_mode}__{self.horizon_id}__zero_shot"
@@ -51,8 +58,21 @@ def generate_tasks(
     model_ids: Iterable[str] | None = None,
     io_modes: Iterable[str] | None = None,
     horizons: Iterable[str] | None = None,
+    run_group_ids: Iterable[str] | None = None,
 ) -> list[BenchmarkTask]:
     """Generate deterministic zero-shot benchmark tasks from suite metadata."""
+
+    if suite.get("schema_version") == "0.2.0":
+        return _generate_combined_registry_tasks(
+            suite,
+            run_group_ids=run_group_ids,
+            model_ids=model_ids,
+            io_modes=io_modes,
+            horizons=horizons,
+        )
+
+    if run_group_ids is not None:
+        raise ValueError("run_group_ids can only be used with combined benchmark registries")
 
     _validate_zero_shot_only(suite)
 
@@ -110,6 +130,86 @@ def generate_tasks(
     return tasks
 
 
+def _generate_combined_registry_tasks(
+    benchmark: dict[str, Any],
+    *,
+    run_group_ids: Iterable[str] | None = None,
+    model_ids: Iterable[str] | None = None,
+    io_modes: Iterable[str] | None = None,
+    horizons: Iterable[str] | None = None,
+) -> list[BenchmarkTask]:
+    """Generate tasks from a combined benchmark registry/result file."""
+
+    if benchmark.get("evaluation_mode") != "zero_shot":
+        raise ValueError(
+            "Combined benchmark task generation supports zero_shot registries only; "
+            f"got evaluation_mode={benchmark.get('evaluation_mode')!r}"
+        )
+
+    runs = list(benchmark.get("runs", []))
+    window_profiles = dict(benchmark.get("window_profiles", {}))
+    model_profiles = dict(benchmark.get("model_profiles", {}))
+
+    run_group_filter = _normalize_filter("run_group_id", run_group_ids, _run_group_ids(runs))
+    model_filter = _normalize_filter("model_id", model_ids, _combined_model_ids(runs))
+    io_mode_filter = _normalize_filter("io_mode", io_modes, _combined_io_modes(runs))
+    horizon_filter = _normalize_filter("horizon", horizons, _combined_horizons(runs, window_profiles))
+
+    tasks: list[BenchmarkTask] = []
+    for run in runs:
+        run_group_id = run["run_group_id"]
+        if run_group_filter is not None and run_group_id not in run_group_filter:
+            continue
+
+        io_mode = run["io_mode"]
+        if io_mode_filter is not None and io_mode not in io_mode_filter:
+            continue
+
+        profile_name = run["window_profile"]
+        frequency_windows = window_profiles.get(profile_name)
+        if not frequency_windows:
+            raise ValueError(f"Unknown window_profile for {run_group_id}: {profile_name}")
+
+        variables = run.get("variables", {})
+        observed = _expand_selection(variables.get("observed", []))
+        targets = _expand_selection(variables.get("targets", []))
+        known_future = _expand_selection(variables.get("known_future", []))
+
+        for model_id in run.get("models", []):
+            if model_filter is not None and model_id not in model_filter:
+                continue
+            for horizon_id in run.get("horizons", []):
+                if horizon_filter is not None and horizon_id not in horizon_filter:
+                    continue
+                if horizon_id not in frequency_windows:
+                    raise ValueError(f"Unknown horizon for {run_group_id}: {horizon_id}")
+                window = frequency_windows[horizon_id]
+                tasks.append(
+                    BenchmarkTask(
+                        benchmark_suite_id=benchmark["benchmark_id"],
+                        suite_dataset_id=run_group_id,
+                        tsc_dataset_id=run["dataset_id"],
+                        benchmark_id=run["dataset_id"],
+                        model_id=model_id,
+                        io_mode=io_mode,
+                        evaluation_mode="zero_shot",
+                        horizon_id=horizon_id,
+                        lookback_window=int(window["lookback_window"]),
+                        forecast_horizon=int(window["forecast_horizon"]),
+                        observed_streams=observed,
+                        target_streams=targets,
+                        known_covariates=known_future,
+                        curation_required=False,
+                        run_group_id=run_group_id,
+                        model_profile=model_profiles.get(model_id),
+                        metrics=list(run.get("metrics", [])),
+                        num_windows=int(run.get("num_windows", 1)),
+                        frequency=profile_name,
+                    )
+                )
+    return tasks
+
+
 def _validate_zero_shot_only(suite: dict[str, Any]) -> None:
     evaluation_modes = suite.get("evaluation_modes", [])
     if evaluation_modes != ["zero_shot"]:
@@ -151,3 +251,46 @@ def _horizons(window_rules: dict[str, Any]) -> set[str]:
     for frequency_windows in window_rules.values():
         horizon_ids.update(frequency_windows.keys())
     return horizon_ids
+
+
+def _run_group_ids(runs: Iterable[dict[str, Any]]) -> list[str]:
+    return [run["run_group_id"] for run in runs]
+
+
+def _combined_model_ids(runs: Iterable[dict[str, Any]]) -> set[str]:
+    model_ids: set[str] = set()
+    for run in runs:
+        model_ids.update(run.get("models", []))
+    return model_ids
+
+
+def _combined_io_modes(runs: Iterable[dict[str, Any]]) -> set[str]:
+    return {run["io_mode"] for run in runs}
+
+
+def _combined_horizons(
+    runs: Iterable[dict[str, Any]],
+    window_profiles: dict[str, Any],
+) -> set[str]:
+    horizon_ids: set[str] = set()
+    for run in runs:
+        horizon_ids.update(run.get("horizons", []))
+        horizon_ids.update(window_profiles.get(run.get("window_profile"), {}).keys())
+    return horizon_ids
+
+
+def _expand_selection(selection: Any) -> list[str]:
+    if isinstance(selection, list):
+        return [str(value) for value in selection]
+    if not isinstance(selection, dict):
+        raise ValueError("Variable selection must be a list or selector object")
+
+    variables: list[str] = []
+    for numeric_range in selection.get("numeric_ranges", []):
+        start = int(numeric_range["start"])
+        end = int(numeric_range["end"])
+        if end < start:
+            raise ValueError(f"Invalid numeric variable range: {start}..{end}")
+        variables.extend(str(value) for value in range(start, end + 1))
+    variables.extend(str(value) for value in selection.get("names", []))
+    return list(dict.fromkeys(variables))

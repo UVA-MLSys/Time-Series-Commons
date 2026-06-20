@@ -170,6 +170,10 @@ def _long_to_wide(frame: pd.DataFrame, variables: tuple[str, ...]) -> pd.DataFra
     return wide.sort_values(["item_id", "timestamp"]).reset_index(drop=True)
 
 
+def _panel_width(frame: pd.DataFrame) -> int:
+    return int(frame["variable"].nunique()) if "variable" in frame.columns else 1
+
+
 def _normalize_point_forecast(
     pred_df: pd.DataFrame,
     target_variables: tuple[str, ...],
@@ -187,6 +191,16 @@ def _normalize_point_forecast(
     if "timestamp" not in frame.columns:
         raise ValueError("model forecast output must include a timestamp column")
 
+    value_columns = [column for column in target_variables if column in frame.columns]
+    if value_columns:
+        result = frame.melt(
+            id_vars=["item_id", "timestamp"],
+            value_vars=value_columns,
+            var_name="variable",
+            value_name="prediction",
+        )
+        return result.sort_values(["item_id", "variable", "timestamp"]).reset_index(drop=True)
+
     point_column = None
     for candidate in ("prediction", "predictions", "mean", "0.5", 0.5):
         if candidate in frame.columns:
@@ -202,17 +216,29 @@ def _normalize_point_forecast(
         )
         return result.reset_index(drop=True)
 
-    value_columns = [column for column in target_variables if column in frame.columns]
-    if value_columns:
-        result = frame.melt(
-            id_vars=["item_id", "timestamp"],
-            value_vars=value_columns,
-            var_name="variable",
-            value_name="prediction",
-        )
-        return result.sort_values(["item_id", "variable", "timestamp"]).reset_index(drop=True)
-
     raise ValueError("model forecast output does not contain a point forecast column")
+
+
+def _ensure_target_variables(
+    forecast: pd.DataFrame,
+    target_variables: tuple[str, ...],
+    model_id: str,
+) -> None:
+    if len(target_variables) <= 1 or "variable" not in forecast.columns:
+        return
+    observed = set(forecast["variable"].astype(str))
+    missing = sorted(str(variable) for variable in target_variables if str(variable) not in observed)
+    if missing:
+        raise UnsupportedTaskError(
+            model_id,
+            "unsupported_multitarget",
+            "Model output did not include forecasts for every requested target variable.",
+            {
+                "target_variables": list(target_variables),
+                "missing_variables": missing,
+                "observed_variables": sorted(observed),
+            },
+        )
 
 
 @dataclass
@@ -253,7 +279,9 @@ class Chronos2Adapter(BaseAdapter):
                     "Installed Chronos-2 predict_df does not support multiple target columns.",
                 ) from exc
             raise
-        return _normalize_point_forecast(pred_df, target_variables)
+        forecast = _normalize_point_forecast(pred_df, target_variables)
+        _ensure_target_variables(forecast, target_variables, self.model_id)
+        return forecast
 
     def _prepare_predict_df_inputs(
         self,
@@ -334,7 +362,7 @@ class TTMAdapter(BaseAdapter):
 
     def _select_model(self, get_model: Any, task: Any) -> Any:
         try:
-            return get_model(
+            model = get_model(
                 model_path="ibm-granite/granite-timeseries-ttm-r2",
                 context_length=_context_length(task),
                 prediction_length=_prediction_length(task),
@@ -353,6 +381,22 @@ class TTMAdapter(BaseAdapter):
                     "frequency": _frequency(task),
                 },
             ) from exc
+        config = getattr(model, "config", None)
+        selected_context = getattr(config, "context_length", _context_length(task))
+        selected_prediction = getattr(config, "prediction_length", _prediction_length(task))
+        if int(selected_context) != _context_length(task) or int(selected_prediction) != _prediction_length(task):
+            raise UnsupportedTaskError(
+                self.model_id,
+                "unsupported_window",
+                "Selected TTM checkpoint does not match the requested context and horizon.",
+                {
+                    "requested_context_length": _context_length(task),
+                    "requested_prediction_length": _prediction_length(task),
+                    "selected_context_length": int(selected_context),
+                    "selected_prediction_length": int(selected_prediction),
+                },
+            )
+        return model
 
     def _standard_scale(
         self, context_df: pd.DataFrame, variables: tuple[str, ...]
@@ -420,6 +464,28 @@ class Moirai2Adapter(BaseAdapter):
     batch_size: int = 32
 
     def predict(self, context_df: pd.DataFrame, future_df: pd.DataFrame | None, task: Any) -> pd.DataFrame:
+        target_variables = _target_variables(context_df, task)
+        if _task_value(task, "io_mode", "UV-UV") == "MV-MV" and len(target_variables) > 1:
+            raise UnsupportedTaskError(
+                self.model_id,
+                "unsupported_multitarget",
+                "Moirai2 adapter currently supports single-target forecasts only; MV-MV requires target_dim per target variable.",
+                {"target_variables": list(target_variables)},
+            )
+
+        panel_width = _panel_width(context_df)
+        if panel_width >= 300 and _context_length(task) >= 336:
+            raise UnsupportedTaskError(
+                self.model_id,
+                "resource_budget_exceeded",
+                "Moirai2 high-dimensional panel exceeds the default Colab T4 resource budget.",
+                {
+                    "panel_width": panel_width,
+                    "context_length": _context_length(task),
+                    "forecast_horizon": _prediction_length(task),
+                },
+            )
+
         try:
             from gluonts.dataset.pandas import PandasDataset
             from gluonts.dataset.split import split
@@ -429,7 +495,6 @@ class Moirai2Adapter(BaseAdapter):
                 self.model_id, self.required_packages, self.source_url, exc
             ) from exc
 
-        target_variables = _target_variables(context_df, task)
         wide = _long_to_wide(context_df, target_variables).drop(columns=["item_id"])
         wide = wide.set_index("timestamp")
         dataset = PandasDataset(dict(wide))

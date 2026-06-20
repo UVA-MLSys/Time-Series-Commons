@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "zero-shot-traffic-mv-mv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Zero-shot MV-MV benchmark for traffic_thuml.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "Chronos-2": "default",
+    "TTM-R3-FT": "default",
+    "Moirai2": "default"
+  },
+  "window_profiles": {
+    "hourly": {
+      "short": {
+        "lookback_window": 72,
+        "forecast_horizon": 24
+      },
+      "medium": {
+        "lookback_window": 336,
+        "forecast_horizon": 168
+      },
+      "long": {
+        "lookback_window": 720,
+        "forecast_horizon": 720
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_group_id": "traffic-mv-mv",
+      "dataset_id": "traffic_thuml",
+      "models": [
+        "Chronos-2",
+        "TTM-R3-FT",
+        "Moirai2"
+      ],
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": {
+          "numeric_ranges": [
+            {
+              "start": 0,
+              "end": 860
+            }
+          ],
+          "names": [
+            "OT"
+          ]
+        },
+        "observed": {
+          "numeric_ranges": [
+            {
+              "start": 0,
+              "end": 860
+            }
+          ],
+          "names": [
+            "OT"
+          ]
+        },
+        "known_future": []
+      },
+      "window_profile": "hourly",
+      "horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "num_windows": 1,
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ]
+    }
+  ],
+  "results": {}
+}

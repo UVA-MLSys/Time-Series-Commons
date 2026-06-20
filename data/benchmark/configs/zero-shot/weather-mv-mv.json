@@ -1,0 +1,105 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "zero-shot-weather-mv-mv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Zero-shot MV-MV benchmark for weather_jena_thuml.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "Chronos-2": "default",
+    "TTM-R3-FT": "default",
+    "Moirai2": "default"
+  },
+  "window_profiles": {
+    "ten_minute": {
+      "short": {
+        "lookback_window": 432,
+        "forecast_horizon": 144
+      },
+      "medium": {
+        "lookback_window": 2016,
+        "forecast_horizon": 1008
+      },
+      "long": {
+        "lookback_window": 4320,
+        "forecast_horizon": 4320
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_group_id": "weather-mv-mv",
+      "dataset_id": "weather_jena_thuml",
+      "models": [
+        "Chronos-2",
+        "TTM-R3-FT",
+        "Moirai2"
+      ],
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": [
+          "p (mbar)",
+          "T (degC)",
+          "Tpot (K)",
+          "Tdew (degC)",
+          "rh (%)",
+          "VPmax (mbar)",
+          "VPact (mbar)",
+          "VPdef (mbar)",
+          "sh (g/kg)",
+          "H2OC (mmol/mol)",
+          "rho (g/m**3)",
+          "wv (m/s)",
+          "max. wv (m/s)",
+          "wd (deg)",
+          "rain (mm)",
+          "raining (s)",
+          "SWDR (W/m2)",
+          "PAR (umol/m2/s)",
+          "max. PAR (umol/m2/s)",
+          "Tlog (degC)",
+          "OT"
+        ],
+        "observed": [
+          "p (mbar)",
+          "T (degC)",
+          "Tpot (K)",
+          "Tdew (degC)",
+          "rh (%)",
+          "VPmax (mbar)",
+          "VPact (mbar)",
+          "VPdef (mbar)",
+          "sh (g/kg)",
+          "H2OC (mmol/mol)",
+          "rho (g/m**3)",
+          "wv (m/s)",
+          "max. wv (m/s)",
+          "wd (deg)",
+          "rain (mm)",
+          "raining (s)",
+          "SWDR (W/m2)",
+          "PAR (umol/m2/s)",
+          "max. PAR (umol/m2/s)",
+          "Tlog (degC)",
+          "OT"
+        ],
+        "known_future": []
+      },
+      "window_profile": "ten_minute",
+      "horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "num_windows": 1,
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ]
+    }
+  ],
+  "results": {}
+}

@@ -1,34 +1,281 @@
 {
-  "schema_version": "0.1.0",
-  "benchmark_suite_id": "poc-v0",
-  "run_id": "poc-v0__ETTh1__TimesNet__MV-MV__h336__traditional_training__standard",
-
-  "dataset_id": "ETTh1",
-  "model_id": "TimesNet",
-  "io_mode": "MV-MV",
-  "evaluation_mode": "traditional_training",
-
-  "lookback_window": 720,
-  "forecast_horizon": 336,
-  "split_id": "standard",
-  "metric": "MAE",
-
-  "features": {
-    "observed_streams": ["HUFL", "HULL", "MUFL", "MULL", "LUFL", "LULL", "OT"],
-    "target_streams": ["HUFL", "HULL", "MUFL", "MULL", "LUFL", "LULL", "OT"],
-    "exogenous_streams": [],
-    "exogenous_static_variables": []
+  "schema_version": "0.2.0",
+  "benchmark_id": "zero-shot-example-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Executable zero-shot benchmark specification and result ledger.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
   },
-
-  "status": "completed",
-  "score": 0.391,
-
-  "secondary_metrics": {
-    "MSE": 0.284,
-    "RMSE": 0.533
+  "model_profiles": {
+    "Chronos-2": "default",
+    "TTM-R3-FT": "default",
+    "Moirai2": "default"
   },
-
-  "relative_score": 0.82,
-  "baseline_model_id": "Naive",
-  "baseline_score": 0.477
+  "window_profiles": {
+    "ten_minute": {
+      "short": {
+        "lookback_window": 432,
+        "forecast_horizon": 144
+      },
+      "medium": {
+        "lookback_window": 2016,
+        "forecast_horizon": 1008
+      },
+      "long": {
+        "lookback_window": 4320,
+        "forecast_horizon": 4320
+      }
+    },
+    "hourly": {
+      "short": {
+        "lookback_window": 72,
+        "forecast_horizon": 24
+      },
+      "medium": {
+        "lookback_window": 336,
+        "forecast_horizon": 168
+      },
+      "long": {
+        "lookback_window": 720,
+        "forecast_horizon": 720
+      }
+    },
+    "daily": {
+      "short": {
+        "lookback_window": 30,
+        "forecast_horizon": 7
+      },
+      "medium": {
+        "lookback_window": 90,
+        "forecast_horizon": 30
+      },
+      "long": {
+        "lookback_window": 365,
+        "forecast_horizon": 90
+      }
+    },
+    "weekly": {
+      "short": {
+        "lookback_window": 13,
+        "forecast_horizon": 4
+      },
+      "medium": {
+        "lookback_window": 52,
+        "forecast_horizon": 13
+      },
+      "long": {
+        "lookback_window": 104,
+        "forecast_horizon": 26
+      }
+    },
+    "monthly": {
+      "short": {
+        "lookback_window": 24,
+        "forecast_horizon": 6
+      },
+      "medium": {
+        "lookback_window": 60,
+        "forecast_horizon": 18
+      },
+      "long": {
+        "lookback_window": 120,
+        "forecast_horizon": 24
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_group_id": "etth1-mv-uv",
+      "dataset_id": "etth1_thuml",
+      "models": [
+        "Chronos-2",
+        "TTM-R3-FT",
+        "Moirai2"
+      ],
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "OT"
+        ],
+        "observed": [
+          "HUFL",
+          "HULL",
+          "MUFL",
+          "MULL",
+          "LUFL",
+          "LULL",
+          "OT"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hourly",
+      "horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "num_windows": 3,
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ]
+    },
+    {
+      "run_group_id": "etth1-uv-uv",
+      "dataset_id": "etth1_thuml",
+      "models": [
+        "Chronos-2",
+        "TTM-R3-FT",
+        "Moirai2"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "OT"
+        ],
+        "observed": [
+          "OT"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hourly",
+      "horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "num_windows": 3,
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ]
+    },
+    {
+      "run_group_id": "etth1-mv-mv",
+      "dataset_id": "etth1_thuml",
+      "models": [
+        "Chronos-2",
+        "TTM-R3-FT",
+        "Moirai2"
+      ],
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": [
+          "HUFL",
+          "HULL",
+          "MUFL",
+          "MULL",
+          "LUFL",
+          "LULL",
+          "OT"
+        ],
+        "observed": [
+          "HUFL",
+          "HULL",
+          "MUFL",
+          "MULL",
+          "LUFL",
+          "LULL",
+          "OT"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hourly",
+      "horizons": [
+        "short",
+        "medium",
+        "long"
+      ],
+      "num_windows": 3,
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ]
+    }
+  ],
+  "results": {
+    "etth1-mv-uv__Chronos-2__short": {
+      "run_group_id": "etth1-mv-uv",
+      "model_id": "Chronos-2",
+      "model_profile": "default",
+      "dataset_id": "etth1_thuml",
+      "io_mode": "MV-UV",
+      "evaluation_mode": "zero_shot",
+      "horizon_id": "short",
+      "resolved_config": {
+        "lookback_window": 72,
+        "forecast_horizon": 24,
+        "num_windows": 3,
+        "targets": [
+          "OT"
+        ],
+        "observed": [
+          "HUFL",
+          "HULL",
+          "MUFL",
+          "MULL",
+          "LUFL",
+          "LULL",
+          "OT"
+        ],
+        "known_future": []
+      },
+      "status": "completed",
+      "metrics": {
+        "MAE": 0.391,
+        "MSE": 0.284,
+        "RMSE": 0.533
+      },
+      "forecast_artifact": {
+        "format": "parquet",
+        "compression": "zstd",
+        "path": "data/benchmark/forecast-artifacts/zero-shot-example-v1/etth1-mv-uv__Chronos-2__short/2026-06-07T14_00_00Z.parquet",
+        "rows": 72,
+        "columns": [
+          "window_id",
+          "item_id",
+          "timestamp",
+          "variable",
+          "actual",
+          "prediction"
+        ]
+      },
+      "runtime": {
+        "checkpoint": "amazon/chronos-2",
+        "device": "cuda",
+        "duration_seconds": 12.4
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "completed",
+          "started_at": "2026-06-07T14:00:00Z",
+          "completed_at": "2026-06-07T14:00:12Z",
+          "metrics": {
+            "MAE": 0.391,
+            "MSE": 0.284,
+            "RMSE": 0.533
+          },
+          "forecast_artifact": {
+            "format": "parquet",
+            "compression": "zstd",
+            "path": "data/benchmark/forecast-artifacts/zero-shot-example-v1/etth1-mv-uv__Chronos-2__short/2026-06-07T14_00_00Z.parquet",
+            "rows": 72,
+            "columns": [
+              "window_id",
+              "item_id",
+              "timestamp",
+              "variable",
+              "actual",
+              "prediction"
+            ]
+          }
+        }
+      ]
+    }
+  }
 }

@@ -23,6 +23,8 @@ class M4Dataset(HuggingFaceDataset):
 
         train_lengths = train.groupby("item_id")["timestamp"].max().astype(int)
         test["timestamp"] = test["timestamp"] + test["item_id"].map(train_lengths)
+        train["timestamp"] = _ordinal_steps_to_datetimes(train["timestamp"], self.frequency)
+        test["timestamp"] = _ordinal_steps_to_datetimes(test["timestamp"], self.frequency)
 
         values = pd.concat(
             [
@@ -80,3 +82,11 @@ def _m4_split_to_long(frame: pd.DataFrame, split: str) -> pd.DataFrame:
     stacked["variable"] = "y"
     stacked["split"] = split
     return stacked[["item_id", "timestamp", "variable", "value", "split"]]
+
+
+def _ordinal_steps_to_datetimes(steps: pd.Series, frequency: str) -> pd.Series:
+    positions = steps.astype(int)
+    if positions.empty:
+        return pd.Series(pd.to_datetime([]), index=steps.index)
+    timeline = pd.date_range("2000-01-01", periods=int(positions.max()), freq=frequency)
+    return positions.map(lambda position: timeline[position - 1])

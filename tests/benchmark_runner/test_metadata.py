@@ -13,7 +13,7 @@ def load_datasets():
     return json.loads((ROOT / "data/benchmark/dataset-metadata.json").read_text())["datasets"]
 
 
-def test_supported_foundation_models_are_registered_zero_shot_only():
+def test_paper1_all_purpose_models_are_registered_zero_shot_only():
     models = {m["model_id"]: m for m in load_registry()}
 
     for model_id in ["Chronos-2", "TTM-R3-FT", "Moirai2"]:
@@ -24,7 +24,29 @@ def test_supported_foundation_models_are_registered_zero_shot_only():
         assert models[model_id]["source_link"].startswith("http")
 
 
-def test_huggingface_datasets_have_one_executable_registry_record_each():
+def test_optional_models_are_labeled_by_supported_io_modes():
+    models = {m["model_id"]: m for m in load_registry()}
+
+    assert models["Toto-2"]["evaluation_modes"] == ["zero_shot"]
+    assert set(models["Toto-2"]["io_modes"]) == {"UV-UV", "MV-MV"}
+    assert "MV-UV" not in models["Toto-2"]["io_modes"]
+
+    assert models["TimesFM-2.5"]["evaluation_modes"] == ["zero_shot"]
+    assert set(models["TimesFM-2.5"]["io_modes"]) == {"UV-UV", "MV-UV"}
+    assert "MV-MV" not in models["TimesFM-2.5"]["io_modes"]
+
+
+def test_camels_us_is_registered_for_paper1_zero_shot():
+    datasets = {d["dataset_id"]: d for d in load_datasets()}
+
+    assert "camels-us" in datasets
+    camels = datasets["camels-us"]
+    assert camels["benchmark_ready"] is False
+    assert set(camels["capabilities"]["io_modes"]) == {"UV-UV", "MV-UV", "MV-MV"}
+    assert camels["capabilities"]["evaluation_modes"] == ["zero_shot"]
+
+
+def test_paper1_huggingface_datasets_have_one_executable_registry_record_each():
     datasets = load_datasets()
     selected_ids = {
         "ett-hourly-station-1-etth1",
