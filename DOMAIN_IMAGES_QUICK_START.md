@@ -4,7 +4,7 @@
 
 Your catalog now has domain-specific background images for all datasets and models!
 
-- **15 domain categories** covering 100% of your 815 datasets
+- **14 domain categories** covering 100% of your 815 datasets
 - **Placeholder gradient images** ready to be replaced
 - **Automatic domain matching** - no manual tagging needed
 - **Beautiful card displays** with image backgrounds and overlays

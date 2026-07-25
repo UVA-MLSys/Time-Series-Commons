@@ -1,0 +1,57 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "storm-job",
+    "labels": {
+      "name": "storm-job"
+    }
+  },
+  "spec": {
+    "volumes": [
+      {
+        "name": "topologies",
+        "hostPath": {
+          "path": "/nfs/indycar/data"
+        }
+      },
+      {
+        "name": "config",
+        "hostPath": {
+          "path": "/nfs/indycar/config"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "storm-job",
+        "image": "storm",
+        "args": [
+          "storm",
+          "jar",
+          "/data/topologies/Indycar500-33-HTMBaseline-1.0-SNAPSHOT.jar",
+          "org.apache.storm.flux.Flux",
+          "--remote",
+          "/data/topologies/small.yaml"
+        ],
+        "resources": {
+          "limits": {
+            "cpu": "100m"
+          }
+        },
+        "volumeMounts": [
+          {
+            "name": "topologies",
+            "mountPath": "/data/topologies"
+          },
+          {
+            "name": "config",
+            "mountPath": "/config"
+          }
+        ]
+      }
+    ],
+    "restartPolicy": "OnFailure",
+    "terminationGracePeriodSeconds": 30
+  }
+}

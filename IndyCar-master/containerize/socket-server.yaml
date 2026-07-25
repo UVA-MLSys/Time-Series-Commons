@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: indycar-socketserver-2017
+  labels:
+    app: indycar-socketserver-2017
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: indycar-socketserver-2017
+  template:
+    metadata:
+      labels:
+        app: indycar-socketserver-2017
+    spec:
+      volumes:
+        - name: datalogs
+          hostPath:
+            path: /nfs/indycar/datalogs
+      containers:
+        - name: iuindycar
+          image: cwidanage/iuindycar1:v6
+          ports:
+            - containerPort: 5000
+          args: ["java", "-jar", "/server.jar","/data/logs/eRPGenerator_TGMLP_20170528_Indianapolis500_Race.log","tcp://activemq-apollo:61613","33","2017","compact_topology_out"]
+          volumeMounts:
+            - name: datalogs
+              mountPath: /data/logs
+          resources:
+            limits:
+              cpu : 2
+              memory: 6G
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: indycar-socketserver-2017
+spec:
+  type: NodePort
+  selector:
+    app: indycar-socketserver-2017
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

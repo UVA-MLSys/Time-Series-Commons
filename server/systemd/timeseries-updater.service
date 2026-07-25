@@ -1,0 +1,60 @@
+# /etc/systemd/system/timeseries-updater.service
+#
+# Runs the Time Series Commons website updater as a persistent system service.
+# Receives POST /update from the listener, fetches the changed row from Cloud SQL,
+# patches data/models.json in the local repo clone, then commits and pushes to
+# GitHub so GitHub Pages redeploys with only the changed data.
+#
+# Before enabling:
+#   1. Clone the repo on the VM with a GitHub PAT:
+#        git clone https://YOUR_PAT@github.com/YOUR_ORG/Time-Series-Commons.git \
+#            /home/ryangoudjil/Time-Series-Commons
+#        git -C /home/ryangoudjil/Time-Series-Commons \
+#            remote set-url origin \
+#            https://YOUR_PAT@github.com/YOUR_ORG/Time-Series-Commons.git
+#
+#   2. Create the virtualenv and install dependencies:
+#        mkdir -p ~/timeseries-updater && cd ~/timeseries-updater
+#        python3 -m venv venv
+#        source venv/bin/activate
+#        pip install psycopg2-binary flask python-dotenv
+#
+#   3. Copy server/updater/main.py:
+#        cp /home/ryangoudjil/Time-Series-Commons/server/updater/main.py \
+#            /home/ryangoudjil/timeseries-updater/main.py
+#
+#   4. Create /home/ryangoudjil/timeseries-updater/.env from .env.example:
+#        chmod 600 /home/ryangoudjil/timeseries-updater/.env
+#
+#   5. Update the listener's SITE_UPDATE_URL to http://127.0.0.1:8081/update
+#        and restart timeseries-listener.
+#
+# Enable and start:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable timeseries-updater
+#   sudo systemctl start timeseries-updater
+#   sudo systemctl status timeseries-updater
+#
+# Watch live logs:
+#   sudo journalctl -u timeseries-updater -f
+#
+# Trigger a full rebuild (after seeding):
+#   curl -X POST http://127.0.0.1:8081/rebuild
+
+[Unit]
+Description=Time Series Commons Website Updater
+After=network.target cloud-sql-proxy.service
+Requires=cloud-sql-proxy.service
+
+[Service]
+User=ryangoudjil
+WorkingDirectory=/home/ryangoudjil/timeseries-updater
+EnvironmentFile=/home/ryangoudjil/timeseries-updater/.env
+ExecStart=/home/ryangoudjil/timeseries-updater/venv/bin/python main.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

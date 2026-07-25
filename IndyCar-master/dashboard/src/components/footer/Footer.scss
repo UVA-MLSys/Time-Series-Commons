@@ -1,0 +1,29 @@
+.footer {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: black;
+  color: white;
+  line-height: 28px;
+  padding: 10px;
+  font-size: 11px;
+
+  .footer-description {
+
+    @media only screen and (max-width: 600px) {
+      line-height: 12px;
+    }
+    margin: 0 !important;
+  }
+
+  .footer-buttons {
+    text-align: right;
+
+    a {
+      color: white;
+
+      &:last-of-type {
+        margin-left: 10px;
+      }
+    }
+  }
+}

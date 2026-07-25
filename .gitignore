@@ -1,12 +1,23 @@
+# Environment files - never commit real credentials
+.env
+server/listener/.env
+
 # Python and test artifacts
 __pycache__/
 *.py[cod]
+*.egg-info/
 .pytest_cache/
 .coverage
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+venv/
+.venv/
+
+# macOS
 .DS_Store
+
+# Notebook/runtime artifacts
 .colab_venvs/
 .ipynb_checkpoints/
 

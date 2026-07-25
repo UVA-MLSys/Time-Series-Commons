@@ -1,0 +1,111 @@
+.player-selection-wrapper {
+  background-color: black;
+  color: white;
+  padding: 15px;
+
+  display: grid;
+  grid-template-rows: 40px auto;
+  grid-row-gap: 10px;
+
+  @media only screen and (max-width: 600px) {
+    padding-top: 30px;
+  }
+
+  .player-selection {
+    display: grid;
+    grid-template-columns: 120px auto;
+
+    .player-selection-current-position {
+      @media only screen and (max-width: 600px) {
+        text-align: right;
+      }
+    }
+
+    .player-selection-car-label {
+      font-family: Roboto, sans-serif;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+  }
+
+  .player-information {
+    @media not screen and (max-width: 600px) {
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+
+    @media only screen and (max-width: 600px) {
+      display: grid;
+      grid-template-rows: auto auto !important;
+      grid-row-gap: 20px;
+    }
+
+    h4 {
+      color: white;
+      font-family: "Teko", sans-serif;
+      font-size: 24px;
+      font-weight: 300;
+
+      &::after {
+        border-bottom: 2px solid red;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        width: 50px;
+      }
+    }
+
+    .driver-info {
+      .driver-info-content {
+        display: grid;
+        grid-template-columns: 160px auto;
+        grid-column-gap: 20px;
+      }
+
+      .player-image {
+        height: 160px;
+        width: 160px;
+        border: 1px solid red;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .player-name {
+        font-family: Teko, sans-serif;
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+
+      .player-team {
+        display: grid;
+        grid-template-columns: 45px auto;
+        grid-column-gap: 10px;
+        margin-bottom: 10px;
+
+        .player-team-name {
+          font-family: Roboto, sans-serif;
+          font-size: 18px;
+        }
+      }
+
+      .player-car {
+        display: grid;
+        grid-template-columns: 45px auto;
+        grid-column-gap: 10px;
+
+        img {
+          margin-top: 4px;
+        }
+
+        .player-car-name {
+          font-family: Roboto, sans-serif;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+}

@@ -303,6 +303,12 @@ class NotebookCatalog {
             this.renderContent();
         });
 
+        // Domain filter dropdown
+        document.getElementById('domain-filter-select').addEventListener('change', (e) => {
+            this.activeDomain = e.target.value || null;
+            this.renderContent();
+        });
+
         // See all buttons
         document.querySelectorAll('.see-all-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -462,13 +468,37 @@ class NotebookCatalog {
         grid.querySelectorAll('.domain-tile').forEach(tile => {
             tile.addEventListener('click', () => {
                 this.activeDomain = tile.dataset.domain;
+                this.syncDomainFilterDropdown();
                 this.switchTab('datasets');
             });
         });
+
+        this.initDomainFilterDropdown();
+    }
+
+    initDomainFilterDropdown() {
+        const select = document.getElementById('domain-filter-select');
+        if (!select || !this.domainConfig) return;
+        const domains = Object.keys(this.domainConfig.domains);
+        const existing = new Set(Array.from(select.options).map(o => o.value));
+        domains.forEach(name => {
+            if (!existing.has(name)) {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = name;
+                select.appendChild(opt);
+            }
+        });
+    }
+
+    syncDomainFilterDropdown() {
+        const select = document.getElementById('domain-filter-select');
+        if (select) select.value = this.activeDomain || '';
     }
 
     clearDomainFilter() {
         this.activeDomain = null;
+        this.syncDomainFilterDropdown();
         this.renderContent();
     }
 
@@ -833,15 +863,16 @@ class NotebookCatalog {
 
             ${benchmarksHTML}
 
-            ${dataset.paperLink || dataset.dataLink ? `
-                <div class="modal-section">
-                    <h3>Resources</h3>
-                    <div class="modal-links">
-                        ${dataset.paperLink ? `<a href="${this.escapeHtml(dataset.paperLink)}" target="_blank" class="modal-link">📄 View Paper</a>` : ''}
-                        ${dataset.dataLink ? `<a href="${this.escapeHtml(dataset.dataLink)}" target="_blank" class="modal-link">📊 Access Data</a>` : ''}
-                    </div>
+            <div class="modal-section">
+                <h3>Resources</h3>
+                <div class="modal-links">
+                    ${dataset.paperLink ? `<a href="${this.escapeHtml(dataset.paperLink)}" target="_blank" class="modal-link">📄 View Paper</a>` : ''}
+                    ${dataset.dataLink
+                        ? `<a href="${this.escapeHtml(dataset.dataLink)}" target="_blank" class="modal-link">📊 Access Data</a>`
+                        : `<button class="modal-link modal-link--unavailable" onclick="catalog.showToast('Dataset link not available')">📊 Access Data</button>`
+                    }
                 </div>
-            ` : ''}
+            </div>
         `;
     }
 
@@ -906,6 +937,23 @@ class NotebookCatalog {
                 </div>
             </div>
         `;
+    }
+    showToast(message) {
+        const existing = document.getElementById('ts-toast');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.id = 'ts-toast';
+        toast.className = 'ts-toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.add('ts-toast--visible'));
+
+        setTimeout(() => {
+            toast.classList.remove('ts-toast--visible');
+            toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+        }, 3000);
     }
 }
 
