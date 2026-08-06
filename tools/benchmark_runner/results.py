@@ -110,31 +110,15 @@ def _base_result(
         raise ValueError("Paper 1 results must use evaluation_mode='zero_shot'")
 
     return {
-        "schema_version": "0.1.0",
-        "benchmark_suite_id": task.benchmark_suite_id,
         "run_id": task.run_id,
-        "dataset_id": task.suite_dataset_id,
-        "benchmark_id": task.benchmark_id,
-        "tsc_dataset_id": task.tsc_dataset_id,
         "model_id": task.model_id,
-        "io_mode": task.io_mode,
-        "evaluation_mode": task.evaluation_mode,
+        "window_id": getattr(task, "window_id", None) or task.horizon_id,
         "horizon_id": task.horizon_id,
-        "lookback_window": task.lookback_window,
-        "forecast_horizon": task.forecast_horizon,
         "metric": "MAE",
         "score": None,
-        "higher_is_better": False,
         "secondary_metrics": {},
         "status": None,
         "error": None,
-        "model_runtime": dict(model_runtime),
-        "features": {
-            "observed_streams": list(task.observed_streams),
-            "target_streams": list(task.target_streams),
-            "known_covariates": list(task.known_covariates),
-            "curation_required": task.curation_required,
-        },
     }
 
 

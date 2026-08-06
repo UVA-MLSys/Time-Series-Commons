@@ -17,7 +17,7 @@ class BenchmarkTask:
     io_mode: str
     evaluation_mode: str
     horizon_id: str
-    lookback_window: int
+    lookback_window: int | None
     forecast_horizon: int
     observed_streams: list[str]
     target_streams: list[str]
@@ -28,15 +28,22 @@ class BenchmarkTask:
     model_profile: str | None = None
     metrics: list[str] | None = None
     num_windows: int | None = None
+    num_windows_policy: str | None = None
     frequency: str | None = None
+    window_id: str | None = None
+    context_policy: str = "fixed_length"
+    source_benchmark: str | None = None
+    source_dataset_config: str | None = None
+    window_metadata: dict[str, Any] | None = None
 
     @property
     def run_id(self) -> str:
+        window_id = self.window_id or self.horizon_id
         if self.run_group_id:
-            return f"{self.run_group_id}__{self.model_id}__{self.horizon_id}"
+            return f"{self.run_group_id}__{self.model_id}__{window_id}"
         return (
             f"{self.benchmark_suite_id}__{self.suite_dataset_id}__"
-            f"{self.model_id}__{self.io_mode}__{self.horizon_id}__zero_shot"
+            f"{self.model_id}__{self.io_mode}__{window_id}__zero_shot"
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -147,13 +154,13 @@ def _generate_combined_registry_tasks(
         )
 
     runs = list(benchmark.get("runs", []))
-    window_profiles = dict(benchmark.get("window_profiles", {}))
+    windows = _combined_window_definitions(benchmark)
     model_profiles = dict(benchmark.get("model_profiles", {}))
 
     run_group_filter = _normalize_filter("run_group_id", run_group_ids, _run_group_ids(runs))
     model_filter = _normalize_filter("model_id", model_ids, _combined_model_ids(runs))
     io_mode_filter = _normalize_filter("io_mode", io_modes, _combined_io_modes(runs))
-    horizon_filter = _normalize_filter("horizon", horizons, _combined_horizons(runs, window_profiles))
+    horizon_filter = _normalize_filter("window", horizons, _combined_horizons(runs, windows))
 
     tasks: list[BenchmarkTask] = []
     for run in runs:
@@ -165,11 +172,6 @@ def _generate_combined_registry_tasks(
         if io_mode_filter is not None and io_mode not in io_mode_filter:
             continue
 
-        profile_name = run["window_profile"]
-        frequency_windows = window_profiles.get(profile_name)
-        if not frequency_windows:
-            raise ValueError(f"Unknown window_profile for {run_group_id}: {profile_name}")
-
         variables = run.get("variables", {})
         observed = _expand_selection(variables.get("observed", []))
         targets = _expand_selection(variables.get("targets", []))
@@ -178,12 +180,14 @@ def _generate_combined_registry_tasks(
         for model_id in run.get("models", []):
             if model_filter is not None and model_id not in model_filter:
                 continue
-            for horizon_id in run.get("horizons", []):
-                if horizon_filter is not None and horizon_id not in horizon_filter:
+            for window_id in run.get("evaluation_windows", run.get("horizons", [])):
+                if horizon_filter is not None and window_id not in horizon_filter:
                     continue
-                if horizon_id not in frequency_windows:
-                    raise ValueError(f"Unknown horizon for {run_group_id}: {horizon_id}")
-                window = frequency_windows[horizon_id]
+                if window_id not in windows:
+                    raise ValueError(f"Unknown evaluation window for {run_group_id}: {window_id}")
+                window = windows[window_id]
+                legacy_horizon_id = str(window.get("term", window_id))
+                lookback_window = window.get("lookback_window")
                 tasks.append(
                     BenchmarkTask(
                         benchmark_suite_id=benchmark["benchmark_id"],
@@ -193,8 +197,9 @@ def _generate_combined_registry_tasks(
                         model_id=model_id,
                         io_mode=io_mode,
                         evaluation_mode="zero_shot",
-                        horizon_id=horizon_id,
-                        lookback_window=int(window["lookback_window"]),
+                        horizon_id=legacy_horizon_id,
+                        window_id=window_id,
+                        lookback_window=None if lookback_window is None else int(lookback_window),
                         forecast_horizon=int(window["forecast_horizon"]),
                         observed_streams=observed,
                         target_streams=targets,
@@ -203,8 +208,13 @@ def _generate_combined_registry_tasks(
                         run_group_id=run_group_id,
                         model_profile=model_profiles.get(model_id),
                         metrics=list(run.get("metrics", [])),
-                        num_windows=int(run.get("num_windows", 1)),
-                        frequency=profile_name,
+                        num_windows=_optional_int(run.get("num_windows", window.get("num_windows"))),
+                        num_windows_policy=window.get("num_windows_policy") or run.get("num_windows_policy"),
+                        frequency=window.get("frequency") or run.get("window_profile"),
+                        context_policy=str(window.get("context_policy", "fixed_length")),
+                        source_benchmark=window.get("source_benchmark"),
+                        source_dataset_config=window.get("source_dataset_config"),
+                        window_metadata=dict(window.get("metadata", {})),
                     )
                 )
     return tasks
@@ -253,6 +263,16 @@ def _horizons(window_rules: dict[str, Any]) -> set[str]:
     return horizon_ids
 
 
+def _combined_window_definitions(benchmark: dict[str, Any]) -> dict[str, Any]:
+    if "windows" in benchmark:
+        return dict(benchmark.get("windows") or {})
+    windows: dict[str, Any] = {}
+    for profile in (benchmark.get("window_profiles") or {}).values():
+        if isinstance(profile, dict):
+            windows.update(profile)
+    return windows
+
+
 def _run_group_ids(runs: Iterable[dict[str, Any]]) -> list[str]:
     return [run["run_group_id"] for run in runs]
 
@@ -270,13 +290,19 @@ def _combined_io_modes(runs: Iterable[dict[str, Any]]) -> set[str]:
 
 def _combined_horizons(
     runs: Iterable[dict[str, Any]],
-    window_profiles: dict[str, Any],
+    windows: dict[str, Any],
 ) -> set[str]:
     horizon_ids: set[str] = set()
     for run in runs:
-        horizon_ids.update(run.get("horizons", []))
-        horizon_ids.update(window_profiles.get(run.get("window_profile"), {}).keys())
+        horizon_ids.update(run.get("evaluation_windows", run.get("horizons", [])))
+    horizon_ids.update(windows)
     return horizon_ids
+
+
+def _optional_int(value: Any) -> int | None:
+    if value is None:
+        return None
+    return int(value)
 
 
 def _expand_selection(selection: Any) -> list[str]:

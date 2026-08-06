@@ -24,7 +24,7 @@ def load_registry_records(
     models = json.loads(model_path.read_text(encoding="utf-8"))["models"]
     return (
         _dataset_index(datasets),
-        _unique_index(models, "model_id"),
+        _model_index(models),
     )
 
 
@@ -37,7 +37,7 @@ def validate_benchmark(benchmark: dict[str, Any]) -> None:
         raise ValueError("Benchmark registry must define benchmark_id")
 
     datasets, models = load_registry_records(benchmark)
-    window_profiles = benchmark.get("window_profiles", {})
+    windows = _window_definitions(benchmark)
     model_profiles = benchmark.get("model_profiles", {})
     seen_run_groups: set[str] = set()
 
@@ -57,18 +57,17 @@ def validate_benchmark(benchmark: dict[str, Any]) -> None:
         if io_mode not in dataset_modes:
             raise ValueError(f"Dataset {dataset_id} does not support io_mode={io_mode}")
 
-        profile_name = run.get("window_profile")
-        if profile_name not in window_profiles:
-            raise ValueError(f"Unknown window_profile for {run_group_id}: {profile_name}")
-        profile_horizons = window_profiles[profile_name]
-        unknown_horizons = set(run.get("horizons", [])) - set(profile_horizons)
-        if unknown_horizons:
+        selected_windows = set(run.get("evaluation_windows", run.get("horizons", [])))
+        unknown_windows = selected_windows - set(windows)
+        if unknown_windows:
             raise ValueError(
-                f"Unknown horizon(s) for {run_group_id}: {', '.join(sorted(unknown_horizons))}"
+                f"Unknown evaluation window(s) for {run_group_id}: {', '.join(sorted(unknown_windows))}"
             )
+        for window_id in selected_windows:
+            _validate_window_definition(run_group_id, window_id, windows[window_id])
 
         variables = run.get("variables", {})
-        _validate_variable_roles(run_group_id, io_mode, variables)
+        _validate_variable_roles(run_group_id, io_mode, variables, run)
         _validate_dataset_variables(run_group_id, datasets[dataset_id], variables)
 
         for model_id in run.get("models", []):
@@ -97,6 +96,16 @@ def resolve_model_profile(
     except KeyError as exc:
         raise ValueError(f"Unknown model profile: {model_id}={profile_name}") from exc
     return dict(profile)
+
+
+def _window_definitions(benchmark: dict[str, Any]) -> dict[str, Any]:
+    if "windows" in benchmark:
+        return dict(benchmark.get("windows") or {})
+    windows: dict[str, Any] = {}
+    for profile in (benchmark.get("window_profiles") or {}).values():
+        if isinstance(profile, dict):
+            windows.update(profile)
+    return windows
 
 
 def expand_variable_selection(selection: Any) -> list[str]:
@@ -137,6 +146,7 @@ def record_result(path: str | Path, result: dict[str, Any]) -> None:
         "forecast_artifact",
         "error",
         "runtime",
+        "model_runtime",
     ):
         if key in result and result[key] is not None:
             attempt[key] = result[key]
@@ -152,6 +162,7 @@ def _validate_variable_roles(
     run_group_id: str,
     io_mode: str,
     variables: dict[str, Any],
+    run: dict[str, Any] | None = None,
 ) -> None:
     targets = expand_variable_selection(variables.get("targets", []))
     observed = expand_variable_selection(variables.get("observed", []))
@@ -162,8 +173,13 @@ def _validate_variable_roles(
         raise ValueError(f"{run_group_id} targets must be included in observed variables")
     if not set(known_future).issubset(observed):
         raise ValueError(f"{run_group_id} known_future variables must be observed")
-    if io_mode == "UV-UV" and (len(targets) != 1 or observed != targets):
-        raise ValueError(f"{run_group_id} UV-UV requires one identical observed/target variable")
+    target_policy = (run or {}).get("target_policy")
+    if io_mode == "UV-UV":
+        gift_eval_univariate = target_policy == "gift_eval_univariate"
+        if observed != targets:
+            raise ValueError(f"{run_group_id} UV-UV requires identical observed/target variables")
+        if len(targets) != 1 and not gift_eval_univariate:
+            raise ValueError(f"{run_group_id} UV-UV requires one target variable")
     if io_mode == "MV-UV" and (len(targets) != 1 or len(observed) < 2):
         raise ValueError(f"{run_group_id} MV-UV requires one target and multiple observed variables")
     if io_mode == "MV-MV" and (len(targets) < 2 or set(targets) != set(observed)):
@@ -192,6 +208,25 @@ def _validate_dataset_variables(
         raise ValueError(
             f"{run_group_id} selects unknown dataset variable(s): {', '.join(unknown)}"
         )
+
+
+def _validate_window_definition(
+    run_group_id: str,
+    window_id: str,
+    window: dict[str, Any],
+) -> None:
+    if "forecast_horizon" not in window:
+        raise ValueError(f"{run_group_id} window {window_id} must define forecast_horizon")
+    if int(window["forecast_horizon"]) < 1:
+        raise ValueError(f"{run_group_id} window {window_id} forecast_horizon must be positive")
+
+    context_policy = window.get("context_policy", "fixed_length")
+    if context_policy == "fixed_length" and "lookback_window" not in window:
+        raise ValueError(f"{run_group_id} window {window_id} must define lookback_window")
+    if context_policy == "full_history" and window.get("lookback_window") is not None:
+        raise ValueError(f"{run_group_id} window {window_id} should not define fixed lookback_window")
+    if context_policy not in {"fixed_length", "full_history"}:
+        raise ValueError(f"{run_group_id} window {window_id} has unknown context_policy={context_policy!r}")
 
 
 def _unique_index(
@@ -230,6 +265,36 @@ def _dataset_index(records: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
         if dataset_id is not None:
             index.setdefault(str(dataset_id), record)
     return index
+
+
+def _model_index(records: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """Index model records from either benchmark or website registry shape."""
+
+    index: dict[str, dict[str, Any]] = {}
+    for record in records:
+        normalized = _normalize_model_record(record)
+        model_id = normalized["model_id"]
+        if model_id in index:
+            raise ValueError(f"Duplicate model_id in registry: {model_id}")
+        index[model_id] = normalized
+    return index
+
+
+def _normalize_model_record(record: dict[str, Any]) -> dict[str, Any]:
+    model_id = record.get("model_id") or record.get("name") or record.get("id")
+    if not model_id:
+        raise ValueError(f"Model record missing model_id/name/id: {record}")
+
+    normalized = dict(record)
+    normalized["model_id"] = str(model_id)
+    normalized.setdefault("model_type", record.get("type"))
+    normalized.setdefault("evaluation_modes", record.get("evaluationModes", []))
+    normalized.setdefault("io_modes", record.get("ioModes", []))
+    normalized.setdefault("source_link", record.get("sourceLink", ""))
+    normalized.setdefault("runtime_package", record.get("runtimePackage"))
+    normalized.setdefault("agent_facets", record.get("agentFacets", {}))
+    normalized.setdefault("profiles", record.get("profiles", {}))
+    return normalized
 
 
 def _atomic_write_json(path: Path, data: dict[str, Any]) -> None:

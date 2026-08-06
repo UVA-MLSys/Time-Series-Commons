@@ -1,0 +1,7 @@
+certifi
+gluonts
+huggingface-hub
+pandas[pyarrow]
+pyarrow
+requests
+tqdm

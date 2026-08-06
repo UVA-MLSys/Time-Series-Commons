@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 import importlib
 import json
+import math
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
 from urllib.parse import quote
@@ -39,6 +40,7 @@ class TimeSeriesDataset:
     provenance: dict[str, Any]
     splits: pd.DataFrame | None = None
     static_features: pd.DataFrame | None = None
+    gluonts_entries: list[dict[str, Any]] | None = None
 
 
 class BaseDataset(ABC):
@@ -64,6 +66,7 @@ class BaseDataset(ABC):
             provenance=dict(dataset.provenance),
             splits=_validate_splits(dataset.splits),
             static_features=dataset.static_features,
+            gluonts_entries=dataset.gluonts_entries,
         )
 
     @abstractmethod
@@ -126,6 +129,7 @@ class WideHuggingFaceDataset(HuggingFaceDataset):
 
     source_file_key = "data"
     timestamp_column = "date"
+    preserve_missing_values = False
 
     def read_raw(self) -> pd.DataFrame:
         return self.read_huggingface_csv(self.source_file_key)
@@ -141,6 +145,7 @@ class WideHuggingFaceDataset(HuggingFaceDataset):
             timestamp_col=self.timestamp_column,
             item_id=self.item_id,
             variables=variables,
+            preserve_missing_values=self.preserve_missing_values,
         )
         return TimeSeriesDataset(
             values=values,
@@ -164,8 +169,8 @@ def validate_canonical_values(frame: pd.DataFrame) -> pd.DataFrame:
         raise ValueError(f"Dataset frame must contain normalized columns: {', '.join(missing)} missing")
 
     values = frame[NORMALIZED_COLUMNS].copy()
-    if values[["item_id", "timestamp", "variable", "value"]].isnull().any().any():
-        raise ValueError("Canonical dataset values cannot contain null keys or values")
+    if values[["item_id", "timestamp", "variable"]].isnull().any().any():
+        raise ValueError("Canonical dataset values cannot contain null item_id, timestamp, or variable keys")
 
     values["item_id"] = values["item_id"].astype(str)
     values["variable"] = values["variable"].astype(str)
@@ -187,6 +192,7 @@ def wide_csv_to_long(
     variables: Iterable[str],
     *,
     variable_name: str | None = None,
+    preserve_missing_values: bool = False,
 ) -> pd.DataFrame:
     """Normalize a wide dataframe to item_id/timestamp/variable/value rows."""
 
@@ -221,20 +227,22 @@ def wide_csv_to_long(
 
     variable_order = {variable: index for index, variable in enumerate(variables)}
     melted["_variable_order"] = melted["variable"].map(variable_order).fillna(0)
-    return (
-        melted[NORMALIZED_COLUMNS + ["_variable_order"]]
-        .dropna(subset=["value"])
-        .sort_values(["item_id", "_variable_order", "timestamp"])
-        .drop(columns=["_variable_order"])
-        .reset_index(drop=True)
-    )
+    result = melted[NORMALIZED_COLUMNS + ["_variable_order"]]
+    if not preserve_missing_values:
+        result = result.dropna(subset=["value"])
+    return result.sort_values(["item_id", "_variable_order", "timestamp"]).drop(columns=["_variable_order"]).reset_index(drop=True)
 
 
 def validate_task_window(frame: pd.DataFrame, task: Any) -> None:
     frame = validate_canonical_values(frame)
-    lookback = int(_task_value(task, "lookback_window"))
     horizon = int(_task_value(task, "forecast_horizon"))
-    required = lookback + horizon
+    context_policy = str(_task_value(task, "context_policy", "fixed_length"))
+    if context_policy == "full_history":
+        requested_windows = _task_value(task, "num_windows")
+        required = horizon * int(requested_windows or 1) + 1
+    else:
+        lookback = int(_task_value(task, "lookback_window"))
+        required = lookback + horizon
     target_streams = _task_value(task, "target_streams", None) or sorted(frame["variable"].unique())
 
     target_frame = frame[frame["variable"].isin(target_streams)]
@@ -253,16 +261,21 @@ def build_windows(
     frame: pd.DataFrame,
     task: Any,
     *,
-    num_windows: int = 1,
+    num_windows: int | None = None,
     stride: int | None = None,
 ) -> list[dict[str, pd.DataFrame]]:
     """Build chronological holdout windows from the tail of a normalized frame."""
 
+    frame = validate_canonical_values(frame)
+    num_windows = _resolve_num_windows(frame, task, num_windows)
     if num_windows < 1:
         raise ValueError("num_windows must be at least 1")
     stride = stride or int(_task_value(task, "forecast_horizon"))
     if stride < 1:
         raise ValueError("stride must be at least 1")
+
+    if str(_task_value(task, "context_policy", "fixed_length")) == "full_history":
+        return _build_full_history_windows(frame, task, num_windows=num_windows, stride=stride)
 
     validate_task_window(frame, task)
     lookback = int(_task_value(task, "lookback_window"))
@@ -290,6 +303,84 @@ def build_windows(
     if len(windows) < num_windows:
         raise InsufficientDataError(f"Requested {num_windows} windows but only {len(windows)} fit")
     return windows
+
+
+def _build_full_history_windows(
+    frame: pd.DataFrame,
+    task: Any,
+    *,
+    num_windows: int,
+    stride: int,
+) -> list[dict[str, pd.DataFrame]]:
+    """Build Gift-Eval style rolling windows with all history before each cutoff."""
+
+    horizon = int(_task_value(task, "forecast_horizon"))
+    target_streams = _task_value(task, "target_streams", None) or sorted(frame["variable"].unique())
+    target_frame = frame[frame["variable"].isin(target_streams)]
+    if target_frame.empty:
+        raise InsufficientDataError(f"No target streams found for task: {target_streams}")
+
+    windows: list[dict[str, pd.DataFrame]] = []
+    item_ids = list(dict.fromkeys(target_frame["item_id"].astype(str)))
+    for index in range(num_windows):
+        context_parts: list[pd.DataFrame] = []
+        truth_parts: list[pd.DataFrame] = []
+        for item_id in item_ids:
+            item_frame = frame[frame["item_id"].astype(str) == item_id]
+            item_target = target_frame[target_frame["item_id"].astype(str) == item_id]
+            item_times = sorted(item_target["timestamp"].drop_duplicates())
+            window_end = len(item_times) - index * stride
+            truth_start = window_end - horizon
+            if truth_start <= 0:
+                raise InsufficientDataError(
+                    f"Requested {num_windows} full-history windows but item {item_id} "
+                    f"has only {len(item_times)} target timestamps"
+                )
+            context_times = set(item_times[:truth_start])
+            truth_times = set(item_times[truth_start:window_end])
+            context_parts.append(_slice_times(item_frame, context_times))
+            truth_parts.append(_slice_times(item_frame, truth_times))
+
+        windows.append(
+            {
+                "window_index": index,
+                "context": pd.concat(context_parts, ignore_index=True),
+                "ground_truth": pd.concat(truth_parts, ignore_index=True),
+            }
+        )
+    return windows
+
+
+def _resolve_num_windows(
+    frame: pd.DataFrame,
+    task: Any,
+    override: int | None,
+) -> int:
+    if override is not None:
+        return int(override)
+
+    explicit = _task_value(task, "num_windows")
+    if explicit is not None:
+        return int(explicit)
+
+    policy = _task_value(task, "num_windows_policy")
+    if policy == "gift_eval_m4":
+        return 1
+    if policy == "gift_eval":
+        horizon = int(_task_value(task, "forecast_horizon"))
+        shortest = _shortest_target_series_length(frame, task)
+        windows = math.ceil(0.1 * shortest / horizon)
+        return min(max(1, windows), 20)
+    return 1
+
+
+def _shortest_target_series_length(frame: pd.DataFrame, task: Any) -> int:
+    target_streams = _task_value(task, "target_streams", None) or sorted(frame["variable"].unique())
+    target_frame = frame[frame["variable"].isin(target_streams)]
+    if target_frame.empty:
+        raise InsufficientDataError(f"No target streams found for task: {target_streams}")
+    counts = target_frame.groupby(["item_id", "variable"], dropna=False)["timestamp"].nunique()
+    return int(counts.min()) if not counts.empty else 0
 
 
 def load_dataset_object_for_task(
@@ -448,6 +539,16 @@ def _task_value(task: Any, key: str, default: Any = None) -> Any:
 def _suite_dataset_for_task(task: Any, suite: dict[str, Any]) -> dict[str, Any]:
     suite_dataset_id = _task_value(task, "suite_dataset_id")
     tsc_dataset_id = _task_value(task, "tsc_dataset_id")
+    if suite.get("schema_version") == "0.2.0":
+        for run in suite.get("runs", []):
+            if run.get("run_group_id") == suite_dataset_id or run.get("dataset_id") == tsc_dataset_id:
+                benchmark_id = run["dataset_id"]
+                return {
+                    "suite_dataset_id": run["run_group_id"],
+                    "tsc_dataset_id": benchmark_id,
+                    "benchmark_id": benchmark_id,
+                    "curation_required": False,
+                }
     for dataset in suite.get("datasets", []):
         if dataset.get("suite_dataset_id") == suite_dataset_id or dataset.get("tsc_dataset_id") == tsc_dataset_id:
             return dataset
