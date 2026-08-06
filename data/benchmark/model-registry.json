@@ -3,6 +3,10 @@
     {
       "id": "chronos-2",
       "name": "Chronos-2",
+      "architecture_family": "Chronos",
+      "training_regime": "foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -37,11 +41,70 @@
       },
       "benchmarks": {
         "GIFT-Eval": true
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "benchmark_suites": [
+          "Examples",
+          "GIFT-Eval"
+        ],
+        "result_count": 45,
+        "source": "completed_result_records",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "moirai2",
       "name": "Moirai2",
+      "architecture_family": "Moirai",
+      "training_regime": "foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -76,11 +139,69 @@
       },
       "benchmarks": {
         "GIFT-Eval": true
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "benchmark_suites": [
+          "GIFT-Eval"
+        ],
+        "result_count": 44,
+        "source": "completed_result_records",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "toto-2",
       "name": "Toto-2",
+      "architecture_family": "Toto",
+      "training_regime": "foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -120,11 +241,68 @@
       },
       "benchmarks": {
         "GIFT-Eval": true
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "official_documentation_or_model_card",
+        "supports_few_shot": false,
+        "supports_exogenous_covariates": false,
+        "notes": "Official Toto 2.0 model card describes univariate and multivariate zero-shot forecasting; current benchmark runner records only UV-UV."
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "benchmark_suites": [
+          "GIFT-Eval"
+        ],
+        "result_count": 44,
+        "source": "completed_result_records",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "timesfm-2-5",
       "name": "TimesFM-2.5",
+      "architecture_family": "TimesFM",
+      "training_regime": "foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -157,11 +335,68 @@
       },
       "benchmarks": {
         "GIFT-Eval": true
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation_or_model_card",
+        "supports_few_shot": false,
+        "supports_exogenous_covariates": true,
+        "notes": "Official TimesFM 2.x supports univariate forecasting and XReg/covariate workflows; current benchmark runner records UV-UV."
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "benchmark_suites": [
+          "GIFT-Eval"
+        ],
+        "result_count": 44,
+        "source": "completed_result_records",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "granite-flowstate",
       "name": "Granite-FlowState",
+      "architecture_family": "Granite FlowState",
+      "training_regime": "foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -196,11 +431,65 @@
       },
       "benchmarks": {
         "GIFT-Eval": true
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "benchmark_suites": [
+          "GIFT-Eval"
+        ],
+        "result_count": 44,
+        "source": "completed_result_records",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "patchtst-fm",
       "name": "PatchTST-FM",
+      "architecture_family": "PatchTST",
+      "training_regime": "foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -234,11 +523,156 @@
       },
       "benchmarks": {
         "GIFT-Eval": true
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "benchmark_suites": [
+          "GIFT-Eval"
+        ],
+        "result_count": 44,
+        "source": "completed_result_records",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "ttm-r3-ft",
+      "name": "TTM-R3-FT",
+      "architecture_family": "TinyTimeMixer",
+      "training_regime": "fine_tuned_foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "zero_shot"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://huggingface.co/ibm-research/ttm-r3",
+      "runtimePackage": "granite-tsfm",
+      "description": "IBM TinyTimeMixer R3 fine-tuned baseline appearing as TTM-R3-FT in GIFT-Eval run registries.",
+      "profiles": {
+        "default": {
+          "runtime_package": "granite-tsfm",
+          "source_link": "https://huggingface.co/ibm-research/ttm-r3",
+          "checkpoint": "ibm-research/ttm-r3",
+          "notes": "TTM-R3-FT is the fine-tuned TinyTimeMixer R3 baseline referenced by GIFT-Eval-style run registries."
+        }
+      },
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "benchmark_reference",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "GIFT-Eval": true
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "official_documentation_or_model_card",
+        "supports_few_shot": true,
+        "supports_exogenous_covariates": true,
+        "notes": "IBM TinyTimeMixer R3 model card describes zero-shot, few-shot, full fine-tuning, multivariate forecasting, and exogenous/control variables. The shared registry evaluation_modes field keeps only benchmark-run evaluation modes; few-shot support is retained in supports_few_shot. This registry entry represents the fine-tuned TTM-R3-FT baseline appearing in GIFT-Eval run registries."
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "lstm",
       "name": "LSTM",
+      "architecture_family": "LSTM",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -273,11 +707,71 @@
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
           "notes": "Hydrology benchmark LSTM with 21-day lookback and daily catchment-level hydrometeorological inputs."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "MV-UV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 37,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "tft",
       "name": "TFT",
+      "architecture_family": "Temporal Fusion Transformer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -310,11 +804,68 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "tcn",
       "name": "TCN",
+      "architecture_family": "Temporal Convolutional Network",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -347,11 +898,68 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "dilatedrnn",
       "name": "DilatedRNN",
+      "architecture_family": "Dilated RNN",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -384,11 +992,68 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "tide",
       "name": "TiDE",
+      "architecture_family": "TiDE",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -421,11 +1086,68 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "tsmixer",
       "name": "TSMixer",
+      "architecture_family": "TSMixer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -468,11 +1190,71 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "tsmixerx",
       "name": "TSMixerx",
+      "architecture_family": "TSMixerx",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -505,11 +1287,61 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "itransformer",
       "name": "iTransformer",
+      "architecture_family": "iTransformer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -552,11 +1384,71 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "patchtst",
       "name": "PatchTST",
+      "architecture_family": "PatchTST",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -602,11 +1494,69 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "chronos-t5",
       "name": "Chronos-T5",
+      "architecture_family": "Chronos",
+      "training_regime": "pretrained_transfer_or_fine_tuning",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -640,11 +1590,67 @@
           "source_link": "https://github.com/amazon-science/chronos-forecasting",
           "notes": "Original Chronos family based on T5 language-model architectures for time-series token forecasting."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "chronos-gpt2",
       "name": "Chronos-GPT2",
+      "architecture_family": "Chronos",
+      "training_regime": "pretrained_transfer_or_fine_tuning",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -678,11 +1684,67 @@
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_chronos.ipynb",
           "notes": "Hydrology benchmark profile named Chronos-GPT2 in the paper/repo experiments."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "gnn-coder",
       "name": "GNN-Coder",
+      "architecture_family": "GNN-Coder",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -716,11 +1778,63 @@
           "runtime_package": "pytorch",
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "multi-foundation-core",
       "name": "MultiFoundationCore",
+      "architecture_family": "MultiFoundation",
+      "training_regime": "fine_tuned_foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -752,11 +1866,65 @@
           "runtime_package": "pytorch",
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/MultiFoundationCore/MultiFoundationCore.ipynb"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 1,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "multi-foundation-pattern",
       "name": "MultiFoundationPattern",
+      "architecture_family": "MultiFoundation",
+      "training_regime": "fine_tuned_foundation_model",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -788,11 +1956,65 @@
           "runtime_package": "pytorch",
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/MultiFoundationCore/MultiFoundationLSTM.ipynb"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 1,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "timesnet",
       "name": "TimesNet",
+      "architecture_family": "TimesNet",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -825,11 +2047,68 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.timesnet.html"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-UV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "timellm",
       "name": "TimeLLM",
+      "architecture_family": "Time-LLM",
+      "training_regime": "llm_reprogramming_fine_tuning",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Foundation Model",
       "evaluationModes": [
@@ -861,11 +2140,65 @@
           "runtime_package": "neuralforecast",
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.timellm.html"
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 1,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "lstm-multivariate",
       "name": "LSTM-multivariate",
+      "architecture_family": "LSTM",
+      "training_regime": "from_scratch_training_variant",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -899,11 +2232,65 @@
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
           "notes": "Paper-reported Hydrology benchmark row for LSTM-multivariate."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "lstm-univariate",
       "name": "LSTM-univariate",
+      "architecture_family": "LSTM",
+      "training_regime": "from_scratch_training_variant",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -937,11 +2324,65 @@
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
           "notes": "Paper-reported Hydrology benchmark row for LSTM-univariate."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "tsmixer-m4",
       "name": "TSMixer-M4",
+      "architecture_family": "TSMixer",
+      "training_regime": "pretrained_transfer",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -976,11 +2417,68 @@
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html",
           "notes": "Paper-reported Hydrology benchmark row for TSMixer-M4."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "tsmixer-trafficl",
       "name": "TSMixer-TrafficL",
+      "architecture_family": "TSMixer",
+      "training_regime": "pretrained_transfer",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1015,11 +2513,68 @@
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html",
           "notes": "Paper-reported Hydrology benchmark row for TSMixer-TrafficL."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "itransformer-m4",
       "name": "iTransformer-M4",
+      "architecture_family": "iTransformer",
+      "training_regime": "pretrained_transfer",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1054,11 +2609,68 @@
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
           "notes": "Paper-reported Hydrology benchmark row for iTransformer-M4."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "itransformer-trafficl",
       "name": "iTransformer-TrafficL",
+      "architecture_family": "iTransformer",
+      "training_regime": "pretrained_transfer",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1093,11 +2705,68 @@
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
           "notes": "Paper-reported Hydrology benchmark row for iTransformer-TrafficL."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV",
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "gnncoder-univariate",
       "name": "GNNCoder-univariate",
+      "architecture_family": "GNN-Coder",
+      "training_regime": "from_scratch_training_variant",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1131,11 +2800,65 @@
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py",
           "notes": "Paper-reported Hydrology benchmark row for GNNCoder-univariate."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "gnncoder-multivariate",
       "name": "GNNCoder-multivariate",
+      "architecture_family": "GNN-Coder",
+      "training_regime": "from_scratch_training_variant",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
       "type": "traditional",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1169,11 +2892,65 @@
           "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py",
           "notes": "Paper-reported Hydrology benchmark row for GNNCoder-multivariate."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 6,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true
       }
     },
     {
       "id": "patchtst-weather",
       "name": "PatchTST-Weather",
+      "architecture_family": "PatchTST",
+      "training_regime": "pretrained_transfer",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1207,11 +2984,65 @@
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
           "notes": "Paper-reported Hydrology benchmark row for PatchTST-Weather."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "patchtst-trafficl",
       "name": "PatchTST-TrafficL",
+      "architecture_family": "PatchTST",
+      "training_regime": "pretrained_transfer",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1245,11 +3076,65 @@
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
           "notes": "Paper-reported Hydrology benchmark row for PatchTST-TrafficL."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     },
     {
       "id": "patchtst-m4",
       "name": "PatchTST-M4",
+      "architecture_family": "PatchTST",
+      "training_regime": "pretrained_transfer",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": true,
       "type": "foundation",
       "domain": "Deep Learning Forecasting",
       "evaluationModes": [
@@ -1283,6 +3168,56 @@
           "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
           "notes": "Paper-reported Hydrology benchmark row for PatchTST-M4."
         }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "registry_existing_metadata",
+        "supports_exogenous_covariates": false
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "benchmark_suites": [
+          "Hydrology"
+        ],
+        "result_count": 7,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
       }
     }
   ]
