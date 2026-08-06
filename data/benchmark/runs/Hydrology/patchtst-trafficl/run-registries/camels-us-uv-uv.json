@@ -1,0 +1,184 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "hydrology-camels-us-patchtst-trafficl-uv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Hydrology benchmark results for PatchTST-TrafficL on camels-us (UV-UV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "PatchTST-TrafficL": "hydrology"
+  },
+  "runs": [
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels_us_hydrology",
+      "models": [
+        "PatchTST-TrafficL"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "observed": [
+          "prcp(mm/day)",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels_us_hydrology",
+      "models": [
+        "PatchTST-TrafficL"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "camels-us-uv-uv__PatchTST-TrafficL__table-xii-patchtst-trafficl__p__hydrology_daily_pl1": {
+      "model_id": "PatchTST-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0943,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-uv-uv__PatchTST-TrafficL__table-xii-patchtst-trafficl__q__hydrology_daily_pl1": {
+      "model_id": "PatchTST-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0207,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "QObs(mm/d)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-uv-uv__PatchTST-TrafficL__table-xii-patchtst-trafficl__sr__hydrology_daily_pl1": {
+      "model_id": "PatchTST-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.092,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "srad(W/m2)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-uv-uv__PatchTST-TrafficL__table-xii-patchtst-trafficl__tmax__hydrology_daily_pl1": {
+      "model_id": "PatchTST-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0411,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "tmax(C)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-uv-uv__PatchTST-TrafficL__table-xii-patchtst-trafficl__tmin__hydrology_daily_pl1": {
+      "model_id": "PatchTST-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0333,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "tmin(C)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-uv-uv__PatchTST-TrafficL__table-xii-patchtst-trafficl__vp__hydrology_daily_pl1": {
+      "model_id": "PatchTST-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0406,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "vp(Pa)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-uv-uv__PatchTST-TrafficL__table-xiii-patchtst-trafficl__p__hydrology_daily_pl1": {
+      "model_id": "PatchTST-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 5.4665,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "NNSE": 0.6068,
+        "preprocessing": "raw_precipitation",
+        "validation_policy": "temporal"
+      }
+    }
+  },
+  "result_schema_version": "0.2.0",
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

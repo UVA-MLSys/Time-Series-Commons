@@ -1,0 +1,247 @@
+{
+  "schema_version": "0.1.0",
+  "benchmark_collection": "Hydrology",
+  "updated_at": "2026-07-25T20:25:11.988219Z",
+  "models": [
+    {
+      "model_id": "chronos-gpt2",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "chronos-gpt2/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "chronos-t5",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "chronos-t5/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "dilatedrnn",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "dilatedrnn/run-registries/camels-us-mv-uv.json",
+        "dilatedrnn/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "gnncoder-multivariate",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "gnncoder-multivariate/run-registries/camels-us-mv-mv.json"
+      ]
+    },
+    {
+      "model_id": "gnncoder-univariate",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "gnncoder-univariate/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "itransformer",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "itransformer/run-registries/camels-us-mv-mv.json"
+      ]
+    },
+    {
+      "model_id": "itransformer-m4",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "itransformer-m4/run-registries/camels-us-mv-mv.json",
+        "itransformer-m4/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "itransformer-trafficl",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "itransformer-trafficl/run-registries/camels-us-mv-mv.json",
+        "itransformer-trafficl/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "lstm",
+      "run_registry_count": 7,
+      "run_count": 13,
+      "result_record_count": 37,
+      "run_registries": [
+        "lstm/run-registries/camels-three-nation-combined-mv-mv.json",
+        "lstm/run-registries/camels-us-mv-mv.json",
+        "lstm/run-registries/camels-us-mv-uv.json",
+        "lstm/run-registries/camels-us-uv-uv.json",
+        "lstm/run-registries/caravan-camels-us-mv-mv.json",
+        "lstm/run-registries/caravan-global-mv-mv.json",
+        "lstm/run-registries/caravan-hysets-mv-mv.json"
+      ]
+    },
+    {
+      "model_id": "lstm-multivariate",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "lstm-multivariate/run-registries/camels-us-mv-mv.json"
+      ]
+    },
+    {
+      "model_id": "lstm-univariate",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "lstm-univariate/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "multi-foundation-core",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "multi-foundation-core/run-registries/camels-us-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "multi-foundation-pattern",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "multi-foundation-pattern/run-registries/camels-us-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "patchtst",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "patchtst/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "patchtst-m4",
+      "run_registry_count": 1,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "patchtst-m4/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "patchtst-trafficl",
+      "run_registry_count": 1,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "patchtst-trafficl/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "patchtst-weather",
+      "run_registry_count": 1,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "patchtst-weather/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "tcn",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "tcn/run-registries/camels-us-mv-uv.json",
+        "tcn/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "tft",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "tft/run-registries/camels-us-mv-uv.json",
+        "tft/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "tide",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "tide/run-registries/camels-us-mv-uv.json",
+        "tide/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "timellm",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "timellm/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "timesnet",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "timesnet/run-registries/camels-us-mv-uv.json",
+        "timesnet/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "tsmixer",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 6,
+      "run_registries": [
+        "tsmixer/run-registries/camels-us-mv-mv.json"
+      ]
+    },
+    {
+      "model_id": "tsmixer-m4",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "tsmixer-m4/run-registries/camels-us-mv-mv.json",
+        "tsmixer-m4/run-registries/camels-us-uv-uv.json"
+      ]
+    },
+    {
+      "model_id": "tsmixer-trafficl",
+      "run_registry_count": 2,
+      "run_count": 2,
+      "result_record_count": 7,
+      "run_registries": [
+        "tsmixer-trafficl/run-registries/camels-us-mv-mv.json",
+        "tsmixer-trafficl/run-registries/camels-us-uv-uv.json"
+      ]
+    }
+  ]
+}

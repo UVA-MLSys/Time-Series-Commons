@@ -96,17 +96,17 @@
       "dataset_id": "electricity-ecl",
       "benchmark_id": "electricity_ecl_thuml",
       "implementation": {
-        "module": "tools.benchmark_runner.datasets.electricity",
-        "class": "ElectricityDataset"
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
       },
       "source": {
         "type": "huggingface",
-        "repo_id": "thuml/Time-Series-Library",
-        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
         "files": {
-          "data": "electricity/electricity.csv"
+          "data": "electricity/H"
         },
-        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/electricity"
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
       },
       "benchmark_ready": true,
       "taxonomy": [
@@ -133,9 +133,9 @@
         "recorded_frequency": "15 minutes (raw), aggregated to hourly for benchmarking"
       },
       "shape": {
-        "timePoints": "~26,300 (Note: Discrepancy between sources likely due to data cleaning/preprocessing variations. Using approximate value.)",
-        "variables": "321",
-        "dimensions": "321"
+        "timePoints": "Hourly electricity load observations as distributed by Gift-Eval.",
+        "variables": "One target time series per anonymized electricity client/customer item_id.",
+        "dimensions": "1 variable across 370 item_ids in the Gift-Eval hourly distribution."
       },
       "evaluation": {
         "metrics": [
@@ -155,363 +155,48 @@
         "variable_column": "variable",
         "value_column": "value",
         "variables": [
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-          "12",
-          "13",
-          "14",
-          "15",
-          "16",
-          "17",
-          "18",
-          "19",
-          "20",
-          "21",
-          "22",
-          "23",
-          "24",
-          "25",
-          "26",
-          "27",
-          "28",
-          "29",
-          "30",
-          "31",
-          "32",
-          "33",
-          "34",
-          "35",
-          "36",
-          "37",
-          "38",
-          "39",
-          "40",
-          "41",
-          "42",
-          "43",
-          "44",
-          "45",
-          "46",
-          "47",
-          "48",
-          "49",
-          "50",
-          "51",
-          "52",
-          "53",
-          "54",
-          "55",
-          "56",
-          "57",
-          "58",
-          "59",
-          "60",
-          "61",
-          "62",
-          "63",
-          "64",
-          "65",
-          "66",
-          "67",
-          "68",
-          "69",
-          "70",
-          "71",
-          "72",
-          "73",
-          "74",
-          "75",
-          "76",
-          "77",
-          "78",
-          "79",
-          "80",
-          "81",
-          "82",
-          "83",
-          "84",
-          "85",
-          "86",
-          "87",
-          "88",
-          "89",
-          "90",
-          "91",
-          "92",
-          "93",
-          "94",
-          "95",
-          "96",
-          "97",
-          "98",
-          "99",
-          "100",
-          "101",
-          "102",
-          "103",
-          "104",
-          "105",
-          "106",
-          "107",
-          "108",
-          "109",
-          "110",
-          "111",
-          "112",
-          "113",
-          "114",
-          "115",
-          "116",
-          "117",
-          "118",
-          "119",
-          "120",
-          "121",
-          "122",
-          "123",
-          "124",
-          "125",
-          "126",
-          "127",
-          "128",
-          "129",
-          "130",
-          "131",
-          "132",
-          "133",
-          "134",
-          "135",
-          "136",
-          "137",
-          "138",
-          "139",
-          "140",
-          "141",
-          "142",
-          "143",
-          "144",
-          "145",
-          "146",
-          "147",
-          "148",
-          "149",
-          "150",
-          "151",
-          "152",
-          "153",
-          "154",
-          "155",
-          "156",
-          "157",
-          "158",
-          "159",
-          "160",
-          "161",
-          "162",
-          "163",
-          "164",
-          "165",
-          "166",
-          "167",
-          "168",
-          "169",
-          "170",
-          "171",
-          "172",
-          "173",
-          "174",
-          "175",
-          "176",
-          "177",
-          "178",
-          "179",
-          "180",
-          "181",
-          "182",
-          "183",
-          "184",
-          "185",
-          "186",
-          "187",
-          "188",
-          "189",
-          "190",
-          "191",
-          "192",
-          "193",
-          "194",
-          "195",
-          "196",
-          "197",
-          "198",
-          "199",
-          "200",
-          "201",
-          "202",
-          "203",
-          "204",
-          "205",
-          "206",
-          "207",
-          "208",
-          "209",
-          "210",
-          "211",
-          "212",
-          "213",
-          "214",
-          "215",
-          "216",
-          "217",
-          "218",
-          "219",
-          "220",
-          "221",
-          "222",
-          "223",
-          "224",
-          "225",
-          "226",
-          "227",
-          "228",
-          "229",
-          "230",
-          "231",
-          "232",
-          "233",
-          "234",
-          "235",
-          "236",
-          "237",
-          "238",
-          "239",
-          "240",
-          "241",
-          "242",
-          "243",
-          "244",
-          "245",
-          "246",
-          "247",
-          "248",
-          "249",
-          "250",
-          "251",
-          "252",
-          "253",
-          "254",
-          "255",
-          "256",
-          "257",
-          "258",
-          "259",
-          "260",
-          "261",
-          "262",
-          "263",
-          "264",
-          "265",
-          "266",
-          "267",
-          "268",
-          "269",
-          "270",
-          "271",
-          "272",
-          "273",
-          "274",
-          "275",
-          "276",
-          "277",
-          "278",
-          "279",
-          "280",
-          "281",
-          "282",
-          "283",
-          "284",
-          "285",
-          "286",
-          "287",
-          "288",
-          "289",
-          "290",
-          "291",
-          "292",
-          "293",
-          "294",
-          "295",
-          "296",
-          "297",
-          "298",
-          "299",
-          "300",
-          "301",
-          "302",
-          "303",
-          "304",
-          "305",
-          "306",
-          "307",
-          "308",
-          "309",
-          "310",
-          "311",
-          "312",
-          "313",
-          "314",
-          "315",
-          "316",
-          "317",
-          "318",
-          "319",
-          "OT"
+          "target"
         ],
-        "target_variable": "OT"
+        "target_variable": "target"
       },
       "agent_facets": {
         "domain": "energy",
         "frequency": "hourly",
         "frequency_seconds": 3600,
-        "series_type": "multivariate",
-        "num_variables": 321,
-        "has_exogenous_covariates": true,
-        "has_static_features": false,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
         "seasonality": [
           "daily",
           "weekly"
         ],
         "variable_semantics": {
-          "0..319": "Hourly electricity consumption/load channel for one anonymized client/customer from the UCI Electricity Load Diagrams data.",
-          "OT": "Hourly electricity consumption/load channel for one anonymized client/customer; THUML benchmark target column."
-        }
+          "target": "Hourly electricity consumption/load for one anonymized client/customer."
+        },
+        "item_semantics": {
+          "item_id": "Anonymized electricity client/customer load series in the Gift-Eval electricity benchmark."
+        },
+        "category": "energy_load",
+        "gift_eval_domain": "Energy",
+        "benchmark_collection": "Gift-Eval"
       }
     },
     {
       "dataset_id": "ett-hourly-station-1-etth1",
       "benchmark_id": "etth1_thuml",
       "implementation": {
-        "module": "tools.benchmark_runner.datasets.etth1",
-        "class": "ETTh1Dataset"
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
       },
       "source": {
         "type": "huggingface",
-        "repo_id": "thuml/Time-Series-Library",
-        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
         "files": {
-          "data": "ETT-small/ETTh1.csv"
+          "data": "ett1/H"
         },
-        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/ETT-small"
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
       },
       "benchmark_ready": true,
       "taxonomy": [
@@ -562,15 +247,15 @@
         "variable_column": "variable",
         "value_column": "value",
         "variables": [
-          "HUFL",
-          "HULL",
-          "MUFL",
-          "MULL",
-          "LUFL",
-          "LULL",
-          "OT"
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]"
         ],
-        "target_variable": "OT"
+        "target_variable": "target[6]"
       },
       "agent_facets": {
         "domain": "energy",
@@ -585,14 +270,17 @@
           "weekly"
         ],
         "variable_semantics": {
-          "HUFL": "High-use full-load feature from the electricity transformer temperature dataset.",
-          "HULL": "High-use less-load feature from the electricity transformer temperature dataset.",
-          "MUFL": "Middle-use full-load feature from the electricity transformer temperature dataset.",
-          "MULL": "Middle-use less-load feature from the electricity transformer temperature dataset.",
-          "LUFL": "Low-use full-load feature from the electricity transformer temperature dataset.",
-          "LULL": "Low-use less-load feature from the electricity transformer temperature dataset.",
-          "OT": "Oil temperature of the electricity transformer; benchmark target column."
-        }
+          "target[0]": "HUFL: high-use full-load feature from the electricity transformer temperature dataset.",
+          "target[1]": "HULL: high-use less-load feature from the electricity transformer temperature dataset.",
+          "target[2]": "MUFL: middle-use full-load feature from the electricity transformer temperature dataset.",
+          "target[3]": "MULL: middle-use less-load feature from the electricity transformer temperature dataset.",
+          "target[4]": "LUFL: low-use full-load feature from the electricity transformer temperature dataset.",
+          "target[5]": "LULL: low-use less-load feature from the electricity transformer temperature dataset.",
+          "target[6]": "OT: oil temperature of the electricity transformer; benchmark target dimension."
+        },
+        "category": "energy_transformer_temperature",
+        "gift_eval_domain": "Energy",
+        "benchmark_collection": "Gift-Eval"
       }
     },
     {
@@ -693,20 +381,17 @@
       "dataset_id": "m4-daily",
       "benchmark_id": "m4_daily_thuml",
       "implementation": {
-        "module": "tools.benchmark_runner.datasets.m4",
-        "class": "M4DailyDataset"
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
       },
       "source": {
         "type": "huggingface",
-        "repo_id": "thuml/Time-Series-Library",
-        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
         "files": {
-          "train": "m4/Daily-train.csv",
-          "test": "m4/Daily-test.csv",
-          "metadata": "m4/M4-info.csv",
-          "naive2": "m4/submission-Naive2.csv"
+          "data": "m4_daily"
         },
-        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/m4"
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
       },
       "benchmark_ready": true,
       "taxonomy": [
@@ -770,27 +455,27 @@
         ],
         "variable_semantics": {
           "y": "Observed scalar value for one M4 Daily univariate competition series; item_id carries the official M4 series ID."
-        }
+        },
+        "category": "competition_mixed_daily",
+        "gift_eval_domain": "Econ/Fin",
+        "benchmark_collection": "Gift-Eval"
       }
     },
     {
       "dataset_id": "m4-hourly",
       "benchmark_id": "m4_hourly_thuml",
       "implementation": {
-        "module": "tools.benchmark_runner.datasets.m4",
-        "class": "M4HourlyDataset"
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
       },
       "source": {
         "type": "huggingface",
-        "repo_id": "thuml/Time-Series-Library",
-        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
         "files": {
-          "train": "m4/Hourly-train.csv",
-          "test": "m4/Hourly-test.csv",
-          "metadata": "m4/M4-info.csv",
-          "naive2": "m4/submission-Naive2.csv"
+          "data": "m4_hourly"
         },
-        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/m4"
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
       },
       "benchmark_ready": true,
       "taxonomy": [
@@ -854,27 +539,27 @@
         ],
         "variable_semantics": {
           "y": "Observed scalar value for one M4 Hourly univariate competition series; item_id carries the official M4 series ID."
-        }
+        },
+        "category": "competition_mixed_hourly",
+        "gift_eval_domain": "Econ/Fin",
+        "benchmark_collection": "Gift-Eval"
       }
     },
     {
       "dataset_id": "m4-monthly",
       "benchmark_id": "m4_monthly_thuml",
       "implementation": {
-        "module": "tools.benchmark_runner.datasets.m4",
-        "class": "M4MonthlyDataset"
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
       },
       "source": {
         "type": "huggingface",
-        "repo_id": "thuml/Time-Series-Library",
-        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
         "files": {
-          "train": "m4/Monthly-train.csv",
-          "test": "m4/Monthly-test.csv",
-          "metadata": "m4/M4-info.csv",
-          "naive2": "m4/submission-Naive2.csv"
+          "data": "m4_monthly"
         },
-        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/m4"
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
       },
       "benchmark_ready": true,
       "taxonomy": [
@@ -936,7 +621,10 @@
         ],
         "variable_semantics": {
           "y": "Observed scalar value for one M4 Monthly univariate competition series; item_id carries the official M4 series ID."
-        }
+        },
+        "category": "competition_mixed_monthly",
+        "gift_eval_domain": "Econ/Fin",
+        "benchmark_collection": "Gift-Eval"
       }
     },
     {
@@ -1888,17 +1576,17 @@
       "dataset_id": "weather-dataset",
       "benchmark_id": "weather_jena_thuml",
       "implementation": {
-        "module": "tools.benchmark_runner.datasets.weather_jena",
-        "class": "WeatherJenaDataset"
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
       },
       "source": {
         "type": "huggingface",
-        "repo_id": "thuml/Time-Series-Library",
-        "revision": "2b66e59ee19dac8f6f19fb5d4997f289fdfea357",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
         "files": {
-          "data": "weather/weather.csv"
+          "data": "jena_weather/10T"
         },
-        "url": "https://huggingface.co/datasets/thuml/Time-Series-Library/tree/main/weather"
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
       },
       "benchmark_ready": true,
       "taxonomy": [
@@ -1947,29 +1635,29 @@
         "variable_column": "variable",
         "value_column": "value",
         "variables": [
-          "p (mbar)",
-          "T (degC)",
-          "Tpot (K)",
-          "Tdew (degC)",
-          "rh (%)",
-          "VPmax (mbar)",
-          "VPact (mbar)",
-          "VPdef (mbar)",
-          "sh (g/kg)",
-          "H2OC (mmol/mol)",
-          "rho (g/m**3)",
-          "wv (m/s)",
-          "max. wv (m/s)",
-          "wd (deg)",
-          "rain (mm)",
-          "raining (s)",
-          "SWDR (W/m2)",
-          "PAR (umol/m2/s)",
-          "max. PAR (umol/m2/s)",
-          "Tlog (degC)",
-          "OT"
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]",
+          "target[7]",
+          "target[8]",
+          "target[9]",
+          "target[10]",
+          "target[11]",
+          "target[12]",
+          "target[13]",
+          "target[14]",
+          "target[15]",
+          "target[16]",
+          "target[17]",
+          "target[18]",
+          "target[19]",
+          "target[20]"
         ],
-        "target_variable": "OT"
+        "target_variable": "target[20]"
       },
       "agent_facets": {
         "domain": "weather",
@@ -1984,39 +1672,47 @@
           "annual"
         ],
         "variable_semantics": {
-          "p (mbar)": "Air pressure in millibars.",
-          "T (degC)": "Air temperature in degrees Celsius.",
-          "Tpot (K)": "Potential temperature in Kelvin.",
-          "Tdew (degC)": "Dew point temperature in degrees Celsius.",
-          "rh (%)": "Relative humidity in percent.",
-          "VPmax (mbar)": "Saturation water vapor pressure in millibars.",
-          "VPact (mbar)": "Actual water vapor pressure in millibars.",
-          "VPdef (mbar)": "Water vapor pressure deficit in millibars.",
-          "sh (g/kg)": "Specific humidity in grams per kilogram.",
-          "H2OC (mmol/mol)": "Water vapor concentration in millimoles per mole.",
-          "rho (g/m**3)": "Air density in grams per cubic meter.",
-          "wv (m/s)": "Wind velocity in meters per second.",
-          "max. wv (m/s)": "Maximum wind velocity in meters per second.",
-          "wd (deg)": "Wind direction in degrees.",
-          "rain (mm)": "Precipitation amount in millimeters.",
-          "raining (s)": "Duration of precipitation in seconds.",
-          "SWDR (W/m2)": "Shortwave downward radiation in watts per square meter.",
-          "PAR (umol/m2/s)": "Photosynthetically active radiation in micromoles per square meter per second.",
-          "max. PAR (umol/m2/s)": "Maximum photosynthetically active radiation in micromoles per square meter per second.",
-          "Tlog (degC)": "Internal logger temperature in degrees Celsius.",
-          "OT": "Ambient air CO2 concentration in ppm; renamed to OT in the THUML benchmark CSV."
-        }
+          "target[0]": "p (mbar): air pressure in millibars.",
+          "target[1]": "T (degC): air temperature in degrees Celsius.",
+          "target[2]": "Tpot (K): potential temperature in Kelvin.",
+          "target[3]": "Tdew (degC): dew point temperature in degrees Celsius.",
+          "target[4]": "rh (%): relative humidity in percent.",
+          "target[5]": "VPmax (mbar): saturation water vapor pressure in millibars.",
+          "target[6]": "VPact (mbar): actual water vapor pressure in millibars.",
+          "target[7]": "VPdef (mbar): water vapor pressure deficit in millibars.",
+          "target[8]": "sh (g/kg): specific humidity in grams per kilogram.",
+          "target[9]": "H2OC (mmol/mol): water vapor concentration in millimoles per mole.",
+          "target[10]": "rho (g/m**3): air density in grams per cubic meter.",
+          "target[11]": "wv (m/s): wind velocity in meters per second.",
+          "target[12]": "max. wv (m/s): maximum wind velocity in meters per second.",
+          "target[13]": "wd (deg): wind direction in degrees.",
+          "target[14]": "rain (mm): precipitation amount in millimeters.",
+          "target[15]": "raining (s): duration of precipitation in seconds.",
+          "target[16]": "SWDR (W/m2): shortwave downward radiation in watts per square meter.",
+          "target[17]": "PAR (umol/m2/s): photosynthetically active radiation in micromoles per square meter per second.",
+          "target[18]": "max. PAR (umol/m2/s): maximum photosynthetically active radiation in micromoles per square meter per second.",
+          "target[19]": "Tlog (degC): internal logger temperature in degrees Celsius.",
+          "target[20]": "CO2 (ppm): ambient air CO2 concentration in parts per million."
+        },
+        "category": "weather_climate",
+        "gift_eval_domain": "Nature",
+        "benchmark_collection": "Gift-Eval"
       }
     },
     {
       "dataset_id": "camels-us",
+      "benchmark_id": "camels_us_hydrology",
       "benchmark_ready": false,
       "taxonomy": [
         "Regularly sampled",
         "Pure temporal",
         "Exogenous covariates",
         "Pure numerical",
-        "Physical-law constrained"
+        "Physical-law constrained",
+        "Panel",
+        "Hydrology",
+        "Spatio temporal",
+        "Seasonal"
       ],
       "capabilities": {
         "io_modes": [
@@ -2025,7 +1721,9 @@
           "MV-MV"
         ],
         "evaluation_modes": [
-          "zero_shot"
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
         ]
       },
       "frequency": {
@@ -2051,7 +1749,7 @@
           "zero_shot"
         ],
         "target_streams": [
-          "streamflow/QObs(mm/d)"
+          "QObs(mm/d)"
         ],
         "observed_streams": [
           "prcp(mm/day)",
@@ -2059,11 +1757,9 @@
           "tmax(C)",
           "tmin(C)",
           "vp(Pa)",
-          "streamflow/QObs(mm/d)"
+          "QObs(mm/d)"
         ],
-        "known_covariates": [
-          "dayl(s)"
-        ],
+        "known_covariates": [],
         "note": "Added for Paper 1 zero-shot benchmark metadata; benchmark data curation remains required before official runs."
       },
       "canonical_schema": {
@@ -2080,10 +1776,42 @@
           "tmax(C)",
           "tmin(C)",
           "vp(Pa)",
-          "streamflow/QObs(mm/d)",
-          "dayl(s)"
+          "tmean(C)",
+          "QObs(mm/d)"
         ],
-        "target_variable": "streamflow/QObs(mm/d)"
+        "target_variable": "QObs(mm/d)",
+        "static_variables": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "low_prec_freq",
+          "low_prec_dur",
+          "carbonate_rocks_frac",
+          "geol_permeability",
+          "huc_02",
+          "soil_depth_pelletier",
+          "soil_depth_statsgo",
+          "soil_porosity",
+          "soil_conductivity",
+          "max_water_content",
+          "sand_frac",
+          "silt_frac",
+          "clay_frac",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "slope_mean",
+          "area_gages2",
+          "frac_forest",
+          "lai_max",
+          "lai_diff",
+          "gvf_max",
+          "gvf_diff"
+        ]
       },
       "agent_facets": {
         "domain": "hydrology",
@@ -2092,18 +1820,3794 @@
         "series_type": "multivariate",
         "num_variables": 7,
         "has_exogenous_covariates": true,
-        "has_static_features": false,
+        "has_static_features": true,
         "seasonality": [
           "annual"
         ],
         "variable_semantics": {
-          "prcp(mm/day)": "Daily total precipitation from Daymet forcing data.",
-          "srad(W/m2)": "Incident shortwave radiation flux density averaged over the daylight period from Daymet forcing data.",
-          "tmax(C)": "Daily maximum 2-meter air temperature from Daymet forcing data.",
-          "tmin(C)": "Daily minimum 2-meter air temperature from Daymet forcing data.",
-          "vp(Pa)": "Daily average water vapor pressure from Daymet forcing data.",
-          "streamflow/QObs(mm/d)": "Observed streamflow expressed as catchment runoff depth from USGS streamflow data via CAMELS.",
-          "dayl(s)": "Duration of daylight period from Daymet forcing data."
+          "prcp(mm/day)": "Daily total precipitation depth in millimeters per day; exogenous meteorological forcing.",
+          "srad(W/m2)": "Incident shortwave radiation flux density in watts per square meter, averaged over the daylight period; exogenous meteorological forcing.",
+          "tmax(C)": "Daily maximum 2-meter air temperature in degrees Celsius; exogenous meteorological forcing.",
+          "tmin(C)": "Daily minimum 2-meter air temperature in degrees Celsius; exogenous meteorological forcing.",
+          "vp(Pa)": "Daily average water vapor pressure in pascals; exogenous meteorological forcing.",
+          "QObs(mm/d)": "Observed streamflow/discharge normalized by catchment area as runoff depth in millimeters per day; target hydrological response.",
+          "streamflow/QObs(mm/d)": "Observed streamflow/discharge normalized by catchment area as runoff depth in millimeters per day; target hydrological response.",
+          "tmean(C)": "Daily mean 2-meter air temperature in degrees Celsius; used in reduced CAMELS-US hydrology benchmark inputs.",
+          "precipitation_us": "Daily precipitation for the CAMELS-US component in the reduced cross-train hydrology benchmark input.",
+          "precipitation": "Daily precipitation forcing in the reduced combined-CAMELS hydrology benchmark input.",
+          "p_mean": "Long-term mean daily precipitation over the catchment, used as a static climate descriptor of water input.",
+          "pet_mean": "Long-term mean daily potential evapotranspiration over the catchment, representing atmospheric evaporative demand.",
+          "p_seasonality": "Precipitation seasonality and timing index; positive values indicate summer-peaking precipitation, negative values indicate winter-peaking precipitation, and values near zero indicate more uniform precipitation through the year.",
+          "frac_snow": "Fraction of precipitation falling as snow, typically estimated from precipitation on days with air temperature below 0 C.",
+          "aridity": "Aridity index: ratio of mean potential evapotranspiration to mean precipitation; larger values indicate a drier, more water-limited catchment climate.",
+          "high_prec_freq": "Frequency of high-precipitation days, conventionally days with precipitation at least five times the catchment mean daily precipitation.",
+          "high_prec_dur": "Average duration of high-precipitation events, counted as consecutive days meeting the high-precipitation threshold.",
+          "low_prec_freq": "Frequency of dry days, conventionally days with precipitation below 1 mm/day.",
+          "low_prec_dur": "Average duration of dry periods, counted as consecutive dry days below the low-precipitation threshold.",
+          "carbonate_rocks_frac": "Fraction of catchment geology classified as carbonate rocks.",
+          "geol_permeability": "Catchment-average geological permeability.",
+          "huc_02": "Two-digit US hydrologic unit code region.",
+          "soil_depth_pelletier": "Catchment soil depth estimate. Source/product qualifier: Pelletier.",
+          "soil_depth_statsgo": "Catchment soil depth estimate. Source/product qualifier: STATSGO.",
+          "soil_porosity": "Catchment soil porosity estimate.",
+          "soil_conductivity": "Catchment soil hydraulic conductivity estimate.",
+          "max_water_content": "Maximum soil water content estimate.",
+          "sand_frac": "Fraction of soil texture classified as sand.",
+          "silt_frac": "Fraction of soil texture classified as silt.",
+          "clay_frac": "Fraction of soil texture classified as clay.",
+          "gauge_lat": "Latitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "gauge_lon": "Longitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "elev_mean": "Mean catchment elevation.",
+          "slope_mean": "Mean catchment slope.",
+          "area_gages2": "Catchment drainage area from gauge metadata.",
+          "frac_forest": "Fraction of catchment area covered by forest.",
+          "lai_max": "Maximum leaf area index over the annual cycle.",
+          "lai_diff": "Seasonal amplitude of leaf area index.",
+          "gvf_max": "Maximum green vegetation fraction over the annual cycle.",
+          "gvf_diff": "Seasonal amplitude of green vegetation fraction."
+        },
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_roles": {
+          "target_time_series": [
+            "QObs(mm/d)"
+          ],
+          "exogenous_time_series": [
+            "prcp(mm/day)",
+            "srad(W/m2)",
+            "tmax(C)",
+            "tmin(C)",
+            "vp(Pa)",
+            "tmean(C)"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "p_mean",
+            "pet_mean",
+            "p_seasonality",
+            "frac_snow",
+            "aridity",
+            "high_prec_freq",
+            "high_prec_dur",
+            "low_prec_freq",
+            "low_prec_dur",
+            "carbonate_rocks_frac",
+            "geol_permeability",
+            "huc_02",
+            "soil_depth_pelletier",
+            "soil_depth_statsgo",
+            "soil_porosity",
+            "soil_conductivity",
+            "max_water_content",
+            "sand_frac",
+            "silt_frac",
+            "clay_frac",
+            "gauge_lat",
+            "gauge_lon",
+            "elev_mean",
+            "slope_mean",
+            "area_gages2",
+            "frac_forest",
+            "lai_max",
+            "lai_diff",
+            "gvf_max",
+            "gvf_diff"
+          ]
+        },
+        "variable_aliases": {
+          "QObs(mm/d)": [
+            "streamflow/QObs(mm/d)"
+          ],
+          "prcp(mm/day)": [
+            "precipitation_us",
+            "precipitation"
+          ],
+          "tmean(C)": [
+            "mean_temperature"
+          ]
+        }
+      },
+      "source": {
+        "type": "web",
+        "url": "https://ral.ucar.edu/dataset/camels-catchment-attributes-and-meteorology-large-sample-studies-dataset-downloads",
+        "upstream": [
+          {
+            "url": "https://ral.ucar.edu/dataset/camels-catchment-attributes-and-meteorology-large-sample-studies-dataset-downloads",
+            "doi": "10.5194/hess-21-5293-2017",
+            "note": "CAMELS-US official dataset and paper."
+          }
+        ],
+        "processed_hydrology_benchmark": {
+          "type": "zenodo",
+          "doi": "10.5281/zenodo.13975174",
+          "url": "https://zenodo.org/records/13975174",
+          "files": {
+            "archive": "hydrology_data_processed.zip"
+          }
+        }
+      },
+      "actual_data_check": {
+        "local_processed_arrays": {
+          "metadata": "/Users/eriche/Downloads/metadata_us.json",
+          "dynamic_shape_observed": "CamelsUS_yin.npy has shape (7010, 671, 6)",
+          "static_shape_observed": "BasicInputStaticProps_us2.npy has shape (671, 41)"
+        }
+      }
+    },
+    {
+      "dataset_id": "temperature-rain-with-missing",
+      "benchmark_id": "temperature_rain_monash",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "temperature_rain_with_missing"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Spatio temporal",
+        "Seasonal",
+        "Missing values",
+        "Pure numerical"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "725 daily observations per station-variable series, from 2015-05-02 to 2017-04-26.",
+        "variables": "422 Australian weather stations grouped by observed and forecast temperature/rain variables.",
+        "dimensions": "76 variables per station after grouping TSF rows by station_id."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "weather",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate_grouped_from_related_univariate_tsf_rows",
+        "num_variables": 76,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "weekly",
+          "annual"
+        ],
+        "item_semantics": {
+          "item_id": "Australian Bureau of Meteorology station_id from the TSF attributes."
+        },
+        "variable_semantics": {
+          "target": "Gift-Eval target array value for a temperature/rain series. Each series represents one Australian Bureau of Meteorology station measurement or forecast-derived channel; station and channel identity come from the source item/static metadata when exposed."
+        },
+        "category": "weather_station_temperature_rain",
+        "gift_eval_domain": "Nature",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Source now points to the Salesforce/GiftEval benchmark distribution. Semantic variable labels are retained from the verified raw Bureau of Meteorology/Monash mapping; Gift-Eval uses the corresponding benchmark target arrays."
+    },
+    {
+      "dataset_id": "kdd-cup-2018-with-missing",
+      "benchmark_id": "kdd_cup_2018_monash",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "kdd_cup_2018_with_missing/H"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Spatio temporal",
+        "Missing values",
+        "Environmental sensor",
+        "Pure numerical"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Hourly"
+      },
+      "shape": {
+        "timePoints": "Hourly observations from 2017-01-01 to 2018-03-31; unequal lengths because of missing data.",
+        "variables": "Air-quality measurements across 59 stations in Beijing and London.",
+        "dimensions": "6 pollutant variables per city/station when present."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "air_quality",
+        "frequency": "hourly",
+        "frequency_seconds": 3600,
+        "series_type": "multivariate_grouped_from_related_univariate_tsf_rows",
+        "num_variables": 6,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "daily",
+          "weekly",
+          "annual"
+        ],
+        "item_semantics": {
+          "item_id": "city/station pair from the TSF city and station attributes."
+        },
+        "variable_semantics": {
+          "target": "Gift-Eval target array value for one KDD Cup 2018 air-quality measurement series. Series identity represents a city/station/pollutant channel such as PM2.5, PM10, NO2, CO, O3, or SO2 when exposed by item/static metadata."
+        },
+        "category": "air_quality_sensor",
+        "gift_eval_domain": "Nature",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Source now points to the Salesforce/GiftEval benchmark distribution. Semantic variables are retained from the verified KDD Cup 2018 air-quality source mapping by city, station, and pollutant."
+    },
+    {
+      "dataset_id": "us-births",
+      "benchmark_id": "us_births_monash",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "us_births/D"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Pure temporal",
+        "Seasonal",
+        "Pure numerical",
+        "Demographic"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "7,305 daily observations from 1969-01-01 to 1988-12-31.",
+        "variables": "Single target series.",
+        "dimensions": "1"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "demographics",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "weekly",
+          "annual"
+        ],
+        "variable_semantics": {
+          "target": "Daily number of births in the United States."
+        },
+        "category": "demographics_births",
+        "gift_eval_domain": "Healthcare",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Source now points to the Salesforce/GiftEval benchmark distribution. Single target semantics are retained from the verified US births source lineage."
+    },
+    {
+      "dataset_id": "saugeenday",
+      "benchmark_id": "saugeenday_monash",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "saugeenday/D"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Pure temporal",
+        "Seasonal",
+        "Pure numerical",
+        "Hydrology"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "23,741 daily observations from 1915-01-01 to 1979-12-31.",
+        "variables": "Single target series.",
+        "dimensions": "1"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "variable_semantics": {
+          "target": "Daily mean flow of the Saugeen River at Walkerton in cubic meters per second."
+        },
+        "category": "hydrology_river_flow",
+        "gift_eval_domain": "Nature",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Source now points to the Salesforce/GiftEval benchmark distribution. Single target semantics are retained from the verified Saugeen River daily-flow source lineage."
+    },
+    {
+      "dataset_id": "covid-deaths",
+      "benchmark_id": "covid_deaths_monash",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      },
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "covid_deaths"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Non-stationary",
+        "Pure numerical",
+        "Public health"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "Daily observations from 2020-01-22 to 2020-08-20.",
+        "variables": "266 country/state target series from Johns Hopkins CSSE as distributed by Monash.",
+        "dimensions": "1 variable across 266 item_ids."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "public_health",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [],
+        "item_semantics": {
+          "item_id": "Gift-Eval item/series identifier for a country or state COVID-19 death series."
+        },
+        "variable_semantics": {
+          "target": "Daily cumulative COVID-19 death count for a country or state series from the Johns Hopkins CSSE repository."
+        },
+        "category": "public_health_covid_mortality",
+        "gift_eval_domain": "Healthcare",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Source now points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the variable level as Johns Hopkins CSSE COVID-19 deaths; item IDs represent country/state series."
+    },
+    {
+      "dataset_id": "bizitobs-application",
+      "benchmark_id": "bizitobs_application_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "bizitobs_application"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Application monitoring",
+        "Operational telemetry",
+        "Exogenous covariates",
+        "Pure numerical"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "10 Seconds (10S)"
+      },
+      "shape": {
+        "timePoints": "Application-level BizITObs observations as distributed by Gift-Eval.",
+        "variables": "Application latency and call-count target variables, with IT/event covariates in the raw source.",
+        "dimensions": "2 target variables for the Robot-Shop application."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target[0]",
+          "target[1]"
+        ],
+        "target_variable": "target[0]"
+      },
+      "agent_facets": {
+        "domain": "it_operations",
+        "frequency": "ten_second",
+        "frequency_seconds": 10,
+        "series_type": "multivariate",
+        "num_variables": 2,
+        "has_exogenous_covariates": true,
+        "has_static_features": false,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Application name; the verified Gift-Eval/BizITObs application target is Robot-Shop."
+        },
+        "variable_semantics": {
+          "target[0]": "Robot-Shop:latency.mean: mean request latency for the Robot-Shop application.",
+          "target[1]": "Robot-Shop:calls.sum: total request call count for the Robot-Shop application."
+        },
+        "category": "cloud_application_monitoring",
+        "gift_eval_domain": "Web/CloudOps",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics were verified against the BizITObs Application source columns Robot-Shop:latency.mean and Robot-Shop:calls.sum; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "bizitobs-service",
+      "benchmark_id": "bizitobs_service_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "bizitobs_service"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Service monitoring",
+        "Operational telemetry",
+        "Panel",
+        "Pure numerical"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "10 Seconds (10S)"
+      },
+      "shape": {
+        "timePoints": "Service-level BizITObs observations as distributed by Gift-Eval.",
+        "variables": "Latency and call-count target variables for each service item.",
+        "dimensions": "2 target variables per service item."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target[0]",
+          "target[1]"
+        ],
+        "target_variable": "target[0]"
+      },
+      "agent_facets": {
+        "domain": "it_operations",
+        "frequency": "ten_second",
+        "frequency_seconds": 10,
+        "series_type": "panel_multivariate",
+        "num_variables": 2,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Service name from the verified BizITObs service source, such as cart or MySQL@3306 on demo-mysql."
+        },
+        "variable_semantics": {
+          "target[0]": "<service>:latency.mean: mean request latency for the service item.",
+          "target[1]": "<service>:calls.sum: total request call count for the service item."
+        },
+        "category": "cloud_service_monitoring",
+        "gift_eval_domain": "Web/CloudOps",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics were verified against the BizITObs Service source, where each service item has latency.mean and calls.sum targets; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "bizitobs-l2c",
+      "benchmark_id": "bizitobs_l2c_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "bizitobs_l2c/5T"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Business process",
+        "Operational telemetry",
+        "Event process",
+        "Pure numerical"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "5 Minutes (5T)"
+      },
+      "shape": {
+        "timePoints": "BizITObs lead-to-cash process observations as distributed by Gift-Eval.",
+        "variables": "Average order cycle time plus activity count target variables.",
+        "dimensions": "7 target variables."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]"
+        ],
+        "target_variable": "target[0]"
+      },
+      "agent_facets": {
+        "domain": "business_process",
+        "frequency": "five_minute",
+        "frequency_seconds": 300,
+        "series_type": "multivariate",
+        "num_variables": 7,
+        "has_exogenous_covariates": true,
+        "has_static_features": false,
+        "seasonality": [],
+        "variable_semantics": {
+          "target[0]": "Weekly average order cycle time for the lead-to-cash process.",
+          "target[1]": "activity_Approve by approver: count or level of the Approve by approver process activity.",
+          "target[2]": "activity_Create order: count or level of the Create order process activity.",
+          "target[3]": "activity_Return by approver: count or level of the Return by approver process activity.",
+          "target[4]": "activity_Submit for approval: count or level of the Submit for approval process activity.",
+          "target[5]": "activity_Submit to SAP: count or level of the Submit to SAP process activity.",
+          "target[6]": "activity_Update order: count or level of the Update order process activity."
+        },
+        "category": "business_process_lead_to_cash",
+        "gift_eval_domain": "Web/CloudOps",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics were verified against the BizITObs L2C source target dimensions; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "ett-hourly-station-2-etth2",
+      "benchmark_id": "ett2_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "ett2/H"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Pure temporal",
+        "Spatio temporal",
+        "Non-stationary",
+        "Seasonal",
+        "Pure numerical",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "1 Hour (1H)"
+      },
+      "shape": {
+        "timePoints": "ETT station 2 hourly observations as distributed by Gift-Eval.",
+        "variables": "7 transformer load and oil-temperature target dimensions.",
+        "dimensions": "7"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]"
+        ],
+        "target_variable": "target[6]"
+      },
+      "agent_facets": {
+        "domain": "energy",
+        "frequency": "hourly",
+        "frequency_seconds": 3600,
+        "series_type": "multivariate",
+        "num_variables": 7,
+        "has_exogenous_covariates": true,
+        "has_static_features": false,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "variable_semantics": {
+          "target[0]": "HUFL: high-use full-load feature from the electricity transformer temperature dataset.",
+          "target[1]": "HULL: high-use less-load feature from the electricity transformer temperature dataset.",
+          "target[2]": "MUFL: middle-use full-load feature from the electricity transformer temperature dataset.",
+          "target[3]": "MULL: middle-use less-load feature from the electricity transformer temperature dataset.",
+          "target[4]": "LUFL: low-use full-load feature from the electricity transformer temperature dataset.",
+          "target[5]": "LULL: low-use less-load feature from the electricity transformer temperature dataset.",
+          "target[6]": "OT: oil temperature of the electricity transformer; benchmark target dimension."
+        },
+        "category": "energy_transformer_temperature",
+        "gift_eval_domain": "Energy",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Variable semantics mirror the verified ETT raw column order; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "solar",
+      "benchmark_id": "solar_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "solar/10T"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Seasonal",
+        "Pure numerical",
+        "Renewable energy"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "ten minute"
+      },
+      "shape": {
+        "timePoints": "10-minute solar observations as distributed by Gift-Eval.",
+        "variables": "One target time series per solar production channel/item_id.",
+        "dimensions": "1 variable across 137 item_ids in the Gift-Eval 10-minute distribution."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "energy",
+        "frequency": "ten_minute",
+        "frequency_seconds": 600,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Solar production channel/site item_id in the Gift-Eval solar benchmark."
+        },
+        "variable_semantics": {
+          "target": "Solar power generation/production value for one solar channel or site."
+        },
+        "category": "renewable_energy_solar",
+        "gift_eval_domain": "Energy",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the dataset/domain level; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "hospital",
+      "benchmark_id": "hospital_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "hospital"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Seasonal",
+        "Pure numerical",
+        "Healthcare"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "monthly"
+      },
+      "shape": {
+        "timePoints": "Monthly hospital observations as distributed by Gift-Eval.",
+        "variables": "One target time series per hospital-related item_id.",
+        "dimensions": "1 variable across 767 item_ids."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "healthcare",
+        "frequency": "monthly",
+        "frequency_seconds": 2629800,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Hospital dataset item_id for one hospital-related demand/count series."
+        },
+        "variable_semantics": {
+          "target": "Monthly hospital demand/count value for one hospital-related series."
+        },
+        "category": "healthcare_hospital_demand",
+        "gift_eval_domain": "Healthcare",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the dataset/domain level; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "car-parts-with-missing",
+      "benchmark_id": "car_parts_with_missing_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "car_parts_with_missing"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Seasonal",
+        "Missing values",
+        "Pure numerical",
+        "Retail demand"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "monthly"
+      },
+      "shape": {
+        "timePoints": "Monthly car-parts observations with missing values as distributed by Gift-Eval.",
+        "variables": "One target time series per car-part item_id.",
+        "dimensions": "1 variable across 2674 item_ids."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "retail_parts",
+        "frequency": "monthly",
+        "frequency_seconds": 2629800,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Car-part item_id for one demand series in the Gift-Eval car-parts benchmark."
+        },
+        "variable_semantics": {
+          "target": "Monthly car-part demand/sales value for one part series."
+        },
+        "category": "retail_parts_demand",
+        "gift_eval_domain": "Sales",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the dataset/domain level; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "restaurant",
+      "benchmark_id": "restaurant_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "restaurant"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Seasonal",
+        "Pure numerical",
+        "Retail/restaurant demand"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "daily"
+      },
+      "shape": {
+        "timePoints": "Daily restaurant observations as distributed by Gift-Eval.",
+        "variables": "One target time series per restaurant/store item_id.",
+        "dimensions": "1 variable across 807 item_ids."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "restaurant_demand",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Restaurant/store item_id from the Gift-Eval restaurant benchmark."
+        },
+        "variable_semantics": {
+          "target": "Daily restaurant visitor count or demand value for one restaurant/store series."
+        },
+        "category": "restaurant_demand",
+        "gift_eval_domain": "Sales",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the dataset/domain level; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "hierarchical-sales",
+      "benchmark_id": "hierarchical_sales_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "hierarchical_sales/D"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Hierarchical",
+        "Panel",
+        "Seasonal",
+        "Pure numerical",
+        "Retail sales"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "daily"
+      },
+      "shape": {
+        "timePoints": "Daily hierarchical sales observations as distributed by Gift-Eval.",
+        "variables": "One target time series per hierarchy node/item_id.",
+        "dimensions": "1 variable across 118 item_ids in the daily distribution."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "retail_sales",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Hierarchy node or product/category sales item_id, such as QTY_B1_1."
+        },
+        "variable_semantics": {
+          "target": "Daily sales quantity for one product/category hierarchy node."
+        },
+        "category": "hierarchical_retail_sales",
+        "gift_eval_domain": "Sales",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the dataset/domain level; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "loop-seattle",
+      "benchmark_id": "loop_seattle_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "LOOP_SEATTLE/5T"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Traffic sensor",
+        "Seasonal",
+        "Pure numerical"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "five minute"
+      },
+      "shape": {
+        "timePoints": "5-minute LOOP Seattle traffic observations as distributed by Gift-Eval.",
+        "variables": "One target time series per loop-detector item_id.",
+        "dimensions": "1 variable across 323 item_ids in the 5-minute distribution."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "traffic",
+        "frequency": "five_minute",
+        "frequency_seconds": 300,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Seattle loop-detector/sensor item_id."
+        },
+        "variable_semantics": {
+          "target": "Traffic measurement for one Seattle loop detector or sensor series."
+        },
+        "category": "traffic_loop_sensor",
+        "gift_eval_domain": "Transport",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the dataset/domain level; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "sz-taxi",
+      "benchmark_id": "sz_taxi_gifteval",
+      "source": {
+        "type": "huggingface",
+        "repo_id": "Salesforce/GiftEval",
+        "revision": "main",
+        "files": {
+          "data": "SZ_TAXI/15T"
+        },
+        "url": "https://huggingface.co/datasets/Salesforce/GiftEval"
+      },
+      "benchmark_ready": true,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Taxi/traffic",
+        "Seasonal",
+        "Pure numerical"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "fifteen minute"
+      },
+      "shape": {
+        "timePoints": "15-minute Shenzhen taxi observations as distributed by Gift-Eval.",
+        "variables": "One target time series per taxi/traffic item_id.",
+        "dimensions": "1 variable across 156 item_ids in the 15-minute distribution."
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "MAE",
+          "MASE",
+          "sMAPE",
+          "MAPE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "target"
+        ],
+        "target_variable": "target"
+      },
+      "agent_facets": {
+        "domain": "traffic",
+        "frequency": "fifteen_minute",
+        "frequency_seconds": 900,
+        "series_type": "panel_univariate",
+        "num_variables": 1,
+        "has_exogenous_covariates": false,
+        "has_static_features": true,
+        "seasonality": [
+          "daily",
+          "weekly"
+        ],
+        "item_semantics": {
+          "item_id": "Shenzhen taxi/traffic item_id."
+        },
+        "variable_semantics": {
+          "target": "Taxi/traffic measurement for one Shenzhen road or taxi-flow series."
+        },
+        "category": "taxi_traffic_flow",
+        "gift_eval_domain": "Transport",
+        "benchmark_collection": "Gift-Eval"
+      },
+      "notes": "Metadata points to the Salesforce/GiftEval benchmark distribution. Target semantics are verified at the dataset/domain level; loader implementation is not yet wired.",
+      "implementation": {
+        "module": "tools.benchmark_runner.datasets.gifteval",
+        "class": "GiftEvalDataset"
+      }
+    },
+    {
+      "dataset_id": "camels-gb",
+      "benchmark_id": "camels_gb_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://essd.copernicus.org/articles/12/2459/2020/",
+            "doi": "10.5194/essd-12-2459-2020",
+            "note": "CAMELS-GB official hydrometeorological time series and landscape attributes for 671 Great Britain catchments."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "Processed benchmark interval 1989-10-02 to 2008-12-31; official dataset spans longer daily history.",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "dimensions": "Multivariate panel across 671 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "target_variable": "QObs(mm/d)",
+        "static_variables": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "high_prec_timing",
+          "low_prec_freq",
+          "low_prec_dur",
+          "low_prec_timing",
+          "q_mean",
+          "runoff_ratio",
+          "slope_fdc",
+          "baseflow_index",
+          "stream_elas",
+          "Q5",
+          "Q95",
+          "high_q_freq",
+          "high_q_dur",
+          "low_q_freq",
+          "low_q_dur",
+          "zero_q_freq",
+          "hfd_mean",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "area",
+          "dom_land_cover"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 3,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "prcp(mm/day)": "Daily total precipitation depth in millimeters per day; exogenous meteorological forcing.",
+          "tmean(C)": "Daily mean 2-meter air temperature in degrees Celsius; exogenous meteorological forcing used in reduced CAMELS hydrology benchmark inputs.",
+          "QObs(mm/d)": "Observed streamflow/discharge normalized by catchment area as runoff depth in millimeters per day; target hydrological response.",
+          "precipitation_us": "Daily precipitation for the CAMELS-US component in the reduced cross-train hydrology benchmark input.",
+          "precipitation": "Daily precipitation forcing in the reduced combined-CAMELS hydrology benchmark input.",
+          "p_mean": "Long-term mean daily precipitation over the catchment, used as a static climate descriptor of water input.",
+          "pet_mean": "Long-term mean daily potential evapotranspiration over the catchment, representing atmospheric evaporative demand.",
+          "p_seasonality": "Precipitation seasonality and timing index; positive values indicate summer-peaking precipitation, negative values indicate winter-peaking precipitation, and values near zero indicate more uniform precipitation through the year.",
+          "frac_snow": "Fraction of precipitation falling as snow, typically estimated from precipitation on days with air temperature below 0 C.",
+          "aridity": "Aridity index: ratio of mean potential evapotranspiration to mean precipitation; larger values indicate a drier, more water-limited catchment climate.",
+          "high_prec_freq": "Frequency of high-precipitation days, conventionally days with precipitation at least five times the catchment mean daily precipitation.",
+          "high_prec_dur": "Average duration of high-precipitation events, counted as consecutive days meeting the high-precipitation threshold.",
+          "high_prec_timing": "Season during which most high-precipitation days occur, e.g. winter, spring, summer, or autumn.",
+          "low_prec_freq": "Frequency of dry days, conventionally days with precipitation below 1 mm/day.",
+          "low_prec_dur": "Average duration of dry periods, counted as consecutive dry days below the low-precipitation threshold.",
+          "low_prec_timing": "Season during which most dry days occur.",
+          "q_mean": "Mean streamflow/runoff static hydrology attribute.",
+          "runoff_ratio": "Ratio of runoff to precipitation.",
+          "slope_fdc": "Flow-duration curve slope.",
+          "baseflow_index": "Baseflow index.",
+          "stream_elas": "Streamflow elasticity.",
+          "Q5": "5th percentile streamflow statistic.",
+          "Q95": "95th percentile streamflow statistic.",
+          "high_q_freq": "Frequency of high-flow events.",
+          "high_q_dur": "Duration of high-flow events.",
+          "low_q_freq": "Frequency of low-flow events.",
+          "low_q_dur": "Duration of low-flow events.",
+          "zero_q_freq": "Frequency of zero-flow days.",
+          "hfd_mean": "Mean half-flow date.",
+          "gauge_lat": "Latitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "gauge_lon": "Longitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "elev_mean": "Mean catchment elevation.",
+          "area": "Drainage area of the catchment contributing flow to the gauge or outlet.",
+          "dom_land_cover": "Dominant land-cover class."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "QObs(mm/d)"
+          ],
+          "exogenous_time_series": [
+            "prcp(mm/day)",
+            "tmean(C)"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "p_mean",
+            "pet_mean",
+            "p_seasonality",
+            "frac_snow",
+            "aridity",
+            "high_prec_freq",
+            "high_prec_dur",
+            "high_prec_timing",
+            "low_prec_freq",
+            "low_prec_dur",
+            "low_prec_timing",
+            "q_mean",
+            "runoff_ratio",
+            "slope_fdc",
+            "baseflow_index",
+            "stream_elas",
+            "Q5",
+            "Q95",
+            "high_q_freq",
+            "high_q_dur",
+            "low_q_freq",
+            "low_q_dur",
+            "zero_q_freq",
+            "hfd_mean",
+            "gauge_lat",
+            "gauge_lon",
+            "elev_mean",
+            "area",
+            "dom_land_cover"
+          ]
+        }
+      },
+      "actual_data_check": {
+        "metadata": "/Users/eriche/Downloads/metadata_gb_crossTrain.json",
+        "static_shape_observed": "BasicInputStaticProps_gb_crossTrain.npy has shape (671, 30)"
+      }
+    },
+    {
+      "dataset_id": "camels-cl",
+      "benchmark_id": "camels_cl_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://www.cr2.cl/camels-cl/",
+            "doi": "10.5194/hess-22-5817-2018",
+            "note": "CAMELS-CL official Chile catchment attributes and meteorology dataset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "Processed benchmark interval 1989-10-02 to 2008-12-31; official dataset provides daily Chile catchment hydro-meteorology.",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "dimensions": "Multivariate panel across 516 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "target_variable": "QObs(mm/d)",
+        "static_variables": [
+          "p_mean_cr2met",
+          "pet_mean",
+          "p_seasonality_cr2met",
+          "frac_snow_cr2met",
+          "aridity_cr2met",
+          "high_prec_freq_cr2met",
+          "high_prec_dur_cr2met",
+          "high_prec_timing_cr2met",
+          "low_prec_freq_cr2met",
+          "low_prec_dur_cr2met",
+          "low_prec_timing_cr2met",
+          "q_mean",
+          "runoff_ratio_cr2met",
+          "slope_fdc",
+          "baseflow_index",
+          "stream_elas_cr2met",
+          "Q5",
+          "Q95",
+          "high_q_freq",
+          "high_q_dur",
+          "low_q_freq",
+          "low_q_dur",
+          "zero_q_freq",
+          "hfd_mean",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "area",
+          "dom_land_cover"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 3,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "prcp(mm/day)": "Daily total precipitation depth in millimeters per day; exogenous meteorological forcing.",
+          "tmean(C)": "Daily mean 2-meter air temperature in degrees Celsius; exogenous meteorological forcing used in reduced CAMELS hydrology benchmark inputs.",
+          "QObs(mm/d)": "Observed streamflow/discharge normalized by catchment area as runoff depth in millimeters per day; target hydrological response.",
+          "precipitation_us": "Daily precipitation for the CAMELS-US component in the reduced cross-train hydrology benchmark input.",
+          "precipitation": "Daily precipitation forcing in the reduced combined-CAMELS hydrology benchmark input.",
+          "p_mean_cr2met": "Long-term mean daily precipitation over the catchment, used as a static climate descriptor of water input. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "pet_mean": "Long-term mean daily potential evapotranspiration over the catchment, representing atmospheric evaporative demand.",
+          "p_seasonality_cr2met": "Precipitation seasonality and timing index; positive values indicate summer-peaking precipitation, negative values indicate winter-peaking precipitation, and values near zero indicate more uniform precipitation through the year. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "frac_snow_cr2met": "Fraction of precipitation falling as snow, typically estimated from precipitation on days with air temperature below 0 C. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "aridity_cr2met": "Aridity index: ratio of mean potential evapotranspiration to mean precipitation; larger values indicate a drier, more water-limited catchment climate. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "high_prec_freq_cr2met": "Frequency of high-precipitation days, conventionally days with precipitation at least five times the catchment mean daily precipitation. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "high_prec_dur_cr2met": "Average duration of high-precipitation events, counted as consecutive days meeting the high-precipitation threshold. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "high_prec_timing_cr2met": "Season during which most high-precipitation days occur, e.g. winter, spring, summer, or autumn. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "low_prec_freq_cr2met": "Frequency of dry days, conventionally days with precipitation below 1 mm/day. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "low_prec_dur_cr2met": "Average duration of dry periods, counted as consecutive dry days below the low-precipitation threshold. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "low_prec_timing_cr2met": "Season during which most dry days occur. Computed from CAMELS-CL CR2MET-based meteorological series where applicable.",
+          "q_mean": "Mean streamflow/runoff static hydrology attribute.",
+          "runoff_ratio_cr2met": "Runoff ratio: mean streamflow divided by mean precipitation. Computed from the CR2MET meteorological product for CAMELS-CL where applicable.",
+          "slope_fdc": "Flow-duration curve slope.",
+          "baseflow_index": "Baseflow index.",
+          "stream_elas_cr2met": "Streamflow elasticity, describing sensitivity of streamflow to precipitation changes. Computed from the CR2MET meteorological product for CAMELS-CL where applicable.",
+          "Q5": "5th percentile streamflow statistic.",
+          "Q95": "95th percentile streamflow statistic.",
+          "high_q_freq": "Frequency of high-flow events.",
+          "high_q_dur": "Duration of high-flow events.",
+          "low_q_freq": "Frequency of low-flow events.",
+          "low_q_dur": "Duration of low-flow events.",
+          "zero_q_freq": "Frequency of zero-flow days.",
+          "hfd_mean": "Mean half-flow date.",
+          "gauge_lat": "Latitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "gauge_lon": "Longitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "elev_mean": "Mean catchment elevation.",
+          "area": "Drainage area of the catchment contributing flow to the gauge or outlet.",
+          "dom_land_cover": "Dominant land-cover class."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "QObs(mm/d)"
+          ],
+          "exogenous_time_series": [
+            "prcp(mm/day)",
+            "tmean(C)"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "p_mean_cr2met",
+            "pet_mean",
+            "p_seasonality_cr2met",
+            "frac_snow_cr2met",
+            "aridity_cr2met",
+            "high_prec_freq_cr2met",
+            "high_prec_dur_cr2met",
+            "high_prec_timing_cr2met",
+            "low_prec_freq_cr2met",
+            "low_prec_dur_cr2met",
+            "low_prec_timing_cr2met",
+            "q_mean",
+            "runoff_ratio_cr2met",
+            "slope_fdc",
+            "baseflow_index",
+            "stream_elas_cr2met",
+            "Q5",
+            "Q95",
+            "high_q_freq",
+            "high_q_dur",
+            "low_q_freq",
+            "low_q_dur",
+            "zero_q_freq",
+            "hfd_mean",
+            "gauge_lat",
+            "gauge_lon",
+            "elev_mean",
+            "area",
+            "dom_land_cover"
+          ]
+        }
+      },
+      "actual_data_check": {
+        "metadata": "/Users/eriche/Downloads/metadata_cl_crossTrain.json",
+        "dynamic_file_observed": "BasicInputTimeSeries_cl_crossTrain.npy",
+        "static_shape_observed": "BasicInputStaticProps_cl_crossTrain.npy has shape (516, 30)"
+      }
+    },
+    {
+      "dataset_id": "camels-three-nation-combined",
+      "benchmark_id": "camels_three_nation_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://ral.ucar.edu/dataset/camels-catchment-attributes-and-meteorology-large-sample-studies-dataset-downloads",
+            "doi": "10.5194/hess-21-5293-2017",
+            "note": "CAMELS-US component."
+          },
+          {
+            "url": "https://essd.copernicus.org/articles/12/2459/2020/",
+            "doi": "10.5194/essd-12-2459-2020",
+            "note": "CAMELS-GB component."
+          },
+          {
+            "url": "https://www.cr2.cl/camels-cl/",
+            "doi": "10.5194/hess-22-5817-2018",
+            "note": "CAMELS-CL component."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "7031 daily timestamps from 1989-10-02 to 2008-12-31",
+        "variables": [
+          "precipitation",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "dimensions": "Multivariate panel across 1858 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "target_variable": "QObs(mm/d)",
+        "static_variables": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "high_prec_timing",
+          "low_prec_freq",
+          "low_prec_dur",
+          "low_prec_timing",
+          "q_mean",
+          "runoff_ratio",
+          "slope_fdc",
+          "baseflow_index",
+          "stream_elas",
+          "q5",
+          "q95",
+          "high_q_freq",
+          "high_q_dur",
+          "low_q_freq",
+          "low_q_dur",
+          "zero_q_freq",
+          "hfd_mean",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "area_gages2",
+          "dom_land_cover"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 3,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "prcp(mm/day)": "Daily total precipitation depth in millimeters per day; exogenous meteorological forcing.",
+          "tmean(C)": "Daily mean 2-meter air temperature in degrees Celsius; exogenous meteorological forcing used in reduced CAMELS hydrology benchmark inputs.",
+          "QObs(mm/d)": "Observed streamflow/discharge normalized by catchment area as runoff depth in millimeters per day; target hydrological response.",
+          "precipitation_us": "Daily precipitation for the CAMELS-US component in the reduced cross-train hydrology benchmark input.",
+          "precipitation": "Daily precipitation forcing in the reduced combined-CAMELS hydrology benchmark input.",
+          "p_mean": "Long-term mean daily precipitation over the catchment, used as a static climate descriptor of water input.",
+          "pet_mean": "Long-term mean daily potential evapotranspiration over the catchment, representing atmospheric evaporative demand.",
+          "p_seasonality": "Precipitation seasonality and timing index; positive values indicate summer-peaking precipitation, negative values indicate winter-peaking precipitation, and values near zero indicate more uniform precipitation through the year.",
+          "frac_snow": "Fraction of precipitation falling as snow, typically estimated from precipitation on days with air temperature below 0 C.",
+          "aridity": "Aridity index: ratio of mean potential evapotranspiration to mean precipitation; larger values indicate a drier, more water-limited catchment climate.",
+          "high_prec_freq": "Frequency of high-precipitation days, conventionally days with precipitation at least five times the catchment mean daily precipitation.",
+          "high_prec_dur": "Average duration of high-precipitation events, counted as consecutive days meeting the high-precipitation threshold.",
+          "high_prec_timing": "Season during which most high-precipitation days occur, e.g. winter, spring, summer, or autumn.",
+          "low_prec_freq": "Frequency of dry days, conventionally days with precipitation below 1 mm/day.",
+          "low_prec_dur": "Average duration of dry periods, counted as consecutive dry days below the low-precipitation threshold.",
+          "low_prec_timing": "Season during which most dry days occur.",
+          "q_mean": "Mean streamflow/runoff static hydrology attribute.",
+          "runoff_ratio": "Ratio of runoff to precipitation.",
+          "slope_fdc": "Flow-duration curve slope.",
+          "baseflow_index": "Baseflow index.",
+          "stream_elas": "Streamflow elasticity.",
+          "q5": "5th percentile streamflow statistic.",
+          "q95": "95th percentile streamflow statistic.",
+          "high_q_freq": "Frequency of high-flow events.",
+          "high_q_dur": "Duration of high-flow events.",
+          "low_q_freq": "Frequency of low-flow events.",
+          "low_q_dur": "Duration of low-flow events.",
+          "zero_q_freq": "Frequency of zero-flow days.",
+          "hfd_mean": "Mean half-flow date.",
+          "gauge_lat": "Latitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "gauge_lon": "Longitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "elev_mean": "Mean catchment elevation.",
+          "area_gages2": "Catchment drainage area from gauge metadata.",
+          "dom_land_cover": "Dominant land-cover class."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "QObs(mm/d)"
+          ],
+          "exogenous_time_series": [
+            "prcp(mm/day)",
+            "tmean(C)"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "p_mean",
+            "pet_mean",
+            "p_seasonality",
+            "frac_snow",
+            "aridity",
+            "high_prec_freq",
+            "high_prec_dur",
+            "high_prec_timing",
+            "low_prec_freq",
+            "low_prec_dur",
+            "low_prec_timing",
+            "q_mean",
+            "runoff_ratio",
+            "slope_fdc",
+            "baseflow_index",
+            "stream_elas",
+            "q5",
+            "q95",
+            "high_q_freq",
+            "high_q_dur",
+            "low_q_freq",
+            "low_q_dur",
+            "zero_q_freq",
+            "hfd_mean",
+            "gauge_lat",
+            "gauge_lon",
+            "elev_mean",
+            "area_gages2",
+            "dom_land_cover"
+          ]
+        },
+        "variable_aliases": {
+          "prcp(mm/day)": [
+            "precipitation",
+            "precipitation_us"
+          ]
+        }
+      }
+    },
+    {
+      "dataset_id": "caravan-global",
+      "benchmark_id": "caravan_global_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://doi.org/10.5281/zenodo.7540792",
+            "doi": "10.5281/zenodo.7540792",
+            "note": "Official Caravan data archive."
+          },
+          {
+            "url": "https://www.nature.com/articles/s41597-023-01975-w",
+            "doi": "10.1038/s41597-023-01975-w",
+            "note": "Caravan Scientific Data paper."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "Processed benchmark interval 1989-10-02 to 2008-12-31 for selected runs; Caravan upstream standardizes global large-sample hydrology data.",
+        "variables": [
+          "meteorological_forcings",
+          "streamflow",
+          "static_catchment_attributes"
+        ],
+        "dimensions": "Multivariate panel across 6830 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "snow_depth_water_equivalent_mean",
+          "surface_net_solar_radiation_mean",
+          "surface_net_thermal_radiation_mean",
+          "surface_pressure_mean",
+          "temperature_2m_mean",
+          "dewpoint_temperature_2m_mean",
+          "u_component_of_wind_10m_mean",
+          "v_component_of_wind_10m_mean",
+          "volumetric_soil_water_layer_1_mean",
+          "volumetric_soil_water_layer_2_mean",
+          "volumetric_soil_water_layer_3_mean",
+          "volumetric_soil_water_layer_4_mean",
+          "snow_depth_water_equivalent_min",
+          "surface_net_solar_radiation_min",
+          "surface_net_thermal_radiation_min",
+          "surface_pressure_min",
+          "temperature_2m_min",
+          "dewpoint_temperature_2m_min",
+          "u_component_of_wind_10m_min",
+          "v_component_of_wind_10m_min",
+          "volumetric_soil_water_layer_1_min",
+          "volumetric_soil_water_layer_2_min",
+          "volumetric_soil_water_layer_3_min",
+          "volumetric_soil_water_layer_4_min",
+          "snow_depth_water_equivalent_max",
+          "surface_net_solar_radiation_max",
+          "surface_net_thermal_radiation_max",
+          "surface_pressure_max",
+          "temperature_2m_max",
+          "dewpoint_temperature_2m_max",
+          "u_component_of_wind_10m_max",
+          "v_component_of_wind_10m_max",
+          "volumetric_soil_water_layer_1_max",
+          "volumetric_soil_water_layer_2_max",
+          "volumetric_soil_water_layer_3_max",
+          "volumetric_soil_water_layer_4_max",
+          "total_precipitation_sum",
+          "potential_evaporation_sum",
+          "streamflow"
+        ],
+        "target_variable": "streamflow",
+        "static_variables": [
+          "HydroATLAS static catchment attributes",
+          "ERA5-Land climate attributes"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 39,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "snow_depth_water_equivalent_mean": "ERA5-Land snow water equivalent state variable; daily mean aggregate in millimeters.",
+          "surface_net_solar_radiation_mean": "ERA5-Land surface net solar radiation forcing; daily mean aggregate in W/m2.",
+          "surface_net_thermal_radiation_mean": "ERA5-Land surface net thermal radiation forcing; daily mean aggregate in W/m2.",
+          "surface_pressure_mean": "ERA5-Land surface pressure forcing; daily mean aggregate in kPa.",
+          "temperature_2m_mean": "ERA5-Land 2-meter air temperature forcing; daily mean aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_mean": "ERA5-Land 2-meter dew point temperature forcing; daily mean aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_mean": "ERA5-Land eastward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "v_component_of_wind_10m_mean": "ERA5-Land northward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "volumetric_soil_water_layer_1_mean": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_mean": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_mean": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_mean": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily mean aggregate in m3/m3.",
+          "snow_depth_water_equivalent_min": "ERA5-Land snow water equivalent state variable; daily min aggregate in millimeters.",
+          "surface_net_solar_radiation_min": "ERA5-Land surface net solar radiation forcing; daily min aggregate in W/m2.",
+          "surface_net_thermal_radiation_min": "ERA5-Land surface net thermal radiation forcing; daily min aggregate in W/m2.",
+          "surface_pressure_min": "ERA5-Land surface pressure forcing; daily min aggregate in kPa.",
+          "temperature_2m_min": "ERA5-Land 2-meter air temperature forcing; daily min aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_min": "ERA5-Land 2-meter dew point temperature forcing; daily min aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_min": "ERA5-Land eastward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "v_component_of_wind_10m_min": "ERA5-Land northward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "volumetric_soil_water_layer_1_min": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_min": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_min": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_min": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily min aggregate in m3/m3.",
+          "snow_depth_water_equivalent_max": "ERA5-Land snow water equivalent state variable; daily max aggregate in millimeters.",
+          "surface_net_solar_radiation_max": "ERA5-Land surface net solar radiation forcing; daily max aggregate in W/m2.",
+          "surface_net_thermal_radiation_max": "ERA5-Land surface net thermal radiation forcing; daily max aggregate in W/m2.",
+          "surface_pressure_max": "ERA5-Land surface pressure forcing; daily max aggregate in kPa.",
+          "temperature_2m_max": "ERA5-Land 2-meter air temperature forcing; daily max aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_max": "ERA5-Land 2-meter dew point temperature forcing; daily max aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_max": "ERA5-Land eastward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "v_component_of_wind_10m_max": "ERA5-Land northward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "volumetric_soil_water_layer_1_max": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_max": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_max": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_max": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily max aggregate in m3/m3.",
+          "total_precipitation_sum": "ERA5-Land total precipitation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "potential_evaporation_sum": "ERA5-Land potential evaporation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "streamflow": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "streamflow"
+          ],
+          "exogenous_time_series": [
+            "snow_depth_water_equivalent_mean",
+            "surface_net_solar_radiation_mean",
+            "surface_net_thermal_radiation_mean",
+            "surface_pressure_mean",
+            "temperature_2m_mean",
+            "dewpoint_temperature_2m_mean",
+            "u_component_of_wind_10m_mean",
+            "v_component_of_wind_10m_mean",
+            "volumetric_soil_water_layer_1_mean",
+            "volumetric_soil_water_layer_2_mean",
+            "volumetric_soil_water_layer_3_mean",
+            "volumetric_soil_water_layer_4_mean",
+            "snow_depth_water_equivalent_min",
+            "surface_net_solar_radiation_min",
+            "surface_net_thermal_radiation_min",
+            "surface_pressure_min",
+            "temperature_2m_min",
+            "dewpoint_temperature_2m_min",
+            "u_component_of_wind_10m_min",
+            "v_component_of_wind_10m_min",
+            "volumetric_soil_water_layer_1_min",
+            "volumetric_soil_water_layer_2_min",
+            "volumetric_soil_water_layer_3_min",
+            "volumetric_soil_water_layer_4_min",
+            "snow_depth_water_equivalent_max",
+            "surface_net_solar_radiation_max",
+            "surface_net_thermal_radiation_max",
+            "surface_pressure_max",
+            "temperature_2m_max",
+            "dewpoint_temperature_2m_max",
+            "u_component_of_wind_10m_max",
+            "v_component_of_wind_10m_max",
+            "volumetric_soil_water_layer_1_max",
+            "volumetric_soil_water_layer_2_max",
+            "volumetric_soil_water_layer_3_max",
+            "volumetric_soil_water_layer_4_max",
+            "total_precipitation_sum",
+            "potential_evaporation_sum"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "HydroATLAS static catchment attributes",
+            "ERA5-Land climate attributes"
+          ]
+        }
+      }
+    },
+    {
+      "dataset_id": "caravan-camels-us",
+      "benchmark_id": "caravan_camels_us_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://www.nature.com/articles/s41597-023-01975-w",
+            "doi": "10.1038/s41597-023-01975-w",
+            "note": "Caravan standardized CAMELS-US subset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "7031 daily timestamps in processed benchmark metadata",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "dimensions": "Multivariate panel across 482 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "target_variable": "QObs(mm/d)",
+        "static_variables": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "high_prec_timing",
+          "low_prec_freq",
+          "low_prec_dur",
+          "low_prec_timing",
+          "q_mean",
+          "runoff_ratio",
+          "slope_fdc",
+          "baseflow_index",
+          "stream_elas",
+          "q5",
+          "q95",
+          "high_q_freq",
+          "high_q_dur",
+          "low_q_freq",
+          "low_q_dur",
+          "zero_q_freq",
+          "hfd_mean",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "area_gages2",
+          "dom_land_cover"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 3,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "prcp(mm/day)": "Daily precipitation forcing in the reduced Caravan hydrology benchmark input.",
+          "tmean(C)": "Daily mean air temperature forcing in the reduced Caravan hydrology benchmark input.",
+          "QObs(mm/d)": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response in the reduced Caravan hydrology benchmark input.",
+          "p_mean": "Long-term mean daily precipitation over the catchment, used as a static climate descriptor of water input.",
+          "pet_mean": "Long-term mean daily potential evapotranspiration over the catchment, representing atmospheric evaporative demand.",
+          "p_seasonality": "Precipitation seasonality and timing index; positive values indicate summer-peaking precipitation, negative values indicate winter-peaking precipitation, and values near zero indicate more uniform precipitation through the year.",
+          "frac_snow": "Fraction of precipitation falling as snow, typically estimated from precipitation on days with air temperature below 0 C.",
+          "aridity": "Aridity index: ratio of mean potential evapotranspiration to mean precipitation; larger values indicate a drier, more water-limited catchment climate.",
+          "high_prec_freq": "Frequency of high-precipitation days, conventionally days with precipitation at least five times the catchment mean daily precipitation.",
+          "high_prec_dur": "Average duration of high-precipitation events, counted as consecutive days meeting the high-precipitation threshold.",
+          "high_prec_timing": "Season during which most high-precipitation days occur, e.g. winter, spring, summer, or autumn.",
+          "low_prec_freq": "Frequency of dry days, conventionally days with precipitation below 1 mm/day.",
+          "low_prec_dur": "Average duration of dry periods, counted as consecutive dry days below the low-precipitation threshold.",
+          "low_prec_timing": "Season during which most dry days occur.",
+          "q_mean": "Mean streamflow/runoff static hydrology attribute.",
+          "runoff_ratio": "Ratio of runoff to precipitation.",
+          "slope_fdc": "Flow-duration curve slope.",
+          "baseflow_index": "Baseflow index.",
+          "stream_elas": "Streamflow elasticity.",
+          "q5": "5th percentile streamflow statistic.",
+          "q95": "95th percentile streamflow statistic.",
+          "high_q_freq": "Frequency of high-flow events.",
+          "high_q_dur": "Duration of high-flow events.",
+          "low_q_freq": "Frequency of low-flow events.",
+          "low_q_dur": "Duration of low-flow events.",
+          "zero_q_freq": "Frequency of zero-flow days.",
+          "hfd_mean": "Mean half-flow date.",
+          "gauge_lat": "Latitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "gauge_lon": "Longitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "elev_mean": "Mean catchment elevation.",
+          "area_gages2": "Catchment drainage area from gauge metadata.",
+          "dom_land_cover": "Dominant land-cover class."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "QObs(mm/d)"
+          ],
+          "exogenous_time_series": [
+            "prcp(mm/day)",
+            "tmean(C)"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "p_mean",
+            "pet_mean",
+            "p_seasonality",
+            "frac_snow",
+            "aridity",
+            "high_prec_freq",
+            "high_prec_dur",
+            "high_prec_timing",
+            "low_prec_freq",
+            "low_prec_dur",
+            "low_prec_timing",
+            "q_mean",
+            "runoff_ratio",
+            "slope_fdc",
+            "baseflow_index",
+            "stream_elas",
+            "q5",
+            "q95",
+            "high_q_freq",
+            "high_q_dur",
+            "low_q_freq",
+            "low_q_dur",
+            "zero_q_freq",
+            "hfd_mean",
+            "gauge_lat",
+            "gauge_lon",
+            "elev_mean",
+            "area_gages2",
+            "dom_land_cover"
+          ]
+        },
+        "variable_aliases": {
+          "QObs(mm/d)": [
+            "streamflow"
+          ]
+        }
+      },
+      "actual_data_check": {
+        "metadata": "/Users/eriche/Downloads/metadata_camels_479_crosstrain.json",
+        "static_shape_observed": "BasicInputStaticProps_camels_479_crosstrain.npy has shape (479, 30)"
+      }
+    },
+    {
+      "dataset_id": "caravan-camels-aus",
+      "benchmark_id": "caravan_camels_aus_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://essd.copernicus.org/articles/13/3847/2021/",
+            "doi": "10.5194/essd-13-3847-2021",
+            "note": "Caravan standardized CAMELS-AUS subset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "Daily hydrometeorological time series in upstream CAMELS-AUS; Caravan processed subset used by the hydrology paper.",
+        "variables": [
+          "daily_hydrometeorological_variables",
+          "streamflow",
+          "catchment_attributes"
+        ],
+        "dimensions": "Multivariate panel across 150 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "snow_depth_water_equivalent_mean",
+          "surface_net_solar_radiation_mean",
+          "surface_net_thermal_radiation_mean",
+          "surface_pressure_mean",
+          "temperature_2m_mean",
+          "dewpoint_temperature_2m_mean",
+          "u_component_of_wind_10m_mean",
+          "v_component_of_wind_10m_mean",
+          "volumetric_soil_water_layer_1_mean",
+          "volumetric_soil_water_layer_2_mean",
+          "volumetric_soil_water_layer_3_mean",
+          "volumetric_soil_water_layer_4_mean",
+          "snow_depth_water_equivalent_min",
+          "surface_net_solar_radiation_min",
+          "surface_net_thermal_radiation_min",
+          "surface_pressure_min",
+          "temperature_2m_min",
+          "dewpoint_temperature_2m_min",
+          "u_component_of_wind_10m_min",
+          "v_component_of_wind_10m_min",
+          "volumetric_soil_water_layer_1_min",
+          "volumetric_soil_water_layer_2_min",
+          "volumetric_soil_water_layer_3_min",
+          "volumetric_soil_water_layer_4_min",
+          "snow_depth_water_equivalent_max",
+          "surface_net_solar_radiation_max",
+          "surface_net_thermal_radiation_max",
+          "surface_pressure_max",
+          "temperature_2m_max",
+          "dewpoint_temperature_2m_max",
+          "u_component_of_wind_10m_max",
+          "v_component_of_wind_10m_max",
+          "volumetric_soil_water_layer_1_max",
+          "volumetric_soil_water_layer_2_max",
+          "volumetric_soil_water_layer_3_max",
+          "volumetric_soil_water_layer_4_max",
+          "total_precipitation_sum",
+          "potential_evaporation_sum",
+          "streamflow"
+        ],
+        "target_variable": "streamflow",
+        "static_variables": [
+          "HydroATLAS static catchment attributes",
+          "ERA5-Land climate attributes"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 39,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "snow_depth_water_equivalent_mean": "ERA5-Land snow water equivalent state variable; daily mean aggregate in millimeters.",
+          "surface_net_solar_radiation_mean": "ERA5-Land surface net solar radiation forcing; daily mean aggregate in W/m2.",
+          "surface_net_thermal_radiation_mean": "ERA5-Land surface net thermal radiation forcing; daily mean aggregate in W/m2.",
+          "surface_pressure_mean": "ERA5-Land surface pressure forcing; daily mean aggregate in kPa.",
+          "temperature_2m_mean": "ERA5-Land 2-meter air temperature forcing; daily mean aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_mean": "ERA5-Land 2-meter dew point temperature forcing; daily mean aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_mean": "ERA5-Land eastward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "v_component_of_wind_10m_mean": "ERA5-Land northward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "volumetric_soil_water_layer_1_mean": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_mean": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_mean": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_mean": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily mean aggregate in m3/m3.",
+          "snow_depth_water_equivalent_min": "ERA5-Land snow water equivalent state variable; daily min aggregate in millimeters.",
+          "surface_net_solar_radiation_min": "ERA5-Land surface net solar radiation forcing; daily min aggregate in W/m2.",
+          "surface_net_thermal_radiation_min": "ERA5-Land surface net thermal radiation forcing; daily min aggregate in W/m2.",
+          "surface_pressure_min": "ERA5-Land surface pressure forcing; daily min aggregate in kPa.",
+          "temperature_2m_min": "ERA5-Land 2-meter air temperature forcing; daily min aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_min": "ERA5-Land 2-meter dew point temperature forcing; daily min aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_min": "ERA5-Land eastward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "v_component_of_wind_10m_min": "ERA5-Land northward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "volumetric_soil_water_layer_1_min": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_min": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_min": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_min": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily min aggregate in m3/m3.",
+          "snow_depth_water_equivalent_max": "ERA5-Land snow water equivalent state variable; daily max aggregate in millimeters.",
+          "surface_net_solar_radiation_max": "ERA5-Land surface net solar radiation forcing; daily max aggregate in W/m2.",
+          "surface_net_thermal_radiation_max": "ERA5-Land surface net thermal radiation forcing; daily max aggregate in W/m2.",
+          "surface_pressure_max": "ERA5-Land surface pressure forcing; daily max aggregate in kPa.",
+          "temperature_2m_max": "ERA5-Land 2-meter air temperature forcing; daily max aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_max": "ERA5-Land 2-meter dew point temperature forcing; daily max aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_max": "ERA5-Land eastward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "v_component_of_wind_10m_max": "ERA5-Land northward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "volumetric_soil_water_layer_1_max": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_max": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_max": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_max": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily max aggregate in m3/m3.",
+          "total_precipitation_sum": "ERA5-Land total precipitation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "potential_evaporation_sum": "ERA5-Land potential evaporation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "streamflow": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "streamflow"
+          ],
+          "exogenous_time_series": [
+            "snow_depth_water_equivalent_mean",
+            "surface_net_solar_radiation_mean",
+            "surface_net_thermal_radiation_mean",
+            "surface_pressure_mean",
+            "temperature_2m_mean",
+            "dewpoint_temperature_2m_mean",
+            "u_component_of_wind_10m_mean",
+            "v_component_of_wind_10m_mean",
+            "volumetric_soil_water_layer_1_mean",
+            "volumetric_soil_water_layer_2_mean",
+            "volumetric_soil_water_layer_3_mean",
+            "volumetric_soil_water_layer_4_mean",
+            "snow_depth_water_equivalent_min",
+            "surface_net_solar_radiation_min",
+            "surface_net_thermal_radiation_min",
+            "surface_pressure_min",
+            "temperature_2m_min",
+            "dewpoint_temperature_2m_min",
+            "u_component_of_wind_10m_min",
+            "v_component_of_wind_10m_min",
+            "volumetric_soil_water_layer_1_min",
+            "volumetric_soil_water_layer_2_min",
+            "volumetric_soil_water_layer_3_min",
+            "volumetric_soil_water_layer_4_min",
+            "snow_depth_water_equivalent_max",
+            "surface_net_solar_radiation_max",
+            "surface_net_thermal_radiation_max",
+            "surface_pressure_max",
+            "temperature_2m_max",
+            "dewpoint_temperature_2m_max",
+            "u_component_of_wind_10m_max",
+            "v_component_of_wind_10m_max",
+            "volumetric_soil_water_layer_1_max",
+            "volumetric_soil_water_layer_2_max",
+            "volumetric_soil_water_layer_3_max",
+            "volumetric_soil_water_layer_4_max",
+            "total_precipitation_sum",
+            "potential_evaporation_sum"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "HydroATLAS static catchment attributes",
+            "ERA5-Land climate attributes"
+          ]
+        }
+      }
+    },
+    {
+      "dataset_id": "caravan-camels-br",
+      "benchmark_id": "caravan_camels_br_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://doi.org/10.5194/essd-12-2075-2020",
+            "doi": "10.5194/essd-12-2075-2020",
+            "note": "Caravan standardized CAMELS-BR subset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "Daily hydrometeorological time series in upstream CAMELS-BR; Caravan processed subset used by the hydrology paper.",
+        "variables": [
+          "daily_meteorological_variables",
+          "streamflow",
+          "catchment_attributes"
+        ],
+        "dimensions": "Multivariate panel across 376 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "snow_depth_water_equivalent_mean",
+          "surface_net_solar_radiation_mean",
+          "surface_net_thermal_radiation_mean",
+          "surface_pressure_mean",
+          "temperature_2m_mean",
+          "dewpoint_temperature_2m_mean",
+          "u_component_of_wind_10m_mean",
+          "v_component_of_wind_10m_mean",
+          "volumetric_soil_water_layer_1_mean",
+          "volumetric_soil_water_layer_2_mean",
+          "volumetric_soil_water_layer_3_mean",
+          "volumetric_soil_water_layer_4_mean",
+          "snow_depth_water_equivalent_min",
+          "surface_net_solar_radiation_min",
+          "surface_net_thermal_radiation_min",
+          "surface_pressure_min",
+          "temperature_2m_min",
+          "dewpoint_temperature_2m_min",
+          "u_component_of_wind_10m_min",
+          "v_component_of_wind_10m_min",
+          "volumetric_soil_water_layer_1_min",
+          "volumetric_soil_water_layer_2_min",
+          "volumetric_soil_water_layer_3_min",
+          "volumetric_soil_water_layer_4_min",
+          "snow_depth_water_equivalent_max",
+          "surface_net_solar_radiation_max",
+          "surface_net_thermal_radiation_max",
+          "surface_pressure_max",
+          "temperature_2m_max",
+          "dewpoint_temperature_2m_max",
+          "u_component_of_wind_10m_max",
+          "v_component_of_wind_10m_max",
+          "volumetric_soil_water_layer_1_max",
+          "volumetric_soil_water_layer_2_max",
+          "volumetric_soil_water_layer_3_max",
+          "volumetric_soil_water_layer_4_max",
+          "total_precipitation_sum",
+          "potential_evaporation_sum",
+          "streamflow"
+        ],
+        "target_variable": "streamflow",
+        "static_variables": [
+          "HydroATLAS static catchment attributes",
+          "ERA5-Land climate attributes"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 39,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "snow_depth_water_equivalent_mean": "ERA5-Land snow water equivalent state variable; daily mean aggregate in millimeters.",
+          "surface_net_solar_radiation_mean": "ERA5-Land surface net solar radiation forcing; daily mean aggregate in W/m2.",
+          "surface_net_thermal_radiation_mean": "ERA5-Land surface net thermal radiation forcing; daily mean aggregate in W/m2.",
+          "surface_pressure_mean": "ERA5-Land surface pressure forcing; daily mean aggregate in kPa.",
+          "temperature_2m_mean": "ERA5-Land 2-meter air temperature forcing; daily mean aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_mean": "ERA5-Land 2-meter dew point temperature forcing; daily mean aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_mean": "ERA5-Land eastward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "v_component_of_wind_10m_mean": "ERA5-Land northward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "volumetric_soil_water_layer_1_mean": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_mean": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_mean": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_mean": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily mean aggregate in m3/m3.",
+          "snow_depth_water_equivalent_min": "ERA5-Land snow water equivalent state variable; daily min aggregate in millimeters.",
+          "surface_net_solar_radiation_min": "ERA5-Land surface net solar radiation forcing; daily min aggregate in W/m2.",
+          "surface_net_thermal_radiation_min": "ERA5-Land surface net thermal radiation forcing; daily min aggregate in W/m2.",
+          "surface_pressure_min": "ERA5-Land surface pressure forcing; daily min aggregate in kPa.",
+          "temperature_2m_min": "ERA5-Land 2-meter air temperature forcing; daily min aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_min": "ERA5-Land 2-meter dew point temperature forcing; daily min aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_min": "ERA5-Land eastward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "v_component_of_wind_10m_min": "ERA5-Land northward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "volumetric_soil_water_layer_1_min": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_min": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_min": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_min": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily min aggregate in m3/m3.",
+          "snow_depth_water_equivalent_max": "ERA5-Land snow water equivalent state variable; daily max aggregate in millimeters.",
+          "surface_net_solar_radiation_max": "ERA5-Land surface net solar radiation forcing; daily max aggregate in W/m2.",
+          "surface_net_thermal_radiation_max": "ERA5-Land surface net thermal radiation forcing; daily max aggregate in W/m2.",
+          "surface_pressure_max": "ERA5-Land surface pressure forcing; daily max aggregate in kPa.",
+          "temperature_2m_max": "ERA5-Land 2-meter air temperature forcing; daily max aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_max": "ERA5-Land 2-meter dew point temperature forcing; daily max aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_max": "ERA5-Land eastward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "v_component_of_wind_10m_max": "ERA5-Land northward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "volumetric_soil_water_layer_1_max": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_max": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_max": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_max": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily max aggregate in m3/m3.",
+          "total_precipitation_sum": "ERA5-Land total precipitation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "potential_evaporation_sum": "ERA5-Land potential evaporation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "streamflow": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "streamflow"
+          ],
+          "exogenous_time_series": [
+            "snow_depth_water_equivalent_mean",
+            "surface_net_solar_radiation_mean",
+            "surface_net_thermal_radiation_mean",
+            "surface_pressure_mean",
+            "temperature_2m_mean",
+            "dewpoint_temperature_2m_mean",
+            "u_component_of_wind_10m_mean",
+            "v_component_of_wind_10m_mean",
+            "volumetric_soil_water_layer_1_mean",
+            "volumetric_soil_water_layer_2_mean",
+            "volumetric_soil_water_layer_3_mean",
+            "volumetric_soil_water_layer_4_mean",
+            "snow_depth_water_equivalent_min",
+            "surface_net_solar_radiation_min",
+            "surface_net_thermal_radiation_min",
+            "surface_pressure_min",
+            "temperature_2m_min",
+            "dewpoint_temperature_2m_min",
+            "u_component_of_wind_10m_min",
+            "v_component_of_wind_10m_min",
+            "volumetric_soil_water_layer_1_min",
+            "volumetric_soil_water_layer_2_min",
+            "volumetric_soil_water_layer_3_min",
+            "volumetric_soil_water_layer_4_min",
+            "snow_depth_water_equivalent_max",
+            "surface_net_solar_radiation_max",
+            "surface_net_thermal_radiation_max",
+            "surface_pressure_max",
+            "temperature_2m_max",
+            "dewpoint_temperature_2m_max",
+            "u_component_of_wind_10m_max",
+            "v_component_of_wind_10m_max",
+            "volumetric_soil_water_layer_1_max",
+            "volumetric_soil_water_layer_2_max",
+            "volumetric_soil_water_layer_3_max",
+            "volumetric_soil_water_layer_4_max",
+            "total_precipitation_sum",
+            "potential_evaporation_sum"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "HydroATLAS static catchment attributes",
+            "ERA5-Land climate attributes"
+          ]
+        }
+      }
+    },
+    {
+      "dataset_id": "caravan-camels-cl",
+      "benchmark_id": "caravan_camels_cl_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://www.cr2.cl/camels-cl/",
+            "doi": "10.5194/hess-22-5817-2018",
+            "note": "Caravan standardized CAMELS-CL subset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "7031 daily timestamps in processed benchmark metadata",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "dimensions": "Multivariate panel across 314 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "target_variable": "QObs(mm/d)"
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 3,
+        "has_exogenous_covariates": true,
+        "has_static_features": false,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "prcp(mm/day)": "Daily precipitation forcing in the reduced Caravan hydrology benchmark input.",
+          "tmean(C)": "Daily mean air temperature forcing in the reduced Caravan hydrology benchmark input.",
+          "QObs(mm/d)": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response in the reduced Caravan hydrology benchmark input."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "QObs(mm/d)"
+          ],
+          "exogenous_time_series": [
+            "prcp(mm/day)",
+            "tmean(C)"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": []
+        },
+        "variable_aliases": {
+          "QObs(mm/d)": [
+            "streamflow"
+          ]
+        }
+      }
+    },
+    {
+      "dataset_id": "caravan-camels-gb",
+      "benchmark_id": "caravan_camels_gb_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://essd.copernicus.org/articles/12/2459/2020/",
+            "doi": "10.5194/essd-12-2459-2020",
+            "note": "Caravan standardized CAMELS-GB subset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "7031 daily timestamps in processed benchmark metadata",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "dimensions": "Multivariate panel across 408 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "target_variable": "QObs(mm/d)"
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 3,
+        "has_exogenous_covariates": true,
+        "has_static_features": false,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "prcp(mm/day)": "Daily precipitation forcing in the reduced Caravan hydrology benchmark input.",
+          "tmean(C)": "Daily mean air temperature forcing in the reduced Caravan hydrology benchmark input.",
+          "QObs(mm/d)": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response in the reduced Caravan hydrology benchmark input."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "QObs(mm/d)"
+          ],
+          "exogenous_time_series": [
+            "prcp(mm/day)",
+            "tmean(C)"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": []
+        },
+        "variable_aliases": {
+          "QObs(mm/d)": [
+            "streamflow"
+          ]
+        }
+      }
+    },
+    {
+      "dataset_id": "caravan-hysets",
+      "benchmark_id": "caravan_hysets_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://www.nature.com/articles/s41597-020-00583-2",
+            "doi": "10.1038/s41597-020-00583-2",
+            "note": "Caravan standardized HYSETS North American hydrometeorological subset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "7031 daily timestamps from 1989-10-02 to 2008-12-31 in local processed metadata",
+        "variables": [
+          "snow_depth_water_equivalent",
+          "surface_net_solar_radiation",
+          "surface_net_thermal_radiation",
+          "surface_pressure",
+          "temperature_2m",
+          "dewpoint_temperature_2m",
+          "wind_10m",
+          "volumetric_soil_water",
+          "total_precipitation_sum",
+          "potential_evaporation_sum",
+          "streamflow"
+        ],
+        "dimensions": "Multivariate panel across 4621 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "snow_depth_water_equivalent_mean",
+          "surface_net_solar_radiation_mean",
+          "surface_net_thermal_radiation_mean",
+          "surface_pressure_mean",
+          "temperature_2m_mean",
+          "dewpoint_temperature_2m_mean",
+          "u_component_of_wind_10m_mean",
+          "v_component_of_wind_10m_mean",
+          "volumetric_soil_water_layer_1_mean",
+          "volumetric_soil_water_layer_2_mean",
+          "volumetric_soil_water_layer_3_mean",
+          "volumetric_soil_water_layer_4_mean",
+          "snow_depth_water_equivalent_min",
+          "surface_net_solar_radiation_min",
+          "surface_net_thermal_radiation_min",
+          "surface_pressure_min",
+          "temperature_2m_min",
+          "dewpoint_temperature_2m_min",
+          "u_component_of_wind_10m_min",
+          "v_component_of_wind_10m_min",
+          "volumetric_soil_water_layer_1_min",
+          "volumetric_soil_water_layer_2_min",
+          "volumetric_soil_water_layer_3_min",
+          "volumetric_soil_water_layer_4_min",
+          "snow_depth_water_equivalent_max",
+          "surface_net_solar_radiation_max",
+          "surface_net_thermal_radiation_max",
+          "surface_pressure_max",
+          "temperature_2m_max",
+          "dewpoint_temperature_2m_max",
+          "u_component_of_wind_10m_max",
+          "v_component_of_wind_10m_max",
+          "volumetric_soil_water_layer_1_max",
+          "volumetric_soil_water_layer_2_max",
+          "volumetric_soil_water_layer_3_max",
+          "volumetric_soil_water_layer_4_max",
+          "total_precipitation_sum",
+          "potential_evaporation_sum",
+          "streamflow"
+        ],
+        "target_variable": "streamflow",
+        "static_variables": [
+          "p_mean",
+          "pet_mean",
+          "aridity",
+          "frac_snow",
+          "moisture_index",
+          "seasonality",
+          "high_prec_freq",
+          "high_prec_dur",
+          "low_prec_freq",
+          "low_prec_dur",
+          "gauge_lat",
+          "gauge_lon",
+          "area"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 39,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "snow_depth_water_equivalent_mean": "ERA5-Land snow water equivalent state variable; daily mean aggregate in millimeters.",
+          "surface_net_solar_radiation_mean": "ERA5-Land surface net solar radiation forcing; daily mean aggregate in W/m2.",
+          "surface_net_thermal_radiation_mean": "ERA5-Land surface net thermal radiation forcing; daily mean aggregate in W/m2.",
+          "surface_pressure_mean": "ERA5-Land surface pressure forcing; daily mean aggregate in kPa.",
+          "temperature_2m_mean": "ERA5-Land 2-meter air temperature forcing; daily mean aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_mean": "ERA5-Land 2-meter dew point temperature forcing; daily mean aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_mean": "ERA5-Land eastward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "v_component_of_wind_10m_mean": "ERA5-Land northward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "volumetric_soil_water_layer_1_mean": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_mean": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_mean": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_mean": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily mean aggregate in m3/m3.",
+          "snow_depth_water_equivalent_min": "ERA5-Land snow water equivalent state variable; daily min aggregate in millimeters.",
+          "surface_net_solar_radiation_min": "ERA5-Land surface net solar radiation forcing; daily min aggregate in W/m2.",
+          "surface_net_thermal_radiation_min": "ERA5-Land surface net thermal radiation forcing; daily min aggregate in W/m2.",
+          "surface_pressure_min": "ERA5-Land surface pressure forcing; daily min aggregate in kPa.",
+          "temperature_2m_min": "ERA5-Land 2-meter air temperature forcing; daily min aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_min": "ERA5-Land 2-meter dew point temperature forcing; daily min aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_min": "ERA5-Land eastward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "v_component_of_wind_10m_min": "ERA5-Land northward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "volumetric_soil_water_layer_1_min": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_min": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_min": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_min": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily min aggregate in m3/m3.",
+          "snow_depth_water_equivalent_max": "ERA5-Land snow water equivalent state variable; daily max aggregate in millimeters.",
+          "surface_net_solar_radiation_max": "ERA5-Land surface net solar radiation forcing; daily max aggregate in W/m2.",
+          "surface_net_thermal_radiation_max": "ERA5-Land surface net thermal radiation forcing; daily max aggregate in W/m2.",
+          "surface_pressure_max": "ERA5-Land surface pressure forcing; daily max aggregate in kPa.",
+          "temperature_2m_max": "ERA5-Land 2-meter air temperature forcing; daily max aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_max": "ERA5-Land 2-meter dew point temperature forcing; daily max aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_max": "ERA5-Land eastward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "v_component_of_wind_10m_max": "ERA5-Land northward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "volumetric_soil_water_layer_1_max": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_max": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_max": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_max": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily max aggregate in m3/m3.",
+          "total_precipitation_sum": "ERA5-Land total precipitation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "potential_evaporation_sum": "ERA5-Land potential evaporation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "streamflow": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response.",
+          "p_mean": "Long-term mean daily precipitation over the catchment, used as a static climate descriptor of water input.",
+          "pet_mean": "Long-term mean daily potential evapotranspiration over the catchment, representing atmospheric evaporative demand.",
+          "aridity": "Aridity index: ratio of mean potential evapotranspiration to mean precipitation; larger values indicate a drier, more water-limited catchment climate.",
+          "frac_snow": "Fraction of precipitation falling as snow, typically estimated from precipitation on days with air temperature below 0 C.",
+          "moisture_index": "Climate moisture index for the catchment.",
+          "seasonality": "Seasonality index for catchment hydroclimate.",
+          "high_prec_freq": "Frequency of high-precipitation days, conventionally days with precipitation at least five times the catchment mean daily precipitation.",
+          "high_prec_dur": "Average duration of high-precipitation events, counted as consecutive days meeting the high-precipitation threshold.",
+          "low_prec_freq": "Frequency of dry days, conventionally days with precipitation below 1 mm/day.",
+          "low_prec_dur": "Average duration of dry periods, counted as consecutive dry days below the low-precipitation threshold.",
+          "gauge_lat": "Latitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "gauge_lon": "Longitude of the streamflow gauge or basin outlet used to locate the catchment.",
+          "area": "Drainage area of the catchment contributing flow to the gauge or outlet."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "streamflow"
+          ],
+          "exogenous_time_series": [
+            "snow_depth_water_equivalent_mean",
+            "surface_net_solar_radiation_mean",
+            "surface_net_thermal_radiation_mean",
+            "surface_pressure_mean",
+            "temperature_2m_mean",
+            "dewpoint_temperature_2m_mean",
+            "u_component_of_wind_10m_mean",
+            "v_component_of_wind_10m_mean",
+            "volumetric_soil_water_layer_1_mean",
+            "volumetric_soil_water_layer_2_mean",
+            "volumetric_soil_water_layer_3_mean",
+            "volumetric_soil_water_layer_4_mean",
+            "snow_depth_water_equivalent_min",
+            "surface_net_solar_radiation_min",
+            "surface_net_thermal_radiation_min",
+            "surface_pressure_min",
+            "temperature_2m_min",
+            "dewpoint_temperature_2m_min",
+            "u_component_of_wind_10m_min",
+            "v_component_of_wind_10m_min",
+            "volumetric_soil_water_layer_1_min",
+            "volumetric_soil_water_layer_2_min",
+            "volumetric_soil_water_layer_3_min",
+            "volumetric_soil_water_layer_4_min",
+            "snow_depth_water_equivalent_max",
+            "surface_net_solar_radiation_max",
+            "surface_net_thermal_radiation_max",
+            "surface_pressure_max",
+            "temperature_2m_max",
+            "dewpoint_temperature_2m_max",
+            "u_component_of_wind_10m_max",
+            "v_component_of_wind_10m_max",
+            "volumetric_soil_water_layer_1_max",
+            "volumetric_soil_water_layer_2_max",
+            "volumetric_soil_water_layer_3_max",
+            "volumetric_soil_water_layer_4_max",
+            "total_precipitation_sum",
+            "potential_evaporation_sum"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "p_mean",
+            "pet_mean",
+            "aridity",
+            "frac_snow",
+            "moisture_index",
+            "seasonality",
+            "high_prec_freq",
+            "high_prec_dur",
+            "low_prec_freq",
+            "low_prec_dur",
+            "gauge_lat",
+            "gauge_lon",
+            "area"
+          ]
+        }
+      },
+      "actual_data_check": {
+        "metadata": "/Users/eriche/Downloads/metadata_hysets.json",
+        "static_shape_observed": "BasicInputStaticProps_hysets.npy has shape (323, 14)",
+        "note": "Local fragment is smaller than the full Caravan HYSETS subset reported in the paper."
+      }
+    },
+    {
+      "dataset_id": "caravan-lamah-ce",
+      "benchmark_id": "caravan_lamah_ce_hydrology",
+      "implementation": {
+        "module": null,
+        "class": null
+      },
+      "source": {
+        "type": "zenodo",
+        "doi": "10.5281/zenodo.13975174",
+        "url": "https://zenodo.org/records/13975174",
+        "files": {
+          "archive": "hydrology_data_processed.zip"
+        },
+        "upstream": [
+          {
+            "url": "https://essd.copernicus.org/articles/13/4529/2021/",
+            "doi": "10.5194/essd-13-4529-2021",
+            "note": "Caravan standardized LamaH-CE subset."
+          }
+        ]
+      },
+      "benchmark_ready": false,
+      "taxonomy": [
+        "Regularly sampled",
+        "Panel",
+        "Spatio temporal",
+        "Hydrology",
+        "Exogenous covariates",
+        "Pure numerical",
+        "Seasonal",
+        "Physical-law constrained"
+      ],
+      "capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV",
+          "MV-MV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned",
+          "traditional_training"
+        ]
+      },
+      "frequency": {
+        "recorded_frequency": "Daily"
+      },
+      "shape": {
+        "timePoints": "Daily Central Europe hydrometeorological time series in upstream LamaH-CE; Caravan processed subset used by the hydrology paper.",
+        "variables": [
+          "daily_hydrometeorological_variables",
+          "streamflow",
+          "catchment_attributes"
+        ],
+        "dimensions": "Multivariate panel across 479 catchments/basins"
+      },
+      "evaluation": {
+        "metrics": [
+          "RMSE",
+          "NNSE",
+          "MSE",
+          "MAE"
+        ]
+      },
+      "canonical_schema": {
+        "format": "long_dataframe",
+        "index_columns": [
+          "item_id",
+          "timestamp"
+        ],
+        "variable_column": "variable",
+        "value_column": "value",
+        "variables": [
+          "snow_depth_water_equivalent_mean",
+          "surface_net_solar_radiation_mean",
+          "surface_net_thermal_radiation_mean",
+          "surface_pressure_mean",
+          "temperature_2m_mean",
+          "dewpoint_temperature_2m_mean",
+          "u_component_of_wind_10m_mean",
+          "v_component_of_wind_10m_mean",
+          "volumetric_soil_water_layer_1_mean",
+          "volumetric_soil_water_layer_2_mean",
+          "volumetric_soil_water_layer_3_mean",
+          "volumetric_soil_water_layer_4_mean",
+          "snow_depth_water_equivalent_min",
+          "surface_net_solar_radiation_min",
+          "surface_net_thermal_radiation_min",
+          "surface_pressure_min",
+          "temperature_2m_min",
+          "dewpoint_temperature_2m_min",
+          "u_component_of_wind_10m_min",
+          "v_component_of_wind_10m_min",
+          "volumetric_soil_water_layer_1_min",
+          "volumetric_soil_water_layer_2_min",
+          "volumetric_soil_water_layer_3_min",
+          "volumetric_soil_water_layer_4_min",
+          "snow_depth_water_equivalent_max",
+          "surface_net_solar_radiation_max",
+          "surface_net_thermal_radiation_max",
+          "surface_pressure_max",
+          "temperature_2m_max",
+          "dewpoint_temperature_2m_max",
+          "u_component_of_wind_10m_max",
+          "v_component_of_wind_10m_max",
+          "volumetric_soil_water_layer_1_max",
+          "volumetric_soil_water_layer_2_max",
+          "volumetric_soil_water_layer_3_max",
+          "volumetric_soil_water_layer_4_max",
+          "total_precipitation_sum",
+          "potential_evaporation_sum",
+          "streamflow"
+        ],
+        "target_variable": "streamflow",
+        "static_variables": [
+          "HydroATLAS static catchment attributes",
+          "ERA5-Land climate attributes"
+        ]
+      },
+      "agent_facets": {
+        "domain": "hydrology",
+        "frequency": "daily",
+        "frequency_seconds": 86400,
+        "series_type": "multivariate",
+        "num_variables": 39,
+        "has_exogenous_covariates": true,
+        "has_static_features": true,
+        "seasonality": [
+          "annual"
+        ],
+        "category_label_source": "Official CAMELS/Caravan documentation identifies these as large-sample hydrology datasets with daily hydrometeorological forcings, streamflow targets, and static catchment attributes; local processed metadata was used to confirm benchmark variable names.",
+        "variable_semantics": {
+          "snow_depth_water_equivalent_mean": "ERA5-Land snow water equivalent state variable; daily mean aggregate in millimeters.",
+          "surface_net_solar_radiation_mean": "ERA5-Land surface net solar radiation forcing; daily mean aggregate in W/m2.",
+          "surface_net_thermal_radiation_mean": "ERA5-Land surface net thermal radiation forcing; daily mean aggregate in W/m2.",
+          "surface_pressure_mean": "ERA5-Land surface pressure forcing; daily mean aggregate in kPa.",
+          "temperature_2m_mean": "ERA5-Land 2-meter air temperature forcing; daily mean aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_mean": "ERA5-Land 2-meter dew point temperature forcing; daily mean aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_mean": "ERA5-Land eastward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "v_component_of_wind_10m_mean": "ERA5-Land northward 10-meter wind component forcing; daily mean aggregate in m/s.",
+          "volumetric_soil_water_layer_1_mean": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_mean": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_mean": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily mean aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_mean": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily mean aggregate in m3/m3.",
+          "snow_depth_water_equivalent_min": "ERA5-Land snow water equivalent state variable; daily min aggregate in millimeters.",
+          "surface_net_solar_radiation_min": "ERA5-Land surface net solar radiation forcing; daily min aggregate in W/m2.",
+          "surface_net_thermal_radiation_min": "ERA5-Land surface net thermal radiation forcing; daily min aggregate in W/m2.",
+          "surface_pressure_min": "ERA5-Land surface pressure forcing; daily min aggregate in kPa.",
+          "temperature_2m_min": "ERA5-Land 2-meter air temperature forcing; daily min aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_min": "ERA5-Land 2-meter dew point temperature forcing; daily min aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_min": "ERA5-Land eastward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "v_component_of_wind_10m_min": "ERA5-Land northward 10-meter wind component forcing; daily min aggregate in m/s.",
+          "volumetric_soil_water_layer_1_min": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_min": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_min": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily min aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_min": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily min aggregate in m3/m3.",
+          "snow_depth_water_equivalent_max": "ERA5-Land snow water equivalent state variable; daily max aggregate in millimeters.",
+          "surface_net_solar_radiation_max": "ERA5-Land surface net solar radiation forcing; daily max aggregate in W/m2.",
+          "surface_net_thermal_radiation_max": "ERA5-Land surface net thermal radiation forcing; daily max aggregate in W/m2.",
+          "surface_pressure_max": "ERA5-Land surface pressure forcing; daily max aggregate in kPa.",
+          "temperature_2m_max": "ERA5-Land 2-meter air temperature forcing; daily max aggregate in degrees Celsius.",
+          "dewpoint_temperature_2m_max": "ERA5-Land 2-meter dew point temperature forcing; daily max aggregate in degrees Celsius.",
+          "u_component_of_wind_10m_max": "ERA5-Land eastward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "v_component_of_wind_10m_max": "ERA5-Land northward 10-meter wind component forcing; daily max aggregate in m/s.",
+          "volumetric_soil_water_layer_1_max": "ERA5-Land volumetric soil water in layer 1, 0-7 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_2_max": "ERA5-Land volumetric soil water in layer 2, 7-28 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_3_max": "ERA5-Land volumetric soil water in layer 3, 28-100 cm; daily max aggregate in m3/m3.",
+          "volumetric_soil_water_layer_4_max": "ERA5-Land volumetric soil water in layer 4, 100-289 cm; daily max aggregate in m3/m3.",
+          "total_precipitation_sum": "ERA5-Land total precipitation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "potential_evaporation_sum": "ERA5-Land potential evaporation forcing aggregated as a daily sum in mm/day; exogenous meteorological forcing.",
+          "streamflow": "Observed streamflow normalized by catchment area as runoff depth in mm/day; target hydrological response."
+        },
+        "variable_roles": {
+          "target_time_series": [
+            "streamflow"
+          ],
+          "exogenous_time_series": [
+            "snow_depth_water_equivalent_mean",
+            "surface_net_solar_radiation_mean",
+            "surface_net_thermal_radiation_mean",
+            "surface_pressure_mean",
+            "temperature_2m_mean",
+            "dewpoint_temperature_2m_mean",
+            "u_component_of_wind_10m_mean",
+            "v_component_of_wind_10m_mean",
+            "volumetric_soil_water_layer_1_mean",
+            "volumetric_soil_water_layer_2_mean",
+            "volumetric_soil_water_layer_3_mean",
+            "volumetric_soil_water_layer_4_mean",
+            "snow_depth_water_equivalent_min",
+            "surface_net_solar_radiation_min",
+            "surface_net_thermal_radiation_min",
+            "surface_pressure_min",
+            "temperature_2m_min",
+            "dewpoint_temperature_2m_min",
+            "u_component_of_wind_10m_min",
+            "v_component_of_wind_10m_min",
+            "volumetric_soil_water_layer_1_min",
+            "volumetric_soil_water_layer_2_min",
+            "volumetric_soil_water_layer_3_min",
+            "volumetric_soil_water_layer_4_min",
+            "snow_depth_water_equivalent_max",
+            "surface_net_solar_radiation_max",
+            "surface_net_thermal_radiation_max",
+            "surface_pressure_max",
+            "temperature_2m_max",
+            "dewpoint_temperature_2m_max",
+            "u_component_of_wind_10m_max",
+            "v_component_of_wind_10m_max",
+            "volumetric_soil_water_layer_1_max",
+            "volumetric_soil_water_layer_2_max",
+            "volumetric_soil_water_layer_3_max",
+            "volumetric_soil_water_layer_4_max",
+            "total_precipitation_sum",
+            "potential_evaporation_sum"
+          ],
+          "known_future_time_series": [],
+          "static_exogenous_attributes": [
+            "HydroATLAS static catchment attributes",
+            "ERA5-Land climate attributes"
+          ]
         }
       }
     }

@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "suite_id": "gifteval",
+  "source": {
+    "type": "colab_exports",
+    "description": "Curated GIFT-Eval Colab run registries copied from local downloaded model export folders.",
+    "source_folders": {
+      "chronos-2": "/Users/eriche/Downloads/chronos2-gifteval/run-registries",
+      "granite-flowstate": "/Users/eriche/Downloads/flowstate-gifteval/run-registries",
+      "moirai2": "/Users/eriche/Downloads/moirai2-gifteval/run-registries",
+      "patchtst-fm": "/Users/eriche/Downloads/patchtst-gifteval/run-registries",
+      "timesfm-2-5": "/Users/eriche/Downloads/timesfm25-gifteval/run-registries",
+      "toto-2": "/Users/eriche/Downloads/toto2-gifteval/run-registries"
+    }
+  },
+  "registry_layout": "data/benchmark/runs/gifteval/{model_id}/run-registries/{dataset_io}.json",
+  "models": [
+    {
+      "model_id": "chronos-2",
+      "model_name": "Chronos-2",
+      "registry_dir": "chronos-2/run-registries",
+      "source_folder": "chronos2-gifteval"
+    },
+    {
+      "model_id": "granite-flowstate",
+      "model_name": "Granite-FlowState",
+      "registry_dir": "granite-flowstate/run-registries",
+      "source_folder": "flowstate-gifteval"
+    },
+    {
+      "model_id": "moirai2",
+      "model_name": "Moirai2",
+      "registry_dir": "moirai2/run-registries",
+      "source_folder": "moirai2-gifteval"
+    },
+    {
+      "model_id": "patchtst-fm",
+      "model_name": "PatchTST-FM",
+      "registry_dir": "patchtst-fm/run-registries",
+      "source_folder": "patchtst-gifteval"
+    },
+    {
+      "model_id": "timesfm-2-5",
+      "model_name": "TimesFM-2.5",
+      "registry_dir": "timesfm-2-5/run-registries",
+      "source_folder": "timesfm25-gifteval"
+    },
+    {
+      "model_id": "toto-2",
+      "model_name": "Toto-2",
+      "registry_dir": "toto-2/run-registries",
+      "source_folder": "toto2-gifteval"
+    }
+  ],
+  "datasets": [
+    "bizitobs-application-uv-uv",
+    "bizitobs-l2c-uv-uv",
+    "bizitobs-service-uv-uv",
+    "car-parts-with-missing-uv-uv",
+    "covid-deaths-uv-uv",
+    "ecl-uv-uv",
+    "ett2-uv-uv",
+    "etth1-uv-uv",
+    "hierarchical-sales-uv-uv",
+    "hospital-uv-uv",
+    "kdd-cup-2018-uv-uv",
+    "loop-seattle-uv-uv",
+    "m4-daily-uv-uv",
+    "m4-hourly-uv-uv",
+    "m4-monthly-uv-uv",
+    "restaurant-uv-uv",
+    "saugeenday-uv-uv",
+    "solar-uv-uv",
+    "sz-taxi-uv-uv",
+    "temperature-rain-uv-uv",
+    "us-births-uv-uv",
+    "weather-uv-uv"
+  ],
+  "files_per_model": {
+    "registry_json": 22,
+    "manifest_json": 1,
+    "total_json": 23
+  }
+}

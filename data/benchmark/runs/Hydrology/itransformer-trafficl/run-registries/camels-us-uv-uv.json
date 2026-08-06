@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "hydrology-camels-us-itransformer-trafficl-uv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Hydrology benchmark results for iTransformer-TrafficL on camels-us (UV-UV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "iTransformer-TrafficL": "hydrology"
+  },
+  "runs": [
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels_us_hydrology",
+      "models": [
+        "iTransformer-TrafficL"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "camels-us-uv-uv__iTransformer-TrafficL__table-xiii-itransformer-trafficl__p__hydrology_daily_pl1": {
+      "model_id": "iTransformer-TrafficL",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 5.7288,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "NNSE": 0.5842,
+        "preprocessing": "raw_precipitation",
+        "validation_policy": "temporal"
+      }
+    }
+  },
+  "result_schema_version": "0.2.0",
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

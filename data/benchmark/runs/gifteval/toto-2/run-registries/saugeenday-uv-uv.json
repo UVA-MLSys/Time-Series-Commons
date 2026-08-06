@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "zero-shot-gifteval-saugeenday-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for saugeenday_monash.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "Chronos-2": "default",
+    "Moirai2": "default",
+    "TimesFM-2.5": "default",
+    "TTM-R3-FT": "default",
+    "Toto-2": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "saugeenday-uv-uv",
+      "dataset_id": "saugeenday_monash",
+      "models": [
+        "Chronos-2",
+        "Moirai2",
+        "TimesFM-2.5",
+        "TTM-R3-FT",
+        "Toto-2"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "target"
+        ],
+        "observed": [
+          "target"
+        ],
+        "known_future": []
+      },
+      "window_profile": "gift_eval_saugeenday_d",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_saugeenday_d_pl30"
+      ]
+    }
+  ],
+  "results": {
+    "saugeenday-uv-uv__Toto-2__gift_eval_saugeenday_d_pl30": {
+      "model_id": "Toto-2",
+      "window_id": "gift_eval_saugeenday_d_pl30",
+      "metric": "MAE",
+      "score": 13.545220770835876,
+      "status": "completed",
+      "horizon_id": "short",
+      "target": "target",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "failed",
+          "error": {
+            "reason": "SafetensorError",
+            "message": "device device(type='cuda') is invalid"
+          }
+        },
+        {
+          "attempt": 2,
+          "status": "completed"
+        }
+      ]
+    }
+  },
+  "result_schema_version": "0.2.0",
+  "windows": {
+    "gift_eval_saugeenday_d_pl30": {
+      "forecast_horizon": 30,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "saugeenday/D/short",
+      "frequency": "D",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 30,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 30,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows"
+      }
+    }
+  }
+}

@@ -1,30 +1,40 @@
 {
   "schema_version": "0.2.0",
-  "benchmark_id": "zero-shot-m4-daily-uv-uv-v1",
+  "benchmark_id": "zero-shot-gifteval-m4-daily-uv-uv-v1",
   "evaluation_mode": "zero_shot",
-  "description": "Zero-shot UV-UV benchmark for m4_daily_thuml.",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for m4_daily_thuml.",
   "registry_paths": {
     "datasets": "data/benchmark/dataset-metadata.json",
     "models": "data/benchmark/model-registry.json"
   },
   "model_profiles": {
     "Chronos-2": "default",
-    "TTM-R3-FT": "default",
-    "Moirai2": "default"
+    "Moirai2": "default",
+    "TimesFM-2.5": "default",
+    "Toto-2": "default",
+    "Granite-FlowState": "default",
+    "PatchTST-FM": "default"
   },
   "window_profiles": {
-    "daily": {
-      "short": {
-        "lookback_window": 30,
-        "forecast_horizon": 7
-      },
-      "medium": {
-        "lookback_window": 90,
-        "forecast_horizon": 30
-      },
-      "long": {
-        "lookback_window": 365,
-        "forecast_horizon": 90
+    "gift_eval_m4_daily_d": {
+      "gift_eval_m4_daily_d_pl14": {
+        "forecast_horizon": 14,
+        "context_policy": "full_history",
+        "num_windows_policy": "gift_eval_m4",
+        "source_benchmark": "gift_eval",
+        "source_dataset_config": "m4_daily/short",
+        "frequency": "D",
+        "term": "short",
+        "metadata": {
+          "base_prediction_length": 14,
+          "term_multiplier": 1,
+          "test_split_fraction": 0.1,
+          "max_windows": 20,
+          "window_distance": 14,
+          "context_window": "all available history before each rolling forecast cutoff",
+          "window_count_rule": "1 for M4 datasets",
+          "aggregation": "score over all target points from all rolling windows"
+        }
       }
     }
   },
@@ -34,8 +44,11 @@
       "dataset_id": "m4_daily_thuml",
       "models": [
         "Chronos-2",
-        "TTM-R3-FT",
-        "Moirai2"
+        "Moirai2",
+        "TimesFM-2.5",
+        "Toto-2",
+        "Granite-FlowState",
+        "PatchTST-FM"
       ],
       "io_mode": "UV-UV",
       "variables": {
@@ -47,17 +60,14 @@
         ],
         "known_future": []
       },
-      "window_profile": "daily",
-      "horizons": [
-        "short",
-        "medium",
-        "long"
-      ],
-      "num_windows": 1,
+      "window_profile": "gift_eval_m4_daily_d",
       "metrics": [
         "MAE",
         "MSE",
         "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_m4_daily_d_pl14"
       ]
     }
   ],

@@ -26,7 +26,9 @@ BENCHMARK_AGENT_CONTEXT.md
 docs/superpowers/
 
 # Local Colab/runtime experiments
-colab/
+colab/*.ipynb
+colab/__pycache__/
+colab/**/__pycache__/
 
 # Local generation helpers; keep public benchmark configs curated
 tools/benchmark_runner/generate_zero_shot_configs.py
@@ -37,6 +39,10 @@ data/benchmark/forecast-artifacts/
 data/benchmark/runs/*
 !data/benchmark/runs/examples/
 !data/benchmark/runs/examples/**
+!data/benchmark/runs/gifteval/
+!data/benchmark/runs/gifteval/**
+!data/benchmark/runs/Hydrology/
+!data/benchmark/runs/Hydrology/**
 
 # Local website/browser export snapshots
 *.google.com/

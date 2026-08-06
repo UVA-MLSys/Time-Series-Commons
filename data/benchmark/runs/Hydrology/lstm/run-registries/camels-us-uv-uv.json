@@ -1,0 +1,185 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "hydrology-camels-us-lstm-uv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Hydrology benchmark results for LSTM on camels-us (UV-UV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "LSTM": "hydrology"
+  },
+  "runs": [
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels_us_hydrology",
+      "models": [
+        "LSTM"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels_us_hydrology",
+      "models": [
+        "LSTM"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels_us_hydrology",
+      "models": [
+        "LSTM"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels_us_hydrology",
+      "models": [
+        "LSTM"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "camels-us-uv-uv__LSTM__table-xi-location-min-max-cuberoot__p__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0604,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "NNSE": 0.824,
+        "split_preprocessing": "Location split, min-max and cube-root preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-location-min-max__p__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0141,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "NNSE": 0.744,
+        "split_preprocessing": "Location split, min-max preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-time-min-max-cuberoot__p__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0826,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "NNSE": 0.718,
+        "split_preprocessing": "Time split, min-max and cube-root preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-time-min-max__p__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0187,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "NNSE": 0.618,
+        "split_preprocessing": "Time split, min-max preprocessing"
+      }
+    }
+  },
+  "result_schema_version": "0.2.0",
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

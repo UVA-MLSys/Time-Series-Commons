@@ -1,1974 +1,21 @@
 {
-  "schema_version": "0.1.0",
   "models": [
     {
-      "model_id": "Informer",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/zhouhaoyi/Informer2020",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Monash TSER",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://github.com/mlgig/ts_er",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "UTSD",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "AutoGluon",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/autogluon/autogluon",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Darts",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/unit8co/darts",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TSLib",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/thuml/Time-Series-Library",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TSFM-Granite",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/ibm-granite/granite-tsfm",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/ibm-granite/granite-tsfm",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TSFM-Core",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/ibm-granite/granite-tsfm",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/ibm-granite/granite-tsfm",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TSFM-Bench",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://github.com/ibm-granite/granite-tsfm",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LOTSA",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Prophet",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "https://github.com/facebook/prophet",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "NeuralForecast",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/Nixtla/neuralforecast",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Merlion",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/salesforce/Merlion",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Aeon",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/aeon-toolkit/aeon",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "DataLoop",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://dataloop.ai/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "NonUCR-UCI",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://archive.ics.uci.edu/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "UCR",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://www.cs.ucr.edu/~eamonn/time_series_data_2018/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "UEA",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://www.timeseriesclassification.com/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "MONSTER",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Monash",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://forecastingdata.org/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Monash-Common",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://forecastingdata.org/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Monash-small",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://forecastingdata.org/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "M1",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://forecasters.org/resources/time-series-data/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "M2",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://forecasters.org/resources/time-series-data/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "M3",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://forecasters.org/resources/time-series-data/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "M4",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://github.com/Mcompetitions/M4-methods",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "M5",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://www.kaggle.com/c/m5-forecasting-accuracy",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "M6",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://mofc.unic.ac.cy/m6-competition/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TSB-UAD MOMENT",
-      "model_type": "foundation",
-      "evaluation_modes": [
+      "id": "chronos-2",
+      "name": "Chronos-2",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
         "zero_shot"
       ],
-      "io_modes": [
+      "ioModes": [
         "UV-UV",
         "MV-UV",
         "MV-MV"
       ],
-      "source_link": "https://github.com/moment-timeseries-foundation-model/moment",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/moment-timeseries-foundation-model/moment",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TSB-UAD Full",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://github.com/TheDatumOrg/TSB-UAD",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Hackernoon",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Monash Moment",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/moment-timeseries-foundation-model/moment",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/moment-timeseries-foundation-model/moment",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Kaggle TS",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://www.kaggle.com/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "FastML",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Time-LLM",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "https://github.com/KimMeen/Time-LLM",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/KimMeen/Time-LLM",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "AutoTimes",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "https://github.com/thuml/AutoTimes",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/thuml/AutoTimes",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ST-LLM",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LLM-Time",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/ngruver/llmtime",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/ngruver/llmtime",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LLM-Mixer",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LLM-prompt",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LLM-PS",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "One Fits All",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Lag-Llama",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://huggingface.co/time-series-foundation-models/Lag-Llama",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://huggingface.co/time-series-foundation-models/Lag-Llama",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Chronos-Pre",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/amazon-science/chronos-forecasting",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Chronos-Eval1",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/amazon-science/chronos-forecasting",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/amazon-science/chronos-forecasting",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Chronos-Eval2",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/amazon-science/chronos-forecasting",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/amazon-science/chronos-forecasting",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ChronosBolt-Pre",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/amazon-science/chronos-forecasting",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ChronosBolt-Eval1",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/amazon-science/chronos-forecasting",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/amazon-science/chronos-forecasting",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ChronosBolt-Eval2",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/amazon-science/chronos-forecasting",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/amazon-science/chronos-forecasting",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ChronosX-Eval2",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ChronosX-Synth",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ChronosX-Pre",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "ChronosX-Eval1",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TS-RAGZSEval",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TS-RAGPreT",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Tempo",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TimeBench",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "InstructTime",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LPTM-Pre",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LPTM-Eval",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TS2Vec-Bench",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/yuezhihan/ts2vec",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TS2Vec-PreT",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/yuezhihan/ts2vec",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Automixer",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TTM-PreT",
-      "model_type": "foundation",
-      "evaluation_modes": [],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/ibm-granite/granite-tsfm",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TTM-Eval",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/ibm-granite/granite-tsfm",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/ibm-granite/granite-tsfm",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "fixed"
-      }
-    },
-    {
-      "model_id": "TTM-Bench",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/ibm-granite/granite-tsfm",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/ibm-granite/granite-tsfm",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "fixed"
-      }
-    },
-    {
-      "model_id": "TSMamba-ZS",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TSMamba-FullShot",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TimeGPT",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "https://www.nixtla.io/docs",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://www.nixtla.io/docs",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": true,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "GHPT",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
-      ],
-      "source_link": "",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TimesNet",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/thuml/Time-Series-Library",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "TimesFM",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/google-research/timesfm",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/google-research/timesfm",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Time-MOE",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/Time-MoE/Time-MoE",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/Time-MoE/Time-MoE",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Timer-XL",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot",
-        "fine_tuned"
-      ],
-      "io_modes": [
-        "UV-UV"
-      ],
-      "source_link": "https://github.com/thuml/Timer",
-      "profiles": {
-        "default": {
-          "runtime_package": null,
-          "source_link": "https://github.com/thuml/Timer",
-          "notes": "Default zero-shot benchmark profile."
-        }
-      },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": true,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "LightGTS",
-      "model_type": "traditional",
-      "evaluation_modes": [
-        "traditional_training"
-      ],
-      "io_modes": [
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": true,
-        "supports_uv_uv": false,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "CiK",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "NSF HDR",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://new.nsf.gov/funding/initiatives/harnessing-data-revolution",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "MLCommons-EQ",
-      "model_type": "traditional",
-      "evaluation_modes": [],
-      "io_modes": [],
-      "source_link": "https://mlcommons.org/benchmarks/",
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
-        "supports_zero_shot": false,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": false,
-        "supports_mv_uv": false,
-        "supports_mv_mv": false,
-        "requires_api_key": false,
-        "windowing": "unknown"
-      }
-    },
-    {
-      "model_id": "Chronos-2",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://github.com/amazon-science/chronos-forecasting",
-      "runtime_package": "chronos-forecasting",
-      "notes": "Amazon Chronos-2; all-purpose zero-shot model for univariate, multivariate, and covariate-informed forecasting.",
+      "sourceLink": "https://github.com/amazon-science/chronos-forecasting",
+      "runtimePackage": "chronos-forecasting",
+      "description": "Amazon Chronos-2; all-purpose zero-shot model for univariate, multivariate, and covariate-informed forecasting.",
       "profiles": {
         "default": {
           "runtime_package": "chronos-forecasting",
@@ -1976,7 +23,7 @@
           "notes": "Amazon Chronos-2; all-purpose zero-shot model for univariate, multivariate, and covariate-informed forecasting."
         }
       },
-      "agent_facets": {
+      "agentFacets": {
         "runtime_status": "implemented",
         "recommendation_scope": "benchmark_runnable",
         "supports_zero_shot": true,
@@ -1987,56 +34,27 @@
         "supports_mv_mv": true,
         "requires_api_key": false,
         "windowing": "dynamic"
-      }
-    },
-    {
-      "model_id": "TTM-R3-FT",
-      "model_type": "foundation",
-      "evaluation_modes": [
-        "zero_shot"
-      ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV",
-        "MV-MV"
-      ],
-      "source_link": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
-      "runtime_package": "granite-tsfm",
-      "notes": "IBM Granite / TinyTimeMixer representative for common all-IO-mode Paper 1 zero-shot runs.",
-      "profiles": {
-        "default": {
-          "runtime_package": "granite-tsfm",
-          "source_link": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
-          "notes": "IBM Granite / TinyTimeMixer representative for common all-IO-mode Paper 1 zero-shot runs."
-        }
       },
-      "agent_facets": {
-        "runtime_status": "implemented",
-        "recommendation_scope": "benchmark_runnable",
-        "supports_zero_shot": true,
-        "supports_fine_tuning": false,
-        "supports_traditional_training": false,
-        "supports_uv_uv": true,
-        "supports_mv_uv": true,
-        "supports_mv_mv": true,
-        "requires_api_key": false,
-        "windowing": "fixed"
+      "benchmarks": {
+        "GIFT-Eval": true
       }
     },
     {
-      "model_id": "Moirai2",
-      "model_type": "foundation",
-      "evaluation_modes": [
+      "id": "moirai2",
+      "name": "Moirai2",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
         "zero_shot"
       ],
-      "io_modes": [
+      "ioModes": [
         "UV-UV",
         "MV-UV",
         "MV-MV"
       ],
-      "source_link": "https://github.com/SalesforceAIResearch/uni2ts",
-      "runtime_package": "uni2ts",
-      "notes": "Salesforce Moirai 2.0 representative for zero-shot univariate and multivariate forecasting.",
+      "sourceLink": "https://github.com/SalesforceAIResearch/uni2ts",
+      "runtimePackage": "uni2ts",
+      "description": "Salesforce Moirai 2.0 representative for zero-shot univariate and multivariate forecasting.",
       "profiles": {
         "default": {
           "runtime_package": "uni2ts",
@@ -2044,7 +62,7 @@
           "notes": "Salesforce Moirai 2.0 representative for zero-shot univariate and multivariate forecasting."
         }
       },
-      "agent_facets": {
+      "agentFacets": {
         "runtime_status": "implemented",
         "recommendation_scope": "benchmark_runnable",
         "supports_zero_shot": true,
@@ -2055,72 +73,1216 @@
         "supports_mv_mv": true,
         "requires_api_key": false,
         "windowing": "dynamic"
+      },
+      "benchmarks": {
+        "GIFT-Eval": true
       }
     },
     {
-      "model_id": "Toto-2",
-      "model_type": "foundation",
-      "evaluation_modes": [
+      "id": "toto-2",
+      "name": "Toto-2",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
         "zero_shot"
       ],
-      "io_modes": [
-        "UV-UV",
-        "MV-MV"
+      "ioModes": [
+        "UV-UV"
       ],
-      "source_link": "https://github.com/DataDog/toto",
-      "runtime_package": "toto",
-      "notes": "Optional GIFT-Eval-ranked Datadog model. Use for UV-UV and MV-MV only unless exogenous support changes.",
+      "sourceLink": "https://huggingface.co/Datadog/Toto-2.0-2.5B",
+      "runtimePackage": "toto-2",
+      "description": "Datadog Toto 2.0 adapter for Gift-Eval-faithful zero-shot UV-UV runs. Defaults to Datadog/Toto-2.0-1B for Colab practicality; set TOTO2_CHECKPOINT=Datadog/Toto-2.0-2.5B for the highest-accuracy checkpoint.",
       "profiles": {
         "default": {
-          "runtime_package": "toto",
-          "source_link": "https://github.com/DataDog/toto",
-          "notes": "Optional GIFT-Eval-ranked Datadog model. Use for UV-UV and MV-MV only unless exogenous support changes."
+          "runtime_package": "toto-2",
+          "source_link": "https://huggingface.co/Datadog/Toto-2.0-1B",
+          "checkpoint": "Datadog/Toto-2.0-1B",
+          "notes": "Practical Colab default using the official Toto2Model.forecast API, median quantile output, and a bounded 4096-step context cap for memory control."
+        },
+        "highest_accuracy": {
+          "runtime_package": "toto-2",
+          "source_link": "https://huggingface.co/Datadog/Toto-2.0-2.5B",
+          "checkpoint": "Datadog/Toto-2.0-2.5B",
+          "notes": "Highest-accuracy Toto 2.0 checkpoint reported by Datadog on GIFT-Eval; requires substantially more GPU memory."
         }
       },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
+      "agentFacets": {
+        "runtime_status": "implemented",
+        "recommendation_scope": "benchmark_runnable",
         "supports_zero_shot": true,
         "supports_fine_tuning": false,
         "supports_traditional_training": false,
         "supports_uv_uv": true,
         "supports_mv_uv": false,
-        "supports_mv_mv": true,
+        "supports_mv_mv": false,
         "requires_api_key": false,
-        "windowing": "unknown"
+        "windowing": "dynamic"
+      },
+      "benchmarks": {
+        "GIFT-Eval": true
       }
     },
     {
-      "model_id": "TimesFM-2.5",
-      "model_type": "foundation",
-      "evaluation_modes": [
+      "id": "timesfm-2-5",
+      "name": "TimesFM-2.5",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
         "zero_shot"
       ],
-      "io_modes": [
-        "UV-UV",
-        "MV-UV"
+      "ioModes": [
+        "UV-UV"
       ],
-      "source_link": "https://github.com/google-research/timesfm",
-      "runtime_package": "timesfm",
-      "notes": "Optional Google model. Use for UV-UV and MV-UV with XReg covariates, not native MV-MV.",
+      "sourceLink": "https://github.com/google-research/timesfm",
+      "runtimePackage": "timesfm",
+      "description": "Google TimesFM 2.5 200M torch model; implemented for Gift-Eval-faithful zero-shot UV-UV runs.",
       "profiles": {
         "default": {
           "runtime_package": "timesfm",
           "source_link": "https://github.com/google-research/timesfm",
-          "notes": "Optional Google model. Use for UV-UV and MV-UV with XReg covariates, not native MV-MV."
+          "notes": "Google TimesFM 2.5 200M torch model; implemented for Gift-Eval-faithful zero-shot UV-UV runs."
         }
       },
-      "agent_facets": {
-        "runtime_status": "metadata_only",
-        "recommendation_scope": "metadata_reference",
+      "agentFacets": {
+        "runtime_status": "implemented",
+        "recommendation_scope": "benchmark_runnable",
         "supports_zero_shot": true,
         "supports_fine_tuning": false,
         "supports_traditional_training": false,
         "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "dynamic"
+      },
+      "benchmarks": {
+        "GIFT-Eval": true
+      }
+    },
+    {
+      "id": "granite-flowstate",
+      "name": "Granite-FlowState",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "zero_shot"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://huggingface.co/ibm-granite/granite-timeseries-flowstate-r1",
+      "runtimePackage": "granite-tsfm",
+      "description": "IBM Granite FlowState R1 adapter for Gift-Eval-style zero-shot UV-UV runs. Uses FlowStateForPrediction with revision r1.1 by default.",
+      "profiles": {
+        "default": {
+          "runtime_package": "granite-tsfm",
+          "source_link": "https://huggingface.co/ibm-granite/granite-timeseries-flowstate-r1",
+          "checkpoint": "ibm-granite/granite-timeseries-flowstate-r1",
+          "revision": "r1.1",
+          "notes": "Uses the official TSFM FlowStateForPrediction API and model-card scale-factor guidance."
+        }
+      },
+      "agentFacets": {
+        "runtime_status": "implemented",
+        "recommendation_scope": "benchmark_runnable",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "dynamic"
+      },
+      "benchmarks": {
+        "GIFT-Eval": true
+      }
+    },
+    {
+      "id": "patchtst-fm",
+      "name": "PatchTST-FM",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "zero_shot"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://huggingface.co/ibm-granite/granite-timeseries-patchtst-fm-r1",
+      "runtimePackage": "granite-tsfm",
+      "description": "IBM Granite PatchTST-FM R1 adapter for Gift-Eval-style zero-shot UV-UV runs.",
+      "profiles": {
+        "default": {
+          "runtime_package": "granite-tsfm",
+          "source_link": "https://huggingface.co/ibm-granite/granite-timeseries-patchtst-fm-r1",
+          "checkpoint": "ibm-granite/granite-timeseries-patchtst-fm-r1",
+          "notes": "Uses the official TSFM PatchTSTFMForPrediction API."
+        }
+      },
+      "agentFacets": {
+        "runtime_status": "implemented",
+        "recommendation_scope": "benchmark_runnable",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "dynamic"
+      },
+      "benchmarks": {
+        "GIFT-Eval": true
+      }
+    },
+    {
+      "id": "lstm",
+      "name": "LSTM",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
+      "description": "Hydrology benchmark LSTM with 21-day lookback and daily catchment-level hydrometeorological inputs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "tensorflow/keras",
+      "profiles": {
+        "hydrology-lstm": {
+          "runtime_package": "tensorflow/keras",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
+          "notes": "Hydrology benchmark LSTM with 21-day lookback and daily catchment-level hydrometeorological inputs."
+        }
+      }
+    },
+    {
+      "id": "tft",
+      "name": "TFT",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "TFT model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
         "supports_mv_uv": true,
         "supports_mv_mv": false,
         "requires_api_key": false,
-        "windowing": "unknown"
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "neuralforecast": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
+        }
+      }
+    },
+    {
+      "id": "tcn",
+      "name": "TCN",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "TCN model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "neuralforecast": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
+        }
+      }
+    },
+    {
+      "id": "dilatedrnn",
+      "name": "DilatedRNN",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "DilatedRNN model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "neuralforecast": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
+        }
+      }
+    },
+    {
+      "id": "tide",
+      "name": "TiDE",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "TiDE model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "neuralforecast": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
+        }
+      }
+    },
+    {
+      "id": "tsmixer",
+      "name": "TSMixer",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training",
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-UV",
+        "MV-MV",
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html",
+      "description": "TSMixer model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "default": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html"
+        },
+        "m4-pretrained": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
+        },
+        "trafficl-pretrained": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
+        }
+      }
+    },
+    {
+      "id": "tsmixerx",
+      "name": "TSMixerx",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "MV-UV",
+        "MV-MV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "TSMixerx model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "neuralforecast": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
+        }
+      }
+    },
+    {
+      "id": "itransformer",
+      "name": "iTransformer",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training",
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-UV",
+        "MV-MV",
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "iTransformer model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "default": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
+        },
+        "m4-pretrained": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
+        },
+        "trafficl-pretrained": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
+        }
+      }
+    },
+    {
+      "id": "patchtst",
+      "name": "PatchTST",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training",
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "PatchTST model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "default": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html"
+        },
+        "m4-pretrained": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
+        },
+        "trafficl-pretrained": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
+        },
+        "weather-pretrained": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://github.com/JunyangHe/Hydrology/tree/main/other_pattern_foundation_models/table_13"
+        }
+      }
+    },
+    {
+      "id": "chronos-t5",
+      "name": "Chronos-T5",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://github.com/amazon-science/chronos-forecasting",
+      "description": "Original Chronos family based on T5 language-model architectures for time-series token forecasting.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "dynamic"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "chronos-forecasting",
+      "profiles": {
+        "amazon-chronos-t5": {
+          "runtime_package": "chronos-forecasting",
+          "source_link": "https://github.com/amazon-science/chronos-forecasting",
+          "notes": "Original Chronos family based on T5 language-model architectures for time-series token forecasting."
+        }
+      }
+    },
+    {
+      "id": "chronos-gpt2",
+      "name": "Chronos-GPT2",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://github.com/amazon-science/chronos-forecasting",
+      "description": "Hydrology benchmark profile named Chronos-GPT2 in the paper/repo experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "dynamic"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "chronos-forecasting",
+      "profiles": {
+        "chronos-gpt2-hydrology": {
+          "runtime_package": "chronos-forecasting",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_chronos.ipynb",
+          "notes": "Hydrology benchmark profile named Chronos-GPT2 in the paper/repo experiments."
+        }
+      }
+    },
+    {
+      "id": "gnn-coder",
+      "name": "GNN-Coder",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV",
+        "MV-MV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py",
+      "description": "GNN-Coder model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "pytorch",
+      "profiles": {
+        "hydrology-table-12": {
+          "runtime_package": "pytorch",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py"
+        }
+      }
+    },
+    {
+      "id": "multi-foundation-core",
+      "name": "MultiFoundationCore",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/tree/main/MultiFoundationCore",
+      "description": "MultiFoundationCore model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "pytorch",
+      "profiles": {
+        "hydrology": {
+          "runtime_package": "pytorch",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/MultiFoundationCore/MultiFoundationCore.ipynb"
+        }
+      }
+    },
+    {
+      "id": "multi-foundation-pattern",
+      "name": "MultiFoundationPattern",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/tree/main/MultiFoundationCore",
+      "description": "MultiFoundationPattern model entry used by hydrology benchmark runs.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "pytorch",
+      "profiles": {
+        "hydrology": {
+          "runtime_package": "pytorch",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/MultiFoundationCore/MultiFoundationLSTM.ipynb"
+        }
+      }
+    },
+    {
+      "id": "timesnet",
+      "name": "TimesNet",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/models.timesnet.html",
+      "description": "TimesNet model entry used by hydrology benchmark runs; NeuralForecast describes it as a CNN-style model for temporal 2D variation modeling.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "neuralforecast": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.timesnet.html"
+        }
+      }
+    },
+    {
+      "id": "timellm",
+      "name": "TimeLLM",
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/models.timellm.html",
+      "description": "Time-LLM model entry used by hydrology benchmark runs; NeuralForecast describes it as reprogramming LLM backbones for time-series forecasting.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "neuralforecast": {
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.timellm.html"
+        }
+      }
+    },
+    {
+      "id": "lstm-multivariate",
+      "name": "LSTM-multivariate",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "MV-MV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
+      "description": "Hydrology Table XII/XIII benchmark variant: LSTM-multivariate.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "tensorflow/keras",
+      "profiles": {
+        "table-xii": {
+          "base_model_id": "lstm",
+          "runtime_package": "tensorflow/keras",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
+          "notes": "Paper-reported Hydrology benchmark row for LSTM-multivariate."
+        }
+      }
+    },
+    {
+      "id": "lstm-univariate",
+      "name": "LSTM-univariate",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
+      "description": "Hydrology Table XII/XIII benchmark variant: LSTM-univariate.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "tensorflow/keras",
+      "profiles": {
+        "table-xii": {
+          "base_model_id": "lstm",
+          "runtime_package": "tensorflow/keras",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/Hydrology_LSTM.ipynb",
+          "notes": "Paper-reported Hydrology benchmark row for LSTM-univariate."
+        }
+      }
+    },
+    {
+      "id": "tsmixer-m4",
+      "name": "TSMixer-M4",
+      "type": "foundation",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-MV",
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html",
+      "description": "Hydrology Table XII/XIII benchmark variant: TSMixer-M4.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "m4-pretrained": {
+          "base_model_id": "tsmixer",
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html",
+          "notes": "Paper-reported Hydrology benchmark row for TSMixer-M4."
+        }
+      }
+    },
+    {
+      "id": "tsmixer-trafficl",
+      "name": "TSMixer-TrafficL",
+      "type": "foundation",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-MV",
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html",
+      "description": "Hydrology Table XII/XIII benchmark variant: TSMixer-TrafficL.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "trafficl-pretrained": {
+          "base_model_id": "tsmixer",
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/models.tsmixer.html",
+          "notes": "Paper-reported Hydrology benchmark row for TSMixer-TrafficL."
+        }
+      }
+    },
+    {
+      "id": "itransformer-m4",
+      "name": "iTransformer-M4",
+      "type": "foundation",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-MV",
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "Hydrology Table XII/XIII benchmark variant: iTransformer-M4.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "m4-pretrained": {
+          "base_model_id": "itransformer",
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+          "notes": "Paper-reported Hydrology benchmark row for iTransformer-M4."
+        }
+      }
+    },
+    {
+      "id": "itransformer-trafficl",
+      "name": "iTransformer-TrafficL",
+      "type": "foundation",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "MV-MV",
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "Hydrology Table XII/XIII benchmark variant: iTransformer-TrafficL.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "trafficl-pretrained": {
+          "base_model_id": "itransformer",
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+          "notes": "Paper-reported Hydrology benchmark row for iTransformer-TrafficL."
+        }
+      }
+    },
+    {
+      "id": "gnncoder-univariate",
+      "name": "GNNCoder-univariate",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py",
+      "description": "Hydrology Table XII/XIII benchmark variant: GNNCoder-univariate.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "pytorch",
+      "profiles": {
+        "table-xii": {
+          "base_model_id": "gnn-coder",
+          "runtime_package": "pytorch",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py",
+          "notes": "Paper-reported Hydrology benchmark row for GNNCoder-univariate."
+        }
+      }
+    },
+    {
+      "id": "gnncoder-multivariate",
+      "name": "GNNCoder-multivariate",
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "MV-MV"
+      ],
+      "sourceLink": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py",
+      "description": "Hydrology Table XII/XIII benchmark variant: GNNCoder-multivariate.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": true,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "pytorch",
+      "profiles": {
+        "table-xii": {
+          "base_model_id": "gnn-coder",
+          "runtime_package": "pytorch",
+          "source_link": "https://github.com/JunyangHe/Hydrology/blob/main/other_pattern_foundation_models/table_12/gnn_coder_forecasting.py",
+          "notes": "Paper-reported Hydrology benchmark row for GNNCoder-multivariate."
+        }
+      }
+    },
+    {
+      "id": "patchtst-weather",
+      "name": "PatchTST-Weather",
+      "type": "foundation",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "Hydrology Table XII/XIII benchmark variant: PatchTST-Weather.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "weather-pretrained": {
+          "base_model_id": "patchtst",
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+          "notes": "Paper-reported Hydrology benchmark row for PatchTST-Weather."
+        }
+      }
+    },
+    {
+      "id": "patchtst-trafficl",
+      "name": "PatchTST-TrafficL",
+      "type": "foundation",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "Hydrology Table XII/XIII benchmark variant: PatchTST-TrafficL.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "trafficl-pretrained": {
+          "base_model_id": "patchtst",
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+          "notes": "Paper-reported Hydrology benchmark row for PatchTST-TrafficL."
+        }
+      }
+    },
+    {
+      "id": "patchtst-m4",
+      "name": "PatchTST-M4",
+      "type": "foundation",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV"
+      ],
+      "sourceLink": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+      "description": "Hydrology Table XII/XIII benchmark variant: PatchTST-M4.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Hydrology": true
+      },
+      "runtimePackage": "neuralforecast",
+      "profiles": {
+        "m4-pretrained": {
+          "base_model_id": "patchtst",
+          "runtime_package": "neuralforecast",
+          "source_link": "https://nixtlaverse.nixtla.io/neuralforecast/docs/capabilities/overview.html",
+          "notes": "Paper-reported Hydrology benchmark row for PatchTST-M4."
+        }
       }
     }
   ]

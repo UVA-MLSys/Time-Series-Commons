@@ -1,0 +1,207 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "hydrology-caravan-hysets-lstm-mv-mv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Hydrology benchmark results for LSTM on caravan-hysets (MV-MV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "LSTM": "hydrology"
+  },
+  "runs": [
+    {
+      "run_group_id": "caravan-hysets-mv-mv",
+      "dataset_id": "caravan_hysets_hydrology",
+      "models": [
+        "LSTM"
+      ],
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": [
+          "total_precipitation_sum",
+          "temperature_2m_mean",
+          "streamflow"
+        ],
+        "observed": [
+          "total_precipitation_sum",
+          "temperature_2m_mean",
+          "streamflow"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "caravan-hysets-mv-mv",
+      "dataset_id": "caravan_hysets_hydrology",
+      "models": [
+        "LSTM"
+      ],
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": [
+          "total_precipitation_sum",
+          "temperature_2m_mean",
+          "streamflow"
+        ],
+        "observed": [
+          "total_precipitation_sum",
+          "temperature_2m_mean",
+          "streamflow"
+        ],
+        "known_future": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "caravan-hysets-mv-mv__LSTM__table-viii-original-static__p__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0544,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "total_precipitation_sum",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.0521,
+        "NNSE": 0.826,
+        "train_NNSE": 0.835
+      }
+    },
+    "caravan-hysets-mv-mv__LSTM__table-viii-original-static__q__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0296,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "streamflow",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.0248,
+        "NNSE": 0.798,
+        "train_NNSE": 0.825
+      }
+    },
+    "caravan-hysets-mv-mv__LSTM__table-viii-original-static__tmean__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0196,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "temperature_2m_mean",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.0193,
+        "NNSE": 0.966,
+        "train_NNSE": 0.968
+      }
+    },
+    "caravan-hysets-mv-mv__LSTM__table-viii-original-static__total__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0624,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "aggregate_total",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.0589
+      }
+    },
+    "caravan-hysets-mv-mv__LSTM__table-viii-pca-static__p__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0553,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "total_precipitation_sum",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.053,
+        "NNSE": 0.821,
+        "train_NNSE": 0.83
+      }
+    },
+    "caravan-hysets-mv-mv__LSTM__table-viii-pca-static__q__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0199,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "streamflow",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.0264,
+        "NNSE": 0.799,
+        "train_NNSE": 0.813
+      }
+    },
+    "caravan-hysets-mv-mv__LSTM__table-viii-pca-static__tmean__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0199,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "temperature_2m_mean",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.0196,
+        "NNSE": 0.965,
+        "train_NNSE": 0.967
+      }
+    },
+    "caravan-hysets-mv-mv__LSTM__table-viii-pca-static__total__hydrology_daily_pl1": {
+      "model_id": "LSTM",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0627,
+      "status": "completed",
+      "horizon_id": "next_step",
+      "target": "aggregate_total",
+      "secondary_metrics": {
+        "split": "validation",
+        "train_rmse": 0.0601
+      }
+    }
+  },
+  "result_schema_version": "0.2.0",
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

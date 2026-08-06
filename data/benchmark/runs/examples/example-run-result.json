@@ -244,11 +244,6 @@
           "prediction"
         ]
       },
-      "runtime": {
-        "checkpoint": "amazon/chronos-2",
-        "device": "cuda",
-        "duration_seconds": 12.4
-      },
       "attempts": [
         {
           "attempt": 1,

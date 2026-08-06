@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.2.0",
+  "benchmark_id": "zero-shot-gifteval-m4-hourly-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for m4_hourly_thuml.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "Chronos-2": "default",
+    "Moirai2": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "m4-hourly-uv-uv",
+      "dataset_id": "m4_hourly_thuml",
+      "models": [
+        "Chronos-2",
+        "Moirai2"
+      ],
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "y"
+        ],
+        "observed": [
+          "y"
+        ],
+        "known_future": []
+      },
+      "window_profile": "gift_eval_m4_hourly_h",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_m4_hourly_h_pl48"
+      ]
+    }
+  ],
+  "results": {
+    "m4-hourly-uv-uv__Chronos-2__gift_eval_m4_hourly_h_pl48": {
+      "model_id": "Chronos-2",
+      "window_id": "gift_eval_m4_hourly_h_pl48",
+      "metric": "MAE",
+      "score": 257.6147718452121,
+      "status": "completed",
+      "horizon_id": "short",
+      "target": "y",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "failed",
+          "error": {
+            "reason": "ValueError",
+            "message": "forecast does not cover every ground-truth target row"
+          }
+        },
+        {
+          "attempt": 2,
+          "status": "failed",
+          "error": {
+            "reason": "ValueError",
+            "message": "forecast does not cover every finite ground-truth target row; missing 8112 of 19872 rows"
+          }
+        },
+        {
+          "attempt": 3,
+          "status": "completed"
+        }
+      ]
+    }
+  },
+  "result_schema_version": "0.2.0",
+  "windows": {
+    "gift_eval_m4_hourly_h_pl48": {
+      "forecast_horizon": 48,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval_m4",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "m4_hourly/short",
+      "frequency": "H",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 48,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "1 for M4 datasets",
+        "aggregation": "score over all target points from all rolling windows"
+      }
+    }
+  }
+}

@@ -1,30 +1,78 @@
 {
   "schema_version": "0.2.0",
-  "benchmark_id": "zero-shot-ecl-uv-uv-v1",
+  "benchmark_id": "zero-shot-gifteval-ecl-uv-uv-v1",
   "evaluation_mode": "zero_shot",
-  "description": "Zero-shot UV-UV benchmark for electricity_ecl_thuml.",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for electricity_ecl_thuml.",
   "registry_paths": {
     "datasets": "data/benchmark/dataset-metadata.json",
     "models": "data/benchmark/model-registry.json"
   },
   "model_profiles": {
     "Chronos-2": "default",
-    "TTM-R3-FT": "default",
-    "Moirai2": "default"
+    "Moirai2": "default",
+    "TimesFM-2.5": "default",
+    "Toto-2": "default",
+    "Granite-FlowState": "default",
+    "PatchTST-FM": "default"
   },
   "window_profiles": {
-    "hourly": {
-      "short": {
-        "lookback_window": 72,
-        "forecast_horizon": 24
+    "gift_eval_ecl_h": {
+      "gift_eval_ecl_h_pl48": {
+        "forecast_horizon": 48,
+        "context_policy": "full_history",
+        "num_windows_policy": "gift_eval",
+        "source_benchmark": "gift_eval",
+        "source_dataset_config": "electricity/H/short",
+        "frequency": "H",
+        "term": "short",
+        "metadata": {
+          "base_prediction_length": 48,
+          "term_multiplier": 1,
+          "test_split_fraction": 0.1,
+          "max_windows": 20,
+          "window_distance": 48,
+          "context_window": "all available history before each rolling forecast cutoff",
+          "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+          "aggregation": "score over all target points from all rolling windows"
+        }
       },
-      "medium": {
-        "lookback_window": 336,
-        "forecast_horizon": 168
+      "gift_eval_ecl_h_pl480": {
+        "forecast_horizon": 480,
+        "context_policy": "full_history",
+        "num_windows_policy": "gift_eval",
+        "source_benchmark": "gift_eval",
+        "source_dataset_config": "electricity/H/medium",
+        "frequency": "H",
+        "term": "medium",
+        "metadata": {
+          "base_prediction_length": 48,
+          "term_multiplier": 10,
+          "test_split_fraction": 0.1,
+          "max_windows": 20,
+          "window_distance": 480,
+          "context_window": "all available history before each rolling forecast cutoff",
+          "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+          "aggregation": "score over all target points from all rolling windows"
+        }
       },
-      "long": {
-        "lookback_window": 720,
-        "forecast_horizon": 720
+      "gift_eval_ecl_h_pl720": {
+        "forecast_horizon": 720,
+        "context_policy": "full_history",
+        "num_windows_policy": "gift_eval",
+        "source_benchmark": "gift_eval",
+        "source_dataset_config": "electricity/H/long",
+        "frequency": "H",
+        "term": "long",
+        "metadata": {
+          "base_prediction_length": 48,
+          "term_multiplier": 15,
+          "test_split_fraction": 0.1,
+          "max_windows": 20,
+          "window_distance": 720,
+          "context_window": "all available history before each rolling forecast cutoff",
+          "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+          "aggregation": "score over all target points from all rolling windows"
+        }
       }
     }
   },
@@ -34,30 +82,32 @@
       "dataset_id": "electricity_ecl_thuml",
       "models": [
         "Chronos-2",
-        "TTM-R3-FT",
-        "Moirai2"
+        "Moirai2",
+        "TimesFM-2.5",
+        "Toto-2",
+        "Granite-FlowState",
+        "PatchTST-FM"
       ],
       "io_mode": "UV-UV",
       "variables": {
         "targets": [
-          "OT"
+          "target"
         ],
         "observed": [
-          "OT"
+          "target"
         ],
         "known_future": []
       },
-      "window_profile": "hourly",
-      "horizons": [
-        "short",
-        "medium",
-        "long"
-      ],
-      "num_windows": 1,
+      "window_profile": "gift_eval_ecl_h",
       "metrics": [
         "MAE",
         "MSE",
         "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_ecl_h_pl48",
+        "gift_eval_ecl_h_pl480",
+        "gift_eval_ecl_h_pl720"
       ]
     }
   ],

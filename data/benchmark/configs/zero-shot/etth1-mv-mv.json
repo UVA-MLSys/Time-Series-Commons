@@ -13,18 +13,57 @@
     "Moirai2": "default"
   },
   "window_profiles": {
-    "hourly": {
-      "short": {
-        "lookback_window": 72,
-        "forecast_horizon": 24
+    "gift_eval_ett1_h": {
+      "gift_eval_ett1_h_pl48": {
+        "forecast_horizon": 48,
+        "context_policy": "full_history",
+        "num_windows_policy": "gift_eval",
+        "source_benchmark": "gift_eval",
+        "source_dataset_config": "ett1/H/short",
+        "frequency": "h",
+        "term": "short",
+        "metadata": {
+          "base_prediction_length": 48,
+          "term_multiplier": 1,
+          "test_split_fraction": 0.1,
+          "max_windows": 20,
+          "window_distance": 48,
+          "aggregation": "score over all target points from all rolling windows"
+        }
       },
-      "medium": {
-        "lookback_window": 336,
-        "forecast_horizon": 168
+      "gift_eval_ett1_h_pl480": {
+        "forecast_horizon": 480,
+        "context_policy": "full_history",
+        "num_windows_policy": "gift_eval",
+        "source_benchmark": "gift_eval",
+        "source_dataset_config": "ett1/H/medium",
+        "frequency": "h",
+        "term": "medium",
+        "metadata": {
+          "base_prediction_length": 48,
+          "term_multiplier": 10,
+          "test_split_fraction": 0.1,
+          "max_windows": 20,
+          "window_distance": 480,
+          "aggregation": "score over all target points from all rolling windows"
+        }
       },
-      "long": {
-        "lookback_window": 720,
-        "forecast_horizon": 720
+      "gift_eval_ett1_h_pl720": {
+        "forecast_horizon": 720,
+        "context_policy": "full_history",
+        "num_windows_policy": "gift_eval",
+        "source_benchmark": "gift_eval",
+        "source_dataset_config": "ett1/H/long",
+        "frequency": "h",
+        "term": "long",
+        "metadata": {
+          "base_prediction_length": 48,
+          "term_multiplier": 15,
+          "test_split_fraction": 0.1,
+          "max_windows": 20,
+          "window_distance": 720,
+          "aggregation": "score over all target points from all rolling windows"
+        }
       }
     }
   },
@@ -40,36 +79,35 @@
       "io_mode": "MV-MV",
       "variables": {
         "targets": [
-          "HUFL",
-          "HULL",
-          "MUFL",
-          "MULL",
-          "LUFL",
-          "LULL",
-          "OT"
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]"
         ],
         "observed": [
-          "HUFL",
-          "HULL",
-          "MUFL",
-          "MULL",
-          "LUFL",
-          "LULL",
-          "OT"
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]"
         ],
         "known_future": []
       },
-      "window_profile": "hourly",
-      "horizons": [
-        "short",
-        "medium",
-        "long"
-      ],
-      "num_windows": 1,
+      "window_profile": "gift_eval_ett1_h",
       "metrics": [
         "MAE",
         "MSE",
         "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_ett1_h_pl48",
+        "gift_eval_ett1_h_pl480",
+        "gift_eval_ett1_h_pl720"
       ]
     }
   ],
