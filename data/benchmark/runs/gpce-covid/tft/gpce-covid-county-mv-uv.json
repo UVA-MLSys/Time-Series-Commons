@@ -1,0 +1,142 @@
+{
+  "benchmark_id": "gpce-covid-gpce-covid-county-tft-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "GPCE COVID county forecasting benchmark results for TFT.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "tft": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "gpce-covid-county-mv-uv",
+      "dataset_id": "gpce-covid-county",
+      "model_id": "tft",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "DiseaseSpread",
+          "Transmission",
+          "VaccinationFull",
+          "SocialDist",
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_streams": [
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_static": [
+          "AgeDist",
+          "HealthDisp"
+        ]
+      },
+      "window_profile": "gpce_covid_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "SMAPE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "gpce_covid_tft_tft-baseline"
+      ]
+    }
+  ],
+  "results": {
+    "gpce-tft-tft-baseline": {
+      "model_id": "tft",
+      "window_id": "gpce_covid_tft_tft-baseline",
+      "metric": "MAE",
+      "score": 35.68,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Interpreting%20County-Level%20COVID-19%20Infections%20using%20Deep%20Learning%20for%20Time%20Series.pdf"
+      }
+    },
+    "gpce-tft-tft-baseline__rmse": {
+      "model_id": "tft",
+      "window_id": "gpce_covid_tft_tft-baseline",
+      "metric": "RMSE",
+      "score": 221.3,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Interpreting%20County-Level%20COVID-19%20Infections%20using%20Deep%20Learning%20for%20Time%20Series.pdf"
+      }
+    },
+    "gpce-tft-tft-baseline__rmsle": {
+      "model_id": "tft",
+      "window_id": "gpce_covid_tft_tft-baseline",
+      "metric": "RMSLE",
+      "score": 1.347,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Interpreting%20County-Level%20COVID-19%20Infections%20using%20Deep%20Learning%20for%20Time%20Series.pdf"
+      }
+    },
+    "gpce-tft-tft-baseline__smape": {
+      "model_id": "tft",
+      "window_id": "gpce_covid_tft_tft-baseline",
+      "metric": "SMAPE",
+      "score": 0.842,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Interpreting%20County-Level%20COVID-19%20Infections%20using%20Deep%20Learning%20for%20Time%20Series.pdf"
+      }
+    },
+    "gpce-tft-tft-baseline__nnse": {
+      "model_id": "tft",
+      "window_id": "gpce_covid_tft_tft-baseline",
+      "metric": "NNSE",
+      "score": 0.679,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Interpreting%20County-Level%20COVID-19%20Infections%20using%20Deep%20Learning%20for%20Time%20Series.pdf"
+      }
+    }
+  },
+  "windows": {
+    "gpce_covid_tft_tft-baseline": {
+      "lookback_window": 13,
+      "forecast_horizon": 15,
+      "context_policy": "reported_tft_config",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "gpce-covid",
+      "source_dataset_config": "tft_baseline",
+      "frequency": "D",
+      "term": "baseline",
+      "metadata": {
+        "aggregation": "reported scalar test metrics in paper; repository also contains committed test figure/checkpoint artifacts",
+        "lookback_window_semantics": "tft_input_sequence_length_from_gpce_config",
+        "forecast_horizon_semantics": "tft_target_sequence_length_from_gpce_config",
+        "window_source": "UVA-MLSys/gpce-covid TFT-pytorch configurations and training code: input_sequence_length=13, target_sequence_length=15, max_encoder_length=input_sequence_length, max_prediction_length=target_sequence_length",
+        "source_config_artifacts": [
+          "https://github.com/UVA-MLSys/gpce-covid/blob/main/TFT-pytorch/configurations/baseline.json",
+          "https://github.com/UVA-MLSys/gpce-covid/blob/main/TFT-pytorch/configurations/split_1.json",
+          "https://github.com/UVA-MLSys/gpce-covid/blob/main/TFT-pytorch/configurations/split_2.json",
+          "https://github.com/UVA-MLSys/gpce-covid/blob/main/TFT-pytorch/configurations/split_3.json",
+          "https://github.com/UVA-MLSys/gpce-covid/blob/main/TFT-pytorch/script/train.py"
+        ],
+        "metric_order": [
+          "MAE",
+          "RMSE",
+          "RMSLE",
+          "SMAPE",
+          "NNSE"
+        ]
+      }
+    }
+  }
+}

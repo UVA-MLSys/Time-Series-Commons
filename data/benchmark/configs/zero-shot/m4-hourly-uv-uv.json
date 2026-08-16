@@ -58,7 +58,7 @@
         "observed": [
           "y"
         ],
-        "known_future": []
+        "exogenous_streams": []
       },
       "window_profile": "gift_eval_m4_hourly_h",
       "metrics": [

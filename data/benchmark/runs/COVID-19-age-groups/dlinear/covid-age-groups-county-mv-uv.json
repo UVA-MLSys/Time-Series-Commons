@@ -1,0 +1,248 @@
+{
+  "benchmark_id": "covid-19-age-groups-covid-age-groups-county-dlinear-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "COVID-19-age-groups forecasting benchmark results for DLinear.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "dlinear": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "covid-age-groups-county-mv-uv",
+      "dataset_id": "covid-age-groups-county",
+      "model_id": "dlinear",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "Vaccination",
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_streams": [
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_static": [
+          "UNDER5",
+          "AGE517",
+          "AGE1829",
+          "AGE3039",
+          "AGE4049",
+          "AGE5064",
+          "AGE6574",
+          "AGE75PLUS",
+          "Population"
+        ]
+      },
+      "window_profile": "covid_age_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "R2"
+      ],
+      "evaluation_windows": [
+        "covid_age_dlinear_dlinear-top-20"
+      ]
+    },
+    {
+      "run_group_id": "covid-age-groups-county-mv-uv",
+      "dataset_id": "covid-age-groups-county",
+      "model_id": "dlinear",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "Vaccination",
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_streams": [
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_static": [
+          "UNDER5",
+          "AGE517",
+          "AGE1829",
+          "AGE3039",
+          "AGE4049",
+          "AGE5064",
+          "AGE6574",
+          "AGE75PLUS",
+          "Population"
+        ]
+      },
+      "window_profile": "covid_age_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "R2"
+      ],
+      "evaluation_windows": [
+        "covid_age_dlinear_dlinear-total"
+      ]
+    }
+  ],
+  "results": {
+    "covid-age-dlinear-dlinear-top-20": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-top-20",
+      "metric": "MAE",
+      "score": 949.3650512695312,
+      "horizon_id": "Top_20",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Top_20/test_metrics.txt"
+      }
+    },
+    "covid-age-dlinear-dlinear-top-20__rmse": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-top-20",
+      "metric": "RMSE",
+      "score": 1717.591552734375,
+      "horizon_id": "Top_20",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Top_20/test_metrics.txt"
+      }
+    },
+    "covid-age-dlinear-dlinear-top-20__rmsle": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-top-20",
+      "metric": "RMSLE",
+      "score": 2.7177412509918213,
+      "horizon_id": "Top_20",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Top_20/test_metrics.txt"
+      }
+    },
+    "covid-age-dlinear-dlinear-top-20__r2": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-top-20",
+      "metric": "R2",
+      "score": 0.22656292966361394,
+      "horizon_id": "Top_20",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Top_20/test_metrics.txt"
+      }
+    },
+    "covid-age-dlinear-dlinear-total": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-total",
+      "metric": "MAE",
+      "score": 30.08792495727539,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-dlinear-dlinear-total__rmse": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-total",
+      "metric": "RMSE",
+      "score": 173.228759765625,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-dlinear-dlinear-total__rmsle": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-total",
+      "metric": "RMSLE",
+      "score": 1.436765193939209,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-dlinear-dlinear-total__r2": {
+      "model_id": "dlinear",
+      "window_id": "covid_age_dlinear_dlinear-total",
+      "metric": "R2",
+      "score": 0.519126296043396,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/DLinear_Total/test_metrics.txt"
+      }
+    }
+  },
+  "windows": {
+    "covid_age_dlinear_dlinear-top-20": {
+      "lookback_window": 14,
+      "forecast_horizon": 14,
+      "context_policy": "reported_default_run_config",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "COVID-19-age-groups",
+      "source_dataset_config": "DLinear_Top_20",
+      "frequency": "D",
+      "term": "Top_20",
+      "metadata": {
+        "data_subset": "Top_20",
+        "metric_order": [
+          "MAE",
+          "RMSE",
+          "RMSLE",
+          "R2"
+        ],
+        "aggregation": "reported test_metrics.txt",
+        "lookback_window_semantics": "seq_len_from_covid_age_groups_run_config",
+        "forecast_horizon_semantics": "pred_len_from_covid_age_groups_run_config",
+        "window_source": "UVA-MLSys/COVID-19-age-groups run.py defaults and scripts/outputs run namespaces: seq_len=14, pred_len=14",
+        "source_config_artifacts": [
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/run.py",
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/tree/main/scripts/outputs"
+        ]
+      }
+    },
+    "covid_age_dlinear_dlinear-total": {
+      "lookback_window": 14,
+      "forecast_horizon": 14,
+      "context_policy": "reported_default_run_config",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "COVID-19-age-groups",
+      "source_dataset_config": "DLinear_Total",
+      "frequency": "D",
+      "term": "Total",
+      "metadata": {
+        "data_subset": "Total",
+        "metric_order": [
+          "MAE",
+          "RMSE",
+          "RMSLE",
+          "R2"
+        ],
+        "aggregation": "reported test_metrics.txt",
+        "lookback_window_semantics": "seq_len_from_covid_age_groups_run_config",
+        "forecast_horizon_semantics": "pred_len_from_covid_age_groups_run_config",
+        "window_source": "UVA-MLSys/COVID-19-age-groups run.py defaults and scripts/outputs run namespaces: seq_len=14, pred_len=14",
+        "source_config_artifacts": [
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/run.py",
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/tree/main/scripts/outputs"
+        ]
+      }
+    }
+  }
+}

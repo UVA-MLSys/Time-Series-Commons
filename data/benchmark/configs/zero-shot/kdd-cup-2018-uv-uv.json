@@ -96,7 +96,7 @@
         "observed": [
           "target"
         ],
-        "known_future": []
+        "exogenous_streams": []
       },
       "window_profile": "gift_eval_kdd_cup_2018_h",
       "metrics": [

@@ -1,0 +1,79 @@
+{
+  "benchmark_id": "financial-time-series-financial-aid-state-micn-uv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Financial-Time-Series benchmark results for MICN on financial-aid-state.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "micn": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "financial-aid-state-uv-uv",
+      "dataset_id": "financial-aid-state",
+      "model_id": "micn",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "need_amt"
+        ],
+        "observed": [
+          "need_amt",
+          "need_number"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_financial-aid-state_micn_sl10_pl1_p100"
+      ]
+    }
+  ],
+  "results": {
+    "fts-financial-aid-state-micn-sl10-pl1-p100-itr1": {
+      "model_id": "micn",
+      "window_id": "fts_financial-aid-state_micn_sl10_pl1_p100",
+      "metric": "MSE",
+      "score": 2.0194,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-micn-sl10-pl1-p100-itr1__mae": {
+      "model_id": "micn",
+      "window_id": "fts_financial-aid-state_micn_sl10_pl1_p100",
+      "metric": "MAE",
+      "score": 0.99997,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    }
+  },
+  "windows": {
+    "fts_financial-aid-state_micn_sl10_pl1_p100": {
+      "lookback_window": 10,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Financial_Aid_State/MICN_sl_10_pl_1_p_100",
+      "frequency": "yearly",
+      "term": "pl1",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    }
+  }
+}

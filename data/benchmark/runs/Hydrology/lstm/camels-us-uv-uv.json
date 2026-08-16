@@ -1,0 +1,360 @@
+{
+  "benchmark_id": "hydrology-camels-us-lstm-uv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Hydrology benchmark results for LSTM on camels-us (UV-UV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "lstm": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels-us",
+      "model_id": "lstm",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "exogenous_streams": [
+          "EMA_2",
+          "EMA_4",
+          "EMA_6",
+          "EMA_8",
+          "EMA_10",
+          "EMA_20",
+          "EMA_50",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_static": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "low_prec_freq",
+          "low_prec_dur",
+          "carbonate_rocks_frac",
+          "geol_permeability",
+          "huc_02",
+          "soil_depth_pelletier",
+          "soil_depth_statsgo",
+          "soil_porosity",
+          "soil_conductivity",
+          "max_water_content",
+          "sand_frac",
+          "silt_frac",
+          "clay_frac",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "slope_mean",
+          "area_gages2",
+          "frac_forest",
+          "lai_max",
+          "lai_diff",
+          "gvf_max",
+          "gvf_diff"
+        ]
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels-us",
+      "model_id": "lstm",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "exogenous_streams": [
+          "EMA_2",
+          "EMA_4",
+          "EMA_6",
+          "EMA_8",
+          "EMA_10",
+          "EMA_20",
+          "EMA_50",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_static": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "low_prec_freq",
+          "low_prec_dur",
+          "carbonate_rocks_frac",
+          "geol_permeability",
+          "huc_02",
+          "soil_depth_pelletier",
+          "soil_depth_statsgo",
+          "soil_porosity",
+          "soil_conductivity",
+          "max_water_content",
+          "sand_frac",
+          "silt_frac",
+          "clay_frac",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "slope_mean",
+          "area_gages2",
+          "frac_forest",
+          "lai_max",
+          "lai_diff",
+          "gvf_max",
+          "gvf_diff"
+        ]
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels-us",
+      "model_id": "lstm",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "exogenous_streams": [
+          "EMA_2",
+          "EMA_4",
+          "EMA_6",
+          "EMA_8",
+          "EMA_10",
+          "EMA_20",
+          "EMA_50",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_static": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "low_prec_freq",
+          "low_prec_dur",
+          "carbonate_rocks_frac",
+          "geol_permeability",
+          "huc_02",
+          "soil_depth_pelletier",
+          "soil_depth_statsgo",
+          "soil_porosity",
+          "soil_conductivity",
+          "max_water_content",
+          "sand_frac",
+          "silt_frac",
+          "clay_frac",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "slope_mean",
+          "area_gages2",
+          "frac_forest",
+          "lai_max",
+          "lai_diff",
+          "gvf_max",
+          "gvf_diff"
+        ]
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    },
+    {
+      "run_group_id": "camels-us-uv-uv",
+      "dataset_id": "camels-us",
+      "model_id": "lstm",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)"
+        ],
+        "exogenous_streams": [
+          "EMA_2",
+          "EMA_4",
+          "EMA_6",
+          "EMA_8",
+          "EMA_10",
+          "EMA_20",
+          "EMA_50",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_static": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "camels-us-uv-uv__LSTM__table-xi-location-min-max-cuberoot__p__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0604,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Location split, min-max and cube-root preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-location-min-max-cuberoot__p__hydrology_daily_pl1__nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.824,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Location split, min-max and cube-root preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-location-min-max__p__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0141,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Location split, min-max preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-location-min-max__p__hydrology_daily_pl1__nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.744,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Location split, min-max preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-time-min-max-cuberoot__p__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0826,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Time split, min-max and cube-root preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-time-min-max-cuberoot__p__hydrology_daily_pl1__nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.718,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Time split, min-max and cube-root preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-time-min-max__p__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0187,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Time split, min-max preprocessing"
+      }
+    },
+    "camels-us-uv-uv__LSTM__table-xi-time-min-max__p__hydrology_daily_pl1__nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.618,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split_preprocessing": "Time split, min-max preprocessing"
+      }
+    }
+  },
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

@@ -96,7 +96,7 @@
           "target[5]",
           "target[6]"
         ],
-        "known_future": []
+        "exogenous_streams": []
       },
       "window_profile": "gift_eval_ett1_h",
       "metrics": [

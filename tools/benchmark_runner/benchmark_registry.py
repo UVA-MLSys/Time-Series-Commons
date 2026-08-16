@@ -166,13 +166,15 @@ def _validate_variable_roles(
 ) -> None:
     targets = expand_variable_selection(variables.get("targets", []))
     observed = expand_variable_selection(variables.get("observed", []))
-    known_future = expand_variable_selection(variables.get("known_future", []))
+    exogenous_streams = expand_variable_selection(
+        variables.get("exogenous_streams", variables.get("known_future", []))
+    )
     if not targets or not observed:
         raise ValueError(f"{run_group_id} must define target and observed variables")
     if not set(targets).issubset(observed):
         raise ValueError(f"{run_group_id} targets must be included in observed variables")
-    if not set(known_future).issubset(observed):
-        raise ValueError(f"{run_group_id} known_future variables must be observed")
+    if not set(exogenous_streams).issubset(observed):
+        raise ValueError(f"{run_group_id} exogenous_streams variables must be observed")
     target_policy = (run or {}).get("target_policy")
     if io_mode == "UV-UV":
         gift_eval_univariate = target_policy == "gift_eval_univariate"
@@ -201,7 +203,9 @@ def _validate_dataset_variables(
     selected = {
         *expand_variable_selection(variables.get("targets", [])),
         *expand_variable_selection(variables.get("observed", [])),
-        *expand_variable_selection(variables.get("known_future", [])),
+        *expand_variable_selection(
+            variables.get("exogenous_streams", variables.get("known_future", []))
+        ),
     }
     unknown = sorted(selected - declared_set)
     if unknown:

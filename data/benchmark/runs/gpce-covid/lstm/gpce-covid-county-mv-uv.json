@@ -1,0 +1,605 @@
+{
+  "benchmark_id": "gpce-covid-gpce-covid-county-lstm-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "GPCE COVID county forecasting benchmark results for LSTM.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "lstm": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "gpce-covid-county-mv-uv",
+      "dataset_id": "gpce-covid-county",
+      "model_id": "lstm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "DiseaseSpread",
+          "Transmission",
+          "VaccinationFull",
+          "SocialDist",
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_streams": [
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_static": [
+          "AgeDist",
+          "HealthDisp"
+        ]
+      },
+      "window_profile": "gpce_covid_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "SMAPE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "gpce_covid_lstm_lstm-baseline"
+      ]
+    },
+    {
+      "run_group_id": "gpce-covid-county-mv-uv",
+      "dataset_id": "gpce-covid-county",
+      "model_id": "lstm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "DiseaseSpread",
+          "Transmission",
+          "VaccinationFull",
+          "SocialDist",
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_streams": [
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_static": [
+          "AgeDist",
+          "HealthDisp"
+        ]
+      },
+      "window_profile": "gpce_covid_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "SMAPE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "gpce_covid_lstm_lstm-split-1"
+      ]
+    },
+    {
+      "run_group_id": "gpce-covid-county-mv-uv",
+      "dataset_id": "gpce-covid-county",
+      "model_id": "lstm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "DiseaseSpread",
+          "Transmission",
+          "VaccinationFull",
+          "SocialDist",
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_streams": [
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_static": [
+          "AgeDist",
+          "HealthDisp"
+        ]
+      },
+      "window_profile": "gpce_covid_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "SMAPE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "gpce_covid_lstm_lstm-split-2"
+      ]
+    },
+    {
+      "run_group_id": "gpce-covid-county-mv-uv",
+      "dataset_id": "gpce-covid-county",
+      "model_id": "lstm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "DiseaseSpread",
+          "Transmission",
+          "VaccinationFull",
+          "SocialDist",
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_streams": [
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_static": [
+          "AgeDist",
+          "HealthDisp"
+        ]
+      },
+      "window_profile": "gpce_covid_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "SMAPE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "gpce_covid_lstm_lstm-split-3"
+      ]
+    },
+    {
+      "run_group_id": "gpce-covid-county-mv-uv",
+      "dataset_id": "gpce-covid-county",
+      "model_id": "lstm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "DiseaseSpread",
+          "Transmission",
+          "VaccinationFull",
+          "SocialDist",
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_streams": [
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_static": [
+          "AgeDist",
+          "HealthDisp"
+        ]
+      },
+      "window_profile": "gpce_covid_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "SMAPE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "gpce_covid_lstm_lstm-split-dec"
+      ]
+    },
+    {
+      "run_group_id": "gpce-covid-county-mv-uv",
+      "dataset_id": "gpce-covid-county",
+      "model_id": "lstm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "DiseaseSpread",
+          "Transmission",
+          "VaccinationFull",
+          "SocialDist",
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_streams": [
+          "SinWeekly",
+          "CosWeekly"
+        ],
+        "exogenous_static": [
+          "AgeDist",
+          "HealthDisp"
+        ]
+      },
+      "window_profile": "gpce_covid_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "SMAPE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "gpce_covid_lstm_lstm-tuning"
+      ]
+    }
+  ],
+  "results": {
+    "gpce-lstm-lstm-baseline": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-baseline",
+      "metric": "MAE",
+      "score": 37.593,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_baseline.out"
+      }
+    },
+    "gpce-lstm-lstm-baseline__rmse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-baseline",
+      "metric": "RMSE",
+      "score": 251.48,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_baseline.out"
+      }
+    },
+    "gpce-lstm-lstm-baseline__rmsle": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-baseline",
+      "metric": "RMSLE",
+      "score": 1.4022,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_baseline.out"
+      }
+    },
+    "gpce-lstm-lstm-baseline__smape": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-baseline",
+      "metric": "SMAPE",
+      "score": 1.026,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_baseline.out"
+      }
+    },
+    "gpce-lstm-lstm-baseline__nnse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-baseline",
+      "metric": "NNSE",
+      "score": 0.6204,
+      "horizon_id": "baseline",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_baseline.out"
+      }
+    },
+    "gpce-lstm-lstm-split-1": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-1",
+      "metric": "MAE",
+      "score": 63.018,
+      "horizon_id": "split_1",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_1.out"
+      }
+    },
+    "gpce-lstm-lstm-split-1__rmse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-1",
+      "metric": "RMSE",
+      "score": 352.46,
+      "horizon_id": "split_1",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_1.out"
+      }
+    },
+    "gpce-lstm-lstm-split-1__rmsle": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-1",
+      "metric": "RMSLE",
+      "score": 1.6926,
+      "horizon_id": "split_1",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_1.out"
+      }
+    },
+    "gpce-lstm-lstm-split-1__smape": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-1",
+      "metric": "SMAPE",
+      "score": 0.93724,
+      "horizon_id": "split_1",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_1.out"
+      }
+    },
+    "gpce-lstm-lstm-split-1__nnse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-1",
+      "metric": "NNSE",
+      "score": 0.6671,
+      "horizon_id": "split_1",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_1.out"
+      }
+    },
+    "gpce-lstm-lstm-split-2": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-2",
+      "metric": "MAE",
+      "score": 61.527,
+      "horizon_id": "split_2",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_2.out"
+      }
+    },
+    "gpce-lstm-lstm-split-2__rmse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-2",
+      "metric": "RMSE",
+      "score": 161.27,
+      "horizon_id": "split_2",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_2.out"
+      }
+    },
+    "gpce-lstm-lstm-split-2__rmsle": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-2",
+      "metric": "RMSLE",
+      "score": 2.0471,
+      "horizon_id": "split_2",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_2.out"
+      }
+    },
+    "gpce-lstm-lstm-split-2__smape": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-2",
+      "metric": "SMAPE",
+      "score": 1.1761,
+      "horizon_id": "split_2",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_2.out"
+      }
+    },
+    "gpce-lstm-lstm-split-2__nnse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-2",
+      "metric": "NNSE",
+      "score": 0.34823,
+      "horizon_id": "split_2",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_2.out"
+      }
+    },
+    "gpce-lstm-lstm-split-3": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-3",
+      "metric": "MAE",
+      "score": 21.847,
+      "horizon_id": "split_3",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_3.out"
+      }
+    },
+    "gpce-lstm-lstm-split-3__rmse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-3",
+      "metric": "RMSE",
+      "score": 93.245,
+      "horizon_id": "split_3",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_3.out"
+      }
+    },
+    "gpce-lstm-lstm-split-3__rmsle": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-3",
+      "metric": "RMSLE",
+      "score": 2.0559,
+      "horizon_id": "split_3",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_3.out"
+      }
+    },
+    "gpce-lstm-lstm-split-3__smape": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-3",
+      "metric": "SMAPE",
+      "score": 1.337,
+      "horizon_id": "split_3",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_3.out"
+      }
+    },
+    "gpce-lstm-lstm-split-3__nnse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-3",
+      "metric": "NNSE",
+      "score": 0.50496,
+      "horizon_id": "split_3",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_3.out"
+      }
+    },
+    "gpce-lstm-lstm-split-dec": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-dec",
+      "metric": "MAE",
+      "score": 16.876,
+      "horizon_id": "split_dec",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_dec.out"
+      }
+    },
+    "gpce-lstm-lstm-split-dec__rmse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-dec",
+      "metric": "RMSE",
+      "score": 138.14,
+      "horizon_id": "split_dec",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_dec.out"
+      }
+    },
+    "gpce-lstm-lstm-split-dec__rmsle": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-dec",
+      "metric": "RMSLE",
+      "score": 1.6596,
+      "horizon_id": "split_dec",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_dec.out"
+      }
+    },
+    "gpce-lstm-lstm-split-dec__smape": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-dec",
+      "metric": "SMAPE",
+      "score": 1.3798,
+      "horizon_id": "split_dec",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_dec.out"
+      }
+    },
+    "gpce-lstm-lstm-split-dec__nnse": {
+      "model_id": "lstm",
+      "window_id": "gpce_covid_lstm_lstm-split-dec",
+      "metric": "NNSE",
+      "score": 0.57073,
+      "horizon_id": "split_dec",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related Works/outputs/lstm_split_dec.out"
+      }
+    }
+  },
+  "windows": {
+    "gpce_covid_lstm_lstm-baseline": {
+      "lookback_window": 13,
+      "forecast_horizon": 15,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "gpce-covid",
+      "source_dataset_config": "lstm_baseline",
+      "frequency": "D",
+      "term": "baseline",
+      "metadata": {
+        "aggregation": "reported final Test prediction metric line"
+      }
+    },
+    "gpce_covid_lstm_lstm-split-1": {
+      "lookback_window": 13,
+      "forecast_horizon": 15,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "gpce-covid",
+      "source_dataset_config": "lstm_split_1",
+      "frequency": "D",
+      "term": "split_1",
+      "metadata": {
+        "aggregation": "reported final Test prediction metric line"
+      }
+    },
+    "gpce_covid_lstm_lstm-split-2": {
+      "lookback_window": 13,
+      "forecast_horizon": 15,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "gpce-covid",
+      "source_dataset_config": "lstm_split_2",
+      "frequency": "D",
+      "term": "split_2",
+      "metadata": {
+        "aggregation": "reported final Test prediction metric line"
+      }
+    },
+    "gpce_covid_lstm_lstm-split-3": {
+      "lookback_window": 13,
+      "forecast_horizon": 15,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "gpce-covid",
+      "source_dataset_config": "lstm_split_3",
+      "frequency": "D",
+      "term": "split_3",
+      "metadata": {
+        "aggregation": "reported final Test prediction metric line"
+      }
+    },
+    "gpce_covid_lstm_lstm-split-dec": {
+      "lookback_window": 13,
+      "forecast_horizon": 15,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "gpce-covid",
+      "source_dataset_config": "lstm_split_dec",
+      "frequency": "D",
+      "term": "split_dec",
+      "metadata": {
+        "aggregation": "reported final Test prediction metric line"
+      }
+    },
+    "gpce_covid_lstm_lstm-tuning": {
+      "lookback_window": 13,
+      "forecast_horizon": 15,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "gpce-covid",
+      "source_dataset_config": "lstm_tuning",
+      "frequency": "D",
+      "term": "tuning",
+      "metadata": {
+        "aggregation": "reported final Test prediction metric line"
+      }
+    }
+  }
+}

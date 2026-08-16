@@ -1,0 +1,133 @@
+{
+  "benchmark_id": "covid-19-age-groups-covid-age-groups-county-patchtst-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "COVID-19-age-groups forecasting benchmark results for PatchTST.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "patchtst": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "covid-age-groups-county-mv-uv",
+      "dataset_id": "covid-age-groups-county",
+      "model_id": "patchtst",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "Vaccination",
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_streams": [
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_static": [
+          "UNDER5",
+          "AGE517",
+          "AGE1829",
+          "AGE3039",
+          "AGE4049",
+          "AGE5064",
+          "AGE6574",
+          "AGE75PLUS",
+          "Population"
+        ]
+      },
+      "window_profile": "covid_age_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "R2"
+      ],
+      "evaluation_windows": [
+        "covid_age_patchtst_patchtst-total"
+      ]
+    }
+  ],
+  "results": {
+    "covid-age-patchtst-patchtst-total": {
+      "model_id": "patchtst",
+      "window_id": "covid_age_patchtst_patchtst-total",
+      "metric": "MAE",
+      "score": 34.28981018066406,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/PatchTST_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-patchtst-patchtst-total__rmse": {
+      "model_id": "patchtst",
+      "window_id": "covid_age_patchtst_patchtst-total",
+      "metric": "RMSE",
+      "score": 185.3585662841797,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/PatchTST_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-patchtst-patchtst-total__rmsle": {
+      "model_id": "patchtst",
+      "window_id": "covid_age_patchtst_patchtst-total",
+      "metric": "RMSLE",
+      "score": 1.5948811769485474,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/PatchTST_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-patchtst-patchtst-total__r2": {
+      "model_id": "patchtst",
+      "window_id": "covid_age_patchtst_patchtst-total",
+      "metric": "R2",
+      "score": 0.4396567642688751,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/PatchTST_Total/test_metrics.txt"
+      }
+    }
+  },
+  "windows": {
+    "covid_age_patchtst_patchtst-total": {
+      "lookback_window": 14,
+      "forecast_horizon": 14,
+      "context_policy": "reported_default_run_config",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "COVID-19-age-groups",
+      "source_dataset_config": "PatchTST_Total",
+      "frequency": "D",
+      "term": "Total",
+      "metadata": {
+        "data_subset": "Total",
+        "metric_order": [
+          "MAE",
+          "RMSE",
+          "RMSLE",
+          "R2"
+        ],
+        "aggregation": "reported test_metrics.txt",
+        "lookback_window_semantics": "seq_len_from_covid_age_groups_run_config",
+        "forecast_horizon_semantics": "pred_len_from_covid_age_groups_run_config",
+        "window_source": "UVA-MLSys/COVID-19-age-groups run.py defaults and scripts/outputs run namespaces: seq_len=14, pred_len=14",
+        "source_config_artifacts": [
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/run.py",
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/tree/main/scripts/outputs"
+        ]
+      }
+    }
+  }
+}

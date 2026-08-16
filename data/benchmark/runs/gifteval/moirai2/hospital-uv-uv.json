@@ -1,0 +1,80 @@
+{
+  "benchmark_id": "zero-shot-gifteval-hospital-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for hospital_gifteval.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "moirai2": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "hospital-uv-uv",
+      "dataset_id": "hospital",
+      "model_id": "moirai2",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "target"
+        ],
+        "observed": [
+          "target"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "gift_eval_hospital_m",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_hospital_m_pl12"
+      ]
+    }
+  ],
+  "results": {
+    "hospital-uv-uv__Moirai2__gift_eval_hospital_m_pl12": {
+      "model_id": "moirai2",
+      "window_id": "gift_eval_hospital_m_pl12",
+      "metric": "MAE",
+      "score": 19.68160316054068,
+      "horizon_id": "short",
+      "target": "target"
+    }
+  },
+  "windows": {
+    "gift_eval_hospital_m_pl12": {
+      "forecast_horizon": 12,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "hospital/short",
+      "frequency": "M",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 12,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 12,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 84,
+        "num_rolling_windows": 1,
+        "min_context_length": 72,
+        "max_context_length": 72,
+        "context_lengths": [
+          72
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 72
+    }
+  }
+}

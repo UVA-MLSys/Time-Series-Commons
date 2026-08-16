@@ -1,0 +1,103 @@
+{
+  "benchmark_collection": "COVID-19-age-groups",
+  "updated_at": "2026-08-15T10:08:26.913Z",
+  "source": {
+    "type": "github_results",
+    "repo": "UVA-MLSys/COVID-19-age-groups",
+    "source_files": [
+      "results/*/test_metrics.txt"
+    ]
+  },
+  "models": [
+    {
+      "model_id": "calf",
+      "run_registry_count": 1,
+      "run_count": 2,
+      "result_record_count": 2,
+      "run_registries": [
+        "calf/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "crossformer",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "crossformer/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "dlinear",
+      "run_registry_count": 1,
+      "run_count": 2,
+      "result_record_count": 2,
+      "run_registries": [
+        "dlinear/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "gpt4ts",
+      "run_registry_count": 1,
+      "run_count": 2,
+      "result_record_count": 2,
+      "run_registries": [
+        "gpt4ts/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "itransformer",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "itransformer/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "ofa-llama",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "ofa-llama/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "patchtst",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "patchtst/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "tft",
+      "run_registry_count": 1,
+      "run_count": 2,
+      "result_record_count": 2,
+      "run_registries": [
+        "tft/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "timemixer",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "timemixer/covid-age-groups-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "timexer",
+      "run_registry_count": 1,
+      "run_count": 1,
+      "result_record_count": 1,
+      "run_registries": [
+        "timexer/covid-age-groups-county-mv-uv.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "benchmark_collection": "Financial-Time-Series",
+  "updated_at": "2026-08-15T10:08:05.600Z",
+  "source": {
+    "type": "github_results_csv",
+    "repo": "UVA-MLSys/Financial-Time-Series",
+    "source_file": "results/results.csv"
+  },
+  "models": [
+    {
+      "model_id": "calf",
+      "run_registry_count": 8,
+      "run_count": 43,
+      "result_record_count": 128,
+      "run_registries": [
+        "calf/apple-stock-mv-uv.json",
+        "calf/crude-oil-mv-uv.json",
+        "calf/exchange-rate-report-mv-uv.json",
+        "calf/financial-aid-state-uv-uv.json",
+        "calf/gold-mv-uv.json",
+        "calf/microsoft-stock-mv-uv.json",
+        "calf/natural-gas-mv-uv.json",
+        "calf/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "dlinear",
+      "run_registry_count": 8,
+      "run_count": 36,
+      "result_record_count": 107,
+      "run_registries": [
+        "dlinear/apple-stock-mv-uv.json",
+        "dlinear/crude-oil-mv-uv.json",
+        "dlinear/exchange-rate-report-mv-uv.json",
+        "dlinear/financial-aid-state-uv-uv.json",
+        "dlinear/gold-mv-uv.json",
+        "dlinear/microsoft-stock-mv-uv.json",
+        "dlinear/natural-gas-mv-uv.json",
+        "dlinear/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "gpt4ts",
+      "run_registry_count": 8,
+      "run_count": 43,
+      "result_record_count": 128,
+      "run_registries": [
+        "gpt4ts/apple-stock-mv-uv.json",
+        "gpt4ts/crude-oil-mv-uv.json",
+        "gpt4ts/exchange-rate-report-mv-uv.json",
+        "gpt4ts/financial-aid-state-uv-uv.json",
+        "gpt4ts/gold-mv-uv.json",
+        "gpt4ts/microsoft-stock-mv-uv.json",
+        "gpt4ts/natural-gas-mv-uv.json",
+        "gpt4ts/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "itransformer",
+      "run_registry_count": 8,
+      "run_count": 36,
+      "result_record_count": 107,
+      "run_registries": [
+        "itransformer/apple-stock-mv-uv.json",
+        "itransformer/crude-oil-mv-uv.json",
+        "itransformer/exchange-rate-report-mv-uv.json",
+        "itransformer/financial-aid-state-uv-uv.json",
+        "itransformer/gold-mv-uv.json",
+        "itransformer/microsoft-stock-mv-uv.json",
+        "itransformer/natural-gas-mv-uv.json",
+        "itransformer/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "micn",
+      "run_registry_count": 8,
+      "run_count": 30,
+      "result_record_count": 87,
+      "run_registries": [
+        "micn/apple-stock-mv-uv.json",
+        "micn/crude-oil-mv-uv.json",
+        "micn/exchange-rate-report-mv-uv.json",
+        "micn/financial-aid-state-uv-uv.json",
+        "micn/gold-mv-uv.json",
+        "micn/microsoft-stock-mv-uv.json",
+        "micn/natural-gas-mv-uv.json",
+        "micn/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "patchtst",
+      "run_registry_count": 8,
+      "run_count": 36,
+      "result_record_count": 107,
+      "run_registries": [
+        "patchtst/apple-stock-mv-uv.json",
+        "patchtst/crude-oil-mv-uv.json",
+        "patchtst/exchange-rate-report-mv-uv.json",
+        "patchtst/financial-aid-state-uv-uv.json",
+        "patchtst/gold-mv-uv.json",
+        "patchtst/microsoft-stock-mv-uv.json",
+        "patchtst/natural-gas-mv-uv.json",
+        "patchtst/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "timellm",
+      "run_registry_count": 8,
+      "run_count": 43,
+      "result_record_count": 128,
+      "run_registries": [
+        "timellm/apple-stock-mv-uv.json",
+        "timellm/crude-oil-mv-uv.json",
+        "timellm/exchange-rate-report-mv-uv.json",
+        "timellm/financial-aid-state-uv-uv.json",
+        "timellm/gold-mv-uv.json",
+        "timellm/microsoft-stock-mv-uv.json",
+        "timellm/natural-gas-mv-uv.json",
+        "timellm/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "timemixer",
+      "run_registry_count": 8,
+      "run_count": 36,
+      "result_record_count": 107,
+      "run_registries": [
+        "timemixer/apple-stock-mv-uv.json",
+        "timemixer/crude-oil-mv-uv.json",
+        "timemixer/exchange-rate-report-mv-uv.json",
+        "timemixer/financial-aid-state-uv-uv.json",
+        "timemixer/gold-mv-uv.json",
+        "timemixer/microsoft-stock-mv-uv.json",
+        "timemixer/natural-gas-mv-uv.json",
+        "timemixer/spx500-index-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "timesnet",
+      "run_registry_count": 8,
+      "run_count": 36,
+      "result_record_count": 106,
+      "run_registries": [
+        "timesnet/apple-stock-mv-uv.json",
+        "timesnet/crude-oil-mv-uv.json",
+        "timesnet/exchange-rate-report-mv-uv.json",
+        "timesnet/financial-aid-state-uv-uv.json",
+        "timesnet/gold-mv-uv.json",
+        "timesnet/microsoft-stock-mv-uv.json",
+        "timesnet/natural-gas-mv-uv.json",
+        "timesnet/spx500-index-mv-uv.json"
+      ]
+    }
+  ]
+}

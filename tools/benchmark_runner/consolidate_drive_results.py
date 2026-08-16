@@ -91,7 +91,7 @@ def consolidate_drive_results(
 
     for layout in layouts:
         destination = local_root / layout.name
-        registry_destination = destination / layout.registry_dir.name
+        registry_destination = destination
         registry_stats = _sync_directory(
             layout.registry_dir,
             registry_destination,

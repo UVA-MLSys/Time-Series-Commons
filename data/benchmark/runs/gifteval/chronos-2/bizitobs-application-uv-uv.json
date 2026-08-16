@@ -1,0 +1,170 @@
+{
+  "benchmark_id": "zero-shot-gifteval-bizitobs-application-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for bizitobs_application_gifteval.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "chronos-2": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "bizitobs-application-uv-uv",
+      "dataset_id": "bizitobs-application",
+      "model_id": "chronos-2",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "target[0]",
+          "target[1]"
+        ],
+        "observed": [
+          "target[0]",
+          "target[1]"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "gift_eval_bizitobs_application_10s",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_bizitobs_application_10s_pl60",
+        "gift_eval_bizitobs_application_10s_pl600",
+        "gift_eval_bizitobs_application_10s_pl900"
+      ]
+    }
+  ],
+  "results": {
+    "bizitobs-application-uv-uv__Chronos-2__gift_eval_bizitobs_application_10s_pl60": {
+      "model_id": "chronos-2",
+      "window_id": "gift_eval_bizitobs_application_10s_pl60",
+      "metric": "MAE",
+      "score": 314.4853916549683,
+      "horizon_id": "short"
+    },
+    "bizitobs-application-uv-uv__Chronos-2__gift_eval_bizitobs_application_10s_pl600": {
+      "model_id": "chronos-2",
+      "window_id": "gift_eval_bizitobs_application_10s_pl600",
+      "metric": "MAE",
+      "score": 692.2687948067983,
+      "horizon_id": "medium"
+    },
+    "bizitobs-application-uv-uv__Chronos-2__gift_eval_bizitobs_application_10s_pl900": {
+      "model_id": "chronos-2",
+      "window_id": "gift_eval_bizitobs_application_10s_pl900",
+      "metric": "MAE",
+      "score": 1452.5327032152811,
+      "horizon_id": "long"
+    }
+  },
+  "windows": {
+    "gift_eval_bizitobs_application_10s_pl60": {
+      "forecast_horizon": 60,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "bizitobs_application/short",
+      "frequency": "10S",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 60,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 60,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 8834,
+        "num_rolling_windows": 15,
+        "min_context_length": 7934,
+        "max_context_length": 8774,
+        "context_lengths": [
+          7934,
+          7994,
+          8054,
+          8114,
+          8174,
+          8234,
+          8294,
+          8354,
+          8414,
+          8474,
+          8534,
+          8594,
+          8654,
+          8714,
+          8774
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 7934
+    },
+    "gift_eval_bizitobs_application_10s_pl600": {
+      "forecast_horizon": 600,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "bizitobs_application/medium",
+      "frequency": "10S",
+      "term": "medium",
+      "metadata": {
+        "base_prediction_length": 60,
+        "term_multiplier": 10,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 600,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 8834,
+        "num_rolling_windows": 2,
+        "min_context_length": 7634,
+        "max_context_length": 8234,
+        "context_lengths": [
+          7634,
+          8234
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 7634
+    },
+    "gift_eval_bizitobs_application_10s_pl900": {
+      "forecast_horizon": 900,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "bizitobs_application/long",
+      "frequency": "10S",
+      "term": "long",
+      "metadata": {
+        "base_prediction_length": 60,
+        "term_multiplier": 15,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 900,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 8834,
+        "num_rolling_windows": 1,
+        "min_context_length": 7934,
+        "max_context_length": 7934,
+        "context_lengths": [
+          7934
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 7934
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "benchmark_id": "covid-19-age-groups-covid-age-groups-county-itransformer-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "COVID-19-age-groups forecasting benchmark results for iTransformer.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "itransformer": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "covid-age-groups-county-mv-uv",
+      "dataset_id": "covid-age-groups-county",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Cases"
+        ],
+        "observed": [
+          "Cases",
+          "Vaccination",
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_streams": [
+          "Day",
+          "Month",
+          "Weekday"
+        ],
+        "exogenous_static": [
+          "UNDER5",
+          "AGE517",
+          "AGE1829",
+          "AGE3039",
+          "AGE4049",
+          "AGE5064",
+          "AGE6574",
+          "AGE75PLUS",
+          "Population"
+        ]
+      },
+      "window_profile": "covid_age_reported_config",
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "RMSLE",
+        "R2"
+      ],
+      "evaluation_windows": [
+        "covid_age_itransformer_itransformer-total"
+      ]
+    }
+  ],
+  "results": {
+    "covid-age-itransformer-itransformer-total": {
+      "model_id": "itransformer",
+      "window_id": "covid_age_itransformer_itransformer-total",
+      "metric": "MAE",
+      "score": 34.88413619995117,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/iTransformer_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-itransformer-itransformer-total__rmse": {
+      "model_id": "itransformer",
+      "window_id": "covid_age_itransformer_itransformer-total",
+      "metric": "RMSE",
+      "score": 192.58787536621094,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/iTransformer_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-itransformer-itransformer-total__rmsle": {
+      "model_id": "itransformer",
+      "window_id": "covid_age_itransformer_itransformer-total",
+      "metric": "RMSLE",
+      "score": 1.6356658935546875,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/iTransformer_Total/test_metrics.txt"
+      }
+    },
+    "covid-age-itransformer-itransformer-total__r2": {
+      "model_id": "itransformer",
+      "window_id": "covid_age_itransformer_itransformer-total",
+      "metric": "R2",
+      "score": 0.4034859836101532,
+      "horizon_id": "Total",
+      "target": "Cases",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/results/iTransformer_Total/test_metrics.txt"
+      }
+    }
+  },
+  "windows": {
+    "covid_age_itransformer_itransformer-total": {
+      "lookback_window": 14,
+      "forecast_horizon": 14,
+      "context_policy": "reported_default_run_config",
+      "num_windows_policy": "reported_test_split",
+      "source_benchmark": "COVID-19-age-groups",
+      "source_dataset_config": "iTransformer_Total",
+      "frequency": "D",
+      "term": "Total",
+      "metadata": {
+        "data_subset": "Total",
+        "metric_order": [
+          "MAE",
+          "RMSE",
+          "RMSLE",
+          "R2"
+        ],
+        "aggregation": "reported test_metrics.txt",
+        "lookback_window_semantics": "seq_len_from_covid_age_groups_run_config",
+        "forecast_horizon_semantics": "pred_len_from_covid_age_groups_run_config",
+        "window_source": "UVA-MLSys/COVID-19-age-groups run.py defaults and scripts/outputs run namespaces: seq_len=14, pred_len=14",
+        "source_config_artifacts": [
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/run.py",
+          "https://github.com/UVA-MLSys/COVID-19-age-groups/tree/main/scripts/outputs"
+        ]
+      }
+    }
+  }
+}

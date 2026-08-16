@@ -1,0 +1,684 @@
+{
+  "benchmark_id": "financial-time-series-financial-aid-state-timesnet-uv-uv-v1",
+  "evaluation_mode": "mixed",
+  "description": "Financial-Time-Series benchmark results for TimesNet on financial-aid-state.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "timesnet": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "financial-aid-state-uv-uv",
+      "dataset_id": "financial-aid-state",
+      "model_id": "timesnet",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "need_amt"
+        ],
+        "observed": [
+          "need_amt",
+          "need_number"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_financial-aid-state_timesnet_sl10_pl1_p100"
+      ]
+    },
+    {
+      "run_group_id": "financial-aid-state-uv-uv",
+      "dataset_id": "financial-aid-state",
+      "model_id": "timesnet",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "need_amt"
+        ],
+        "observed": [
+          "need_amt",
+          "need_number"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_financial-aid-state_timesnet_sl10_pl1_p10"
+      ]
+    },
+    {
+      "run_group_id": "financial-aid-state-uv-uv",
+      "dataset_id": "financial-aid-state",
+      "model_id": "timesnet",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "need_amt"
+        ],
+        "observed": [
+          "need_amt",
+          "need_number"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_financial-aid-state_timesnet_sl10_pl1_p25"
+      ]
+    },
+    {
+      "run_group_id": "financial-aid-state-uv-uv",
+      "dataset_id": "financial-aid-state",
+      "model_id": "timesnet",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "need_amt"
+        ],
+        "observed": [
+          "need_amt",
+          "need_number"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_financial-aid-state_timesnet_sl10_pl1_p50"
+      ]
+    },
+    {
+      "run_group_id": "financial-aid-state-uv-uv",
+      "dataset_id": "financial-aid-state",
+      "model_id": "timesnet",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "need_amt"
+        ],
+        "observed": [
+          "need_amt",
+          "need_number"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_financial-aid-state_timesnet_sl10_pl1_p75"
+      ]
+    },
+    {
+      "run_group_id": "financial-aid-state-uv-uv",
+      "dataset_id": "financial-aid-state",
+      "model_id": "timesnet",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "need_amt"
+        ],
+        "observed": [
+          "need_amt",
+          "need_number"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_financial-aid-state_timesnet_sl10_pl1_p0"
+      ]
+    }
+  ],
+  "results": {
+    "fts-financial-aid-state-timesnet-sl10-pl1-p0-itr1": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p0",
+      "metric": "MSE",
+      "score": 2.8752,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p0-itr1__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p0",
+      "metric": "MAE",
+      "score": 1.2572,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p0-itr2": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p0",
+      "metric": "MSE",
+      "score": 3.8199,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p0-itr2__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p0",
+      "metric": "MAE",
+      "score": 1.5338,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p0-itr3": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p0",
+      "metric": "MSE",
+      "score": 4.1605,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p0-itr3__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p0",
+      "metric": "MAE",
+      "score": 1.615,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p10-itr1": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p10",
+      "metric": "MSE",
+      "score": 2.2768,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p10-itr1__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p10",
+      "metric": "MAE",
+      "score": 1.0868,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p10-itr2": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p10",
+      "metric": "MSE",
+      "score": 1.9185,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p10-itr2__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p10",
+      "metric": "MAE",
+      "score": 0.89311,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p10-itr3": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p10",
+      "metric": "MSE",
+      "score": 2.3037,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p10-itr3__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p10",
+      "metric": "MAE",
+      "score": 1.1419,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p100-itr1": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p100",
+      "metric": "MSE",
+      "score": 1.7941,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p100-itr1__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p100",
+      "metric": "MAE",
+      "score": 0.80643,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p100-itr2": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p100",
+      "metric": "MSE",
+      "score": 1.5176,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p100-itr2__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p100",
+      "metric": "MAE",
+      "score": 0.81286,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p100-itr3": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p100",
+      "metric": "MSE",
+      "score": 1.6036,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p100-itr3__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p100",
+      "metric": "MAE",
+      "score": 0.79037,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p25-itr1": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p25",
+      "metric": "MSE",
+      "score": 2.5552,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p25-itr1__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p25",
+      "metric": "MAE",
+      "score": 1.2697,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p25-itr2": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p25",
+      "metric": "MSE",
+      "score": 1.5132,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p25-itr2__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p25",
+      "metric": "MAE",
+      "score": 0.87331,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p25-itr3": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p25",
+      "metric": "MSE",
+      "score": 1.9284,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p25-itr3__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p25",
+      "metric": "MAE",
+      "score": 0.90917,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p50-itr1": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p50",
+      "metric": "MSE",
+      "score": 1.5742,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p50-itr1__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p50",
+      "metric": "MAE",
+      "score": 0.83191,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p50-itr2": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p50",
+      "metric": "MSE",
+      "score": 1.6228,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p50-itr2__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p50",
+      "metric": "MAE",
+      "score": 0.8094,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p50-itr3": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p50",
+      "metric": "MSE",
+      "score": 2.0304,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p50-itr3__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p50",
+      "metric": "MAE",
+      "score": 0.9374,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p75-itr1": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p75",
+      "metric": "MSE",
+      "score": 1.4816,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p75-itr1__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p75",
+      "metric": "MAE",
+      "score": 0.7478,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p75-itr2": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p75",
+      "metric": "MSE",
+      "score": 1.6214,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p75-itr2__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p75",
+      "metric": "MAE",
+      "score": 0.8316,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p75-itr3": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p75",
+      "metric": "MSE",
+      "score": 2.2291,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-financial-aid-state-timesnet-sl10-pl1-p75-itr3__mae": {
+      "model_id": "timesnet",
+      "window_id": "fts_financial-aid-state_timesnet_sl10_pl1_p75",
+      "metric": "MAE",
+      "score": 0.99434,
+      "horizon_id": "pl1",
+      "target": "need_amt",
+      "secondary_metrics": {
+        "evaluation_mode": "traditional_training",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    }
+  },
+  "windows": {
+    "fts_financial-aid-state_timesnet_sl10_pl1_p0": {
+      "lookback_window": 10,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Financial_Aid_State/TimesNet_sl_10_pl_1_p_0",
+      "frequency": "yearly",
+      "term": "pl1",
+      "metadata": {
+        "percent": 0,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_financial-aid-state_timesnet_sl10_pl1_p10": {
+      "lookback_window": 10,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Financial_Aid_State/TimesNet_sl_10_pl_1_p_10",
+      "frequency": "yearly",
+      "term": "pl1",
+      "metadata": {
+        "percent": 10,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_financial-aid-state_timesnet_sl10_pl1_p100": {
+      "lookback_window": 10,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Financial_Aid_State/TimesNet_sl_10_pl_1_p_100",
+      "frequency": "yearly",
+      "term": "pl1",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_financial-aid-state_timesnet_sl10_pl1_p25": {
+      "lookback_window": 10,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Financial_Aid_State/TimesNet_sl_10_pl_1_p_25",
+      "frequency": "yearly",
+      "term": "pl1",
+      "metadata": {
+        "percent": 25,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_financial-aid-state_timesnet_sl10_pl1_p50": {
+      "lookback_window": 10,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Financial_Aid_State/TimesNet_sl_10_pl_1_p_50",
+      "frequency": "yearly",
+      "term": "pl1",
+      "metadata": {
+        "percent": 50,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_financial-aid-state_timesnet_sl10_pl1_p75": {
+      "lookback_window": 10,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Financial_Aid_State/TimesNet_sl_10_pl_1_p_75",
+      "frequency": "yearly",
+      "term": "pl1",
+      "metadata": {
+        "percent": 75,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    }
+  }
+}

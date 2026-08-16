@@ -1,0 +1,806 @@
+{
+  "benchmark_id": "financial-time-series-exchange-rate-report-timellm-mv-uv-v1",
+  "evaluation_mode": "mixed",
+  "description": "Financial-Time-Series benchmark results for TimeLLM on exchange-rate-report.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "timellm": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "timellm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_timellm_sl96_pl24_p100"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "timellm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_timellm_sl96_pl24_p10"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "timellm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_timellm_sl96_pl24_p25"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "timellm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_timellm_sl96_pl24_p50"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "timellm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_timellm_sl96_pl24_p0"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "timellm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_timellm_sl96_pl48_p100"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "timellm",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_timellm_sl96_pl96_p100"
+      ]
+    }
+  ],
+  "results": {
+    "fts-exchange-rate-report-timellm-sl96-pl24-p0-itr1": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p0",
+      "metric": "MSE",
+      "score": 3.3606,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p0-itr1__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p0",
+      "metric": "MAE",
+      "score": 1.4865,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p0-itr2": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p0",
+      "metric": "MSE",
+      "score": 3.3174,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p0-itr2__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p0",
+      "metric": "MAE",
+      "score": 1.4884,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p0-itr3": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p0",
+      "metric": "MSE",
+      "score": 3.8073,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p0-itr3__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p0",
+      "metric": "MAE",
+      "score": 1.5693,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "zero_shot",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p10-itr1": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 1.4553,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p10-itr1__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 0.85652,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p10-itr2": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 1.3531,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p10-itr2__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 0.86894,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p10-itr3": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 1.1338,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p10-itr3__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 0.79026,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p100-itr1": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 0.94046,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p100-itr1__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.72889,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p100-itr2": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 0.94595,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p100-itr2__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.736,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p100-itr3": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 0.91406,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p100-itr3__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.72476,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p25-itr1": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p25",
+      "metric": "MSE",
+      "score": 1.3962,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p25-itr1__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p25",
+      "metric": "MAE",
+      "score": 0.82863,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p25-itr2": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p25",
+      "metric": "MSE",
+      "score": 1.388,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p25-itr2__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p25",
+      "metric": "MAE",
+      "score": 0.82026,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p25-itr3": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p25",
+      "metric": "MSE",
+      "score": 1.4058,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p25-itr3__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p25",
+      "metric": "MAE",
+      "score": 0.84496,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p50-itr1": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p50",
+      "metric": "MSE",
+      "score": 1.2714,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p50-itr1__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p50",
+      "metric": "MAE",
+      "score": 0.80206,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p50-itr2": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p50",
+      "metric": "MSE",
+      "score": 1.2369,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl24-p50-itr2__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl24_p50",
+      "metric": "MAE",
+      "score": 0.77897,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl48-p100-itr1": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 1.5187,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl48-p100-itr1__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 0.94044,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl48-p100-itr2": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 1.6481,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl48-p100-itr2__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 0.97651,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl48-p100-itr3": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 1.5713,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl48-p100-itr3__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 0.9588,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl96-p100-itr1": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 1.8935,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl96-p100-itr1__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.0489,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl96-p100-itr2": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 1.9603,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl96-p100-itr2__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.0855,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl96-p100-itr3": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 1.7783,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-timellm-sl96-pl96-p100-itr3__mae": {
+      "model_id": "timellm",
+      "window_id": "fts_exchange-rate-report_timellm_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.0046,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "evaluation_mode": "fine_tuned",
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    }
+  },
+  "windows": {
+    "fts_exchange-rate-report_timellm_sl96_pl24_p0": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/TimeLLM_sl_96_pl_24_p_0",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 0,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_timellm_sl96_pl24_p10": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/TimeLLM_sl_96_pl_24_p_10",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 10,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_timellm_sl96_pl24_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/TimeLLM_sl_96_pl_24_p_100",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_timellm_sl96_pl24_p25": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/TimeLLM_sl_96_pl_24_p_25",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 25,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_timellm_sl96_pl24_p50": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/TimeLLM_sl_96_pl_24_p_50",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 50,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_timellm_sl96_pl48_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 48,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/TimeLLM_sl_96_pl_48_p_100",
+      "frequency": "daily_trading",
+      "term": "pl48",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_timellm_sl96_pl96_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 96,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/TimeLLM_sl_96_pl_96_p_100",
+      "frequency": "daily_trading",
+      "term": "pl96",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    }
+  }
+}

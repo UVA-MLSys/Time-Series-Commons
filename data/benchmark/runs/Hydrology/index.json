@@ -1,5 +1,4 @@
 {
-  "schema_version": "0.1.0",
   "benchmark_collection": "Hydrology",
   "updated_at": "2026-07-25T20:25:11.988219Z",
   "models": [
@@ -9,7 +8,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "chronos-gpt2/run-registries/camels-us-uv-uv.json"
+        "chronos-gpt2/camels-us-uv-uv.json"
       ]
     },
     {
@@ -18,7 +17,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "chronos-t5/run-registries/camels-us-uv-uv.json"
+        "chronos-t5/camels-us-uv-uv.json"
       ]
     },
     {
@@ -27,8 +26,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "dilatedrnn/run-registries/camels-us-mv-uv.json",
-        "dilatedrnn/run-registries/camels-us-uv-uv.json"
+        "dilatedrnn/camels-us-mv-uv.json",
+        "dilatedrnn/camels-us-uv-uv.json"
       ]
     },
     {
@@ -37,7 +36,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "gnncoder-multivariate/run-registries/camels-us-mv-mv.json"
+        "gnncoder-multivariate/camels-us-mv-mv.json"
       ]
     },
     {
@@ -46,7 +45,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "gnncoder-univariate/run-registries/camels-us-uv-uv.json"
+        "gnncoder-univariate/camels-us-uv-uv.json"
       ]
     },
     {
@@ -55,7 +54,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "itransformer/run-registries/camels-us-mv-mv.json"
+        "itransformer/camels-us-mv-mv.json"
       ]
     },
     {
@@ -64,8 +63,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "itransformer-m4/run-registries/camels-us-mv-mv.json",
-        "itransformer-m4/run-registries/camels-us-uv-uv.json"
+        "itransformer-m4/camels-us-mv-mv.json",
+        "itransformer-m4/camels-us-uv-uv.json"
       ]
     },
     {
@@ -74,8 +73,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "itransformer-trafficl/run-registries/camels-us-mv-mv.json",
-        "itransformer-trafficl/run-registries/camels-us-uv-uv.json"
+        "itransformer-trafficl/camels-us-mv-mv.json",
+        "itransformer-trafficl/camels-us-uv-uv.json"
       ]
     },
     {
@@ -84,13 +83,13 @@
       "run_count": 13,
       "result_record_count": 37,
       "run_registries": [
-        "lstm/run-registries/camels-three-nation-combined-mv-mv.json",
-        "lstm/run-registries/camels-us-mv-mv.json",
-        "lstm/run-registries/camels-us-mv-uv.json",
-        "lstm/run-registries/camels-us-uv-uv.json",
-        "lstm/run-registries/caravan-camels-us-mv-mv.json",
-        "lstm/run-registries/caravan-global-mv-mv.json",
-        "lstm/run-registries/caravan-hysets-mv-mv.json"
+        "lstm/camels-three-nation-combined-mv-mv.json",
+        "lstm/camels-us-mv-mv.json",
+        "lstm/camels-us-mv-uv.json",
+        "lstm/camels-us-uv-uv.json",
+        "lstm/caravan-camels-us-mv-mv.json",
+        "lstm/caravan-global-mv-mv.json",
+        "lstm/caravan-hysets-mv-mv.json"
       ]
     },
     {
@@ -99,7 +98,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "lstm-multivariate/run-registries/camels-us-mv-mv.json"
+        "lstm-multivariate/camels-us-mv-mv.json"
       ]
     },
     {
@@ -108,7 +107,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "lstm-univariate/run-registries/camels-us-uv-uv.json"
+        "lstm-univariate/camels-us-uv-uv.json"
       ]
     },
     {
@@ -117,7 +116,7 @@
       "run_count": 1,
       "result_record_count": 1,
       "run_registries": [
-        "multi-foundation-core/run-registries/camels-us-mv-uv.json"
+        "multi-foundation-core/camels-us-mv-uv.json"
       ]
     },
     {
@@ -126,7 +125,7 @@
       "run_count": 1,
       "result_record_count": 1,
       "run_registries": [
-        "multi-foundation-pattern/run-registries/camels-us-mv-uv.json"
+        "multi-foundation-pattern/camels-us-mv-uv.json"
       ]
     },
     {
@@ -135,7 +134,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "patchtst/run-registries/camels-us-uv-uv.json"
+        "patchtst/camels-us-uv-uv.json"
       ]
     },
     {
@@ -144,7 +143,7 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "patchtst-m4/run-registries/camels-us-uv-uv.json"
+        "patchtst-m4/camels-us-uv-uv.json"
       ]
     },
     {
@@ -153,7 +152,7 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "patchtst-trafficl/run-registries/camels-us-uv-uv.json"
+        "patchtst-trafficl/camels-us-uv-uv.json"
       ]
     },
     {
@@ -162,7 +161,7 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "patchtst-weather/run-registries/camels-us-uv-uv.json"
+        "patchtst-weather/camels-us-uv-uv.json"
       ]
     },
     {
@@ -171,8 +170,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "tcn/run-registries/camels-us-mv-uv.json",
-        "tcn/run-registries/camels-us-uv-uv.json"
+        "tcn/camels-us-mv-uv.json",
+        "tcn/camels-us-uv-uv.json"
       ]
     },
     {
@@ -181,8 +180,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "tft/run-registries/camels-us-mv-uv.json",
-        "tft/run-registries/camels-us-uv-uv.json"
+        "tft/camels-us-mv-uv.json",
+        "tft/camels-us-uv-uv.json"
       ]
     },
     {
@@ -191,8 +190,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "tide/run-registries/camels-us-mv-uv.json",
-        "tide/run-registries/camels-us-uv-uv.json"
+        "tide/camels-us-mv-uv.json",
+        "tide/camels-us-uv-uv.json"
       ]
     },
     {
@@ -201,7 +200,7 @@
       "run_count": 1,
       "result_record_count": 1,
       "run_registries": [
-        "timellm/run-registries/camels-us-uv-uv.json"
+        "timellm/camels-us-uv-uv.json"
       ]
     },
     {
@@ -210,8 +209,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "timesnet/run-registries/camels-us-mv-uv.json",
-        "timesnet/run-registries/camels-us-uv-uv.json"
+        "timesnet/camels-us-mv-uv.json",
+        "timesnet/camels-us-uv-uv.json"
       ]
     },
     {
@@ -220,7 +219,7 @@
       "run_count": 1,
       "result_record_count": 6,
       "run_registries": [
-        "tsmixer/run-registries/camels-us-mv-mv.json"
+        "tsmixer/camels-us-mv-mv.json"
       ]
     },
     {
@@ -229,8 +228,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "tsmixer-m4/run-registries/camels-us-mv-mv.json",
-        "tsmixer-m4/run-registries/camels-us-uv-uv.json"
+        "tsmixer-m4/camels-us-mv-mv.json",
+        "tsmixer-m4/camels-us-uv-uv.json"
       ]
     },
     {
@@ -239,8 +238,8 @@
       "run_count": 2,
       "result_record_count": 7,
       "run_registries": [
-        "tsmixer-trafficl/run-registries/camels-us-mv-mv.json",
-        "tsmixer-trafficl/run-registries/camels-us-uv-uv.json"
+        "tsmixer-trafficl/camels-us-mv-mv.json",
+        "tsmixer-trafficl/camels-us-uv-uv.json"
       ]
     }
   ]

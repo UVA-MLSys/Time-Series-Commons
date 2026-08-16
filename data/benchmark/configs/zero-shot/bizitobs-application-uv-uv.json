@@ -98,7 +98,7 @@
           "target[0]",
           "target[1]"
         ],
-        "known_future": []
+        "exogenous_streams": []
       },
       "window_profile": "gift_eval_bizitobs_application_10s",
       "metrics": [

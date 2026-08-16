@@ -136,7 +136,7 @@
           "target[19]",
           "target[20]"
         ],
-        "known_future": []
+        "exogenous_streams": []
       },
       "window_profile": "gift_eval_weather_10t",
       "metrics": [

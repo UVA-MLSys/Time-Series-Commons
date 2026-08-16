@@ -1,0 +1,249 @@
+{
+  "benchmark_id": "hydrology-camels-us-lstm-mv-mv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Hydrology benchmark results for LSTM on camels-us (MV-MV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "lstm": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "camels-us-mv-mv",
+      "dataset_id": "camels-us",
+      "model_id": "lstm",
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "observed": [
+          "prcp(mm/day)",
+          "tmean(C)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_streams": [
+          "LinearSpace",
+          "LinearTime",
+          "CosAnnual",
+          "SinAnnual"
+        ],
+        "exogenous_static": [
+          "p_mean",
+          "pet_mean",
+          "p_seasonality",
+          "frac_snow",
+          "aridity",
+          "high_prec_freq",
+          "high_prec_dur",
+          "low_prec_freq",
+          "low_prec_dur",
+          "carbonate_rocks_frac",
+          "geol_permeability",
+          "huc_02",
+          "soil_depth_pelletier",
+          "soil_depth_statsgo",
+          "soil_porosity",
+          "soil_conductivity",
+          "max_water_content",
+          "sand_frac",
+          "silt_frac",
+          "clay_frac",
+          "gauge_lat",
+          "gauge_lon",
+          "elev_mean",
+          "slope_mean",
+          "area_gages2",
+          "frac_forest",
+          "lai_max",
+          "lai_diff",
+          "gvf_max",
+          "gvf_diff"
+        ]
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__p__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0599,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split": "validation"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__p__hydrology_daily_pl1__train_rmse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0592,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split": "train"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__p__hydrology_daily_pl1__nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.819,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split": "validation"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__p__hydrology_daily_pl1__train_nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.82,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "split": "train"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__q__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0172,
+      "horizon_id": "next_step",
+      "target": "QObs(mm/d)",
+      "secondary_metrics": {
+        "split": "validation"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__q__hydrology_daily_pl1__train_rmse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0169,
+      "horizon_id": "next_step",
+      "target": "QObs(mm/d)",
+      "secondary_metrics": {
+        "split": "train"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__q__hydrology_daily_pl1__nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.812,
+      "horizon_id": "next_step",
+      "target": "QObs(mm/d)",
+      "secondary_metrics": {
+        "split": "validation"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__q__hydrology_daily_pl1__train_nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.806,
+      "horizon_id": "next_step",
+      "target": "QObs(mm/d)",
+      "secondary_metrics": {
+        "split": "train"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__tmean__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0168,
+      "horizon_id": "next_step",
+      "target": "tmean(C)",
+      "secondary_metrics": {
+        "split": "validation"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__tmean__hydrology_daily_pl1__train_rmse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0166,
+      "horizon_id": "next_step",
+      "target": "tmean(C)",
+      "secondary_metrics": {
+        "split": "train"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__tmean__hydrology_daily_pl1__nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.96,
+      "horizon_id": "next_step",
+      "target": "tmean(C)",
+      "secondary_metrics": {
+        "split": "validation"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__tmean__hydrology_daily_pl1__train_nnse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.961,
+      "horizon_id": "next_step",
+      "target": "tmean(C)",
+      "secondary_metrics": {
+        "split": "train"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__total__hydrology_daily_pl1": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0648,
+      "horizon_id": "next_step",
+      "target": "aggregate_total",
+      "secondary_metrics": {
+        "split": "validation"
+      }
+    },
+    "camels-us-mv-mv__LSTM__table-vi-camels-us__total__hydrology_daily_pl1__train_rmse": {
+      "model_id": "lstm",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0641,
+      "horizon_id": "next_step",
+      "target": "aggregate_total",
+      "secondary_metrics": {
+        "split": "train"
+      }
+    }
+  },
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

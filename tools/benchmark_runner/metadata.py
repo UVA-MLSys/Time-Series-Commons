@@ -175,7 +175,9 @@ def _generate_combined_registry_tasks(
         variables = run.get("variables", {})
         observed = _expand_selection(variables.get("observed", []))
         targets = _expand_selection(variables.get("targets", []))
-        known_future = _expand_selection(variables.get("known_future", []))
+        exogenous_streams = _expand_selection(
+            variables.get("exogenous_streams", variables.get("known_future", []))
+        )
 
         for model_id in run.get("models", []):
             if model_filter is not None and model_id not in model_filter:
@@ -203,7 +205,7 @@ def _generate_combined_registry_tasks(
                         forecast_horizon=int(window["forecast_horizon"]),
                         observed_streams=observed,
                         target_streams=targets,
-                        known_covariates=known_future,
+                        known_covariates=exogenous_streams,
                         curation_required=False,
                         run_group_id=run_group_id,
                         model_profile=model_profiles.get(model_id),

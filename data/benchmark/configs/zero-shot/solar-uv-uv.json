@@ -96,7 +96,7 @@
         "observed": [
           "target"
         ],
-        "known_future": []
+        "exogenous_streams": []
       },
       "window_profile": "gift_eval_solar_10t",
       "metrics": [

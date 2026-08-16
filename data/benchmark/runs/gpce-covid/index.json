@@ -1,0 +1,59 @@
+{
+  "benchmark_collection": "gpce-covid",
+  "updated_at": "2026-08-15T10:08:52.879Z",
+  "source": {
+    "type": "github_results",
+    "repo": "UVA-MLSys/gpce-covid",
+    "source_files": [
+      "Related Works/outputs/*.out",
+      "TFT-pytorch/results/**/figures/Summed_plot_Cases_Test.jpg"
+    ]
+  },
+  "models": [
+    {
+      "model_id": "bilstm",
+      "run_registry_count": 1,
+      "run_count": 6,
+      "result_record_count": 5,
+      "run_registries": [
+        "bilstm/gpce-covid-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "lstm",
+      "run_registry_count": 1,
+      "run_count": 6,
+      "result_record_count": 5,
+      "run_registries": [
+        "lstm/gpce-covid-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "nbeats",
+      "run_registry_count": 1,
+      "run_count": 5,
+      "result_record_count": 3,
+      "run_registries": [
+        "nbeats/gpce-covid-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "nhits",
+      "run_registry_count": 1,
+      "run_count": 6,
+      "result_record_count": 5,
+      "run_registries": [
+        "nhits/gpce-covid-county-mv-uv.json"
+      ]
+    },
+    {
+      "model_id": "tft",
+      "run_registry_count": 1,
+      "run_count": 5,
+      "result_record_count": 5,
+      "run_registries": [
+        "tft/gpce-covid-county-mv-uv.json"
+      ]
+    }
+  ]
+}

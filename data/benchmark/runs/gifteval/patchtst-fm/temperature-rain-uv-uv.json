@@ -1,0 +1,82 @@
+{
+  "benchmark_id": "zero-shot-gifteval-temperature-rain-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for temperature_rain_monash.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "patchtst-fm": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "temperature-rain-uv-uv",
+      "dataset_id": "temperature-rain-with-missing",
+      "model_id": "patchtst-fm",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "target"
+        ],
+        "observed": [
+          "target"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "gift_eval_temperature_rain_d",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_temperature_rain_d_pl30"
+      ]
+    }
+  ],
+  "results": {
+    "temperature-rain-uv-uv__PatchTST-FM__gift_eval_temperature_rain_d_pl30": {
+      "model_id": "patchtst-fm",
+      "window_id": "gift_eval_temperature_rain_d_pl30",
+      "metric": "MAE",
+      "score": 6.033703775935161,
+      "horizon_id": "short",
+      "target": "target"
+    }
+  },
+  "windows": {
+    "gift_eval_temperature_rain_d_pl30": {
+      "forecast_horizon": 30,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "temperature_rain_with_missing/short",
+      "frequency": "D",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 30,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 30,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 725,
+        "num_rolling_windows": 3,
+        "min_context_length": 635,
+        "max_context_length": 695,
+        "context_lengths": [
+          635,
+          665,
+          695
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 635
+    }
+  }
+}

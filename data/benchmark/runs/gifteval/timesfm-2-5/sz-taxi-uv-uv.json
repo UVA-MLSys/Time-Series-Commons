@@ -1,0 +1,162 @@
+{
+  "benchmark_id": "zero-shot-gifteval-sz-taxi-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for sz_taxi_gifteval.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "timesfm-2-5": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "sz-taxi-uv-uv",
+      "dataset_id": "sz-taxi",
+      "model_id": "timesfm-2-5",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "target"
+        ],
+        "observed": [
+          "target"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "gift_eval_sz_taxi_15t",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_sz_taxi_15t_pl48",
+        "gift_eval_sz_taxi_15t_pl480",
+        "gift_eval_sz_taxi_15t_pl720"
+      ]
+    }
+  ],
+  "results": {
+    "sz-taxi-uv-uv__TimesFM-2.5__gift_eval_sz_taxi_15t_pl48": {
+      "model_id": "timesfm-2-5",
+      "window_id": "gift_eval_sz_taxi_15t_pl48",
+      "metric": "MAE",
+      "score": 2.7269209214621677,
+      "horizon_id": "short",
+      "target": "target"
+    },
+    "sz-taxi-uv-uv__TimesFM-2.5__gift_eval_sz_taxi_15t_pl480": {
+      "model_id": "timesfm-2-5",
+      "window_id": "gift_eval_sz_taxi_15t_pl480",
+      "metric": "MAE",
+      "score": 2.767457626226546,
+      "horizon_id": "medium",
+      "target": "target"
+    },
+    "sz-taxi-uv-uv__TimesFM-2.5__gift_eval_sz_taxi_15t_pl720": {
+      "model_id": "timesfm-2-5",
+      "window_id": "gift_eval_sz_taxi_15t_pl720",
+      "metric": "MAE",
+      "score": 2.7187895027129256,
+      "horizon_id": "long",
+      "target": "target"
+    }
+  },
+  "windows": {
+    "gift_eval_sz_taxi_15t_pl48": {
+      "forecast_horizon": 48,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "SZ_TAXI/15T/short",
+      "frequency": "15T",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 48,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 2976,
+        "num_rolling_windows": 7,
+        "min_context_length": 2640,
+        "max_context_length": 2928,
+        "context_lengths": [
+          2640,
+          2688,
+          2736,
+          2784,
+          2832,
+          2880,
+          2928
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 2640
+    },
+    "gift_eval_sz_taxi_15t_pl480": {
+      "forecast_horizon": 480,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "SZ_TAXI/15T/medium",
+      "frequency": "15T",
+      "term": "medium",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 10,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 480,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 2976,
+        "num_rolling_windows": 1,
+        "min_context_length": 2496,
+        "max_context_length": 2496,
+        "context_lengths": [
+          2496
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 2496
+    },
+    "gift_eval_sz_taxi_15t_pl720": {
+      "forecast_horizon": 720,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "SZ_TAXI/15T/long",
+      "frequency": "15T",
+      "term": "long",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 15,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 720,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 2976,
+        "num_rolling_windows": 1,
+        "min_context_length": 2256,
+        "max_context_length": 2256,
+        "context_lengths": [
+          2256
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 2256
+    }
+  }
+}

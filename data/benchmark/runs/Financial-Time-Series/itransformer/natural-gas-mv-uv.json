@@ -1,0 +1,450 @@
+{
+  "benchmark_id": "financial-time-series-natural-gas-itransformer-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Financial-Time-Series benchmark results for iTransformer on natural-gas.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "itransformer": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "natural-gas-mv-uv",
+      "dataset_id": "natural-gas",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Close/Last",
+          "Volume",
+          "Open",
+          "High",
+          "Low"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_natural-gas_itransformer_sl96_pl24_p100"
+      ]
+    },
+    {
+      "run_group_id": "natural-gas-mv-uv",
+      "dataset_id": "natural-gas",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Close/Last",
+          "Volume",
+          "Open",
+          "High",
+          "Low"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_natural-gas_itransformer_sl96_pl24_p10"
+      ]
+    },
+    {
+      "run_group_id": "natural-gas-mv-uv",
+      "dataset_id": "natural-gas",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Close/Last",
+          "Volume",
+          "Open",
+          "High",
+          "Low"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_natural-gas_itransformer_sl96_pl48_p100"
+      ]
+    },
+    {
+      "run_group_id": "natural-gas-mv-uv",
+      "dataset_id": "natural-gas",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Close/Last",
+          "Volume",
+          "Open",
+          "High",
+          "Low"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_natural-gas_itransformer_sl96_pl96_p100"
+      ]
+    }
+  ],
+  "results": {
+    "fts-natural-gas-itransformer-sl96-pl24-p10-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 2.3083,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p10-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 1.175,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p10-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 2.0647,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p10-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 1.0847,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p10-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 1.9853,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p10-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 1.0933,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p100-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 1.7267,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p100-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.98683,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p100-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 1.7937,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p100-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.99615,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p100-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 1.9045,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl24-p100-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 1.0771,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl48-p100-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 3.1172,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl48-p100-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 1.3992,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl48-p100-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 2.9462,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl48-p100-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 1.3455,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl48-p100-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 3.0203,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl48-p100-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 1.3517,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl96-p100-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 5.6512,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl96-p100-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.7986,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl96-p100-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 6.3811,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl96-p100-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.9303,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl96-p100-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 5.7031,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-natural-gas-itransformer-sl96-pl96-p100-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_natural-gas_itransformer_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.8135,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    }
+  },
+  "windows": {
+    "fts_natural-gas_itransformer_sl96_pl24_p10": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Natural_Gas/iTransformer_sl_96_pl_24_p_10",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 10,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_natural-gas_itransformer_sl96_pl24_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Natural_Gas/iTransformer_sl_96_pl_24_p_100",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_natural-gas_itransformer_sl96_pl48_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 48,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Natural_Gas/iTransformer_sl_96_pl_48_p_100",
+      "frequency": "daily_trading",
+      "term": "pl48",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_natural-gas_itransformer_sl96_pl96_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 96,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Natural_Gas/iTransformer_sl_96_pl_96_p_100",
+      "frequency": "daily_trading",
+      "term": "pl96",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    }
+  }
+}

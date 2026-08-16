@@ -1,0 +1,229 @@
+{
+  "benchmark_id": "zero-shot-gifteval-weather-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for weather_jena_thuml.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "granite-flowstate": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "weather-uv-uv",
+      "dataset_id": "weather-dataset",
+      "model_id": "granite-flowstate",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]",
+          "target[7]",
+          "target[8]",
+          "target[9]",
+          "target[10]",
+          "target[11]",
+          "target[12]",
+          "target[13]",
+          "target[14]",
+          "target[15]",
+          "target[16]",
+          "target[17]",
+          "target[18]",
+          "target[19]",
+          "target[20]"
+        ],
+        "observed": [
+          "target[0]",
+          "target[1]",
+          "target[2]",
+          "target[3]",
+          "target[4]",
+          "target[5]",
+          "target[6]",
+          "target[7]",
+          "target[8]",
+          "target[9]",
+          "target[10]",
+          "target[11]",
+          "target[12]",
+          "target[13]",
+          "target[14]",
+          "target[15]",
+          "target[16]",
+          "target[17]",
+          "target[18]",
+          "target[19]",
+          "target[20]"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "gift_eval_weather_10t",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_weather_10t_pl48",
+        "gift_eval_weather_10t_pl480",
+        "gift_eval_weather_10t_pl720"
+      ]
+    }
+  ],
+  "results": {
+    "weather-uv-uv__Granite-FlowState__gift_eval_weather_10t_pl48": {
+      "model_id": "granite-flowstate",
+      "window_id": "gift_eval_weather_10t_pl48",
+      "metric": "MAE",
+      "score": 5.557732933037683,
+      "horizon_id": "short"
+    },
+    "weather-uv-uv__Granite-FlowState__gift_eval_weather_10t_pl480": {
+      "model_id": "granite-flowstate",
+      "window_id": "gift_eval_weather_10t_pl480",
+      "metric": "MAE",
+      "score": 9.551459223871447,
+      "horizon_id": "medium"
+    },
+    "weather-uv-uv__Granite-FlowState__gift_eval_weather_10t_pl720": {
+      "model_id": "granite-flowstate",
+      "window_id": "gift_eval_weather_10t_pl720",
+      "metric": "MAE",
+      "score": 9.56292534023812,
+      "horizon_id": "long"
+    }
+  },
+  "windows": {
+    "gift_eval_weather_10t_pl48": {
+      "forecast_horizon": 48,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "jena_weather/10T/short",
+      "frequency": "10T",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 48,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 52704,
+        "num_rolling_windows": 20,
+        "min_context_length": 51744,
+        "max_context_length": 52656,
+        "context_lengths": [
+          51744,
+          51792,
+          51840,
+          51888,
+          51936,
+          51984,
+          52032,
+          52080,
+          52128,
+          52176,
+          52224,
+          52272,
+          52320,
+          52368,
+          52416,
+          52464,
+          52512,
+          52560,
+          52608,
+          52656
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 51744
+    },
+    "gift_eval_weather_10t_pl480": {
+      "forecast_horizon": 480,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "jena_weather/10T/medium",
+      "frequency": "10T",
+      "term": "medium",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 10,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 480,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 52704,
+        "num_rolling_windows": 11,
+        "min_context_length": 47424,
+        "max_context_length": 52224,
+        "context_lengths": [
+          47424,
+          47904,
+          48384,
+          48864,
+          49344,
+          49824,
+          50304,
+          50784,
+          51264,
+          51744,
+          52224
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 47424
+    },
+    "gift_eval_weather_10t_pl720": {
+      "forecast_horizon": 720,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "jena_weather/10T/long",
+      "frequency": "10T",
+      "term": "long",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 15,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 720,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 52704,
+        "num_rolling_windows": 8,
+        "min_context_length": 46944,
+        "max_context_length": 51984,
+        "context_lengths": [
+          46944,
+          47664,
+          48384,
+          49104,
+          49824,
+          50544,
+          51264,
+          51984
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 46944
+    }
+  }
+}

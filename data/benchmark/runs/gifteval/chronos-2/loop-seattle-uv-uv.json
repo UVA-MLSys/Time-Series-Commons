@@ -1,0 +1,208 @@
+{
+  "benchmark_id": "zero-shot-gifteval-loop-seattle-uv-uv-v1",
+  "evaluation_mode": "zero_shot",
+  "description": "Gift-Eval zero-shot UV-UV benchmark for loop_seattle_gifteval.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "chronos-2": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "loop-seattle-uv-uv",
+      "dataset_id": "loop-seattle",
+      "model_id": "chronos-2",
+      "io_mode": "UV-UV",
+      "variables": {
+        "targets": [
+          "target"
+        ],
+        "observed": [
+          "target"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "gift_eval_loop_seattle_5t",
+      "metrics": [
+        "MAE",
+        "MSE",
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "gift_eval_loop_seattle_5t_pl48",
+        "gift_eval_loop_seattle_5t_pl480",
+        "gift_eval_loop_seattle_5t_pl720"
+      ]
+    }
+  ],
+  "results": {
+    "loop-seattle-uv-uv__Chronos-2__gift_eval_loop_seattle_5t_pl48": {
+      "model_id": "chronos-2",
+      "window_id": "gift_eval_loop_seattle_5t_pl48",
+      "metric": "MAE",
+      "score": 3.5579794773757,
+      "horizon_id": "short",
+      "target": "target"
+    },
+    "loop-seattle-uv-uv__Chronos-2__gift_eval_loop_seattle_5t_pl480": {
+      "model_id": "chronos-2",
+      "window_id": "gift_eval_loop_seattle_5t_pl480",
+      "metric": "MAE",
+      "score": 5.642654794446616,
+      "horizon_id": "medium",
+      "target": "target"
+    },
+    "loop-seattle-uv-uv__Chronos-2__gift_eval_loop_seattle_5t_pl720": {
+      "model_id": "chronos-2",
+      "window_id": "gift_eval_loop_seattle_5t_pl720",
+      "metric": "MAE",
+      "score": 6.25007751575626,
+      "horizon_id": "long",
+      "target": "target"
+    }
+  },
+  "windows": {
+    "gift_eval_loop_seattle_5t_pl48": {
+      "forecast_horizon": 48,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "LOOP_SEATTLE/5T/short",
+      "frequency": "5T",
+      "term": "short",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 1,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 48,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 105120,
+        "num_rolling_windows": 20,
+        "min_context_length": 104160,
+        "max_context_length": 105072,
+        "context_lengths": [
+          104160,
+          104208,
+          104256,
+          104304,
+          104352,
+          104400,
+          104448,
+          104496,
+          104544,
+          104592,
+          104640,
+          104688,
+          104736,
+          104784,
+          104832,
+          104880,
+          104928,
+          104976,
+          105024,
+          105072
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 104160
+    },
+    "gift_eval_loop_seattle_5t_pl480": {
+      "forecast_horizon": 480,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "LOOP_SEATTLE/5T/medium",
+      "frequency": "5T",
+      "term": "medium",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 10,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 480,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 105120,
+        "num_rolling_windows": 20,
+        "min_context_length": 95520,
+        "max_context_length": 104640,
+        "context_lengths": [
+          95520,
+          96000,
+          96480,
+          96960,
+          97440,
+          97920,
+          98400,
+          98880,
+          99360,
+          99840,
+          100320,
+          100800,
+          101280,
+          101760,
+          102240,
+          102720,
+          103200,
+          103680,
+          104160,
+          104640
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 95520
+    },
+    "gift_eval_loop_seattle_5t_pl720": {
+      "forecast_horizon": 720,
+      "context_policy": "full_history",
+      "num_windows_policy": "gift_eval",
+      "source_benchmark": "gift_eval",
+      "source_dataset_config": "LOOP_SEATTLE/5T/long",
+      "frequency": "5T",
+      "term": "long",
+      "metadata": {
+        "base_prediction_length": 48,
+        "term_multiplier": 15,
+        "test_split_fraction": 0.1,
+        "max_windows": 20,
+        "window_distance": 720,
+        "context_window": "all available history before each rolling forecast cutoff",
+        "window_count_rule": "ceil(0.1 * shortest_series_length / forecast_horizon), clipped to [1, 20]",
+        "aggregation": "score over all target points from all rolling windows",
+        "lookback_window_semantics": "full_history_minimum_context",
+        "shortest_series_length": 105120,
+        "num_rolling_windows": 15,
+        "min_context_length": 94320,
+        "max_context_length": 104400,
+        "context_lengths": [
+          94320,
+          95040,
+          95760,
+          96480,
+          97200,
+          97920,
+          98640,
+          99360,
+          100080,
+          100800,
+          101520,
+          102240,
+          102960,
+          103680,
+          104400
+        ],
+        "context_length_rule": "For full-history GiftEval rolling windows, context length is shortest_series_length - forecast_horizon * remaining_windows; lookback_window stores the minimum actual context length for this window definition."
+      },
+      "lookback_window": 94320
+    }
+  }
+}

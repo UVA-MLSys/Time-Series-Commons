@@ -84,7 +84,7 @@
         "observed": [
           "target"
         ],
-        "known_future": []
+        "exogenous_streams": []
       },
       "window_profile": "gift_eval_electricity_h",
       "metrics": [

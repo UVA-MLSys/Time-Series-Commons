@@ -1,0 +1,136 @@
+{
+  "benchmark_id": "hydrology-camels-us-itransformer-trafficl-mv-mv-v1",
+  "evaluation_mode": "fine_tuned",
+  "description": "Hydrology benchmark results for iTransformer-TrafficL on camels-us (MV-MV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "itransformer-trafficl": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "camels-us-mv-mv",
+      "dataset_id": "camels-us",
+      "model_id": "itransformer-trafficl",
+      "io_mode": "MV-MV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "observed": [
+          "prcp(mm/day)",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "camels-us-mv-mv__iTransformer-TrafficL__table-xii-itransformer-trafficl__p__hydrology_daily_pl1": {
+      "model_id": "itransformer-trafficl",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.092,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-mv-mv__iTransformer-TrafficL__table-xii-itransformer-trafficl__q__hydrology_daily_pl1": {
+      "model_id": "itransformer-trafficl",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0205,
+      "horizon_id": "next_step",
+      "target": "QObs(mm/d)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-mv-mv__iTransformer-TrafficL__table-xii-itransformer-trafficl__sr__hydrology_daily_pl1": {
+      "model_id": "itransformer-trafficl",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0889,
+      "horizon_id": "next_step",
+      "target": "srad(W/m2)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-mv-mv__iTransformer-TrafficL__table-xii-itransformer-trafficl__tmax__hydrology_daily_pl1": {
+      "model_id": "itransformer-trafficl",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0374,
+      "horizon_id": "next_step",
+      "target": "tmax(C)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-mv-mv__iTransformer-TrafficL__table-xii-itransformer-trafficl__tmin__hydrology_daily_pl1": {
+      "model_id": "itransformer-trafficl",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0307,
+      "horizon_id": "next_step",
+      "target": "tmin(C)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    },
+    "camels-us-mv-mv__iTransformer-TrafficL__table-xii-itransformer-trafficl__vp__hydrology_daily_pl1": {
+      "model_id": "itransformer-trafficl",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 0.0373,
+      "horizon_id": "next_step",
+      "target": "vp(Pa)",
+      "secondary_metrics": {
+        "preprocessing": "min_max_and_cube_root",
+        "validation_policy": "spatial"
+      }
+    }
+  },
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

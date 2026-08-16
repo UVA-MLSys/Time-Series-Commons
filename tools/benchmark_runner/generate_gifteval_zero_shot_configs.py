@@ -160,7 +160,7 @@ def _benchmark_document(record: dict[str, Any], *, slug: str) -> dict[str, Any]:
         "variables": {
             "targets": variables,
             "observed": variables,
-            "known_future": [],
+            "exogenous_streams": [],
         },
         "window_profile": window_profile_id,
         "metrics": list(METRICS),

@@ -1,0 +1,97 @@
+{
+  "benchmark_id": "hydrology-camels-us-tft-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Hydrology benchmark results for TFT on camels-us (MV-UV).",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "tft": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "camels-us-mv-uv",
+      "dataset_id": "camels-us",
+      "model_id": "tft",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "prcp(mm/day)"
+        ],
+        "observed": [
+          "prcp(mm/day)",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_streams": [
+          "EMA_2",
+          "EMA_4",
+          "EMA_6",
+          "EMA_8",
+          "EMA_10",
+          "EMA_20",
+          "EMA_50",
+          "srad(W/m2)",
+          "tmax(C)",
+          "tmin(C)",
+          "vp(Pa)",
+          "QObs(mm/d)"
+        ],
+        "exogenous_static": []
+      },
+      "window_profile": "hydrology_daily_next_step",
+      "metrics": [
+        "RMSE",
+        "NNSE"
+      ],
+      "evaluation_windows": [
+        "hydrology_daily_pl1"
+      ]
+    }
+  ],
+  "results": {
+    "camels-us-mv-uv__TFT__table-xiii-tft__p__hydrology_daily_pl1": {
+      "model_id": "tft",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "RMSE",
+      "score": 5.211,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "preprocessing": "raw_precipitation",
+        "validation_policy": "temporal"
+      }
+    },
+    "camels-us-mv-uv__TFT__table-xiii-tft__p__hydrology_daily_pl1__nnse": {
+      "model_id": "tft",
+      "window_id": "hydrology_daily_pl1",
+      "metric": "NNSE",
+      "score": 0.6294,
+      "horizon_id": "next_step",
+      "target": "prcp(mm/day)",
+      "secondary_metrics": {
+        "preprocessing": "raw_precipitation",
+        "validation_policy": "temporal"
+      }
+    }
+  },
+  "windows": {
+    "hydrology_daily_pl1": {
+      "lookback_window": 21,
+      "forecast_horizon": 1,
+      "context_policy": "fixed_21_day_history",
+      "num_windows_policy": "reported_split",
+      "source_benchmark": "hydrology",
+      "frequency": "D",
+      "term": "next_step",
+      "metadata": {
+        "validation_policy": "reported",
+        "aggregation": "reported table value"
+      }
+    }
+  }
+}

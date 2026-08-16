@@ -36,13 +36,6 @@ tools/benchmark_runner/generate_zero_shot_configs.py
 # Local benchmark inputs and generated outputs
 data/benchmark/raw/
 data/benchmark/forecast-artifacts/
-data/benchmark/runs/*
-!data/benchmark/runs/examples/
-!data/benchmark/runs/examples/**
-!data/benchmark/runs/gifteval/
-!data/benchmark/runs/gifteval/**
-!data/benchmark/runs/Hydrology/
-!data/benchmark/runs/Hydrology/**
 
 # Local website/browser export snapshots
 *.google.com/

@@ -1,54 +1,53 @@
 {
-  "schema_version": "0.1.0",
   "suite_id": "gifteval",
   "source": {
     "type": "colab_exports",
     "description": "Curated GIFT-Eval Colab run registries copied from local downloaded model export folders.",
     "source_folders": {
-      "chronos-2": "/Users/eriche/Downloads/chronos2-gifteval/run-registries",
-      "granite-flowstate": "/Users/eriche/Downloads/flowstate-gifteval/run-registries",
-      "moirai2": "/Users/eriche/Downloads/moirai2-gifteval/run-registries",
-      "patchtst-fm": "/Users/eriche/Downloads/patchtst-gifteval/run-registries",
-      "timesfm-2-5": "/Users/eriche/Downloads/timesfm25-gifteval/run-registries",
-      "toto-2": "/Users/eriche/Downloads/toto2-gifteval/run-registries"
+      "chronos-2": "/Users/eriche/Downloads/chronos2-gifteval",
+      "granite-flowstate": "/Users/eriche/Downloads/flowstate-gifteval",
+      "moirai2": "/Users/eriche/Downloads/moirai2-gifteval",
+      "patchtst-fm": "/Users/eriche/Downloads/patchtst-gifteval",
+      "timesfm-2-5": "/Users/eriche/Downloads/timesfm25-gifteval",
+      "toto-2": "/Users/eriche/Downloads/toto2-gifteval"
     }
   },
-  "registry_layout": "data/benchmark/runs/gifteval/{model_id}/run-registries/{dataset_io}.json",
+  "registry_layout": "data/benchmark/runs/gifteval/{model_id}/{dataset_io}.json",
   "models": [
     {
       "model_id": "chronos-2",
       "model_name": "Chronos-2",
-      "registry_dir": "chronos-2/run-registries",
+      "registry_dir": "chronos-2",
       "source_folder": "chronos2-gifteval"
     },
     {
       "model_id": "granite-flowstate",
       "model_name": "Granite-FlowState",
-      "registry_dir": "granite-flowstate/run-registries",
+      "registry_dir": "granite-flowstate",
       "source_folder": "flowstate-gifteval"
     },
     {
       "model_id": "moirai2",
       "model_name": "Moirai2",
-      "registry_dir": "moirai2/run-registries",
+      "registry_dir": "moirai2",
       "source_folder": "moirai2-gifteval"
     },
     {
       "model_id": "patchtst-fm",
       "model_name": "PatchTST-FM",
-      "registry_dir": "patchtst-fm/run-registries",
+      "registry_dir": "patchtst-fm",
       "source_folder": "patchtst-gifteval"
     },
     {
       "model_id": "timesfm-2-5",
       "model_name": "TimesFM-2.5",
-      "registry_dir": "timesfm-2-5/run-registries",
+      "registry_dir": "timesfm-2-5",
       "source_folder": "timesfm25-gifteval"
     },
     {
       "model_id": "toto-2",
       "model_name": "Toto-2",
-      "registry_dir": "toto-2/run-registries",
+      "registry_dir": "toto-2",
       "source_folder": "toto2-gifteval"
     }
   ],

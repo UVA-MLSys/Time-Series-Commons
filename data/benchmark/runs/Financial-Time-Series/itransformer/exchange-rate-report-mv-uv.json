@@ -1,0 +1,678 @@
+{
+  "benchmark_id": "financial-time-series-exchange-rate-report-itransformer-mv-uv-v1",
+  "evaluation_mode": "traditional_training",
+  "description": "Financial-Time-Series benchmark results for iTransformer on exchange-rate-report.",
+  "registry_paths": {
+    "datasets": "data/benchmark/dataset-metadata.json",
+    "models": "data/benchmark/model-registry.json"
+  },
+  "model_profiles": {
+    "itransformer": "default"
+  },
+  "runs": [
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_itransformer_sl96_pl24_p100"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_itransformer_sl96_pl24_p10"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_itransformer_sl96_pl24_p25"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_itransformer_sl96_pl24_p50"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_itransformer_sl96_pl48_p100"
+      ]
+    },
+    {
+      "run_group_id": "exchange-rate-report-mv-uv",
+      "dataset_id": "exchange-rate-report",
+      "model_id": "itransformer",
+      "io_mode": "MV-UV",
+      "variables": {
+        "targets": [
+          "Close/Last"
+        ],
+        "observed": [
+          "Australian dollar(AUD)",
+          "Canadian dollar(CAD)",
+          "Chinese yuan(CNY)",
+          "Euro(EUR)",
+          "Indian rupee(INR)",
+          "Japanese yen(JPY)",
+          "U.K. pound(GBP)"
+        ],
+        "exogenous_streams": [],
+        "exogenous_static": []
+      },
+      "window_profile": "financial_time_series_reported_config",
+      "metrics": [
+        "MSE",
+        "MAE"
+      ],
+      "evaluation_windows": [
+        "fts_exchange-rate-report_itransformer_sl96_pl96_p100"
+      ]
+    }
+  ],
+  "results": {
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p10-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 1.7341,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p10-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 0.98313,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p10-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 1.6044,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p10-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 0.95131,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p10-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p10",
+      "metric": "MSE",
+      "score": 1.6061,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p10-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p10",
+      "metric": "MAE",
+      "score": 0.94365,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p100-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 1.16,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p100-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.80616,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p100-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 1.0107,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p100-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.73819,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p100-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p100",
+      "metric": "MSE",
+      "score": 1.0162,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p100-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p100",
+      "metric": "MAE",
+      "score": 0.7547,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p25-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p25",
+      "metric": "MSE",
+      "score": 1.4941,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p25-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p25",
+      "metric": "MAE",
+      "score": 0.87279,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p25-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p25",
+      "metric": "MSE",
+      "score": 1.4282,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p25-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p25",
+      "metric": "MAE",
+      "score": 0.845,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p25-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p25",
+      "metric": "MSE",
+      "score": 1.4127,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p25-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p25",
+      "metric": "MAE",
+      "score": 0.84225,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p50-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p50",
+      "metric": "MSE",
+      "score": 1.3342,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p50-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p50",
+      "metric": "MAE",
+      "score": 0.80669,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p50-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p50",
+      "metric": "MSE",
+      "score": 1.2845,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p50-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p50",
+      "metric": "MAE",
+      "score": 0.79514,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p50-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p50",
+      "metric": "MSE",
+      "score": 1.4011,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl24-p50-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl24_p50",
+      "metric": "MAE",
+      "score": 0.84723,
+      "horizon_id": "pl24",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl48-p100-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 1.6549,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl48-p100-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 0.95155,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl48-p100-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 1.5686,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl48-p100-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 0.92522,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl48-p100-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl48_p100",
+      "metric": "MSE",
+      "score": 2.1911,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl48-p100-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl48_p100",
+      "metric": "MAE",
+      "score": 1.1458,
+      "horizon_id": "pl48",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl96-p100-itr1": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 1.7789,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl96-p100-itr1__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.0083,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl96-p100-itr2": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 1.9371,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl96-p100-itr2__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.0535,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl96-p100-itr3": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl96_p100",
+      "metric": "MSE",
+      "score": 1.9227,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    },
+    "fts-exchange-rate-report-itransformer-sl96-pl96-p100-itr3__mae": {
+      "model_id": "itransformer",
+      "window_id": "fts_exchange-rate-report_itransformer_sl96_pl96_p100",
+      "metric": "MAE",
+      "score": 1.0387,
+      "horizon_id": "pl96",
+      "target": "Close/Last",
+      "secondary_metrics": {
+        "source_artifact": "https://github.com/UVA-MLSys/Financial-Time-Series/blob/main/results/results.csv"
+      }
+    }
+  },
+  "windows": {
+    "fts_exchange-rate-report_itransformer_sl96_pl24_p10": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/iTransformer_sl_96_pl_24_p_10",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 10,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_itransformer_sl96_pl24_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/iTransformer_sl_96_pl_24_p_100",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_itransformer_sl96_pl24_p25": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/iTransformer_sl_96_pl_24_p_25",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 25,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_itransformer_sl96_pl24_p50": {
+      "lookback_window": 96,
+      "forecast_horizon": 24,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/iTransformer_sl_96_pl_24_p_50",
+      "frequency": "daily_trading",
+      "term": "pl24",
+      "metadata": {
+        "percent": 50,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_itransformer_sl96_pl48_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 48,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/iTransformer_sl_96_pl_48_p_100",
+      "frequency": "daily_trading",
+      "term": "pl48",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    },
+    "fts_exchange-rate-report_itransformer_sl96_pl96_p100": {
+      "lookback_window": 96,
+      "forecast_horizon": 96,
+      "context_policy": "fixed_history_window",
+      "num_windows_policy": "reported_experiment_repeats",
+      "source_benchmark": "Financial-Time-Series",
+      "source_dataset_config": "Exchange_Rate_Report/iTransformer_sl_96_pl_96_p_100",
+      "frequency": "daily_trading",
+      "term": "pl96",
+      "metadata": {
+        "percent": 100,
+        "aggregation": "reported per-iteration row from results/results.csv"
+      }
+    }
+  }
+}
