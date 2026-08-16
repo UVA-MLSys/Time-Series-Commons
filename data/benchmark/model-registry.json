@@ -3219,6 +3219,1320 @@
         "supports_mv_uv": false,
         "supports_mv_mv": false
       }
+    },
+    {
+      "id": "dlinear",
+      "name": "DLinear",
+      "architecture_family": "LTSF-Linear",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/honeywell21/DLinear",
+      "description": "Decomposition-Linear forecasting model used in the Financial-Time-Series, COVID-19-age-groups, and WinTSR forecasting experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Financial-Time-Series": true,
+        "COVID-19-age-groups": true,
+        "WinTSR": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/honeywell21/DLinear"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "autoformer",
+      "name": "Autoformer",
+      "architecture_family": "Autoformer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/thuml/Autoformer",
+      "description": "Decomposition Transformer with auto-correlation used in the COVID-19-age-groups forecasting experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "COVID-19-age-groups": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/thuml/Autoformer"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "fedformer",
+      "name": "FEDformer",
+      "architecture_family": "FEDformer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/MAZiqing/FEDformer",
+      "description": "Frequency Enhanced Decomposed Transformer used in the COVID-19-age-groups forecasting experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "COVID-19-age-groups": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/MAZiqing/FEDformer"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "transformer",
+      "name": "Transformer",
+      "architecture_family": "Transformer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/thuml/Time-Series-Library",
+      "description": "Vanilla Transformer baseline for time-series forecasting used in the COVID-19-age-groups forecasting experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "COVID-19-age-groups": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/thuml/Time-Series-Library"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "timemixer",
+      "name": "TimeMixer",
+      "architecture_family": "TimeMixer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/kwuking/TimeMixer",
+      "description": "Decomposable multiscale mixing model used in the Financial-Time-Series forecasting experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Financial-Time-Series": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/kwuking/TimeMixer"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "gpt4ts",
+      "name": "GPT4TS",
+      "architecture_family": "One Fits All",
+      "training_regime": "pretrained_transfer_or_fine_tuning",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All",
+      "description": "Pretrained language-model-based time-series forecasting model used in the Financial-Time-Series experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Financial-Time-Series": true
+      },
+      "runtimePackage": "NeurIPS2023-One-Fits-All",
+      "profiles": {
+        "default": {
+          "runtime_package": "NeurIPS2023-One-Fits-All",
+          "source_link": "https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "calf",
+      "name": "CALF",
+      "architecture_family": "CALF",
+      "training_regime": "llm_cross_modal_fine_tuning",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/Hank0626/CALF",
+      "description": "Cross-modal LLM fine-tuning framework for time-series forecasting used in the Financial-Time-Series and WinTSR experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "Financial-Time-Series": true,
+        "WinTSR": true
+      },
+      "runtimePackage": "CALF",
+      "profiles": {
+        "default": {
+          "runtime_package": "CALF",
+          "source_link": "https://github.com/Hank0626/CALF"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "fine_tuned"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "segrnn",
+      "name": "SegRNN",
+      "architecture_family": "SegRNN",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/lss-1138/SegRNN",
+      "description": "Segment Recurrent Neural Network used in the WinTSR forecasting-model interpretation experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "WinTSR": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/lss-1138/SegRNN"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "micn",
+      "name": "MICN",
+      "architecture_family": "MICN",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/wanghq21/MICN",
+      "description": "Multi-scale Isometric Convolution Network used in the WinTSR forecasting-model interpretation experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "WinTSR": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/wanghq21/MICN"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "crossformer",
+      "name": "Crossformer",
+      "architecture_family": "Crossformer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/Thinklab-SJTU/Crossformer",
+      "description": "Cross-dimension dependency Transformer used in the COVID-19-age-groups forecasting experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "COVID-19-age-groups": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/Thinklab-SJTU/Crossformer"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "timexer",
+      "name": "TimeXer",
+      "architecture_family": "TimeXer",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/thuml/TimeXer",
+      "description": "TimeXer forecasting model used in the COVID-19-age-groups forecasting experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "COVID-19-age-groups": true
+      },
+      "runtimePackage": "Time-Series-Library",
+      "profiles": {
+        "default": {
+          "runtime_package": "Time-Series-Library",
+          "source_link": "https://github.com/thuml/TimeXer"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "ofa-llama",
+      "name": "OFA-LLaMA",
+      "architecture_family": "One Fits All",
+      "training_regime": "pretrained_transfer_or_fine_tuning",
+      "model_type": "foundation",
+      "is_foundation_or_pretrained": true,
+      "type": "foundation",
+      "domain": "Foundation Model",
+      "evaluationModes": [
+        "zero_shot",
+        "fine_tuned"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/models/OFA.py",
+      "description": "One-Fits-All style pretrained language model forecasting variant using a LLaMA backbone in the COVID-19-age-groups experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "COVID-19-age-groups": true
+      },
+      "runtimePackage": "COVID-19-age-groups",
+      "profiles": {
+        "default": {
+          "runtime_package": "COVID-19-age-groups",
+          "source_link": "https://github.com/UVA-MLSys/COVID-19-age-groups/blob/main/models/OFA.py"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "zero_shot",
+          "fine_tuned"
+        ],
+        "supports_zero_shot": true,
+        "supports_fine_tuning": true,
+        "supports_traditional_training": false,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "bilstm",
+      "name": "BiLSTM",
+      "architecture_family": "Bidirectional LSTM",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related%20Works/models.py",
+      "description": "Bidirectional LSTM baseline used in the GPCE COVID county-level forecasting related-work experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "gpce-covid": true
+      },
+      "runtimePackage": "tensorflow",
+      "profiles": {
+        "default": {
+          "runtime_package": "tensorflow",
+          "source_link": "https://github.com/UVA-MLSys/gpce-covid/blob/main/Related%20Works/models.py"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "nbeats",
+      "name": "N-BEATS",
+      "architecture_family": "N-BEATS",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://unit8co.github.io/darts/generated_api/darts.models.forecasting.nbeats.html",
+      "description": "Darts N-BEATS baseline used in the GPCE COVID county-level forecasting related-work experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "gpce-covid": true
+      },
+      "runtimePackage": "darts",
+      "profiles": {
+        "default": {
+          "runtime_package": "darts",
+          "source_link": "https://unit8co.github.io/darts/generated_api/darts.models.forecasting.nbeats.html"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
+    },
+    {
+      "id": "nhits",
+      "name": "N-HiTS",
+      "architecture_family": "N-HiTS",
+      "training_regime": "from_scratch_training",
+      "model_type": "deep_learning",
+      "is_foundation_or_pretrained": false,
+      "type": "traditional",
+      "domain": "Deep Learning Forecasting",
+      "evaluationModes": [
+        "traditional_training"
+      ],
+      "ioModes": [
+        "UV-UV",
+        "MV-UV"
+      ],
+      "sourceLink": "https://unit8co.github.io/darts/generated_api/darts.models.forecasting.nhits.html",
+      "description": "Darts N-HiTS baseline used in the GPCE COVID county-level forecasting related-work experiments.",
+      "agentFacets": {
+        "runtime_status": "metadata_only",
+        "recommendation_scope": "metadata_reference",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "requires_api_key": false,
+        "windowing": "fixed"
+      },
+      "benchmarks": {
+        "gpce-covid": true
+      },
+      "runtimePackage": "darts",
+      "profiles": {
+        "default": {
+          "runtime_package": "darts",
+          "source_link": "https://unit8co.github.io/darts/generated_api/darts.models.forecasting.nhits.html"
+        }
+      },
+      "official_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "official_documentation",
+        "supports_exogenous_covariates": true
+      },
+      "benchmark_runner_capabilities": {
+        "io_modes": [
+          "UV-UV",
+          "MV-UV"
+        ],
+        "evaluation_modes": [
+          "traditional_training"
+        ],
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": true,
+        "supports_uv_uv": true,
+        "supports_mv_uv": true,
+        "supports_mv_mv": false,
+        "source": "current_benchmark_runner_metadata"
+      },
+      "observed_run_capabilities": {
+        "io_modes": [],
+        "evaluation_modes": [],
+        "benchmark_suites": [],
+        "result_count": 0,
+        "source": "completed_result_records",
+        "supports_zero_shot": false,
+        "supports_fine_tuning": false,
+        "supports_traditional_training": false,
+        "supports_uv_uv": false,
+        "supports_mv_uv": false,
+        "supports_mv_mv": false
+      }
     }
   ]
 }
